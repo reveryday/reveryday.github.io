@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>my  first blog</title>
+      <title>VS2022+oneAPI</title>
       <link href="/2025/01/16/vs2022-noeAPI%E9%85%8D%E7%BD%AE/"/>
       <url>/2025/01/16/vs2022-noeAPI%E9%85%8D%E7%BD%AE/</url>
       
-        <content type="html"><![CDATA[<h1 id="VS2022-oneAPI"><a href="#VS2022-oneAPI" class="headerlink" title="VS2022+oneAPI"></a>VS2022+oneAPI</h1><p>1.安装VS2022</p><p>2.配置oneAPI</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="安装VS2022"><a href="#安装VS2022" class="headerlink" title="安装VS2022"></a>安装VS2022</h3><p>安装时需勾选：</p><p><img src="C:\Users\34001\AppData\Roaming\Typora\typora-user-images\image-20250122173500826.png" alt="image-20250122173500826"></p>]]></content>
       
       
       
