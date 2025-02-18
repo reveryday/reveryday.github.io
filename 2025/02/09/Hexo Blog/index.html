@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/dog.jpg">
 <meta property="article:published_time" content="2025-02-09T13:53:10.000Z">
-<meta property="article:modified_time" content="2025-02-11T16:42:21.163Z">
+<meta property="article:modified_time" content="2025-02-18T14:44:12.891Z">
 <meta property="article:author" content="Wens">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://reveryday.github.io/images/dog.jpg"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "http://reveryday.github.io/2025/02/09/Hexo%20Blog/",
   "image": "http://reveryday.github.io/images/dog.jpg",
   "datePublished": "2025-02-09T13:53:10.000Z",
-  "dateModified": "2025-02-11T16:42:21.163Z",
+  "dateModified": "2025-02-18T14:44:12.891Z",
   "author": [
     {
       "@type": "Person",
@@ -138,7 +138,7 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">Hexo Blog</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Hexo Blog</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-09T13:53:10.000Z" title="发表于 2025-02-09 21:53:10">2025-02-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-11T16:42:21.163Z" title="更新于 2025-02-12 00:42:21">2025-02-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h3><ol>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">Hexo Blog</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Hexo Blog</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-09T13:53:10.000Z" title="发表于 2025-02-09 21:53:10">2025-02-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-18T14:44:12.891Z" title="更新于 2025-02-18 22:44:12">2025-02-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h3><ol>
 <li><p>安装Git，安装好后检查版本信息：</p>
 <pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">PS D:\Program Files&gt; git --version
 git version 2.47.1.windows.2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -200,7 +200,7 @@ Hi reveryday<span class="token operator">!</span> You've successfully authentica
 </ol>
 </li>
 <li><p>将hexo部署到GitHub</p>
-<p>打开站点配置文件  _config.yml ，翻到最后，修改为：</p>
+<p>打开站点配置文件  _config.yml ，翻到最后，修改为（若default brunch是main，则应改为main）：</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> git
   <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/reveryday/reveryday.github.io.git
