@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于transformer的辐射屏蔽优化设计 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="所有的粒子输运计算都基于解玻尔兹曼方程得到中子&#x2F;光子输运方程，目前应用于屏蔽计算的方法主要有三种：  离散纵标方法（DOM）  点核积分方法（PKM）：主要适用于光子  蒙特卡罗方法（MCM）：需使用降方差技巧与模型描述技巧   或者三种方法耦合计算。 可用蒙卡计算得到不同模型下的输入（能量，屏蔽层数，屏蔽材料，屏壁厚度）输出（通量、剂量、build up factor），生成 data">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于transformer的辐射屏蔽优化设计 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="所有的粒子输运计算都基于解玻尔兹曼方程得到中子&#x2F;光子输运方程，目前应用于屏蔽计算的方法主要有三种：1、离散纵标方法（DOM）。2、点核积分方法（PKM）：主要适用于光子。3、蒙特卡罗方法（MCM）：需使用降方差技巧与模型描述技巧。或者三种方法耦合计算。 可用蒙卡计算得到不同模型下的输入（能量、屏蔽层数、屏蔽材料、屏壁厚度）输出（通量、剂量、build up factor），生成 data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于transformer的辐射屏蔽优化设计">
 <meta property="og:url" content="http://reveryday.github.io/2025/02/23/%E5%9F%BA%E4%BA%8Etransformer%E7%9A%84%E8%BE%90%E5%B0%84%E5%B1%8F%E8%94%BD%E4%BC%98%E5%8C%96%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="所有的粒子输运计算都基于解玻尔兹曼方程得到中子&#x2F;光子输运方程，目前应用于屏蔽计算的方法主要有三种：  离散纵标方法（DOM）  点核积分方法（PKM）：主要适用于光子  蒙特卡罗方法（MCM）：需使用降方差技巧与模型描述技巧   或者三种方法耦合计算。 可用蒙卡计算得到不同模型下的输入（能量，屏蔽层数，屏蔽材料，屏壁厚度）输出（通量、剂量、build up factor），生成 data">
+<meta property="og:description" content="所有的粒子输运计算都基于解玻尔兹曼方程得到中子&#x2F;光子输运方程，目前应用于屏蔽计算的方法主要有三种：1、离散纵标方法（DOM）。2、点核积分方法（PKM）：主要适用于光子。3、蒙特卡罗方法（MCM）：需使用降方差技巧与模型描述技巧。或者三种方法耦合计算。 可用蒙卡计算得到不同模型下的输入（能量、屏蔽层数、屏蔽材料、屏壁厚度）输出（通量、剂量、build up factor），生成 data">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/dog.jpg">
 <meta property="article:published_time" content="2025-02-23T14:10:09.000Z">
-<meta property="article:modified_time" content="2025-02-23T14:51:15.066Z">
+<meta property="article:modified_time" content="2025-02-23T15:34:14.108Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="粒子输运">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "http://reveryday.github.io/2025/02/23/%E5%9F%BA%E4%BA%8Etransformer%E7%9A%84%E8%BE%90%E5%B0%84%E5%B1%8F%E8%94%BD%E4%BC%98%E5%8C%96%E8%AE%BE%E8%AE%A1/",
   "image": "http://reveryday.github.io/images/dog.jpg",
   "datePublished": "2025-02-23T14:10:09.000Z",
-  "dateModified": "2025-02-23T14:51:15.066Z",
+  "dateModified": "2025-02-23T15:34:14.108Z",
   "author": [
     {
       "@type": "Person",
@@ -139,18 +139,9 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于transformer的辐射屏蔽优化设计</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于transformer的辐射屏蔽优化设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-23T14:10:09.000Z" title="发表于 2025-02-23 22:10:09">2025-02-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-23T14:51:15.066Z" title="更新于 2025-02-23 22:51:15">2025-02-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>所有的粒子输运计算都基于解玻尔兹曼方程得到中子&#x2F;光子输运方程，目前应用于屏蔽计算的方法主要有三种：</p>
-<ul>
-<li><p>离散纵标方法（DOM）</p>
-</li>
-<li><p>点核积分方法（PKM）：主要适用于光子</p>
-</li>
-<li><p>蒙特卡罗方法（MCM）：需使用降方差技巧与模型描述技巧</p>
-</li>
-</ul>
-<p>或者三种方法耦合计算。</p>
-<p>可用蒙卡计算得到不同模型下的输入（能量，屏蔽层数，屏蔽材料，屏壁厚度）输出（通量、剂量、build up factor），生成 dataset，基于transformer设计一个预测模型，再通过遗传算法得到最优解。</p>
-<p>这方面比较以前集中于传统算法（ANN预测屏蔽效果，GA和PSO优化屏蔽结构），而Transformer的应用尚处于起步阶段（Vision Transformer（ViT）在图像处理中的成功，以及Decision Transformer在强化学习中的应用，表明其潜力），1、可比较Transformer模型与传统方法（如GA、PSO）的性能，评估屏蔽效果、计算时间等指标，2、选择具体应用场景（如核反应堆屏蔽或医用加速器屏蔽），测试模型性能。</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于transformer的辐射屏蔽优化设计</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于transformer的辐射屏蔽优化设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-23T14:10:09.000Z" title="发表于 2025-02-23 22:10:09">2025-02-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-23T15:34:14.108Z" title="更新于 2025-02-23 23:34:14">2025-02-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>所有的粒子输运计算都基于解玻尔兹曼方程得到中子&#x2F;光子输运方程，目前应用于屏蔽计算的方法主要有三种：1、离散纵标方法（DOM）。2、点核积分方法（PKM）：主要适用于光子。3、蒙特卡罗方法（MCM）：需使用降方差技巧与模型描述技巧。或者三种方法耦合计算。</p>
+<p>可用蒙卡计算得到不同模型下的输入（能量、屏蔽层数、屏蔽材料、屏壁厚度）输出（通量、剂量、build up factor），生成 dataset，基于transformer设计一个预测模型，再通过遗传算法寻找最优解。</p>
+<p>这个方向以前集中于传统算法（ANN预测屏蔽效果，GA和PSO优化屏蔽结构），而Transformer的应用尚处于起步阶段（Vision Transformer（ViT）在图像处理中的成功，以及Decision Transformer在强化学习中的应用，表明其潜力），1、可比较Transformer模型与传统方法（如GA、PSO）的性能，评估屏蔽效果、计算时间等指标。2、选择具体应用场景（如核反应堆屏蔽或医用加速器屏蔽），测试模型性能。</p>
 <p>Some Ideas：</p>
 <ul>
 <li>将Transformer与强化学习结合，让模型学习最优设计策略，参考多目标优化方法（如Pareto前沿），训练模型生成一组最优解</li>
