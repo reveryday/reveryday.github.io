@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MCNP输入输出验证 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="运行一个case会产生80个数据点，输出80组数据，case10.50 MeV 4 Layers 10.0 Con 11.0 Pb 4.5 Fe 14.5 Con 自动化脚本提取结果： （1是考虑外侧反射层的结果，2是使用标记记数不考虑外侧介质反射的结果）             屏蔽层数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MCNP输入输出验证">
+<meta property="og:url" content="http://reveryday.github.io/2025/03/01/MCNP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%AA%8C%E8%AF%81/index.html">
+<meta property="og:site_name" content="Wens&#39;Blog">
+<meta property="og:description" content="运行一个case会产生80个数据点，输出80组数据，case10.50 MeV 4 Layers 10.0 Con 11.0 Pb 4.5 Fe 14.5 Con 自动化脚本提取结果： （1是考虑外侧反射层的结果，2是使用标记记数不考虑外侧介质反射的结果）             屏蔽层数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://reveryday.github.io/images/dog.jpg">
+<meta property="article:published_time" content="2025-03-01T07:19:26.000Z">
+<meta property="article:modified_time" content="2025-03-02T07:04:17.312Z">
+<meta property="article:author" content="Wens">
+<meta property="article:tag" content="粒子输运">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://reveryday.github.io/images/dog.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MCNP输入输出验证",
+  "url": "http://reveryday.github.io/2025/03/01/MCNP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%AA%8C%E8%AF%81/",
+  "image": "http://reveryday.github.io/images/dog.jpg",
+  "datePublished": "2025-03-01T07:19:26.000Z",
+  "dateModified": "2025-03-02T07:04:17.312Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wens",
+      "url": "http://reveryday.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/03/01/MCNP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%AA%8C%E8%AF%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":false,"highlightLang":false,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MCNP输入输出验证',
+  isHighlightShrink: undefined,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">MCNP输入输出验证</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">MCNP输入输出验证</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-01T07:19:26.000Z" title="发表于 2025-03-01 15:19:26">2025-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-02T07:04:17.312Z" title="更新于 2025-03-02 15:04:17">2025-03-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>运行一个case会产生80个数据点，输出80组数据，case1<code>0.50 MeV 4 Layers 10.0 Con 11.0 Pb 4.5 Fe 14.5 Con </code>自动化脚本提取结果：</p>
+<p>（1是考虑外侧反射层的结果，2是使用标记记数不考虑外侧介质反射的结果）</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">            屏蔽层数                                                              注量 flux      照射量exposure  有效剂量effective dose
+ENERGY   N M1  MFP1 M2  MFP2 M3  MFP3 M4  MFP4  FLU-BUF-1     EXP-BUF-1     EFF-BUF-T1    FLU-BUF-T2    EXP-BUF-T2    EFF-BUF-T2
+5.00E-01 1 Con  0.5      0.0      0.0      0.0  2.456262E+00  1.559544E+00  1.563126E+00  1.788371E+00  1.408709E+00  1.406484E+00
+5.00E-01 1 Con  1.0      0.0      0.0      0.0  4.608451E+00  2.290136E+00  2.302433E+00  3.018621E+00  1.959465E+00  1.959779E+00
+...
+5.00E-01 1 Con  9.5      0.0      0.0      0.0  1.189144E+02  3.579403E+01  3.635311E+01  7.935532E+01  2.855935E+01  2.887912E+01
+5.00E-01 1 Con 10.0      0.0      0.0      0.0  1.036879E+02  3.482087E+01  3.395969E+01  8.727452E+01  3.113331E+01  3.149977E+01
+5.00E-01 2 Con 10.0 Pb   0.5      0.0      0.0  1.834879E+01  1.233004E+01  1.215593E+01  1.714845E+01  1.201753E+01  1.189161E+01
+5.00E-01 2 Con 10.0 Pb   1.0      0.0      0.0  1.318724E+01  9.680079E+00  9.549188E+00  1.240576E+01  9.461670E+00  9.363112E+00
+...
+5.00E-01 2 Con 10.0 Pb  11.0      0.0      0.0  1.052931E+01  7.836610E+00  7.775610E+00  7.882315E+00  6.965394E+00  6.929317E+00
+5.00E-01 3 Con 10.0 Pb  11.0 Fe   0.5      0.0  1.569716E+01  1.056516E+01  1.051873E+01  1.179079E+01  9.312289E+00  9.262762E+00
+...
+5.00E-01 3 Con 10.0 Pb  11.0 Fe   4.0      0.0  4.967407E+01  2.776874E+01  2.761931E+01  3.740668E+01  2.412305E+01  2.396122E+01
+5.00E-01 3 Con 10.0 Pb  11.0 Fe   4.5      0.0  6.508631E+01  3.232337E+01  3.226250E+01  4.188607E+01  2.661578E+01  2.643200E+01
+5.00E-01 4 Con 10.0 Pb  11.0 Fe   4.5 Con  0.5  9.429788E+01  3.953939E+01  3.977766E+01  5.622222E+01  3.134875E+01  3.129525E+01
+5.00E-01 4 Con 10.0 Pb  11.0 Fe   4.5 Con  1.0  1.199335E+02  4.635151E+01  4.675193E+01  7.185965E+01  3.649952E+01  3.652283E+01
+...
+5.00E-01 4 Con 10.0 Pb  11.0 Fe   4.5 Con  9.0  7.269952E+02  2.117900E+02  2.150392E+02  4.492663E+02  1.608374E+02  1.624558E+02
+...
+5.00E-01 4 Con 10.0 Pb  11.0 Fe   4.5 Con 14.0  1.365840E+03  3.818357E+02  3.888157E+02  8.456813E+02  2.884744E+02  2.921576E+02
+5.00E-01 4 Con 10.0 Pb  11.0 Fe   4.5 Con 14.5  1.438450E+03  4.024536E+02  4.090579E+02  8.912519E+02  3.033143E+02  3.073216E+02<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="INPUT"><a href="#INPUT" class="headerlink" title="INPUT"></a>INPUT</h2><p>屏蔽材料与源能量设置：</p>
+<pre class="line-numbers language-none"><code class="language-none">C Data Card                          
+M4    1000  -0.022100                
+      6000  -0.002484                
+      8000  -0.574930                
+     11000  -0.015208                
+     12000  -0.001266                
+     13000  -0.019953                
+     14000  -0.304627                
+     19000  -0.010045                
+     20000  -0.042951                
+     26000  -0.006435                
+     PLIB&#x3D;12p ELIB&#x3D;03e               
+M2   82000   1.000                   
+     PLIB&#x3D;12p ELIB&#x3D;03e               
+M1   26000   1.000                   
+     PLIB&#x3D;12p ELIB&#x3D;03e               
+MODE P E                             
+SDEF POS&#x3D;0.0 0.0 0.0 PAR&#x3D;P ERG&#x3D;0.50  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>屏蔽厚度设置：（第1个surface是半径为0.5mfp的球面）</p>
+<pre class="line-numbers language-none"><code class="language-none">0.50 MeV 4 Layers 10.0 Con
+C Cell Card               
+    1 4  -2.300        -1 
+    2 4  -2.300    1   -2 
+    3 4  -2.300    2   -3 
+...
+   18 4  -2.300   17  -18 
+   19 4  -2.300   18  -19 
+   20 4  -2.300   19  -20 
+   21 2 -11.350   20  -21 
+   22 2 -11.350   21  -22 
+   23 2 -11.350   22  -23 
+...
+   39 2 -11.350   38  -39 
+   40 2 -11.350   39  -40 
+   41 2 -11.350   40  -41 
+   42 2 -11.350   41  -42 
+   43 1  -7.874   42  -43 
+   44 1  -7.874   43  -44 
+   45 1  -7.874   44  -45 
+   46 1  -7.874   45  -46 
+   47 1  -7.874   46  -47 
+   48 1  -7.874   47  -48 
+   49 1  -7.874   48  -49 
+   50 1  -7.874   49  -50 
+   51 1  -7.874   50  -51 
+   52 4  -2.300   51  -52 
+   53 4  -2.300   52  -53 
+   54 4  -2.300   53  -54 
+...
+   78 4  -2.300   77  -78 
+   79 4  -2.300   78  -79 
+   80 4  -2.300   79  -80 
+   81 4  -2.300   80  -81 
+   82 0           81      <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>0-20surface屏蔽材料：M4，20-42surface：M2，42-51：M1，52-80surface：M4，80-81surface：M4</p>
+<p>光子权窗设置：</p>
+<p><img src="/images/dataset/veri03.png"></p>
+<p>计数卡设置，使用F2计数卡统计了第1到第81个surface，</p>
+<p><img src="/images/dataset/veri04.png"></p>
+<p>转换因子：</p>
+<p>粒子数设置：</p>
+<pre class="line-numbers language-none"><code class="language-none">NPS  1.0E+08  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="OUTPUT"><a href="#OUTPUT" class="headerlink" title="OUTPUT"></a>OUTPUT</h2><p>先是源参数的信息：</p>
+<pre class="line-numbers language-none"><code class="language-none">values of defaulted or explicitly defined source variables
+
+   cel        0.0000E+00
+   sur        0.0000E+00
+   erg        5.0000E-01
+   tme        0.0000E+00
+   dir        isotropic 
+   pos        0.0000E+00   0.0000E+00   0.0000E+00
+   x          0.0000E+00
+   y          0.0000E+00
+   z          0.0000E+00
+   rad        0.0000E+00
+   ext        0.0000E+00
+   axs        0.0000E+00   0.0000E+00   0.0000E+00
+   vec        0.0000E+00   0.0000E+00   0.0000E+00
+   ccc        0.0000E+00
+   nrm        1.0000E+00
+   ara        0.0000E+00
+   wgt        1.0000E+00
+   eff        1.0000E-02
+   par        2.0000E+00
+   tr         0.0000E+00
+   bem        0.0000E+00   0.0000E+00   0.0000E+00
+   bap        0.0000E+00   0.0000E+00   0.0000E+00
+   loc        0.0000E+00   0.0000E+00   0.0000E+00
+   dat        0.0000E+00   0.0000E+00   0.0000E+00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后是计数卡（从F12-F802）的设置信息，如F12计数卡输出的一些信息：</p>
+<pre class="line-numbers language-none"><code class="language-none">1tally       12                                                                                         print table 30
+           tally type 2    particle flux averaged over a surface.    F2：用于计算粒子通量（flux）“表面平均粒子通量”
+           particle(s): photons   只统计光子
+           flagging cells:        2
+ 
+  warning.     1 energy bins of tally       12 are below energy cutoff.
+ surfaces  1      统计第一个surface                                                                                                                     
+
+ angle  bins   角度分割
+     -1.00000E+00  to  0.00000E+00 mu    
+      0.00000E+00  to  1.00000E+00 mu    
+      total bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>之后是材料信息（print table 40）：</p>
+<pre class="line-numbers language-none"><code class="language-none">1material composition     材料组成                                                                              print table 40
+
+ material            组成核素               原子分数
+  number     component nuclide, atom fraction
+
+        4            1000, 3.05321E-01       6000, 2.87996E-03       8000, 5.00414E-01      11000, 9.21198E-03
+                    12000, 7.25358E-04      13000, 1.02981E-02      14000, 1.51043E-01      19000, 3.57773E-03
+                    20000, 1.49239E-02      26000, 1.60459E-03
+        2           82000, 1.00000E+00
+        1           26000, 1.00000E+00
+
+ material          组成核素                  质量分数
+  number     component nuclide, mass fraction
+
+        4            1000, 2.21000E-02       6000, 2.48400E-03       8000, 5.74931E-01      11000, 1.52080E-02
+                    12000, 1.26600E-03      13000, 1.99530E-02      14000, 3.04627E-01      19000, 1.00450E-02
+                    20000, 4.29510E-02      26000, 6.43501E-03
+        2           82000, 1.00000E+00
+        1           26000, 1.00000E+00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>之后，是print table 50，显示了单元（cell）的体积和质量信息（cell volumes and masses）</p>
+<pre class="line-numbers language-none"><code class="language-none">1cell volumes and masses                                                                                print table 50
+                       原子密度      质量密度    输入文件中   计算的体积    质量         几何分片数
+                                                          指定的体积              
+              cell     atom          gram         input       calculated                            reason volume
+                      density       density       volume        volume         mass       pieces    not calculated
+
+        1        1  9.94619E-02   2.30000E+00   0.00000E+00   6.08774E+01   1.40018E+02      1                      
+        2        2  9.94619E-02   2.30000E+00   0.00000E+00   4.26142E+02   9.80127E+02      1                      
+        3        3  9.94619E-02   2.30000E+00   0.00000E+00   1.15667E+03   2.66034E+03      1                      
+        4        4  9.94619E-02   2.30000E+00   0.00000E+00   2.25247E+03   5.18067E+03      1                      
+        5        5  9.94619E-02   2.30000E+00   0.00000E+00   3.71352E+03   8.54110E+03      1                      
+        6        6  9.94619E-02   2.30000E+00   0.00000E+00   5.53985E+03   1.27416E+04      1                      
+        7        7  9.94619E-02   2.30000E+00   0.00000E+00   7.73143E+03   1.77823E+04      1                      
+        8        8  9.94619E-02   2.30000E+00   0.00000E+00   1.02883E+04   2.36631E+04      1                      
+        9        9  9.94619E-02   2.30000E+00   0.00000E+00   1.32104E+04   3.03839E+04      1                      
+       10       10  9.94619E-02   2.30000E+00   0.00000E+00   1.64978E+04   3.79449E+04      1  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>再下面是surface的输出信息（可参考cell的输出）</p>
+<pre class="line-numbers language-none"><code class="language-none">1surface areas                                                                                          print table 50
+
+           surface      input      calculated    reason area
+                        area          area       not calculated
+
+        1        1      0.00000E+00   7.48379E+01                   
+        2        2      0.00000E+00   2.99352E+02                   
+        3        3      0.00000E+00   6.73541E+02                   
+        4        4      0.00000E+00   1.19741E+03                   
+        5        5      0.00000E+00   1.87095E+03                   
+        6        6      0.00000E+00   2.69417E+03                   
+        7        7      0.00000E+00   3.66706E+03                   
+        8        8      0.00000E+00   4.78963E+03                   
+        9        9      0.00000E+00   6.06187E+03                   
+       10       10      0.00000E+00   7.48379E+03  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>之后又是cell与surface的一些输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">1cells                                                                                                  print table 60
+
+                               atom        gram                                            photon     electron                         
+              cell      mat   density     density     volume       mass            pieces importance importance                        
+
+        1        1        4  9.94619E-02 2.30000E+00 6.08774E+01 1.40018E+02           1  1.0000E+00 1.0000E+00                        
+        2        2        4  9.94619E-02 2.30000E+00 4.26142E+02 9.80127E+02           1  1.0000E+00 1.0000E+00                        
+        3        3        4  9.94619E-02 2.30000E+00 1.15667E+03 2.66034E+03           1  1.0000E+00 1.0000E+00                        
+        4        4        4  9.94619E-02 2.30000E+00 2.25247E+03 5.18067E+03           1  1.0000E+00 1.0000E+00                        
+        5        5        4  9.94619E-02 2.30000E+00 3.71352E+03 8.54110E+03           1  1.0000E+00 1.0000E+00                        
+        6        6        4  9.94619E-02 2.30000E+00 5.53985E+03 1.27416E+04           1  1.0000E+00 1.0000E+00                        
+        7        7        4  9.94619E-02 2.30000E+00 7.73143E+03 1.77823E+04           1  1.0000E+00 1.0000E+00                        
+        8        8        4  9.94619E-02 2.30000E+00 1.02883E+04 2.36631E+04           1  1.0000E+00 1.0000E+00                        
+        9        9        4  9.94619E-02 2.30000E+00 1.32104E+04 3.03839E+04           1  1.0000E+00 1.0000E+00                        
+       10       10        4  9.94619E-02 2.30000E+00 1.64978E+04 3.79449E+04           1  1.0000E+00 1.0000E+00  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这些结束后是源权重（source weight）、随机数生成器（random number generator）设置以及一些运行时的注释和警告信息</p>
+<pre class="line-numbers language-none"><code class="language-none">   minimum source weight &#x3D; 1.0000E+00    maximum source weight &#x3D; 1.0000E+00
+
+***************************************************
+* Random Number Generator  &#x3D;                    1 *
+* Random Number Seed       &#x3D;       19073486328125 *
+* Random Number Multiplier &#x3D;       19073486328125 *
+* Random Number Adder      &#x3D;                    0 *
+* Random Number Bits Used  &#x3D;                   48 *
+* Random Number Stride     &#x3D;               152917 *
+***************************************************
+
+
+ comment.  threading will be used when possible in portions of mcnp6.
+
+ comment.  threading will be used for n&#x2F;p&#x2F;e table physics.
+
+ comment.  threading will generally not be used for model physics.
+
+        2 warning messages so far.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后跳到输出注量信息</p>
+<pre class="line-numbers language-none"><code class="language-none">1tally fluctuation charts   计数波动图表                        
+           
+                            tally       12                          tally       22                          tally       32
+    粒子历史数  均值   方差   方差的方差  对数斜率 品质因子          
+          nps      mean     error   vov  slope    fom      mean     error   vov  slope    fom      mean     error   vov  slope    fom
+        64000   1.9915E-02 0.0056 0.0037 10.0      17   5.6744E-03 0.0059 0.0022 10.0      15   2.4165E-03 0.0063 0.0021 10.0      14
+       128000   1.9924E-02 0.0040 0.0018 10.0      13   5.6716E-03 0.0042 0.0013  1.8      12   2.4195E-03 0.0044 0.0011 10.0      11
+       192000   1.9924E-02 0.0032 0.0011  2.0      12   5.6666E-03 0.0034 0.0008  2.5      11   2.4188E-03 0.0036 0.0007  3.0 9.6E+00
+       256000   1.9903E-02 0.0028 0.0008  2.7      11   5.6631E-03 0.0030 0.0006  3.8      10   2.4286E-03 0.0031 0.0005  3.6 8.9E+00
+       320000   1.9940E-02 0.0025 0.0007  4.8      11   5.6561E-03 0.0026 0.0005  3.3 9.6E+00   2.4299E-03 0.0028 0.0004  4.1 8.5E+00
+       384000   1.9953E-02 0.0023 0.0006  5.3      10   5.6705E-03 0.0024 0.0004  3.2 9.3E+00   2.4294E-03 0.0026 0.0003  3.3 8.3E+00
+       448000   1.9921E-02 0.0021 0.0005  5.3      10   5.6699E-03 0.0023 0.0003  2.9 8.9E+00   2.4318E-03 0.0024 0.0003  3.4 8.0E+00
+       512000   1.9915E-02 0.0020 0.0004  4.8      10   5.6691E-03 0.0021 0.0003  3.0 8.8E+00   2.4352E-03 0.0022 0.0003  3.7 7.9E+00
+       576000   1.9910E-02 0.0019 0.0004  3.0 9.8E+00   5.6689E-03 0.0020 0.0003  2.9 8.6E+00   2.4359E-03 0.0021 0.0002  3.6 7.8E+00
+       640000   1.9911E-02 0.0018 0.0003  3.0 9.8E+00   5.6720E-03 0.0019 0.0002  2.9 8.6E+00   2.4331E-03 0.0020 0.0002  4.3 7.9E+00
+       704000   1.9914E-02 0.0017 0.0003  3.0 9.7E+00   5.6672E-03 0.0018 0.0002  2.9 8.5E+00   2.4332E-03 0.0019 0.0002  3.9 7.8E+00
+       768000   1.9907E-02 0.0016 0.0003  3.3 9.6E+00   5.6634E-03 0.0017 0.0002  3.2 8.5E+00   2.4326E-03 0.0018 0.0002  3.6 7.7E+00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="计算累积因子"><a href="#计算累积因子" class="headerlink" title="计算累积因子"></a>计算累积因子</h2><h2 id="issue"><a href="#issue" class="headerlink" title="issue"></a>issue</h2><p>01、如果是1-80surface，层之间厚度为0.5mfp，但是如果不同屏蔽层之间多加了一些数据点，总厚度则没有40mfp了</p>
+<p><img src="/images/dataset/veri05.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://reveryday.github.io">Wens</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://reveryday.github.io/2025/03/01/MCNP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%AA%8C%E8%AF%81/">http://reveryday.github.io/2025/03/01/MCNP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%AA%8C%E8%AF%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://reveryday.github.io" target="_blank">Wens'Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B2%92%E5%AD%90%E8%BE%93%E8%BF%90/">粒子输运</a></div><div class="post-share"><div class="social-share" data-image="/images/dog.jpg" data-sites="facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/03/01/MCNP-Manual/" title="MCNP Manual"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">MCNP Manual</div></div><div class="info-2"><div class="info-item-1">Tally Card  Simple Data-card Form: Fn:P s1 : : : sKorGeneral Data-card Form: Fn:P s1 (s2 : : : s3) (s4 : : : s5) s6 s7 : : : [T] n : Tally number. Restriction: n  99999999P : Particle designator ( 1 ).sk : Problem number of surface or cell for tallying ( 2 ).T : Total over specified surfaces for F1 tallies; average over specified surfaces or </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/03/01/MCNP-Manual/" title="MCNP Manual"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-01</div><div class="info-item-2">MCNP Manual</div></div><div class="info-2"><div class="info-item-1">Tally Card  Simple Data-card Form: Fn:P s1 : : : sKorGeneral Data-card Form: Fn:P s1 (s2 : : : s3) (s4 : : : s5) s6 s7 : : : [T] n : Tally number. Restriction: n  99999999P : Particle designator ( 1 ).sk : Problem number of surface or cell for tallying ( 2 ).T : Total over specified surfaces for F1 tallies; average over specified surfaces or </div></div></div></a><a class="pagination-related" href="/2025/02/21/%CE%B3%E5%85%89%E5%AD%90%E8%BE%90%E5%B0%84%E5%9C%BA%E8%AE%A1%E7%AE%97/" title="γ光子辐射场计算"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-21</div><div class="info-item-2">γ光子辐射场计算</div></div><div class="info-2"><div class="info-item-1">辐射场中的一些物理量粒子注量：单位面积粒子数$$\Phi &#x3D;\frac{dN}{da}particles&#x2F;m^{2}$$能量注量：单位面积粒子总动能$$\Psi &#x3D;\frac{dE}{dm} J&#x2F;m^{2}$$吸收剂量：单位面积吸收的辐射能量（拉德rad为专属单位）$$D&#x3D;\frac{d\xi }{dm} J&#x2F;Kg$$吸收剂量率：$$\dot{D} &#x3D;\frac{dD }{dt} Gy&#x2F;s$$其中$1J&#x2F;Kg&#x3D;1Gy&#x3D;100rad$. 比释动能：粒子与物质作用时在单位质量物质上产生次级带电粒子总动能$$K&#x3D;\frac{dE_{tr} }{dm} J&#x2F;Kg$$比释动能率：$$\dot{K} &#x3D;\frac{dK }{dt} Gy&#x2F;s$$照射量：γ射线在空气中产生电离的大小$$X&#x3D;\frac{dQ }{dm} C&#x2F;Kg,R$$ 其中$1R&#x3D;2.58\times...</div></div></div></a><a class="pagination-related" href="/2025/02/23/%E5%9F%BA%E4%BA%8Etransformer%E7%9A%84%E8%BE%90%E5%B0%84%E5%B1%8F%E8%94%BD%E4%BC%98%E5%8C%96-%E4%B8%8A/" title="基于transformer的辐射屏蔽优化-上"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-23</div><div class="info-item-2">基于transformer的辐射屏蔽优化-上</div></div><div class="info-2"><div class="info-item-1">所有的粒子输运计算都基于解玻尔兹曼方程得到中子&#x2F;光子输运方程，目前应用于屏蔽计算的方法主要有三种：1、离散纵标法（DOM）2、点核积分法（PKM）：主要适用于光子（速度快但精度低，且无法计算能谱），3、蒙特卡罗模拟（MCM）：需使用降方差技巧与模型描述技巧，或者三种方法耦合计算，由于中子的计算过程复杂，以下皆只考虑纯光子辐射场计算。 可用蒙卡计算得到不同模型下的输入（能量、屏蔽层数、屏蔽材料、屏壁厚度）输出（通量、累积因子），生成数据集，基于transformer设计一个预测模型，再通过遗传算法寻找最优解。这个方向以前集中于传统算法（ANN预测屏蔽效果，GA和PSO优化屏蔽结构），Transformer的应用尚处于起步阶段，1、可比较Transformer模型与传统方法（如GA、PSO）的性能，评估屏蔽效果、计算时间等指标。2、选择具体应用场景（如核反应堆），测试模型性能。 Some...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/dog.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wens</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/reveryday"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#INPUT"><span class="toc-number">1.</span> <span class="toc-text">INPUT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OUTPUT"><span class="toc-number">2.</span> <span class="toc-text">OUTPUT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%B4%AF%E7%A7%AF%E5%9B%A0%E5%AD%90"><span class="toc-number">3.</span> <span class="toc-text">计算累积因子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#issue"><span class="toc-number">4.</span> <span class="toc-text">issue</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/01/MCNP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E9%AA%8C%E8%AF%81/" title="MCNP输入输出验证">MCNP输入输出验证</a><time datetime="2025-03-01T07:19:26.000Z" title="发表于 2025-03-01 15:19:26">2025-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/01/MCNP-Manual/" title="MCNP Manual">MCNP Manual</a><time datetime="2025-03-01T07:01:15.000Z" title="发表于 2025-03-01 15:01:15">2025-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/28/chapter-convolutional-neural-network-conv-layer/" title="chapter-convolutional neural network-conv layer">chapter-convolutional neural network-conv layer</a><time datetime="2025-02-28T08:28:53.000Z" title="发表于 2025-02-28 16:28:53">2025-02-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/26/chapter-multilayer-perceptrons-The-Key-to-Train-Deep-Networks/" title="chapter-multilayer perceptrons-The Key to Train Deep Networks">chapter-multilayer perceptrons-The Key to Train Deep Networks</a><time datetime="2025-02-26T13:35:27.000Z" title="发表于 2025-02-26 21:35:27">2025-02-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/26/chapter-multilayer-perceptrons-mlp/" title="chapter-multilayer perceptrons-mlp">chapter-multilayer perceptrons-mlp</a><time datetime="2025-02-26T07:09:47.000Z" title="发表于 2025-02-26 15:09:47">2025-02-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
