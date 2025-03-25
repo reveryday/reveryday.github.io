@@ -27,7 +27,7 @@
       "url": "http://reveryday.github.io/"
     }
   ]
-}</script><link rel="shortcut icon" href="/images/Logo/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/03/06/BUFformer/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+}</script><link rel="shortcut icon" href="/images/Logo/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/03/06/BUFformer/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -140,7 +140,7 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(images/Logo/bk.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">BUFformer</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">BUFformer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-06T07:23:20.000Z" title="发表于 2025-03-06 15:23:20">2025-03-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-12T11:35:10.430Z" title="更新于 2025-03-12 19:35:10">2025-03-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>首先是对从mcnp输出文件中提出的数据的整理，变成我能直接用作输入输出的量。我发现，输入特征的选取也是一个既关键又很难的事，各个因素互相耦合，错综复杂，暂时有点乱，找不到一个最合适的输入特征组合，于是打算先参考陈志涛最后得出的效果最好的特征组合，即等效原子序数$Z_{eq}$+厚度$t（mfp）$+源能量$E$，输出的话，暂时就先是我已有的六种转换因子。</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(images/Logo/bk.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">BUFformer</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">BUFformer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-06T07:23:20.000Z" title="发表于 2025-03-06 15:23:20">2025-03-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-12T11:35:10.430Z" title="更新于 2025-03-12 19:35:10">2025-03-12</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>首先是对从mcnp输出文件中提出的数据的整理，变成我能直接用作输入输出的量。我发现，输入特征的选取也是一个既关键又很难的事，各个因素互相耦合，错综复杂，暂时有点乱，找不到一个最合适的输入特征组合，于是打算先参考陈志涛最后得出的效果最好的特征组合，即等效原子序数$Z_{eq}$+厚度$t（mfp）$+源能量$E$，输出的话，暂时就先是我已有的六种转换因子。</p>
 <p>material：Fe, Pb, H2O, 混凝土                                             </p>
 <p>输入输出暂时先定：</p>
 <p><img src="/images/bufformer/02.png"></p>
@@ -194,4 +194,4 @@
 
   btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
   window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
-})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+})()</script></div></div></body></html>

@@ -27,7 +27,7 @@
       "url": "http://reveryday.github.io/"
     }
   ]
-}</script><link rel="shortcut icon" href="/images/Logo/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/03/01/MCNP-input-output/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+}</script><link rel="shortcut icon" href="/images/Logo/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/03/01/MCNP-input-output/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -140,7 +140,7 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(images/Logo/bk.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">MCNP-input-output</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">MCNP-input-output</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-01T07:19:26.000Z" title="发表于 2025-03-01 15:19:26">2025-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-07T14:05:24.808Z" title="更新于 2025-03-07 22:05:24">2025-03-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>运行一个case会产生80个数据点，输出80组数据，case1<code>0.50 MeV 4 Layers 10.0 Con 11.0 Pb 4.5 Fe 14.5 Con </code>自动化脚本提取结果：</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(images/Logo/bk.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">MCNP-input-output</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">MCNP-input-output</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-01T07:19:26.000Z" title="发表于 2025-03-01 15:19:26">2025-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-07T14:05:24.808Z" title="更新于 2025-03-07 22:05:24">2025-03-07</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>运行一个case会产生80个数据点，输出80组数据，case1<code>0.50 MeV 4 Layers 10.0 Con 11.0 Pb 4.5 Fe 14.5 Con </code>自动化脚本提取结果：</p>
 <p>（1是考虑外侧反射层的结果，2是使用标记记数不考虑外侧介质反射的结果）</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">            屏蔽层数                                                              注量 flux      照射量exposure  有效剂量effective dose
 ENERGY   N M1  MFP1 M2  MFP2 M3  MFP3 M4  MFP4  FLU-BUF-1     EXP-BUF-1     EFF-BUF-T1    FLU-BUF-T2    EXP-BUF-T2    EFF-BUF-T2
@@ -431,4 +431,4 @@ C Cell Card
 
   btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
   window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
-})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+})()</script></div></div></body></html>
