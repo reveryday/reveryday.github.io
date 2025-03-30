@@ -144,42 +144,66 @@
 <p>CNN可以有效处理空间信息，RNN可以处理时间信息，或者样本之间并非独立同分布的数据。</p>
 </blockquote>
 <p>卷积神经网络可以有效地处理空间信息， 那么<strong>循环神经网络（RNN）则可以更好地处理序列信息</strong>，通过引入状态变量存储过去的信息和当前的输入，从而可以确定当前的输出。</p>
-<h2 id="自回归模型"><a href="#自回归模型" class="headerlink" title="自回归模型"></a>自回归模型</h2><ol>
-<li><p>$t &gt; \tau$时，用观测序列$x_{t-1}, \ldots, x_{t-\tau}$$x_{\tau}$预测当下，参数的数量不变，这种模型被称为<strong>自回归模型</strong>，因为它们是对自己执行回归</p>
+<h2 id="自回归模型">自回归模型</h2>
+<ol>
+<li>
+<p>$t &gt; \tau$时，用观测序列$x_{t-1}, \ldots, x_{t-\tau}$$x_{\tau}$预测当下，参数的数量不变，这种模型被称为<strong>自回归模型</strong>，因为它们是对自己执行回归</p>
 </li>
-<li><p>保留一些对过去观测的总结$h_t$，同时更新预测$\hat{x}<em>t$和总结$h_t$，基于$\hat{x}<em>t &#x3D; P(x_t \mid h</em>{t})$估计$x_t$，以及公式$h_t &#x3D; g(h</em>{t-1}, x_{t-1})$更新的模型，由于$h_t$未被观测到，这类模型称为<strong>隐变量自回归模型</strong></p>
-<p><img src="/images/rnn/01.png"></p>
+<li>
+<p>保留一些对过去观测的总结$h_t$，同时更新预测$\hat{x}<em>t$和总结$h_t$，基于$\hat{x}<em>t = P(x_t \mid h</em>{t})$估计$x_t$，以及公式$h_t = g(h</em>{t-1}, x_{t-1})$更新的模型，由于$h_t$未被观测到，这类模型称为<strong>隐变量自回归模型</strong></p>
+<p><img src="images/rnn/01.png" alt=""></p>
 </li>
 </ol>
-<h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><p>处理逻辑：</p>
-<p><img src="/images/rnn/05.png"><br>$$<br>P(x_t \mid x_{t-1}, \ldots, x_1) \approx P(x_t \mid h_{t-1})<br>$$</p>
-<p>$$<br>h_t &#x3D; f(x_{t}, h_{t-1})<br>$$</p>
+<h2 id="RNN">RNN</h2>
+<p>处理逻辑：</p>
+<p><img src="images/rnn/05.png" alt=""><br>
+$$<br>
+P(x_t \mid x_{t-1}, \ldots, x_1) \approx P(x_t \mid h_{t-1})<br>
+$$</p>
+<p>$$<br>
+h_t = f(x_{t}, h_{t-1})<br>
+$$</p>
 <p>这些变量捕获并保留了序列直到其当前时间步的历史信息， 就如当前时间步下神经网络的状态或记忆。由于在当前时间步中， 隐状态使用的定义与前一个时间步中使用的定义相同， 因此计算是<em>循环的</em>（recurrent），于是基于循环计算的隐状态神经网络被命名为 <strong>循环神经网络</strong>（RNN），在循环神经网络中执行隐变量计算的层称为<strong>循环层</strong>（recurrent layer）</p>
 <blockquote>
 <p>即使在不同的时间步，循环神经网络也总是使用这些模型参数，因此，循环神经网络的参数开销不会随着时间步的增加而增加。</p>
 </blockquote>
 <p>初始化：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">rnn <span class="token operator">=</span> nn<span class="token punctuation">.</span>RNN<span class="token punctuation">(</span>input_size<span class="token punctuation">,</span> hidden_size<span class="token punctuation">,</span> num_layers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> batch_first<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> nonlinearity<span class="token operator">=</span><span class="token string">'tanh'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <ul>
 <li>num_layers：RNN层数。</li>
 <li>batch_first：输入数据是否以(batch_size, seq_length, input_size)格式排列。</li>
 <li>nonlinearity：激活函数，默认是tanh，可选relu</li>
 </ul>
-<h2 id="encoder-decoder"><a href="#encoder-decoder" class="headerlink" title="encoder-decoder"></a>encoder-decoder</h2><p>机器翻译是序列转换模型的一个核心问题， 其输入和输出都是长度可变的序列，为了处理这种类型的输入和输出，可以设计一个包含两个主要组件的架构： 第一个组件是一个<em>编码器</em>（encoder）： 它接受一个长度可变的序列作为输入， 并将其转换为具有固定形状的编码状态；第二个组件是<em>解码器</em>（decoder）： 它将固定形状的编码状态映射到长度可变的序列。 这被称为<em>编码器-解码器</em>（encoder-decoder）架构。</p>
-<p><img src="/images/rnn/03.png"></p>
-<h2 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h2><p>编码器与解码器都可以用一个RNN实现，编码器使用长度可变的序列作为输入， 将其转换为固定形状的隐状态，输入序列的信息被<em>编码</em>到循环神经网络编码器的隐状态中，解码器是基于输入序列的编码信息+已经输出的token来预测下一个token。 </p>
-<p><img src="/images/rnn/04.png"></p>
+<h2 id="encoder-decoder">encoder-decoder</h2>
+<p>机器翻译是序列转换模型的一个核心问题， 其输入和输出都是长度可变的序列，为了处理这种类型的输入和输出，可以设计一个包含两个主要组件的架构： 第一个组件是一个<em>编码器</em>（encoder）： 它接受一个长度可变的序列作为输入， 并将其转换为具有固定形状的编码状态；第二个组件是<em>解码器</em>（decoder）： 它将固定形状的编码状态映射到长度可变的序列。 这被称为<em>编码器-解码器</em>（encoder-decoder）架构。</p>
+<p><img src="images/rnn/03.png" alt=""></p>
+<h2 id="seq2seq">seq2seq</h2>
+<p>编码器与解码器都可以用一个RNN实现，编码器使用长度可变的序列作为输入， 将其转换为固定形状的隐状态，输入序列的信息被<em>编码</em>到循环神经网络编码器的隐状态中，解码器是基于输入序列的编码信息+已经输出的token来预测下一个token。</p>
+<p><img src="images/rnn/04.png" alt=""></p>
 <p>假设输入序列是$x_1, \ldots, x_T$，RNN将词元$x_t$的输入特征向量$\mathbf{x}_t$和$\mathbf{h} _{t-1}$转换为$\mathbf{h}_t$，使用一个函数$f$来描述循环神经网络的循环层所做的变换：</p>
-<p>$$<br>\mathbf{h}_t &#x3D; f(\mathbf{x}<em>t, \mathbf{h}</em>{t-1})<br>$$</p>
+<p>$$<br>
+\mathbf{h}_t = f(\mathbf{x}<em>t, \mathbf{h}</em>{t-1})<br>
+$$</p>
 <ol>
-<li><p>编码器：假设输入序列是$x_1, \ldots, x_T$，在时间步$t$，循环神经网络将词元$x_t$的输入特征向量$\mathbf{x}_t$和$\mathbf{h} _{t-1}$转换为$\mathbf{h}_t$，使用一个函数$f$来描述循环神经网络的循环层所做的变换：<br>$$<br>\mathbf{h}_t &#x3D; f(\mathbf{x}<em>t, \mathbf{h}</em>{t-1})<br>$$<br>编码器通过选定的函数$q$，将所有时间步的隐状态转换为<strong>上下文变量</strong>（具体取决于选定的函数$q$）：<br>$$<br>\mathbf{c} &#x3D;  q(\mathbf{h}_1, \ldots, \mathbf{h}_T)<br>$$</p>
+<li>
+<p>编码器：假设输入序列是$x_1, \ldots, x_T$，在时间步$t$，循环神经网络将词元$x_t$的输入特征向量$\mathbf{x}_t$和$\mathbf{h} _{t-1}$转换为$\mathbf{h}_t$，使用一个函数$f$来描述循环神经网络的循环层所做的变换：<br>
+$$<br>
+\mathbf{h}_t = f(\mathbf{x}<em>t, \mathbf{h}</em>{t-1})<br>
+$$<br>
+编码器通过选定的函数$q$，将所有时间步的隐状态转换为<strong>上下文变量</strong>（具体取决于选定的函数$q$）：<br>
+$$<br>
+\mathbf{c} =  q(\mathbf{h}_1, \ldots, \mathbf{h}_T)<br>
+$$</p>
 <ul>
 <li>使用一个单向循环神经网络来设计编码器， 隐状态只依赖于输入子序列， 这个子序列由输入序列的开始位置到隐状态所在的时间步的位置 （包括隐状态所在的时间步）组成</li>
 <li>使用双向循环神经网络构造编码器， 其中隐状态依赖于两个输入子序列， 包括隐状态所在的时间步的位置之前的序列和之后的序列 ， 因此隐状态对整个序列的信息都进行了编码。</li>
 </ul>
 </li>
-<li><p>解码器：解码器输出$y_{t’}$的概率取决于先前的输出子序列$y_1, \ldots, y_{t’-1}$和上下文变量$\mathbf{c}$，即$P(y_{t’} \mid y_1, \ldots, y_{t’-1}, \mathbf{c})$，将$y_{t^\prime-1}$和上下文变量$\mathbf{c}$作为输入，并上一隐状态$\mathbf{s}<em>{t^\prime-1}$转换为隐状态$\mathbf{s}</em>{t^\prime}$，因此，可以使用函数$g$来表示解码器的隐藏层的变换：<br>$$<br>\mathbf{s}<em>{t^\prime} &#x3D; g(y</em>{t^\prime-1}, \mathbf{c}, \mathbf{s}_{t^\prime-1})<br>$$</p>
+<li>
+<p>解码器：解码器输出$y_{t’}$的概率取决于先前的输出子序列$y_1, \ldots, y_{t’-1}$和上下文变量$\mathbf{c}$，即$P(y_{t’} \mid y_1, \ldots, y_{t’-1}, \mathbf{c})$，将$y_{t^\prime-1}$和上下文变量$\mathbf{c}$作为输入，并上一隐状态$\mathbf{s}<em>{t^\prime-1}$转换为隐状态$\mathbf{s}</em>{t^\prime}$，因此，可以使用函数$g$来表示解码器的隐藏层的变换：<br>
+$$<br>
+\mathbf{s}<em>{t^\prime} = g(y</em>{t^\prime-1}, \mathbf{c}, \mathbf{s}_{t^\prime-1})<br>
+$$</p>
 </li>
 </ol>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://reveryday.github.io">Wens</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://reveryday.github.io/2025/03/16/recurrent-neural-networks/">http://reveryday.github.io/2025/03/16/recurrent-neural-networks/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://reveryday.github.io" target="_blank">Wens'Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Deep-Learning/">Deep Learning</a></div><div class="post-share"><div class="social-share" data-image="/images/Logo/dog.jpg" data-sites="facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/Logo/dog.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wens</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/reveryday"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">自回归模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RNN"><span class="toc-number">2.</span> <span class="toc-text">RNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#encoder-decoder"><span class="toc-number">3.</span> <span class="toc-text">encoder-decoder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#seq2seq"><span class="toc-number">4.</span> <span class="toc-text">seq2seq</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
