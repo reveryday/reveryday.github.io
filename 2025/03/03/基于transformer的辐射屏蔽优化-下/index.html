@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于机器学习的辐射屏蔽优化-下 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Evaluate the Model  平均绝对误差 (MAE, Mean Absolute Error)  $$ MAE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} |y_i - \hat{y}_i| $$   均方根误差 (RMSE, Root Mean Squared Error) $$ RMSE &#x3D; \sqrt{\frac{1}{n} \sum_{i&#x3D;1}^{n} (y_i">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于机器学习的辐射屏蔽优化-下 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Evaluate the Model 平均绝对误差 (MAE, Mean Absolute Error)  $$MAE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} |y_i - \hat{y}_i|$$  均方根误差 (RMSE, Root Mean Squared Error)$$RMSE &#x3D; \sqrt{\frac{1}{n} \sum_{i&amp;#x3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于机器学习的辐射屏蔽优化-下">
 <meta property="og:url" content="http://reveryday.github.io/2025/03/03/%E5%9F%BA%E4%BA%8Etransformer%E7%9A%84%E8%BE%90%E5%B0%84%E5%B1%8F%E8%94%BD%E4%BC%98%E5%8C%96-%E4%B8%8B/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="Evaluate the Model  平均绝对误差 (MAE, Mean Absolute Error)  $$ MAE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} |y_i - \hat{y}_i| $$   均方根误差 (RMSE, Root Mean Squared Error) $$ RMSE &#x3D; \sqrt{\frac{1}{n} \sum_{i&#x3D;1}^{n} (y_i">
+<meta property="og:description" content="Evaluate the Model 平均绝对误差 (MAE, Mean Absolute Error)  $$MAE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} |y_i - \hat{y}_i|$$  均方根误差 (RMSE, Root Mean Squared Error)$$RMSE &#x3D; \sqrt{\frac{1}{n} \sum_{i&amp;#x3">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/Logo/img.png">
 <meta property="article:published_time" content="2025-03-03T05:15:54.000Z">
@@ -139,54 +139,31 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(images/Logo/bk.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于机器学习的辐射屏蔽优化-下</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于机器学习的辐射屏蔽优化-下</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-03T05:15:54.000Z" title="发表于 2025-03-03 13:15:54">2025-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-30T08:00:11.545Z" title="更新于 2025-03-30 16:00:11">2025-03-30</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Evaluate-the-Model">Evaluate the Model</h2>
-<ol>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(images/Logo/bk.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于机器学习的辐射屏蔽优化-下</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于机器学习的辐射屏蔽优化-下</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-03T05:15:54.000Z" title="发表于 2025-03-03 13:15:54">2025-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-30T08:00:11.545Z" title="更新于 2025-03-30 16:00:11">2025-03-30</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Evaluate-the-Model"><a href="#Evaluate-the-Model" class="headerlink" title="Evaluate the Model"></a>Evaluate the Model</h2><ol>
 <li>平均绝对误差 (MAE, Mean Absolute Error)</li>
 </ol>
-<p>$$<br>
-MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|<br>
-$$</p>
+<p>$$<br>MAE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} |y_i - \hat{y}_i|<br>$$</p>
 <ol start="2">
-<li>
-<p>均方根误差 (RMSE, Root Mean Squared Error)<br>
-$$<br>
-RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}<br>
-$$</p>
+<li><p>均方根误差 (RMSE, Root Mean Squared Error)<br>$$<br>RMSE &#x3D; \sqrt{\frac{1}{n} \sum_{i&#x3D;1}^{n} (y_i - \hat{y}_i)^2}<br>$$</p>
 </li>
-<li>
-<p>均方误差 (MSE, Mean Squared Error)<br>
-$$<br>
-MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2<br>
-$$</p>
+<li><p>均方误差 (MSE, Mean Squared Error)<br>$$<br>MSE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} (y_i - \hat{y}_i)^2<br>$$</p>
 </li>
-<li>
-<p>平均绝对百分比误差 (MAPE, Mean Absolute Percentage Error)<br>
-$$<br>
-MAPE = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100<br>
-$$</p>
+<li><p>平均绝对百分比误差 (MAPE, Mean Absolute Percentage Error)<br>$$<br>MAPE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100<br>$$</p>
 </li>
-<li>
-<p>决定系数 (R², Coefficient of Determination)<br>
-$$<br>
-R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}<em>i)^2}{\sum</em>{i=1}^{n} (y_i - \bar{y})^2}<br>
-$$</p>
+<li><p>决定系数 (R², Coefficient of Determination)<br>$$<br>R^2 &#x3D; 1 - \frac{\sum_{i&#x3D;1}^{n} (y_i - \hat{y}<em>i)^2}{\sum</em>{i&#x3D;1}^{n} (y_i - \bar{y})^2}<br>$$</p>
 </li>
 </ol>
-<h2 id="数据集补充">数据集补充</h2>
-<ul>
+<h2 id="数据集补充"><a href="#数据集补充" class="headerlink" title="数据集补充"></a>数据集补充</h2><ul>
 <li>0.1-0.6Mev</li>
 </ul>
-<h2 id="Design">Design</h2>
-<ul>
+<h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2><ul>
 <li>精确的累积因子测量成本高且数据量有限，而机器学习对大规模训练有着很高的数据需求</li>
 </ul>
-<h2 id="分析">分析</h2>
-<ol>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
 <li>20mfp以上的误差情况</li>
 </ol>
-<h2 id="test">test</h2>
-<ul>
-<li>采用 ANSI/ANS-6.6.1 的两个标准算例进行测试</li>
+<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><ul>
+<li>采用 ANSI&#x2F;ANS-6.6.1 的两个标准算例进行测试</li>
 <li>与蒙卡结果对比分析</li>
 <li>与拟合公式（GP公式）对比</li>
 </ul>
