@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/Logo/img.png">
 <meta property="article:published_time" content="2025-02-23T14:10:09.000Z">
-<meta property="article:modified_time" content="2025-03-28T06:45:11.155Z">
+<meta property="article:modified_time" content="2025-04-01T07:43:32.015Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="粒子输运">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "http://reveryday.github.io/2025/02/23/%E5%9F%BA%E4%BA%8Etransformer%E7%9A%84%E8%BE%90%E5%B0%84%E5%B1%8F%E8%94%BD%E4%BC%98%E5%8C%96-%E4%B8%8A/",
   "image": "http://reveryday.github.io/images/Logo/img.png",
   "datePublished": "2025-02-23T14:10:09.000Z",
-  "dateModified": "2025-03-28T06:45:11.155Z",
+  "dateModified": "2025-04-01T07:43:32.015Z",
   "author": [
     {
       "@type": "Person",
@@ -139,7 +139,7 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(images/Logo/bk.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于机器学习的辐射屏蔽优化-上</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于机器学习的辐射屏蔽优化-上</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-23T14:10:09.000Z" title="发表于 2025-02-23 22:10:09">2025-02-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-28T06:45:11.155Z" title="更新于 2025-03-28 14:45:11">2025-03-28</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>所有的粒子输运计算都基于解中子&#x2F;光子输运方程（玻尔兹曼方程），目前应用于屏蔽计算的方法主要有三种：1、离散纵标法（DOM）2、点核积分法（PKM）：主要适用于光子（速度快但精度低，且无法计算能谱），3、蒙特卡罗模拟（MCM）：需使用降方差技巧与模型描述技巧，或者三种方法耦合计算，由于中子的计算过程复杂，以下皆<strong>只考虑纯光子辐射场计算</strong>的情况下，讨论数据集构建于选择模型框架方面的问题。</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于机器学习的辐射屏蔽优化-上</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于机器学习的辐射屏蔽优化-上</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-23T14:10:09.000Z" title="发表于 2025-02-23 22:10:09">2025-02-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-01T07:43:32.015Z" title="更新于 2025-04-01 15:43:32">2025-04-01</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>所有的粒子输运计算都基于解中子&#x2F;光子输运方程（玻尔兹曼方程），目前应用于屏蔽计算的方法主要有三种：1、离散纵标法（DOM）2、点核积分法（PKM）：主要适用于光子（速度快但精度低，且无法计算能谱），3、蒙特卡罗模拟（MCM）：需使用降方差技巧与模型描述技巧，或者三种方法耦合计算，由于中子的计算过程复杂，以下皆<strong>只考虑纯光子辐射场计算</strong>的情况下，讨论数据集构建于选择模型框架方面的问题。</p>
 <p>可用蒙卡计算得到不同模型下的输入（能量、屏蔽层数、屏蔽材料、屏壁厚度）输出（通量、累积因子），生成数据集，基于transformer设计一个预测模型，再通过遗传算法寻找最优解。这个方向以前主要集中于传统算法（ANN预测屏蔽效果，GA和PSO优化屏蔽结构），Transformer的应用尚处于起步阶段，1、可比较Transformer模型与传统方法（如GA、PSO）的性能，评估屏蔽效果、计算时间等指标。2、选择具体应用场景（如核反应堆），测试模型性能。</p>
 <p>Ideas：</p>
 <ul>
@@ -152,10 +152,18 @@
    <p >
     </p>
 </div>
-累积因子可以说是光子辐射场计算准确度的决定性因素， 用mcnp生成数据集训练模型，将累积因子作为输出，模型预测的累积因子可用于点核积分法的计算。
+累积因子可以说是光子辐射场计算准确度的决定性因素， 用mcnp生成数据集训练模型，将累积因子作为输出，模型预测的累积因子可用于点核的计算，哈工程陈志涛使用决策树，但训练集只局限在10mfp范围里，应用前景有限；南华李超和国外很多人也都做过类似的工作，工程上目前mercurad这个商用软件也是用机器学习算BUF，这方面目前非常有前景，存在的困难：
 
-<p>哈工程陈志涛用决策树做过，效果非常好，可惜训练集只局限在10mfp范围里，应用前景有限；南华李超还有国外很多人也都做过类似的工作，工程上目前mercurad这个商用软件也是用机器学习算累积因子，这方面目前非常有前景，存在的困难：1、大尺度（超过10mfp）的预测精度不足，2、无法考虑几何影响，3、反射效应无法考虑。这些是传统方法和目前已有的机器学习研究都无法妥善考虑的，或许可以<strong>先解决1、3两个问题</strong>，扩大训练集，输入数据补充反射性考虑。</p>
-<p>而第二个问题：几何影响，作为点核固有的保守性考量保留，非常难处理，影响因素很多，先待定。清华李华计算了不同形状下的累积因子，结论都是球模型累积因子是最小的，实际工程上是否可以直接选择球模型？一般认为球模型累积因子最保守，也就是计算结果比真实值高很多，然而实际上影响因素很复杂，结果并不一定保守。</p>
+<ol>
+<li><p>大尺度（超过10mfp）的预测精度不足</p>
+</li>
+<li><p>无法考虑几何影响</p>
+</li>
+<li><p>反射效应无法考虑</p>
+</li>
+</ol>
+<p>这些是传统方法和目前已有的机器学习研究都无法妥善考虑的，或许可以<strong>先解决1、3两个问题</strong>，扩大训练集，输入数据补充反射性考虑。</p>
+<p>而第二个问题：几何影响，作为点核固有的保守性考量保留，非常难处理，影响因素很多，暂时待定。清华李华计算了不同形状下的累积因子，结论都是球模型累积因子是最小的，实际工程上是否可以直接选择球模型？一般认为球模型累积因子最保守，也就是计算结果比真实值高很多，然而实际上影响因素很复杂，结果并不一定保守。</p>
 <h2 id="几何因素的影响"><a href="#几何因素的影响" class="headerlink" title="几何因素的影响"></a>几何因素的影响</h2><p>最先要考虑的是MCNP建模时的源模型，</p>
 <p><img src="/images/%E5%B1%8F%E8%94%BD%E8%AE%BE%E8%AE%A102.png"></p>
 <div style="text-align: center;">
@@ -171,7 +179,7 @@
 <li>屏蔽层数：2-4层抽样</li>
 <li>屏蔽材料：Fe、Pb、水、混凝土四种材料抽样（四种材料有对应的单层屏蔽下数据集）</li>
 <li>屏蔽厚度：0.5-40mfp，80个数据点</li>
-<li>计数器输出：光子通量+有效剂量累积因子+照射量累积因子</li>
+<li>计数器输出：通量累积因子+有效剂量累积因子+照射量累积因子</li>
 <li>蒙卡模拟数：24000</li>
 </ul>
 <p>其中，有效剂量累积因子的转换系数在低于0.01Mev能量的范围研究较少，没有可用的数据库、</p>
