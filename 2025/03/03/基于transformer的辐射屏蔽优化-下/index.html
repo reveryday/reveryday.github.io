@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于机器学习的辐射屏蔽优化-下 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="误差分析算例验证 MCNP蒙卡计算 拟合公式  算例1（单层、双层、三层验证）：  能量（0.1+0.5+5Mev），屏蔽层Fe（0-40mfp，每1mfp测一次） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-20mfp，每1mfp测一次）+水（0-20mfp） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-10mfp，每1mfp测一次）+Fe（0-10mfp）+混凝土（0-10mfp）">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于机器学习的辐射屏蔽优化-下 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="误差分析 算例验证  MCNP蒙卡计算 拟合公式  算例1（单层、双层、三层验证）：  能量（0.1+0.5+5Mev），屏蔽层Fe（0-40mfp，每1mfp测一次） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-20mfp，每1mfp测一次）+水（0-20mfp） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-10mfp，每1mfp测一次）+Fe（0-10mfp）+混凝土（0-10mf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于机器学习的辐射屏蔽优化-下">
 <meta property="og:url" content="http://reveryday.github.io/2025/03/03/%E5%9F%BA%E4%BA%8Etransformer%E7%9A%84%E8%BE%90%E5%B0%84%E5%B1%8F%E8%94%BD%E4%BC%98%E5%8C%96-%E4%B8%8B/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="误差分析算例验证 MCNP蒙卡计算 拟合公式  算例1（单层、双层、三层验证）：  能量（0.1+0.5+5Mev），屏蔽层Fe（0-40mfp，每1mfp测一次） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-20mfp，每1mfp测一次）+水（0-20mfp） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-10mfp，每1mfp测一次）+Fe（0-10mfp）+混凝土（0-10mfp）">
+<meta property="og:description" content="误差分析 算例验证  MCNP蒙卡计算 拟合公式  算例1（单层、双层、三层验证）：  能量（0.1+0.5+5Mev），屏蔽层Fe（0-40mfp，每1mfp测一次） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-20mfp，每1mfp测一次）+水（0-20mfp） 能量（0.1+0.5+5Mev），屏蔽层Pb（0-10mfp，每1mfp测一次）+Fe（0-10mfp）+混凝土（0-10mf">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/Logo/img.png">
 <meta property="article:published_time" content="2025-03-03T05:15:54.000Z">
@@ -139,7 +139,9 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于机器学习的辐射屏蔽优化-下</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于机器学习的辐射屏蔽优化-下</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-03T05:15:54.000Z" title="发表于 2025-03-03 13:15:54">2025-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-01T09:19:42.671Z" title="更新于 2025-04-01 17:19:42">2025-04-01</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h2><h2 id="算例验证"><a href="#算例验证" class="headerlink" title="算例验证"></a>算例验证</h2><ol>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">基于机器学习的辐射屏蔽优化-下</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">基于机器学习的辐射屏蔽优化-下</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-03T05:15:54.000Z" title="发表于 2025-03-03 13:15:54">2025-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-01T09:19:42.671Z" title="更新于 2025-04-01 17:19:42">2025-04-01</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="误差分析">误差分析</h2>
+<h2 id="算例验证">算例验证</h2>
+<ol>
 <li>MCNP蒙卡计算</li>
 <li>拟合公式</li>
 </ol>
@@ -154,7 +156,8 @@
 <p><strong>算例3（变换厚度）</strong>：</p>
 <p>能量（0.5Mev+5Mev），屏蔽层：Fe（5mfp）+水（5mfp）+Pb（x mfp）+混凝土（y mfp）</p>
 <p>​                                                                                                  （0&lt;x&lt;30，0&lt;y&lt;30，x+y&lt;30）</p>
-<h2 id="数据补充"><a href="#数据补充" class="headerlink" title="数据补充"></a>数据补充</h2><p>1、300case</p>
+<h2 id="数据补充">数据补充</h2>
+<p>1、300case</p>
 <ul>
 <li>能量范围：18个固定能量（0.1-10Mev）抽样</li>
 <li>屏蔽层数：2-4层抽样</li>
@@ -175,14 +178,17 @@
 <li>屏蔽材料：Fe、Pb、水、混凝土抽样</li>
 <li>屏蔽厚度：0.5-40mfp</li>
 </ul>
-<h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2><ul>
+<h2 id="Design">Design</h2>
+<ul>
 <li>精确的累积因子测量成本高且数据量有限，而机器学习对大规模训练有着很高的数据需求</li>
 </ul>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
+<h2 id="分析">分析</h2>
+<ol>
 <li>20mfp以上的误差情况</li>
 </ol>
-<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><ul>
-<li>采用 ANSI&#x2F;ANS-6.6.1 的两个标准算例进行测试</li>
+<h2 id="test">test</h2>
+<ul>
+<li>采用 ANSI/ANS-6.6.1 的两个标准算例进行测试</li>
 <li>与蒙卡结果对比分析</li>
 <li>与拟合公式（GP公式）对比</li>
 </ul>
