@@ -3359,7 +3359,7 @@ pre[class*='language-'] pre > code.highlight {
   content: '';
 }
 #page-header.full_page {
-  height: 400px;
+  height: 350px;
   background-attachment: fixed;
 }
 #page-header.full_page #site-info {
