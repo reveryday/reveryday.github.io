@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>The key to Train Deep Network | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Activation Function（给神经网络提供非线性建模能力  ） 常用的激活函数：  过拟合与欠拟合误差分为训练误差与泛化误差（model在新数据中的误差），我们关注的主要是泛化误差，而不关注训练误差。 数据集分为三类：  训练数据集 验证数据集：用来评估模型好坏（调参数） 测试数据集：只用一次的数据集  在没有足够多数据使用时，可实行k-折交叉验证，将训练数据分为k块，For i &amp;#">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>The key to Train Deep Network | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Activation Function （给神经网络提供非线性建模能力  ） 常用的激活函数：  过拟合与欠拟合 误差分为训练误差与泛化误差（model在新数据中的误差），我们关注的主要是泛化误差，而不关注训练误差。 数据集分为三类：  训练数据集 验证数据集：用来评估模型好坏（调参数） 测试数据集：只用一次的数据集  在没有足够多数据使用时，可实行k-折交叉验证，将训练数据分为k块，For i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The key to Train Deep Network">
 <meta property="og:url" content="http://reveryday.github.io/2025/03/16/The-key-to-Train-Deep-Networks/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="Activation Function（给神经网络提供非线性建模能力  ） 常用的激活函数：  过拟合与欠拟合误差分为训练误差与泛化误差（model在新数据中的误差），我们关注的主要是泛化误差，而不关注训练误差。 数据集分为三类：  训练数据集 验证数据集：用来评估模型好坏（调参数） 测试数据集：只用一次的数据集  在没有足够多数据使用时，可实行k-折交叉验证，将训练数据分为k块，For i &amp;#">
+<meta property="og:description" content="Activation Function （给神经网络提供非线性建模能力  ） 常用的激活函数：  过拟合与欠拟合 误差分为训练误差与泛化误差（model在新数据中的误差），我们关注的主要是泛化误差，而不关注训练误差。 数据集分为三类：  训练数据集 验证数据集：用来评估模型好坏（调参数） 测试数据集：只用一次的数据集  在没有足够多数据使用时，可实行k-折交叉验证，将训练数据分为k块，For i">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-03-16T12:48:26.000Z">
@@ -134,62 +134,77 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">The key to Train Deep Network</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">The key to Train Deep Network</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T12:48:26.000Z" title="发表于 2025-03-16 20:48:26">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-02T08:02:46.411Z" title="更新于 2025-04-02 16:02:46">2025-04-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>（给神经网络提供非线性建模能力  ）</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">The key to Train Deep Network</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">The key to Train Deep Network</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T12:48:26.000Z" title="发表于 2025-03-16 20:48:26">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-02T08:02:46.411Z" title="更新于 2025-04-02 16:02:46">2025-04-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Activation-Function">Activation Function</h2>
+<p>（给神经网络提供非线性建模能力  ）</p>
 <p>常用的激活函数：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153553672.webp"></p>
-<h2 id="过拟合与欠拟合"><a href="#过拟合与欠拟合" class="headerlink" title="过拟合与欠拟合"></a>过拟合与欠拟合</h2><p>误差分为<strong>训练误差</strong>与<strong>泛化误差</strong>（model在新数据中的误差），我们关注的主要是泛化误差，而不关注训练误差。</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153553672.webp" alt=""></p>
+<h2 id="过拟合与欠拟合">过拟合与欠拟合</h2>
+<p>误差分为<strong>训练误差</strong>与<strong>泛化误差</strong>（model在新数据中的误差），我们关注的主要是泛化误差，而不关注训练误差。</p>
 <p>数据集分为三类：</p>
 <ul>
 <li>训练数据集</li>
 <li>验证数据集：用来评估模型好坏（调参数）</li>
 <li>测试数据集：只用一次的数据集</li>
 </ul>
-<p>在没有足够多数据使用时，可实行<strong>k-折交叉验证</strong>，将训练数据分为k块，For i &#x3D;1,…,k ，使用第i块作为验证集，其余作为训练集，报告k个验证集误差的平均（常用k&#x3D;5或10）</p>
+<p>在没有足够多数据使用时，可实行<strong>k-折交叉验证</strong>，将训练数据分为k块，For i =1,…,k ，使用第i块作为验证集，其余作为训练集，报告k个验证集误差的平均（常用k=5或10）</p>
 <p>模型容量：拟合各种函数的能力，低容量的模型难以拟合训练数据，而高容量的模型可以记住所有数据。模型容量难以在不同算法种类之间比较（如树模型和神经网络），在给定一个模型种类时，主要有两个影响因素：1、参数的个数，2、参数值的范围。</p>
 <p>数据复杂度：有多个影响因素（都是相对的概念），1、样本个数，2、每个样本的元素个数，3、时间空间结构，4、多样性。</p>
 <p>过拟合与欠拟合直观的描述：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153558862.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153558862.webp" alt=""></p>
 <p>数据简单而模型容量太高，模型记住了所有的数据（过于关注细节，以至于被一些无关的细节困扰住），没有泛化性，因此<strong>需要选择合适的模型</strong>：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153603754.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153603754.webp" alt=""></p>
 <p>所以调参数的原则，找到一个最优的位置，使得泛化误差尽可能小（LLM也是如此，核心任务是在模型足够大的情况下，通过控制模型容量，以得到一个比较小的泛化误差）</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153608485.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153608485.webp" alt=""></p>
 <p>解决过拟合欠拟合的方法：</p>
 <ol>
 <li>权重正则化</li>
 </ol>
-<h2 id="weight-decay（权重衰退）"><a href="#weight-decay（权重衰退）" class="headerlink" title="weight-decay（权重衰退）"></a>weight-decay（权重衰退）</h2><p>一般可以通过控制模型容量来解决过拟合的问题，1、减少参数的个数，2、减小参数值的范围，权重衰退就是通过第2种手段处理过拟合的常用方法。</p>
+<h2 id="weight-decay（权重衰退）">weight-decay（权重衰退）</h2>
+<p>一般可以通过控制模型容量来解决过拟合的问题，1、减少参数的个数，2、减小参数值的范围，权重衰退就是通过第2种手段处理过拟合的常用方法。</p>
 <p>最简单地控制参数大小的方法，通过 $\theta$ 硬性控制 $w$ 的大小：</p>
-<p>$$<br>min \quad l(w,b) \quad subject\quad to \quad \left | w \right | \le  \theta<br>$$<br>改进之后以实现柔性控制的优化函数如下，超参数$\lambda$控制了正则项的重要程度，$\lambda&#x3D;0$则相当于无作用，$\lambda \to \infty ,w\to 0$相当于$\theta\to0$.<br>$$<br>min \quad l(w,b)+\frac{\lambda }{2} \left | w \right | ^{2}<br>$$<br><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153614076.webp"></p>
+<p>$$<br>
+min \quad l(w,b) \quad subject\quad to \quad \left | w \right | \le  \theta<br>
+$$<br>
+改进之后以实现柔性控制的优化函数如下，超参数$\lambda$控制了正则项的重要程度，$\lambda=0$则相当于无作用，$\lambda \to \infty ,w\to 0$相当于$\theta\to0$.<br>
+$$<br>
+min \quad l(w,b)+\frac{\lambda }{2} \left | w \right | ^{2}<br>
+$$<br>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153614076.webp" alt=""></p>
 <div style="text-align: center;">
   <p style="margin: -20px 0 0 0; text-align: center;">Fig.4 The princple of weight decay</p>
    <p >
     </p>
 </div>
-
-
 <p>generally，$\eta \lambda &lt; 1$，所以叫权重衰退，<strong>通过减小w的范围来防止过拟合</strong>。权重衰减已经集成到优化算法中，可以与任何损失函数结合使用。</p>
-<h2 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h2><p>一个好的模型需要对输入数据的扰动鲁棒，丢弃法就是在层之间加入噪音，解决神经网络中的过拟合问题，同时增强模型的泛化能力。在训练深度神经网络时，某些神经元可能会过度依赖其他神经元的输出，形成一种“<strong>共适应（Co-adaptation）</strong>”关系，这种依赖会导致模型过于专注于训练数据中的特定模式，而在面对新数据时表现不佳，丢弃法通过在训练过程中随机“丢弃”（即暂时置为零）一部分神经元，强制网络不能完全依赖某些特定的神经元，从而打破了这种共适应性，网络被迫学习更鲁棒、更分布式的特征表示；</p>
+<h2 id="Dropout">Dropout</h2>
+<p>一个好的模型需要对输入数据的扰动鲁棒，丢弃法就是在层之间加入噪音，解决神经网络中的过拟合问题，同时增强模型的泛化能力。在训练深度神经网络时，某些神经元可能会过度依赖其他神经元的输出，形成一种“<strong>共适应（Co-adaptation）</strong>”关系，这种依赖会导致模型过于专注于训练数据中的特定模式，而在面对新数据时表现不佳，丢弃法通过在训练过程中随机“丢弃”（即暂时置为零）一部分神经元，强制网络不能完全依赖某些特定的神经元，从而打破了这种共适应性，网络被迫学习更鲁棒、更分布式的特征表示；</p>
 <blockquote>
 <p>dropout设计<strong>也受到生物神经系统的启发</strong>，在人脑中，神经元并非总是全部活跃，而是以一种稀疏的方式工作，丢弃法模拟了这种稀疏性，通过随机丢弃神经元来模仿生物系统中神经元的不确定性激活，从而使网络更加健壮。</p>
 </blockquote>
-<p>若无偏差的加入噪音，对于x加入噪音得到x’，我们希望：<br>$$<br>E\left [ x’ \right ] &#x3D;x<br>$$<br>而丢弃法对每个元素进行如下扰动：<br><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153620734.webp"></p>
-<p>期望还是保持原来的没变：<br>$$<br>E(x’)&#x3D;p\cdot 0+(1-p)\cdot \frac{x_{i} }{1-p} &#x3D;x_{i}<br>$$<br><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153623966.webp"></p>
+<p>若无偏差的加入噪音，对于x加入噪音得到x’，我们希望：<br>
+$$<br>
+E\left [ x’ \right ] =x<br>
+$$<br>
+而丢弃法对每个元素进行如下扰动：<br>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153620734.webp" alt=""></p>
+<p>期望还是保持原来的没变：<br>
+$$<br>
+E(x’)=p\cdot 0+(1-p)\cdot \frac{x_{i} }{1-p} =x_{i}<br>
+$$<br>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153623966.webp" alt=""></p>
 <div style="text-align: center;">
   <p style="margin: -20px 0 0 0; text-align: center;">Fig.5 The use of dropout</p>
    <p >
     </p>
 </div>
-
-
 <p>将一些输出项随机置零，来控制模型的复杂度，常作用于mlp的隐藏层（p常取0.1，0.5，0.9），训练中的 dropout，通常将丢弃法作用在隐藏全连接层的输出上，当作一个正则项，一般不在推理（预测）中使用 dropout。</p>
-<h2 id="数值稳定性"><a href="#数值稳定性" class="headerlink" title="数值稳定性"></a>数值稳定性</h2><p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153628521.webp"></p>
+<h2 id="数值稳定性">数值稳定性</h2>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153628521.webp" alt=""></p>
 <div style="text-align: center;">
   <p style="margin: -20px 0 0 0; text-align: center;">Fig.6 神经网络梯度的计算</p>
    <p >
     </p>
 </div>
-
-
 <p>梯度计算带来的常见的两个问题，<strong>梯度爆炸</strong>与<strong>梯度消失</strong>（<a target="_blank" rel="noopener" href="https://courses.d2l.ai/zh-v2/assets/pdfs/part-0_18.pdf%EF%BC%89">https://courses.d2l.ai/zh-v2/assets/pdfs/part-0_18.pdf）</a></p>
 <p>要提升数值稳定性，就需要使得<strong>梯度在一个合理的范围内</strong>：</p>
 <ul>
@@ -197,8 +212,10 @@
 <li>归一化：梯度归一化，梯度裁剪</li>
 <li>合理的权重初始值与激活函数</li>
 </ul>
-<h2 id="数值初始化"><a href="#数值初始化" class="headerlink" title="数值初始化"></a>数值初始化</h2><p>要求：使得每一层的输出与梯度都是一个均值为0、方差为固定数的随机变量，让它们的均值和方差都保持一致，以目标导向去选取合适的权重初始值与激活函数。</p>
-<h2 id="Batch-norm"><a href="#Batch-norm" class="headerlink" title="Batch norm"></a>Batch norm</h2><p>（批量归一化可以加速收敛但一般不改变精度）</p>
+<h2 id="数值初始化">数值初始化</h2>
+<p>要求：使得每一层的输出与梯度都是一个均值为0、方差为固定数的随机变量，让它们的均值和方差都保持一致，以目标导向去选取合适的权重初始值与激活函数。</p>
+<h2 id="Batch-norm">Batch norm</h2>
+<p>（批量归一化可以加速收敛但一般不改变精度）</p>
 <ol>
 <li>数据预处理的方式通常会对最终结果产生巨大影响</li>
 <li>更深层的网络很复杂，容易过拟合</li>
@@ -213,7 +230,6 @@ $$
 $\hat{\boldsymbol{\mu}}_\mathcal{B}$是小批量$\mathcal{B}$的样本均值，$\hat{\boldsymbol{\sigma}}_\mathcal{B}$是小批量$\mathcal{B}$的样本标准差，应用标准化后，生成的小批量的平均值为0和单位方差为1，由于单位方差（与其他一些魔法数）是一个主观的选择，因此我们通常包含**拉伸参数**（scale）$\boldsymbol{\gamma}$和**偏移参数**（shift）$\boldsymbol{\beta}$，它们的形状与$\mathbf{x}$相同，$\boldsymbol{\gamma}$和$\boldsymbol{\beta}$是需要与其他模型参数一起学习的参数。
 
 通常，我们将批量规范化层置于全连接层中的仿射变换和激活函数之间，同样，对于卷积层，我们可以在卷积层之后和非线性激活函数之前应用批量规范化。 当卷积有多个输出通道时，我们需要对这些通道的“每个”输出执行批量规范化，每个通道都有自己的拉伸（scale）和偏移（shift）参数，这两个参数都是标量。
-
 
 
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Deep-Learning/">Deep Learning</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">希望世界和平</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
