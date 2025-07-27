@@ -159,8 +159,8 @@ ENERGY   N M1  MFP1 M2  MFP2 M3  MFP3 M4  MFP4  FLU-BUF-1     EXP-BUF-1     EFF-
 ...
 5.00E-01 4 Con 10.0 Pb  11.0 Fe   4.5 Con 14.0  1.365840E+03  3.818357E+02  3.888157E+02  8.456813E+02  2.884744E+02  2.921576E+02
 5.00E-01 4 Con 10.0 Pb  11.0 Fe   4.5 Con 14.5  1.438450E+03  4.024536E+02  4.090579E+02  8.912519E+02  3.033143E+02  3.073216E+02<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="INPUT"><a href="#INPUT" class="headerlink" title="INPUT"></a>INPUT</h2><p>屏蔽材料与源能量设置：</p>
+<h2 id="INPUT">INPUT</h2>
+<p>屏蔽材料与源能量设置：</p>
 <pre class="line-numbers language-none"><code class="language-none">C Data Card                          
 M4    1000  -0.022100                
       6000  -0.002484                
@@ -179,7 +179,6 @@ M1   26000   1.000
      PLIB&#x3D;12p ELIB&#x3D;03e               
 MODE P E                             
 SDEF POS&#x3D;0.0 0.0 0.0 PAR&#x3D;P ERG&#x3D;0.50  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>屏蔽厚度设置：（第1个surface是半径为0.5mfp的球面）</p>
 <pre class="line-numbers language-none"><code class="language-none">0.50 MeV 4 Layers 10.0 Con
 C Cell Card               
@@ -216,16 +215,15 @@ C Cell Card
    80 4  -2.300   79  -80 
    81 4  -2.300   80  -81 
    82 0           81      <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>0-20surface屏蔽材料：M4，20-42surface：M2，42-51：M1，52-80surface：M4，80-81surface：M4</p>
 <p>光子权窗设置：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153855043.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153855043.webp" alt=""></p>
 <p>计数卡，使用F2计数卡统计了第1到第81个surface，</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153859639.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153859639.webp" alt=""></p>
 <p>粒子数：</p>
 <pre class="line-numbers language-none"><code class="language-none">NPS  1.0E+08  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="OUTPUT"><a href="#OUTPUT" class="headerlink" title="OUTPUT"></a>OUTPUT</h2><p>先是源参数的信息：</p>
+<h2 id="OUTPUT">OUTPUT</h2>
+<p>先是源参数的信息：</p>
 <pre class="line-numbers language-none"><code class="language-none">values of defaulted or explicitly defined source variables
 
    cel        0.0000E+00
@@ -252,7 +250,6 @@ C Cell Card
    bap        0.0000E+00   0.0000E+00   0.0000E+00
    loc        0.0000E+00   0.0000E+00   0.0000E+00
    dat        0.0000E+00   0.0000E+00   0.0000E+00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>然后是计数卡（从F12-F802）的设置信息，如F12计数卡输出的一些信息：</p>
 <pre class="line-numbers language-none"><code class="language-none">1tally       12                                                                                         print table 30
            tally type 2    particle flux averaged over a surface.    F2：用于计算粒子通量（flux）“表面平均粒子通量”
@@ -266,7 +263,6 @@ C Cell Card
      -1.00000E+00  to  0.00000E+00 mu    
       0.00000E+00  to  1.00000E+00 mu    
       total bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>之后是材料信息（print table 40）：</p>
 <pre class="line-numbers language-none"><code class="language-none">1material composition     材料组成                                                                              print table 40
 
@@ -287,7 +283,6 @@ C Cell Card
                     20000, 4.29510E-02      26000, 6.43501E-03
         2           82000, 1.00000E+00
         1           26000, 1.00000E+00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>之后print table 50，显示了单元（cell）的体积和质量信息（cell volumes and masses）</p>
 <pre class="line-numbers language-none"><code class="language-none">1cell volumes and masses                                                                                print table 50
                        原子密度      质量密度    输入文件中   计算的体积    质量         几何分片数
@@ -305,7 +300,6 @@ C Cell Card
         8        8  9.94619E-02   2.30000E+00   0.00000E+00   1.02883E+04   2.36631E+04      1                      
         9        9  9.94619E-02   2.30000E+00   0.00000E+00   1.32104E+04   3.03839E+04      1                      
        10       10  9.94619E-02   2.30000E+00   0.00000E+00   1.64978E+04   3.79449E+04      1  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>再下面是surface的输出信息（可参考cell的输出）</p>
 <pre class="line-numbers language-none"><code class="language-none">1surface areas                                                                                          print table 50
 
@@ -322,7 +316,6 @@ C Cell Card
         8        8      0.00000E+00   4.78963E+03                   
         9        9      0.00000E+00   6.06187E+03                   
        10       10      0.00000E+00   7.48379E+03  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>之后又是cell与surface的一些输出：</p>
 <pre class="line-numbers language-none"><code class="language-none">1cells                                                                                                  print table 60
 
@@ -339,7 +332,6 @@ C Cell Card
         8        8        4  9.94619E-02 2.30000E+00 1.02883E+04 2.36631E+04           1  1.0000E+00 1.0000E+00                        
         9        9        4  9.94619E-02 2.30000E+00 1.32104E+04 3.03839E+04           1  1.0000E+00 1.0000E+00                        
        10       10        4  9.94619E-02 2.30000E+00 1.64978E+04 3.79449E+04           1  1.0000E+00 1.0000E+00  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>这些结束后是源权重（source weight）、随机数生成器（random number generator）设置以及一些运行时的注释和警告信息</p>
 <pre class="line-numbers language-none"><code class="language-none">   minimum source weight &#x3D; 1.0000E+00    maximum source weight &#x3D; 1.0000E+00
 
@@ -360,7 +352,6 @@ C Cell Card
  comment.  threading will generally not be used for model physics.
 
         2 warning messages so far.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>然后跳到输出注量信息</p>
 <pre class="line-numbers language-none"><code class="language-none">1tally fluctuation charts   计数波动图表                        
            
@@ -379,7 +370,6 @@ C Cell Card
        640000   1.9911E-02 0.0018 0.0003  3.0 9.8E+00   5.6720E-03 0.0019 0.0002  2.9 8.6E+00   2.4331E-03 0.0020 0.0002  4.3 7.9E+00
        704000   1.9914E-02 0.0017 0.0003  3.0 9.7E+00   5.6672E-03 0.0018 0.0002  2.9 8.5E+00   2.4332E-03 0.0019 0.0002  3.9 7.8E+00
        768000   1.9907E-02 0.0016 0.0003  3.3 9.6E+00   5.6634E-03 0.0017 0.0002  3.2 8.5E+00   2.4326E-03 0.0018 0.0002  3.6 7.7E+00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%B2%92%E5%AD%90%E8%BE%93%E8%BF%90/">粒子输运</a><a class="post-meta__tags" href="/tags/MCNP6/">MCNP6</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">科技改变生活</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
