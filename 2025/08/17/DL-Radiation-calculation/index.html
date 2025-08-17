@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; Radiation calculation | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役： 源项反演：   方案：  To do  对比Transformer与传统神经网络 实现实际的工程应用（软件开发、耦合到点核） 可解释性  Gamma辐射场理论计算   Buildup Factor $$ I&#x3D;B\cdot I_0 e^{-\mu d} $$  累积因子作为gamma辐射场">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DL &amp; Radiation calculation">
+<meta property="og:url" content="http://reveryday.github.io/2025/08/17/DL-Radiation-calculation/index.html">
+<meta property="og:site_name" content="Wens&#39;Blog">
+<meta property="og:description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役： 源项反演：   方案：  To do  对比Transformer与传统神经网络 实现实际的工程应用（软件开发、耦合到点核） 可解释性  Gamma辐射场理论计算   Buildup Factor $$ I&#x3D;B\cdot I_0 e^{-\mu d} $$  累积因子作为gamma辐射场">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://reveryday.github.io/images/wens.png">
+<meta property="article:published_time" content="2025-08-17T07:39:32.000Z">
+<meta property="article:modified_time" content="2025-08-17T07:39:55.909Z">
+<meta property="article:author" content="Wens">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://reveryday.github.io/images/wens.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DL & Radiation calculation",
+  "url": "http://reveryday.github.io/2025/08/17/DL-Radiation-calculation/",
+  "image": "http://reveryday.github.io/images/wens.png",
+  "datePublished": "2025-08-17T07:39:32.000Z",
+  "dateModified": "2025-08-17T07:39:55.909Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wens",
+      "url": "http://reveryday.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/08/17/DL-Radiation-calculation/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":false,"highlightLang":false,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DL & Radiation calculation',
+  isHighlightShrink: undefined,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; Radiation calculation</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; Radiation calculation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-17T07:39:32.000Z" title="发表于 2025-08-17 15:39:32">2025-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-17T07:39:55.909Z" title="更新于 2025-08-17 15:39:55">2025-08-17</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><ol>
+<li>目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。</li>
+<li>解决了什么问题？
+<ul>
+<li>核设施退役：</li>
+<li>源项反演：</li>
+</ul>
+</li>
+<li>方案：</li>
+</ol>
+<h4 id="To-do">To do</h4>
+<ol>
+<li>对比Transformer与传统神经网络</li>
+<li>实现实际的工程应用（软件开发、耦合到点核）</li>
+<li>可解释性</li>
+</ol>
+<h2 id="Gamma辐射场理论计算">Gamma辐射场理论计算</h2>
+<ol>
+<li>
+<h4 id="Buildup-Factor">Buildup Factor</h4>
+<p>$$<br>
+I=B\cdot I_0 e^{-\mu d}<br>
+$$</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250512134406803.webp" alt=""></p>
+<p>累积因子作为gamma辐射场一个关键辐射量，将其作为切入点与模型的输出是非常合理的。计算需要解决的问题：</p>
+<ul>
+<li>大尺度预测精度不足</li>
+<li>几何因素的影响（屏蔽结构、交界面处的影响）</li>
+<li>反射效应的影响（<strong>源附近散射</strong>与<strong>探测器外侧介质散射</strong>）</li>
+</ul>
+</li>
+<li>
+<h4 id="MCNP">MCNP</h4>
+</li>
+</ol>
+<h2 id="DL-BUF">DL-BUF</h2>
+<p>需要调研：</p>
+<ol>
+<li>ML得到GP拟合公式【单层材料】【累积因子】的新形式，主要是新公式，GP公式在算参数时出现了很多异常现象。这种形式自从上世纪八十年代推出后很久都没更新，一定存在新的形式，先看看有没有新的公式。</li>
+<li>机器学习算单层累积因子，聚焦于材料伽马射线屏蔽性质的文章，预测新材料的伽马屏蔽能力（就是累积因子），且评估工作量，数据集：28种材料，每种材料26个能点，每个能点28个数据，六种累积因子（聚焦一个就行）</li>
+<li>单层BUF拟合公式</li>
+</ol>
+<h4 id="Q">Q</h4>
+<ol>
+<li>屏壁厚度什么范围（需要40-100mfp吗）</li>
+</ol>
+<h4 id="GP-formula-BUF">GP formula-BUF</h4>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250702005630469.webp" style="zoom: 80%;" />
+<p>由BUF的变化规律得到，B是随自由程数增长的几何级数。初始值b为一个自由程时的累积因子值，此时，B=1+b-1=b，每个自由程下的增长速度为K。</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250817153953454.webp" style="zoom: 67%;" />
+<p>拟合系数求解：</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250814150702288.webp" alt=""></p>
+<h4 id="机器学习得到BUF新公式">机器学习得到BUF新公式</h4>
+<ul>
+<li>PySR、符号回归</li>
+<li>Wikipedia 符号回归：介绍了多种技术，包括遗传算法、AI‑Feynman 和 PySR 等，专门用于从数据自动生成数学表达式。</li>
+<li>AI‑Feynman：专门为物理公式挖掘设计，在物理学建模中有显著成功。</li>
+<li>SymFormer、Deep symbolic regression：更现代的神经网络 / Transformer 方法，用于符号回归，可生成易解释解析表达式。</li>
+</ul>
+<h2 id="构建数据集">构建数据集</h2>
+<ol>
+<li>
+<p>抽样范围</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250512135302939.webp" alt=""></p>
+</li>
+</ol>
+<h2 id="模型设计与训练">模型设计与训练</h2>
+<ol>
+<li>一些物理约束：
+<ul>
+<li>B&gt;1</li>
+</ul>
+</li>
+</ol>
+<h2 id="误差分析与性能评估">误差分析与性能评估</h2>
+<pre class="line-numbers language-none"><code class="language-none">Energy,layer1,thickness1,layer2,thickness2,layer3,thickness3,layer4,thickness4,True_Value,Predicted_Value,Absolute_Error,Relative_Error_%
+10,Fe,18.5,Wat,3.0,Fe,3.0,Fe,3.0,18.18818,8.031872,10.156308204345702,55.84015665308845
+0.2,Pb,6.75,Pb,6.75,wat,11.5,Pb,0.5,87.34695,50.0464,37.30055183715821,42.70389731657283
+10,Fe,18.5,Wat,3.0,Fe,2.75,Fe,2.75,17.42479,10.701408,6.723381613769533,38.58515146391739
+0.2,Pb,6.75,Pb,6.75,Wat,11.5,Pb,1.0,48.10865,32.1751,15.933551580810544,33.11993078336338
+0.2,Pb,13.5,Wat,11.5,Pb,14.5,Con,0.5,14.99663,10.287544,4.709085749511718,31.40095974570099
+0.2,Wat,1.0,Fe,6.5,Con,8.5,Pb,1.0,31.64941,41.23818,9.588768253173829,30.296830977809158
+0.2,Wat,13.0,Wat,13.0,Wat,13.0,Pb,1.0,480.8376,346.77734,134.06025625,27.880568460120426
+0.5,Con,18.0,0,0.0,0,0.0,0,0.0,96.64999,123.44715,26.79716118408203,27.72598443526174
+0.5,Con,17.5,0,0.0,0,0.0,0,0.0,91.09101,115.96773,24.876717661132815,27.309739634166768
+0.5,Con,18.5,0,0.0,0,0.0,0,0.0,102.0147,127.810974,25.796274121093745,25.286820547522805
+0.5,Con,17.0,0,0.0,0,0.0,0,0.0,86.03317,106.46262,20.429453596191408,23.746019815602992
+10.0,Fe,18.5,Wat,3.0,Fe,3.25,Fe,3.25,19.13016,15.231881,3.8982788583374024,20.37765945678135
+0.15,Pb,29.5,Con,0.5,0,0.0,0,0.0,13.51353,10.760738,2.752791627197265,20.37063318908727
+0.5,Con,19.0,0,0.0,0,0.0,0,0.0,107.552,129.10551,21.55351452636718,20.040087145164367
+0.5,Con,16.5,0,0.0,0,0.0,0,0.0,80.87574,96.42812,15.5523834741211,19.22997362882998
+0.5,Wat,13.0,Fe,5.0,Wat,11.5,Fe,0.5,190.9093,227.40489,36.495591967773436,19.116717712428592
+0.2,Wat,2.0,Wat,2.0,Con,5.5,Pb,0.5,18.8945,15.368447,3.526052696228028,18.661794152944125
+0.15,Fe,15.5,Con,0.5,Fe,13.0,Wat,0.5,110.2684,130.72348,20.455080224609375,18.55026483073063
+0.2,Pb,13.5,Wat,5.75,Wat,5.75,Pb,1.0,48.10865,39.35299,8.755660803222653,18.19976408238987<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="落地形态">落地形态</h2>
+</article><div class="tag_share"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">科技改变生活</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div></div></body></html>
