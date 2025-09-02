@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; Radiation calculation | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点：  能计算大尺度问题    To d">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; Radiation calculation | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点：  Transformer模型 能计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL &amp; Radiation calculation">
 <meta property="og:url" content="http://reveryday.github.io/2025/08/17/DL-Radiation-calculation/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点：  能计算大尺度问题    To d">
+<meta property="og:description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点：  Transformer模型 能计">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-08-17T07:39:32.000Z">
-<meta property="article:modified_time" content="2025-08-31T06:23:51.928Z">
+<meta property="article:modified_time" content="2025-09-02T15:37:44.324Z">
 <meta property="article:author" content="Wens">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://reveryday.github.io/images/wens.png"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "http://reveryday.github.io/2025/08/17/DL-Radiation-calculation/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-08-17T07:39:32.000Z",
-  "dateModified": "2025-08-31T06:23:51.928Z",
+  "dateModified": "2025-09-02T15:37:44.324Z",
   "author": [
     {
       "@type": "Person",
@@ -133,7 +133,7 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; Radiation calculation</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; Radiation calculation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-17T07:39:32.000Z" title="发表于 2025-08-17 15:39:32">2025-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-31T06:23:51.928Z" title="更新于 2025-08-31 14:23:51">2025-08-31</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><ol>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; Radiation calculation</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; Radiation calculation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-17T07:39:32.000Z" title="发表于 2025-08-17 15:39:32">2025-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-02T15:37:44.324Z" title="更新于 2025-09-02 23:37:44">2025-09-02</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><ol>
 <li>目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。</li>
 <li>解决了什么问题？
 <ul>
@@ -144,6 +144,7 @@
 <li>方案：Transformer+BUF</li>
 <li>创新点：
 <ul>
+<li>Transformer模型</li>
 <li>能计算大尺度问题</li>
 </ul>
 </li>
@@ -196,6 +197,7 @@ $$</p>
 <h4 id="Q">Q</h4>
 <ol>
 <li>屏壁厚度什么范围（需要40-100mfp吗）</li>
+<li>点核是怎么利用累计银子计算辐射场的（点核的误差来源）</li>
 </ol>
 <h4 id="GP-formula-BUF">GP formula-BUF</h4>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250702005630469.webp" style="zoom: 80%;" />
@@ -267,6 +269,21 @@ $$</p>
 <ul>
 <li>RadField3D是一款专门用于生成三维辐射场数据集的开源蒙特卡洛模拟应用软件；</li>
 <li>背景与意义：特卡洛模拟虽然准确，但速度非常慢，无法满足实时剂量计算的需求，为了解决这个问题，目前正在进行的研究尝试通过用神经网络替代蒙特卡洛模拟的部分或全部算法来提高计算速度，要调查这些方法，需要大量、合适的、经过验证的数据集。</li>
+</ul>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.15723?utm_source=chatgpt.com">https://arxiv.org/abs/2310.15723?utm_source=chatgpt.com</a></p>
+<ul>
+<li>基于机器学习算法用于粒子分类，旨在解决复杂的数据分析问题</li>
+</ul>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2011.14959?utm_source=chatgpt.com">https://arxiv.org/abs/2011.14959?utm_source=chatgpt.com</a></p>
+<ul>
+<li>把原始像素级数据直接转换成可解释的物理量（粒子种类、方向、剂量、通量等），并通过机器学习实现混合辐射场的自动识别与分类。</li>
+<li>实时蒙特卡洛 (MC) 剂量去噪器，利用CNN来抑制少量历史MC模拟中产生的量子噪声，解决蒙特卡洛模拟实现高精度所需的大量模拟历史导致耗时过长的问题。</li>
+<li>为了减少训练所需的数据集规模，降低生成“干净”剂量图所需的时间负担，采用弱监督学习框架来训练网络（？）</li>
+<li>api接口：<a target="_blank" rel="noopener" href="https://wiki.advacam.cz/wiki/DPE">https://wiki.advacam.cz/wiki/DPE</a></li>
 </ul>
 </li>
 </ol>
