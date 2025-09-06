@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; Radiation calculation | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？ 核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点： Transformer模型 能计算大">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; Radiation calculation | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点：  Transformer模型 能计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL &amp; Radiation calculation">
 <meta property="og:url" content="http://reveryday.github.io/2025/08/17/DL-Radiation-calculation/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？ 核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点： Transformer模型 能计算大">
+<meta property="og:description" content="目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。 解决了什么问题？  核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。 源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。   方案：Transformer+BUF 创新点：  Transformer模型 能计">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-08-17T07:39:32.000Z">
@@ -133,39 +133,49 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; Radiation calculation</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; Radiation calculation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-17T07:39:32.000Z" title="发表于 2025-08-17 15:39:32">2025-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-06T06:59:49.401Z" title="更新于 2025-09-06 14:59:49">2025-09-06</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><ol>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; Radiation calculation</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; Radiation calculation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-17T07:39:32.000Z" title="发表于 2025-08-17 15:39:32">2025-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-06T06:59:49.401Z" title="更新于 2025-09-06 14:59:49">2025-09-06</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><ol>
 <li>目标：基于机器学习（Transformer）实现对辐射屏蔽参数的快速计算。</li>
-<li>解决了什么问题？<ul>
+<li>解决了什么问题？
+<ul>
 <li>核设施退役：（1）作业方案剂量评估和优化的基础。（2）在发生核事故时，对核电站状态的快速且准确评估。</li>
 <li>源项反演：在核事故期间，如何快速且准确地估算放射性物质的释放源项，已成为核应急响应早期阶段的一项紧迫的科学问题。</li>
 </ul>
 </li>
 <li>方案：Transformer+BUF</li>
-<li>创新点：<ul>
+<li>创新点：
+<ul>
 <li>Transformer模型</li>
 <li>能计算大尺度问题</li>
 </ul>
 </li>
 </ol>
-<h4 id="To-do"><a href="#To-do" class="headerlink" title="To do"></a>To do</h4><ol>
-<li><p>对比Transformer与传统神经网络</p>
+<h4 id="To-do">To do</h4>
+<ol>
+<li>
+<p>对比Transformer与传统神经网络</p>
 </li>
-<li><p>实现实际的工程应用（封装模型+接到点核上）</p>
+<li>
+<p>实现实际的工程应用（封装模型+接到点核上）</p>
 <ul>
 <li>onnx+Fortran</li>
 </ul>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250831133554178.webp" alt="image-20250831133542085" style="zoom: 80%;" />
-
 <ul>
 <li><a target="_blank" rel="noopener" href="https://claude.ai/chat/8700fd65-0f69-496a-9003-b0a5f9829f05">https://claude.ai/chat/8700fd65-0f69-496a-9003-b0a5f9829f05</a></li>
 </ul>
 </li>
-<li><p>可解释性</p>
+<li>
+<p>可解释性</p>
 </li>
 </ol>
-<h2 id="Gamma辐射场理论计算"><a href="#Gamma辐射场理论计算" class="headerlink" title="Gamma辐射场理论计算"></a>Gamma辐射场理论计算</h2><ol>
-<li><h4 id="Buildup-Factor"><a href="#Buildup-Factor" class="headerlink" title="Buildup Factor"></a>Buildup Factor</h4><p>$$<br>I&#x3D;B\cdot I_0 e^{-\mu d}<br>$$</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250512134406803.webp"></p>
+<h2 id="Gamma辐射场理论计算">Gamma辐射场理论计算</h2>
+<ol>
+<li>
+<h4 id="Buildup-Factor">Buildup Factor</h4>
+<p>$$<br>
+I=B\cdot I_0 e^{-\mu d}<br>
+$$</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250512134406803.webp" alt=""></p>
 <p>累积因子作为gamma辐射场一个关键辐射量，将其作为切入点与模型的输出是非常合理的。计算需要解决的问题：</p>
 <ul>
 <li>大尺度预测精度不足</li>
@@ -173,44 +183,53 @@
 <li>反射效应的影响（<strong>源附近散射</strong>与<strong>探测器外侧介质散射</strong>）</li>
 </ul>
 </li>
-<li><h4 id="MCNP"><a href="#MCNP" class="headerlink" title="MCNP"></a>MCNP</h4></li>
+<li>
+<h4 id="MCNP">MCNP</h4>
+</li>
 </ol>
 <p>（精确的累积因子测量成本高且数据量有限，而机器学习对大规模训练有着很高的数据需求）</p>
-<h2 id="DL-BUF"><a href="#DL-BUF" class="headerlink" title="DL-BUF"></a>DL-BUF</h2><p>需要调研：</p>
+<h2 id="DL-BUF">DL-BUF</h2>
+<p>需要调研：</p>
 <ol>
 <li>ML得到GP拟合公式【单层材料】【累积因子】的新形式，主要是新公式，GP公式在算参数时出现了很多异常现象。这种形式自从上世纪八十年代推出后很久都没更新，一定存在新的形式，先看看有没有新的公式。</li>
 <li>机器学习算单层累积因子，聚焦于材料伽马射线屏蔽性质的文章，预测新材料的伽马屏蔽能力（就是累积因子），且评估工作量，数据集：28种材料，每种材料26个能点，每个能点28个数据，六种累积因子（聚焦一个就行）</li>
 <li>单层BUF拟合公式</li>
 </ol>
-<h4 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h4><ol>
+<h4 id="Q">Q</h4>
+<ol>
 <li>屏壁厚度什么范围（需要40-100mfp吗）</li>
 <li>点核是怎么利用累计银子计算辐射场的（点核的误差来源）</li>
 </ol>
-<h4 id="GP-formula-BUF"><a href="#GP-formula-BUF" class="headerlink" title="GP formula-BUF"></a>GP formula-BUF</h4><img src="https://gitee.com/wenswuu/pictures/raw/master/20250702005630469.webp" style="zoom: 80%;" />
-
-<p>由BUF的变化规律得到，B是随自由程数增长的几何级数。初始值b为一个自由程时的累积因子值，此时，B&#x3D;1+b-1&#x3D;b，每个自由程下的增长速度为K。</p>
+<h4 id="GP-formula-BUF">GP formula-BUF</h4>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250702005630469.webp" style="zoom: 80%;" />
+<p>由BUF的变化规律得到，B是随自由程数增长的几何级数。初始值b为一个自由程时的累积因子值，此时，B=1+b-1=b，每个自由程下的增长速度为K。</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250817153953454.webp" style="zoom: 67%;" />
-
 <p>拟合系数求解：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250814150702288.webp"></p>
-<h4 id="机器学习得到BUF新公式"><a href="#机器学习得到BUF新公式" class="headerlink" title="机器学习得到BUF新公式"></a>机器学习得到BUF新公式</h4><ul>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250814150702288.webp" alt=""></p>
+<h4 id="机器学习得到BUF新公式">机器学习得到BUF新公式</h4>
+<ul>
 <li>PySR、符号回归</li>
 <li>Wikipedia 符号回归：介绍了多种技术，包括遗传算法、AI‑Feynman 和 PySR 等，专门用于从数据自动生成数学表达式。</li>
 <li>AI‑Feynman：专门为物理公式挖掘设计，在物理学建模中有显著成功。</li>
-<li>SymFormer、Deep symbolic regression：更现代的神经网络 &#x2F; Transformer 方法，用于符号回归，可生成易解释解析表达式。</li>
+<li>SymFormer、Deep symbolic regression：更现代的神经网络 / Transformer 方法，用于符号回归，可生成易解释解析表达式。</li>
 </ul>
-<h2 id="构建数据集"><a href="#构建数据集" class="headerlink" title="构建数据集"></a>构建数据集</h2><ol>
-<li><p>抽样范围</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250512135302939.webp"></p>
+<h2 id="构建数据集">构建数据集</h2>
+<ol>
+<li>
+<p>抽样范围</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250512135302939.webp" alt=""></p>
 </li>
 </ol>
-<h2 id="模型设计与训练"><a href="#模型设计与训练" class="headerlink" title="模型设计与训练"></a>模型设计与训练</h2><ol>
-<li>一些物理约束：<ul>
+<h2 id="模型设计与训练">模型设计与训练</h2>
+<ol>
+<li>一些物理约束：
+<ul>
 <li>B&gt;1</li>
 </ul>
 </li>
 </ol>
-<h2 id="误差分析与性能评估"><a href="#误差分析与性能评估" class="headerlink" title="误差分析与性能评估"></a>误差分析与性能评估</h2><pre class="line-numbers language-none"><code class="language-none">Energy,layer1,thickness1,layer2,thickness2,layer3,thickness3,layer4,thickness4,True_Value,Predicted_Value,Absolute_Error,Relative_Error_%
+<h2 id="误差分析与性能评估">误差分析与性能评估</h2>
+<pre class="line-numbers language-none"><code class="language-none">Energy,layer1,thickness1,layer2,thickness2,layer3,thickness3,layer4,thickness4,True_Value,Predicted_Value,Absolute_Error,Relative_Error_%
 10,Fe,18.5,Wat,3.0,Fe,3.0,Fe,3.0,18.18818,8.031872,10.156308204345702,55.84015665308845
 0.2,Pb,6.75,Pb,6.75,wat,11.5,Pb,0.5,87.34695,50.0464,37.30055183715821,42.70389731657283
 10,Fe,18.5,Wat,3.0,Fe,2.75,Fe,2.75,17.42479,10.701408,6.723381613769533,38.58515146391739
@@ -230,12 +249,12 @@
 0.2,Wat,2.0,Wat,2.0,Con,5.5,Pb,0.5,18.8945,15.368447,3.526052696228028,18.661794152944125
 0.15,Fe,15.5,Con,0.5,Fe,13.0,Wat,0.5,110.2684,130.72348,20.455080224609375,18.55026483073063
 0.2,Pb,13.5,Wat,5.75,Wat,5.75,Pb,1.0,48.10865,39.35299,8.755660803222653,18.19976408238987<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <ol>
 <li>10Mev能量Fe+水误差很大</li>
 <li>单层混凝土误差很大</li>
 </ol>
-<h4 id="模型精度验证（测试集）"><a href="#模型精度验证（测试集）" class="headerlink" title="模型精度验证（测试集）"></a>模型精度验证（测试集）</h4><ol>
+<h4 id="模型精度验证（测试集）">模型精度验证（测试集）</h4>
+<ol>
 <li>MCNP蒙卡计算（<strong>别的材料</strong>）</li>
 <li>拟合公式</li>
 </ol>
@@ -250,7 +269,8 @@
 <p>算例3（变换厚度）：</p>
 <p>能量（0.5Mev+5Mev），屏蔽层：Fe（5mfp）+水（5mfp）+Pb（x mfp）+混凝土（y mfp）</p>
 <p>​                                                                                                  （0&lt;x&lt;30，0&lt;y&lt;30，x+y&lt;30）</p>
-<h4 id="数据补充"><a href="#数据补充" class="headerlink" title="数据补充"></a>数据补充</h4><p>1、300case</p>
+<h4 id="数据补充">数据补充</h4>
+<p>1、300case</p>
 <ul>
 <li>能量范围：18个固定能量（0.1-10Mev）抽样</li>
 <li>屏蔽层数：2-4层抽样</li>
@@ -271,36 +291,43 @@
 <li>屏蔽材料：Fe、Pb、水、混凝土抽样</li>
 <li>屏蔽厚度：0.5-40mfp</li>
 </ul>
-<h4 id="模型验证"><a href="#模型验证" class="headerlink" title="模型验证"></a>模型验证</h4><ul>
-<li>采用 ANSI&#x2F;ANS-6.6.1 的两个标准算例进行测试</li>
+<h4 id="模型验证">模型验证</h4>
+<ul>
+<li>采用 ANSI/ANS-6.6.1 的两个标准算例进行测试</li>
 <li>与蒙卡结果对比分析</li>
 <li>与拟合公式（GP公式）对比</li>
 </ul>
-<h2 id="相关应用调研"><a href="#相关应用调研" class="headerlink" title="相关应用调研"></a>相关应用调研</h2><ol>
-<li><p><a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1186/s13014-024-02534-2?utm_source=chatgpt.com">https://link.springer.com/article/10.1186/s13014-024-02534-2?utm_source=chatgpt.com</a></p>
+<h2 id="相关应用调研">相关应用调研</h2>
+<ol>
+<li>
+<p><a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1186/s13014-024-02534-2?utm_source=chatgpt.com">https://link.springer.com/article/10.1186/s13014-024-02534-2?utm_source=chatgpt.com</a></p>
 <ul>
 <li>使用UNET模型：快速估算肿瘤电场</li>
 </ul>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2411.11173?utm_source=chatgpt.com">https://arxiv.org/abs/2411.11173?utm_source=chatgpt.com</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2411.11173?utm_source=chatgpt.com">https://arxiv.org/abs/2411.11173?utm_source=chatgpt.com</a></p>
 <ul>
 <li>MRADSIM：用于模拟和预测电离辐射对不同材料、电子元件、系统和生物实体的影响；</li>
 <li>由于对大型几何体进行此类模拟可能需要几天时间，这在科学领域造成了很多障碍，并增加了研究的延迟，提出了一种机器学习模型：随机森林回归器。</li>
 <li>数据的预处理：（1）剂量值的归一化：确保数值稳定性和更快的收敛速度，有助于提高模型性能，归一化后，空体素也被删除，以消除数据中的噪声。</li>
 </ul>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2412.13852?utm_source=chatgpt.com">https://arxiv.org/abs/2412.13852?utm_source=chatgpt.com</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2412.13852?utm_source=chatgpt.com">https://arxiv.org/abs/2412.13852?utm_source=chatgpt.com</a></p>
 <ul>
 <li>RadField3D是一款专门用于生成三维辐射场数据集的开源蒙特卡洛模拟应用软件；</li>
 <li>背景与意义：特卡洛模拟虽然准确，但速度非常慢，无法满足实时剂量计算的需求，为了解决这个问题，目前正在进行的研究尝试通过用神经网络替代蒙特卡洛模拟的部分或全部算法来提高计算速度，要调查这些方法，需要大量、合适的、经过验证的数据集。</li>
 </ul>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.15723?utm_source=chatgpt.com">https://arxiv.org/abs/2310.15723?utm_source=chatgpt.com</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.15723?utm_source=chatgpt.com">https://arxiv.org/abs/2310.15723?utm_source=chatgpt.com</a></p>
 <ul>
 <li>基于机器学习算法用于粒子分类，旨在解决复杂的数据分析问题</li>
 </ul>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2011.14959?utm_source=chatgpt.com">https://arxiv.org/abs/2011.14959?utm_source=chatgpt.com</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2011.14959?utm_source=chatgpt.com">https://arxiv.org/abs/2011.14959?utm_source=chatgpt.com</a></p>
 <ul>
 <li>把原始像素级数据直接转换成可解释的物理量（粒子种类、方向、剂量、通量等），并通过机器学习实现混合辐射场的自动识别与分类。</li>
 <li>实时蒙特卡洛 (MC) 剂量去噪器，利用CNN来抑制少量历史MC模拟中产生的量子噪声，解决蒙特卡洛模拟实现高精度所需的大量模拟历史导致耗时过长的问题。</li>
@@ -309,81 +336,92 @@
 </ul>
 </li>
 </ol>
-<h2 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h2><ul>
-<li><p>Abstract：</p>
+<h2 id="论文">论文</h2>
+<ul>
+<li>
+<p>Abstract：</p>
 </li>
-<li><p>Introduction：快速辐射场计算在核设施退役、源项反演中的意义，研究背景：机器学习的发展（transformer在处理序列数据中的优势）+mlp的不足。</p>
+<li>
+<p>Introduction：快速辐射场计算在核设施退役、源项反演中的意义，研究背景：机器学习的发展（transformer在处理序列数据中的优势）+mlp的不足。</p>
 </li>
-<li><p>Method &amp; theory：辐射场计算理论 + 基于transformer的模型设计</p>
+<li>
+<p>Method &amp; theory：辐射场计算理论 + 基于transformer的模型设计</p>
 </li>
-<li><p>Results：模型预测结果（transformer与mlp对比）</p>
+<li>
+<p>Results：模型预测结果（transformer与mlp对比）</p>
 </li>
-<li><p>Discussion：在某些数据上误差大的原因</p>
+<li>
+<p>Discussion：在某些数据上误差大的原因</p>
 </li>
-<li><p>Conclusion：广阔的应用前景</p>
+<li>
+<p>Conclusion：广阔的应用前景</p>
 </li>
 </ul>
-<h2 id="落地形态"><a href="#落地形态" class="headerlink" title="落地形态"></a>落地形态</h2><h2 id="Road-map"><a href="#Road-map" class="headerlink" title="Road-map"></a>Road-map</h2><p>Data-generation</p>
+<h2 id="落地形态">落地形态</h2>
+<h2 id="Road-map">Road-map</h2>
+<p>Data-generation</p>
 <ul>
-<li><p><input disabled="" type="checkbox"> 
-high-quality data representing radiation fields under various conditions,</p>
+<li>
+<p>[ ] high-quality data representing radiation fields under various conditions,</p>
 </li>
-<li><p><input disabled="" type="checkbox"> 
-gather experimental measurements for validation</p>
+<li>
+<p>[ ] gather experimental measurements for validation</p>
 </li>
 </ul>
 <p>Data-preprocession</p>
 <ul>
-<li><p><input disabled="" type="checkbox"> 
-Normalize and clean the data.</p>
+<li>
+<p>[ ] Normalize and clean the data.</p>
 </li>
-<li><p><input disabled="" type="checkbox"> 
-Consider techniques like augmentation if the dataset is small.</p>
+<li>
+<p>[ ] Consider techniques like augmentation if the dataset is small.</p>
 </li>
 </ul>
 <p>Model selection and development</p>
 <ul>
-<li><p><input disabled="" type="checkbox"> 
-For spatial data or field distributions, convolutional neural networks (CNNs) might be effective. If involves sequential or multi-dimensional data, architectures like transformers or recurrent networks could be considered.</p>
+<li>
+<p>[ ] For spatial data or field distributions, convolutional neural networks (CNNs) might be effective. If involves sequential or multi-dimensional data, architectures like transformers or recurrent networks could be considered.</p>
 </li>
-<li><p><input disabled="" type="checkbox"> 
-Begin with simpler models to establish a baseline. Gradually increase model complexity to capture the nuances in the data.</p>
+<li>
+<p>[ ] Begin with simpler models to establish a baseline. Gradually increase model complexity to capture the nuances in the data.</p>
 </li>
 </ul>
 <p>Integration into Software</p>
 <ul>
-<li><input disabled="" type="checkbox"> Develop visualization tools to display radiation field distributions.</li>
-<li><input disabled="" type="checkbox"> Write comprehensive documentation for future developers and users.</li>
-<li><input disabled="" type="checkbox"> Package your software for the intended environment</li>
+<li>[ ] Develop visualization tools to display radiation field distributions.</li>
+<li>[ ] Write comprehensive documentation for future developers and users.</li>
+<li>[ ] Package your software for the intended environment</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th align="center">Filename</th>
-<th align="center">Specific</th>
+<th style="text-align:center">Filename</th>
+<th style="text-align:center">Specific</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">conf.py</td>
-<td align="center">Parameters Configuration</td>
+<tbody>
+<tr>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://conf.py">conf.py</a></td>
+<td style="text-align:center">Parameters Configuration</td>
 </tr>
 <tr>
-<td align="center">model.py</td>
-<td align="center">Define model</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://model.py">model.py</a></td>
+<td style="text-align:center">Define model</td>
 </tr>
 <tr>
-<td align="center">data.csv</td>
-<td align="center">Initial dataset</td>
+<td style="text-align:center">data.csv</td>
+<td style="text-align:center">Initial dataset</td>
 </tr>
 <tr>
-<td align="center">best_model.pth</td>
-<td align="center">Model parameters</td>
+<td style="text-align:center">best_model.pth</td>
+<td style="text-align:center">Model parameters</td>
 </tr>
 <tr>
-<td align="center">predit_gui.py</td>
-<td align="center">Visualization</td>
+<td style="text-align:center">predit_gui.py</td>
+<td style="text-align:center">Visualization</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 </article><div class="tag_share"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">科技改变生活</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
