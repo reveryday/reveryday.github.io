@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL3-Multilayer Perceptrons | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="感知肌最简单的感知肌，给定输入x，权重w，偏移b，感知肌输出（下图输出只有0或1）：  与线性回归的区别，线性回归的输出是一个具体的数，而感知肌的输出是两个类，如一个二分类（例如输出1或-1）的感知肌训练算法如下（优化算法等价于批量大小为1的梯度下降），但感知肌只能产生线性分割面，不能拟合XOR函数。  多层感知肌mlp基本框架（隐藏层的层数是超参数）：  单隐藏层：Input layer –&amp;g">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL3-Multilayer Perceptrons | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="感知肌 最简单的感知肌，给定输入x，权重w，偏移b，感知肌输出（下图输出只有0或1）：  与线性回归的区别，线性回归的输出是一个具体的数，而感知肌的输出是两个类，如一个二分类（例如输出1或-1）的感知肌训练算法如下（优化算法等价于批量大小为1的梯度下降），但感知肌只能产生线性分割面，不能拟合XOR函数。  多层感知肌 mlp基本框架（隐藏层的层数是超参数）：  单隐藏层：Input layer -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL3-Multilayer Perceptrons">
 <meta property="og:url" content="http://reveryday.github.io/2025/02/26/DL3-mlp/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="感知肌最简单的感知肌，给定输入x，权重w，偏移b，感知肌输出（下图输出只有0或1）：  与线性回归的区别，线性回归的输出是一个具体的数，而感知肌的输出是两个类，如一个二分类（例如输出1或-1）的感知肌训练算法如下（优化算法等价于批量大小为1的梯度下降），但感知肌只能产生线性分割面，不能拟合XOR函数。  多层感知肌mlp基本框架（隐藏层的层数是超参数）：  单隐藏层：Input layer –&amp;g">
+<meta property="og:description" content="感知肌 最简单的感知肌，给定输入x，权重w，偏移b，感知肌输出（下图输出只有0或1）：  与线性回归的区别，线性回归的输出是一个具体的数，而感知肌的输出是两个类，如一个二分类（例如输出1或-1）的感知肌训练算法如下（优化算法等价于批量大小为1的梯度下降），但感知肌只能产生线性分割面，不能拟合XOR函数。  多层感知肌 mlp基本框架（隐藏层的层数是超参数）：  单隐藏层：Input layer -">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-02-26T07:09:47.000Z">
@@ -134,20 +134,24 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL3-Multilayer Perceptrons</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL3-Multilayer Perceptrons</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-26T07:09:47.000Z" title="发表于 2025-02-26 15:09:47">2025-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-29T05:41:59.910Z" title="更新于 2025-07-29 13:41:59">2025-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="感知肌"><a href="#感知肌" class="headerlink" title="感知肌"></a>感知肌</h2><p>最简单的感知肌，给定输入x，权重w，偏移b，感知肌输出（下图输出只有0或1）：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153941131.webp"></p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL3-Multilayer Perceptrons</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL3-Multilayer Perceptrons</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-26T07:09:47.000Z" title="发表于 2025-02-26 15:09:47">2025-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-29T05:41:59.910Z" title="更新于 2025-07-29 13:41:59">2025-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="感知肌">感知肌</h2>
+<p>最简单的感知肌，给定输入x，权重w，偏移b，感知肌输出（下图输出只有0或1）：</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153941131.webp" alt=""></p>
 <p>与线性回归的区别，线性回归的输出是一个具体的数，而感知肌的输出是两个类，如一个二分类（例如输出1或-1）的感知肌训练算法如下（优化算法等价于批量大小为1的梯度下降），但感知肌只能产生线性分割面，不能拟合XOR函数。</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153944264.webp"></p>
-<h2 id="多层感知肌"><a href="#多层感知肌" class="headerlink" title="多层感知肌"></a>多层感知肌</h2><p>mlp基本框架（隐藏层的层数是超参数）：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153947634.webp"></p>
-<p>单隐藏层：Input layer –&gt; hidden layer –&gt; output layer</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153944264.webp" alt=""></p>
+<h2 id="多层感知肌">多层感知肌</h2>
+<p>mlp基本框架（隐藏层的层数是超参数）：</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153947634.webp" alt=""></p>
+<p>单隐藏层：Input layer --&gt; hidden layer --&gt; output layer</p>
 <p>单隐藏层单分类：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153953961.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153953961.webp" alt=""></p>
 <p>单隐藏层多分类，与softmax回归的区别就是多了一层隐藏层：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402154018149.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402154018149.webp" alt=""></p>
 <p>多隐藏层中，hyperparameters：1、hidden layers层数，2、hidden layers大小。</p>
-<h2 id="Activation-Functions"><a href="#Activation-Functions" class="headerlink" title="Activation Functions"></a>Activation Functions</h2><ol>
-<li><p>最简单的激活函数：</p>
+<h2 id="Activation-Functions">Activation Functions</h2>
+<ol>
+<li>
+<p>最简单的激活函数：</p>
 
    $$
    \sigma (x)=\left\{\begin{matrix}1\quad if \quad x>0
@@ -158,11 +162,23 @@
 
     
 </li>
-<li><p>sigmoid激活函数：<br>$$<br>sigmoid(x)&#x3D;\frac{1}{1+e^{-x} }<br>$$</p>
+<li>
+<p>sigmoid激活函数：<br>
+$$<br>
+sigmoid(x)=\frac{1}{1+e^{-x} }<br>
+$$</p>
 </li>
-<li><p>Tanh激活函数：<br>$$<br>tanh(x)&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$</p>
+<li>
+<p>Tanh激活函数：<br>
+$$<br>
+tanh(x)=\frac{1-e^{-2x}}{1+e^{-2x}}<br>
+$$</p>
 </li>
-<li><p>ReLU激活函数（最常用，计算速度快）：<br>$$<br>ReLU(x)&#x3D;max(x,0)<br>$$</p>
+<li>
+<p>ReLU激活函数（最常用，计算速度快）：<br>
+$$<br>
+ReLU(x)=max(x,0)<br>
+$$</p>
 </li>
 </ol>
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Deep-Learning/">Deep Learning</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
