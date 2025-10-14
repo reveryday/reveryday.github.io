@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据集的构建（包含壳层数据）  能量：0.01-10MeV 屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃） 屏蔽厚度：0-100mfp  10.10开会 输入：光电+非相干+电子对+总截面（相干散射截面的计算存在一些问题）  创新点：（1）加入壳层数据（2）自由程大  BUF相关的工作：  屏蔽计量学参数（PY-MLBUF">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据集的构建 能量：0.01-10MeV 屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃） 屏蔽厚度：0-100mfp（102个值） 壳层数据：0, 1, 3, 5 MAC（质量衰减系数）： MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.095 MAC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL &amp; 单层BUF">
 <meta property="og:url" content="http://reveryday.github.io/2025/09/23/DL-%E5%8D%95%E5%B1%82BUF/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="数据集的构建（包含壳层数据）  能量：0.01-10MeV 屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃） 屏蔽厚度：0-100mfp  10.10开会 输入：光电+非相干+电子对+总截面（相干散射截面的计算存在一些问题）  创新点：（1）加入壳层数据（2）自由程大  BUF相关的工作：  屏蔽计量学参数（PY-MLBUF">
+<meta property="og:description" content="数据集的构建 能量：0.01-10MeV 屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃） 屏蔽厚度：0-100mfp（102个值） 壳层数据：0, 1, 3, 5 MAC（质量衰减系数）： MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.095 MAC">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-09-23T09:54:02.000Z">
-<meta property="article:modified_time" content="2025-10-13T15:15:07.592Z">
+<meta property="article:modified_time" content="2025-10-14T08:45:28.104Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="粒子输运">
 <meta property="article:tag" content="Deep Learning">
@@ -19,7 +19,7 @@
   "url": "http://reveryday.github.io/2025/09/23/DL-%E5%8D%95%E5%B1%82BUF/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-09-23T09:54:02.000Z",
-  "dateModified": "2025-10-13T15:15:07.592Z",
+  "dateModified": "2025-10-14T08:45:28.104Z",
   "author": [
     {
       "@type": "Person",
@@ -135,11 +135,19 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-23T09:54:02.000Z" title="发表于 2025-09-23 17:54:02">2025-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-13T15:15:07.592Z" title="更新于 2025-10-13 23:15:07">2025-10-13</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="数据集的构建"><a href="#数据集的构建" class="headerlink" title="数据集的构建"></a>数据集的构建</h3><p>（包含壳层数据）</p>
-<ul>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-23T09:54:02.000Z" title="发表于 2025-09-23 17:54:02">2025-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-14T08:45:28.104Z" title="更新于 2025-10-14 16:45:28">2025-10-14</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="数据集的构建"><a href="#数据集的构建" class="headerlink" title="数据集的构建"></a>数据集的构建</h3><ul>
 <li>能量：0.01-10MeV</li>
 <li>屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）</li>
-<li>屏蔽厚度：0-100mfp</li>
+<li>屏蔽厚度：0-100mfp（102个值）</li>
+<li><span style="color:blue;">壳层数据</span>：0, 1, 3, 5</li>
+<li>MAC（质量衰减系数）：<ul>
+<li>MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.095</li>
+<li>MAC_Incoherent (非相干) 范围 : 0.011861 ~ 0.183046，平均值 : 0.079，中位数 : 0.075</li>
+<li>MAC_Coherent (相干) 范围 : 0.0 ~ 5.049440，平均值 : 0.206，中位数 : 0.002</li>
+<li>MAC_Photoelectric (光电效应) 范围 : 0.0 ~ 264.178，平均值 : 8.55，中位数 : 0.002</li>
+<li>MAC_Pair_production (电子对) 范围 : 0.0 ~ 0.039254，平均值 : 0.003，中位数 : 0.0</li>
+</ul>
+</li>
 </ul>
 <h3 id="10-10开会"><a href="#10-10开会" class="headerlink" title="10.10开会"></a>10.10开会</h3><ol>
 <li><p>输入：光电+非相干+电子对+总截面（相干散射截面的计算存在一些问题）</p>
@@ -155,16 +163,13 @@
 <li><p>壳层数据的影响</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251013231430545.webp" style="zoom: 10%;" /></li>
 </ol>
-<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><ol>
-<li><p>简单粗暴的输入输出</p>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p><span style="color:blue;">数据格式、大小、维度的转换：</span></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014164524365.webp" alt="CamScanner 10-14-2025 16.44"></p>
+<ol>
+<li><p>Model_1-简单粗暴的输入输出</p>
 <ul>
 <li><p>训练数据集</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css">Energy<span class="token punctuation">,</span>Shell<span class="token punctuation">,</span>MFP<span class="token punctuation">,</span>MAC_Total<span class="token punctuation">,</span>MAC_Incoherent<span class="token punctuation">,</span>MAC_Coherent<span class="token punctuation">,</span>MAC_Photoelectric<span class="token punctuation">,</span>MAC_Pair_production<span class="token punctuation">,</span>Inf_Flu_BUF<span class="token punctuation">,</span>Fin_Flu_BUF<span class="token punctuation">,</span>Inf_Exp_BUF<span class="token punctuation">,</span>Fin_Exp_BUF<span class="token punctuation">,</span>Inf_Eff_BUF<span class="token punctuation">,</span>Fin_Eff_BUF
-0.01<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.0<span class="token punctuation">,</span>0.64752042027<span class="token punctuation">,</span>0.12657467327<span class="token punctuation">,</span>0.098370181094<span class="token punctuation">,</span>0.42257556591<span class="token punctuation">,</span>0.0<span class="token punctuation">,</span>1.0<span class="token punctuation">,</span>1.0<span class="token punctuation">,</span>1.0<span class="token punctuation">,</span>1.0<span class="token punctuation">,</span>1.0<span class="token punctuation">,</span>1.0
-0.01<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.5<span class="token punctuation">,</span>0.64752042027<span class="token punctuation">,</span>0.12657467327<span class="token punctuation">,</span>0.098370181094<span class="token punctuation">,</span>0.42257556591<span class="token punctuation">,</span>0.0<span class="token punctuation">,</span>1.3009<span class="token punctuation">,</span>1.198<span class="token punctuation">,</span>1.315<span class="token punctuation">,</span>1.2053<span class="token punctuation">,</span>1.3009<span class="token punctuation">,</span>1.198
-0.01<span class="token punctuation">,</span>0<span class="token punctuation">,</span>1.0<span class="token punctuation">,</span>0.64752042027<span class="token punctuation">,</span>0.12657467327<span class="token punctuation">,</span>0.098370181094<span class="token punctuation">,</span>0.42257556591<span class="token punctuation">,</span>0.0<span class="token punctuation">,</span>1.5344<span class="token punctuation">,</span>1.3876<span class="token punctuation">,</span>1.5587<span class="token punctuation">,</span>1.4018<span class="token punctuation">,</span>1.5344<span class="token punctuation">,</span>1.3876
-0.01<span class="token punctuation">,</span>0<span class="token punctuation">,</span>2.0<span class="token punctuation">,</span>0.64752042027<span class="token punctuation">,</span>0.12657467327<span class="token punctuation">,</span>0.098370181094<span class="token punctuation">,</span>0.42257556591<span class="token punctuation">,</span>0.0<span class="token punctuation">,</span>1.9386<span class="token punctuation">,</span>1.7428<span class="token punctuation">,</span>1.98<span class="token punctuation">,</span>1.7701<span class="token punctuation">,</span>1.9386<span class="token punctuation">,</span>1.7428
-0.01<span class="token punctuation">,</span>0<span class="token punctuation">,</span>3.0<span class="token punctuation">,</span>0.64752042027<span class="token punctuation">,</span>0.12657467327<span class="token punctuation">,</span>0.098370181094<span class="token punctuation">,</span>0.42257556591<span class="token punctuation">,</span>0.0<span class="token punctuation">,</span>2.3142<span class="token punctuation">,</span>2.0779<span class="token punctuation">,</span>2.3694<span class="token punctuation">,</span>2.1165<span class="token punctuation">,</span>2.3142<span class="token punctuation">,</span>2.0779<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">Energy<span class="token punctuation">,</span>Shell<span class="token punctuation">,</span>MFP<span class="token punctuation">,</span>MAC_Total<span class="token punctuation">,</span>MAC_Incoherent<span class="token punctuation">,</span>MAC_Coherent<span class="token punctuation">,</span>MAC_Photoelectric<span class="token punctuation">,</span>MAC_Pair_production<span class="token punctuation">,</span>Inf_Flu_BUF<span class="token punctuation">,</span>Fin_Flu_BUF<span class="token punctuation">,</span>Inf_Exp_BUF<span class="token punctuation">,</span>Fin_Exp_BUF<span class="token punctuation">,</span>Inf_Eff_BUF<span class="token punctuation">,</span>Fin_Eff_BUF<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>提取数据</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> header<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
@@ -190,8 +195,21 @@ X <span class="token operator">=</span> X<span class="token punctuation">.</span
 
 y_scaled <span class="token operator">=</span> np<span class="token punctuation">.</span>log1p<span class="token punctuation">(</span>y<span class="token punctuation">)</span>  <span class="token comment"># 取 log(1 + y)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251014132756438.webp" alt="CamScanner 10-14-2025 13.27" style="zoom:10%;" />
 </li>
-<li><p>训练-参数设置</p>
+<li><p>训练</p>
+<p>产生了数值溢出：</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014142041620.webp"></p>
+</li>
+</ul>
+</li>
+<li><p>Model_1-改进</p>
+<ul>
+<li><p>数据预处理</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251014140908692.webp" alt="IMG_20251014_140853" style="zoom: 20%;" />
+</li>
+<li><p>损失函数的选择</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014141450189.webp" alt="image-20251014141444626"></p>
 </li>
 </ul>
 </li>
