@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据集的构建  能量：0.01-10MeV 屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃） 屏蔽厚度：0-100mfp（102个值） 壳层数据：0, 1, 3, 5 MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.095 MAC_In">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据集的构建   能量：0.01-10MeV   屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）   屏蔽厚度：0-100mfp（102个值）   壳层数据：0, 1, 3, 5   MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL &amp; 单层BUF">
 <meta property="og:url" content="http://reveryday.github.io/2025/09/23/DL-%E5%8D%95%E5%B1%82BUF/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="数据集的构建  能量：0.01-10MeV 屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃） 屏蔽厚度：0-100mfp（102个值） 壳层数据：0, 1, 3, 5 MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.095 MAC_In">
+<meta property="og:description" content="数据集的构建   能量：0.01-10MeV   屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）   屏蔽厚度：0-100mfp（102个值）   壳层数据：0, 1, 3, 5   MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.0">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-09-23T09:54:02.000Z">
-<meta property="article:modified_time" content="2025-10-14T11:43:57.969Z">
+<meta property="article:modified_time" content="2025-10-14T14:34:43.394Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="粒子输运">
 <meta property="article:tag" content="Deep Learning">
@@ -19,7 +19,7 @@
   "url": "http://reveryday.github.io/2025/09/23/DL-%E5%8D%95%E5%B1%82BUF/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-09-23T09:54:02.000Z",
-  "dateModified": "2025-10-14T11:43:57.969Z",
+  "dateModified": "2025-10-14T14:34:43.394Z",
   "author": [
     {
       "@type": "Person",
@@ -135,19 +135,36 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-23T09:54:02.000Z" title="发表于 2025-09-23 17:54:02">2025-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-14T11:43:57.969Z" title="更新于 2025-10-14 19:43:57">2025-10-14</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="数据集的构建">数据集的构建</h3>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-23T09:54:02.000Z" title="发表于 2025-09-23 17:54:02">2025-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-14T14:34:43.394Z" title="更新于 2025-10-14 22:34:43">2025-10-14</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="数据集的构建">数据集的构建</h3>
 <ul>
-<li>能量：0.01-10MeV</li>
-<li>屏蔽材料：23种元素，5种化合物/混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）</li>
-<li>屏蔽厚度：0-100mfp（102个值）</li>
-<li><span style="color:blue;">壳层数据</span>：0, 1, 3, 5</li>
-<li>MAC（质量衰减系数）：
+<li>
+<p>能量：0.01-10MeV</p>
+</li>
+<li>
+<p>屏蔽材料：23种元素，5种化合物/混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）</p>
+</li>
+<li>
+<p>屏蔽厚度：0-100mfp（102个值）</p>
+</li>
+<li>
+<p><span style="color:blue;">壳层数据</span>：0, 1, 3, 5</p>
+</li>
+<li>
+<p>MAC（质量衰减系数）：</p>
 <ul>
 <li>MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.095</li>
 <li>MAC_Incoherent (非相干) 范围 : 0.011861 ~ 0.183046，平均值 : 0.079，中位数 : 0.075</li>
 <li>MAC_Coherent (相干) 范围 : 0.0 ~ 5.049440，平均值 : 0.206，中位数 : 0.002</li>
 <li>MAC_Photoelectric (光电效应) 范围 : 0.0 ~ 264.178，平均值 : 8.55，中位数 : 0.002</li>
 <li>MAC_Pair_production (电子对) 范围 : 0.0 ~ 0.039254，平均值 : 0.003，中位数 : 0.0</li>
+</ul>
+</li>
+<li>
+<p>BUF (Inf_Flu_BUF, Fin_Flu_BUF, Inf_Exp_BUF, Fin_Exp_BUF, Inf_Eff_BUF, Fin_Eff_BUF)：</p>
+<ul>
+<li>最小值 : 均为 1.0</li>
+<li>最大值 : 约 2.5×10³⁵ ~ 3.0×10³⁵</li>
+<li>中位数 : 64 ~ 205 之间</li>
 </ul>
 </li>
 </ul>
