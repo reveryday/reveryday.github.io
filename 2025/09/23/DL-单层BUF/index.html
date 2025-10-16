@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据集的构建   能量：0.01-10MeV   屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）   屏蔽厚度：0-100mfp（102个值）   壳层数据：0, 1, 3, 5   MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.0">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL &amp; 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据集的构建 能量：0.01-10MeV  屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）  屏蔽厚度：0-100mfp（102个值）  壳层数据：0, 1, 3, 5  MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.09">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL &amp; 单层BUF">
 <meta property="og:url" content="http://reveryday.github.io/2025/09/23/DL-%E5%8D%95%E5%B1%82BUF/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="数据集的构建   能量：0.01-10MeV   屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）   屏蔽厚度：0-100mfp（102个值）   壳层数据：0, 1, 3, 5   MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.0">
+<meta property="og:description" content="数据集的构建 能量：0.01-10MeV  屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）  屏蔽厚度：0-100mfp（102个值）  壳层数据：0, 1, 3, 5  MAC（质量衰减系数）：  MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.09">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-09-23T09:54:02.000Z">
-<meta property="article:modified_time" content="2025-10-14T14:34:43.394Z">
+<meta property="article:modified_time" content="2025-10-16T05:25:04.590Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="粒子输运">
 <meta property="article:tag" content="Deep Learning">
@@ -19,7 +19,7 @@
   "url": "http://reveryday.github.io/2025/09/23/DL-%E5%8D%95%E5%B1%82BUF/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-09-23T09:54:02.000Z",
-  "dateModified": "2025-10-14T14:34:43.394Z",
+  "dateModified": "2025-10-16T05:25:04.590Z",
   "author": [
     {
       "@type": "Person",
@@ -135,22 +135,16 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-23T09:54:02.000Z" title="发表于 2025-09-23 17:54:02">2025-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-14T14:34:43.394Z" title="更新于 2025-10-14 22:34:43">2025-10-14</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="数据集的构建">数据集的构建</h3>
-<ul>
-<li>
-<p>能量：0.01-10MeV</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL &amp; 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL &amp; 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-23T09:54:02.000Z" title="发表于 2025-09-23 17:54:02">2025-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-16T05:25:04.590Z" title="更新于 2025-10-16 13:25:04">2025-10-16</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="数据集的构建"><a href="#数据集的构建" class="headerlink" title="数据集的构建"></a>数据集的构建</h3><ul>
+<li><p>能量：0.01-10MeV</p>
 </li>
-<li>
-<p>屏蔽材料：23种元素，5种化合物/混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）</p>
+<li><p>屏蔽材料：23种元素，5种化合物&#x2F;混合物（101水 102空气 103混凝土 104重晶石混凝土 105铅玻璃）</p>
 </li>
-<li>
-<p>屏蔽厚度：0-100mfp（102个值）</p>
+<li><p>屏蔽厚度：0-100mfp（102个值）</p>
 </li>
-<li>
-<p><span style="color:blue;">壳层数据</span>：0, 1, 3, 5</p>
+<li><p><span style="color:blue;">壳层数据</span>：0, 1, 3, 5</p>
 </li>
-<li>
-<p>MAC（质量衰减系数）：</p>
+<li><p>MAC（质量衰减系数）：</p>
 <ul>
 <li>MAC_Total (总质量衰减系数）范围：0.016226 ~ 267.654，平均值 : 8.84，中位数 : 0.095</li>
 <li>MAC_Incoherent (非相干) 范围 : 0.011861 ~ 0.183046，平均值 : 0.079，中位数 : 0.075</li>
@@ -159,8 +153,7 @@
 <li>MAC_Pair_production (电子对) 范围 : 0.0 ~ 0.039254，平均值 : 0.003，中位数 : 0.0</li>
 </ul>
 </li>
-<li>
-<p>BUF (Inf_Flu_BUF, Fin_Flu_BUF, Inf_Exp_BUF, Fin_Exp_BUF, Inf_Eff_BUF, Fin_Eff_BUF)：</p>
+<li><p>BUF (Inf_Flu_BUF, Fin_Flu_BUF, Inf_Exp_BUF, Fin_Exp_BUF, Inf_Eff_BUF, Fin_Eff_BUF)：</p>
 <ul>
 <li>最小值 : 均为 1.0</li>
 <li>最大值 : 约 2.5×10³⁵ ~ 3.0×10³⁵</li>
@@ -168,50 +161,42 @@
 </ul>
 </li>
 </ul>
-<h3 id="10-10开会">10.10开会</h3>
-<ol>
-<li>
-<p>输入：光电+非相干+电子对+总截面（相干散射截面的计算存在一些问题）</p>
+<h3 id="10-10开会"><a href="#10-10开会" class="headerlink" title="10.10开会"></a>10.10开会</h3><ol>
+<li><p>输入：光电+非相干+电子对+总截面（相干散射截面的计算存在一些问题）</p>
 </li>
-<li>
-<p>创新点：（1）加入壳层数据（2）自由程大</p>
+<li><p>创新点：（1）加入壳层数据（2）自由程大</p>
 </li>
-<li>
-<p>BUF相关的工作：</p>
+<li><p>BUF相关的工作：</p>
 <ul>
 <li>屏蔽计量学参数（PY-MLBUF、PHYXPSD、RXCOM）</li>
 <li>点核（NPTS-PK、QAD、3DGSHEECD）</li>
 </ul>
 </li>
-<li>
-<p>壳层数据的影响</p>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251013231430545.webp" style="zoom: 10%;" />
-</li>
+<li><p>壳层数据的影响</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251013231430545.webp" style="zoom: 8%;" /></li>
 </ol>
-<h3 id="数据预处理">数据预处理</h3>
-<p><span style="color:blue;">数据格式、大小、维度的转换：</span></p>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p><span style="color:blue;">数据格式、大小、维度的转换：</span></p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251014164524365.webp" alt="CamScanner 10-14-2025 16.44" style="zoom: 23%;" />
+
 <p><span style="color:blue;">各个阶段所计算的损失、误差：</span></p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251014194325859.webp" alt="IMG_20251014_194216" style="zoom:25%;" />
+
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251014194257197.webp" alt="IMG_20251014_194223" style="zoom:25%;" />
+
 <p>训练过程中所计算的训练损失、验证损失以及训练结束的测试损失，都是在取log且归一化之后计算的，只有MSE、MAPE、MAE等是在原尺度上计算的。</p>
 <ol>
-<li>
-<p>Model_1-简单粗暴的输入输出</p>
+<li><p>Model_1-简单粗暴的输入输出</p>
 <ul>
-<li>
-<p>训练数据集</p>
+<li><p>训练数据集</p>
 <pre class="line-numbers language-css" data-language="css"><code class="language-css">Energy<span class="token punctuation">,</span>Shell<span class="token punctuation">,</span>MFP<span class="token punctuation">,</span>MAC_Total<span class="token punctuation">,</span>MAC_Incoherent<span class="token punctuation">,</span>MAC_Coherent<span class="token punctuation">,</span>MAC_Photoelectric<span class="token punctuation">,</span>MAC_Pair_production<span class="token punctuation">,</span>Inf_Flu_BUF<span class="token punctuation">,</span>Fin_Flu_BUF<span class="token punctuation">,</span>Inf_Exp_BUF<span class="token punctuation">,</span>Fin_Exp_BUF<span class="token punctuation">,</span>Inf_Eff_BUF<span class="token punctuation">,</span>Fin_Eff_BUF<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li>
-<p>提取数据</p>
+<li><p>提取数据</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> header<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
     
 X <span class="token operator">=</span> data<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">]</span>
 y <span class="token operator">=</span> data<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">:</span><span class="token number">14</span><span class="token punctuation">]</span><span class="token punctuation">.</span>values<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>
-<p>数据处理</p>
+<li><p>数据处理</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># (1) 对数变换能量</span>
 X<span class="token punctuation">[</span><span class="token string">"Energy"</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>log10<span class="token punctuation">(</span>X<span class="token punctuation">[</span><span class="token string">"Energy"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">#范围大约是 [-2, 1]</span>
 E_min<span class="token punctuation">,</span> E_max <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span>
@@ -228,56 +213,45 @@ X<span class="token punctuation">[</span>mac_cols<span class="token punctuation"
 X <span class="token operator">=</span> X<span class="token punctuation">.</span>values
 
 y_scaled <span class="token operator">=</span> np<span class="token punctuation">.</span>log1p<span class="token punctuation">(</span>y<span class="token punctuation">)</span>  <span class="token comment"># 取 log(1 + y)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251014132756438.webp" alt="CamScanner 10-14-2025 13.27" style="zoom:10%;" />
 </li>
-<li>
-<p>训练</p>
+<li><p>训练</p>
 <p>产生了数值溢出：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014142041620.webp" alt=""></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014142041620.webp"></p>
 </li>
 </ul>
 </li>
-<li>
-<p>Model_1-改进</p>
+<li><p>Model_1-改进</p>
 <ul>
-<li>
-<p>数据预处理</p>
+<li><p>数据预处理</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251014140908692.webp" alt="IMG_20251014_140853" style="zoom: 20%;" />
 </li>
-<li>
-<p>损失函数的选择</p>
+<li><p>损失函数的选择</p>
 <p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014141450189.webp" alt="image-20251014141444626"></p>
 </li>
 </ul>
 </li>
-<li>
-<p>将102组数据看作一个连续的输入序列<img src="https://gitee.com/wenswuu/pictures/raw/master/20250928173545123.webp" alt="IMG_20250928_173418">原始数据</p>
+<li><p>将102组数据看作一个连续的输入序列<img src="https://gitee.com/wenswuu/pictures/raw/master/20250928173545123.webp" alt="IMG_20250928_173418">原始数据</p>
 </li>
 </ol>
-<h3 id="文献阅读">文献阅读</h3>
-<ol>
-<li>
-<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0306454925007042">A unified surrogate model for enhanced photon shielding through an all-natural-element multi-group flux dataset - ScienceDirect</a></p>
+<h3 id="文献阅读"><a href="#文献阅读" class="headerlink" title="文献阅读"></a>文献阅读</h3><ol>
+<li><p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0306454925007042">A unified surrogate model for enhanced photon shielding through an all-natural-element multi-group flux dataset - S</a></p>
 <ul>
-<li>
-<p>模型设计：cGAN（生成式对抗网络）+U-Net（cGAN-U-Net）（结合了自注意力机制）</p>
+<li><p>模型设计：cGAN（生成式对抗网络）+U-Net（cGAN-U-Net）（结合了自注意力机制）</p>
 <p>cGAN：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250923204357662.webp" alt="image-20250923204350829" style="zoom:67%;" />
+
 <p>UNet：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250923204440037.webp" style="zoom:67%;" />
 </li>
-<li>
-<p>数据集范围：</p>
+<li><p>数据集范围：</p>
 </li>
-<li>
-<p>数据处理：对通量进行归一化</p>
+<li><p>数据处理：对通量进行归一化</p>
 </li>
-<li>
-<p><strong>2D relative flux field</strong>：使高维数据适用于基于图像的高级学习架构，而且还有效地封装了相对散射光子群的空间能量分布。</p>
+<li><p><strong>2D relative flux field</strong>：使高维数据适用于基于图像的高级学习架构，而且还有效地封装了相对散射光子群的空间能量分布。</p>
 </li>
-<li>
-<p>输入特征：根据预期输出结构来调节网络<br>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20250923202853406.webp" alt="image-20250923202842309"></p>
+<li><p>输入特征：根据预期输出结构来调节网络<br><img src="https://gitee.com/wenswuu/pictures/raw/master/20250923202853406.webp" alt="image-20250923202842309"></p>
 </li>
 </ul>
 <blockquote>
@@ -287,35 +261,27 @@ y_scaled <span class="token operator">=</span> np<span class="token punctuation"
 <li>创新点：</li>
 </ul>
 </li>
-<li>
-<p>（数据集PSSD）A Simulated Comprehensive Photon Flux Shielding Spectra Dataset for Advanced Radiation Safety Assessment：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41597-025-05814-y">https://www.nature.com/articles/s41597-025-05814-y</a></p>
+<li><p>（数据集PSSD）A Simulated Comprehensive Photon Flux Shielding Spectra Dataset for Advanced Radiation Safety Assessment：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41597-025-05814-y">https://www.nature.com/articles/s41597-025-05814-y</a></p>
 </li>
-<li>
-<p>A fast and high-precision gamma-ray buildup factor prediction model based on ensemble machine learning：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0306454925006437">https://www.sciencedirect.com/science/article/pii/S0306454925006437</a></p>
+<li><p>A fast and high-precision gamma-ray buildup factor prediction model based on ensemble machine learning：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0306454925006437">https://www.sciencedirect.com/science/article/pii/S0306454925006437</a></p>
 <ul>
-<li>
-<p>模型：集成机器学习模型（ERT-XGBoost-ERT Ensemble，EXE 模型）：随机树（ERT）和 XGBoost 组合作为基学习器，并以 ERT 作为元学习器进行堆叠。</p>
+<li><p>模型：集成机器学习模型（ERT-XGBoost-ERT Ensemble，EXE 模型）：随机树（ERT）和 XGBoost 组合作为基学习器，并以 ERT 作为元学习器进行堆叠。</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250923213909609.webp" style="zoom:67%;" />
 </li>
-<li>
-<p>数据集范围：</p>
+<li><p>数据集范围：</p>
 <ul>
 <li>厚度：0-40mfp</li>
 <li>屏蔽材料包括 Be、B、C、N、O、Na、Mg、Al、Si、P、S、Ar、K、Ca、Cu、Mo、Sn、La、Gd、W、Pb 和 U</li>
 <li>0.015 MeV~15 MeV</li>
 </ul>
 </li>
-<li>
-<p>数据预处理：对训练集的 BUF 进行了对数变换，“显著缩小了数据的绝对数值范围，降低了数据的偏度，增强了数据的线性特性，提高了机器学习模型的计算效率和数值稳定性”</p>
+<li><p>数据预处理：对训练集的 BUF 进行了对数变换，“显著缩小了数据的绝对数值范围，降低了数据的偏度，增强了数据的线性特性，提高了机器学习模型的计算效率和数值稳定性”</p>
 </li>
-<li>
-<p>输入：特征值分别为γ射线能量 E、屏蔽材料原子序数 Z、非相干散射、光电吸收、总衰减和穿透深度 X</p>
+<li><p>输入：特征值分别为γ射线能量 E、屏蔽材料原子序数 Z、非相干散射、光电吸收、总衰减和穿透深度 X</p>
 </li>
-<li>
-<p>输出：BUF</p>
+<li><p>输出：BUF</p>
 </li>
-<li>
-<p>创新点：</p>
+<li><p>创新点：</p>
 </li>
 </ul>
 </li>
