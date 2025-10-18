@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>TrainLog - 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Model-1 输出警告：    参数： VAL_SIZE &#x3D; 0.15  TEST_SIZE &#x3D; 0.15 RANDOM_STATE &#x3D; 42 BATCH_SIZE&#x3D;256  # model parameters INPUT_DIM &#x3D; 8 OUTPUT_DIM &#x3D; 6 D_MODEL &#x3D; 128 N_HEAD &#x3D;">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>TrainLog - 单层BUF | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Model-1输出警告：   参数： VAL_SIZE &#x3D; 0.15  TEST_SIZE &#x3D; 0.15 RANDOM_STATE &#x3D; 42 BATCH_SIZE&#x3D;256  # model parameters INPUT_DIM &#x3D; 8 OUTPUT_DIM &#x3D; 6 D_MODEL &#x3D; 128 N_HEAD &#x3D; 16">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TrainLog - 单层BUF">
 <meta property="og:url" content="http://reveryday.github.io/2025/10/14/TrainLog-%E5%8D%95%E5%B1%82BUF/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="Model-1 输出警告：    参数： VAL_SIZE &#x3D; 0.15  TEST_SIZE &#x3D; 0.15 RANDOM_STATE &#x3D; 42 BATCH_SIZE&#x3D;256  # model parameters INPUT_DIM &#x3D; 8 OUTPUT_DIM &#x3D; 6 D_MODEL &#x3D; 128 N_HEAD &#x3D;">
+<meta property="og:description" content="Model-1输出警告：   参数： VAL_SIZE &#x3D; 0.15  TEST_SIZE &#x3D; 0.15 RANDOM_STATE &#x3D; 42 BATCH_SIZE&#x3D;256  # model parameters INPUT_DIM &#x3D; 8 OUTPUT_DIM &#x3D; 6 D_MODEL &#x3D; 128 N_HEAD &#x3D; 16">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-10-13T16:59:15.000Z">
@@ -133,12 +133,10 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">TrainLog - 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">TrainLog - 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-13T16:59:15.000Z" title="发表于 2025-10-14 00:59:15">2025-10-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-16T04:36:15.820Z" title="更新于 2025-10-16 12:36:15">2025-10-16</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="Model-1">Model-1</h3>
-<p>输出警告：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014161647633.webp" alt=""></p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">TrainLog - 单层BUF</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">TrainLog - 单层BUF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-13T16:59:15.000Z" title="发表于 2025-10-14 00:59:15">2025-10-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-16T04:36:15.820Z" title="更新于 2025-10-16 12:36:15">2025-10-16</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="Model-1"><a href="#Model-1" class="headerlink" title="Model-1"></a>Model-1</h3><p>输出警告：</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251014161647633.webp"></p>
 <ol>
-<li>
-<p>参数：</p>
+<li><p>参数：</p>
 <pre class="line-numbers language-none"><code class="language-none">VAL_SIZE &#x3D; 0.15 
 TEST_SIZE &#x3D; 0.15
 RANDOM_STATE &#x3D; 42
@@ -159,6 +157,7 @@ ACTIVATION &#x3D; &quot;gelu&quot;
 num_epochs &#x3D; 5000
 learning_rate &#x3D; 1e-5
 weight_decay &#x3D; 5e-5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>结果：</p>
 <pre class="line-numbers language-none"><code class="language-none">Early stopping at epoch 2517
 Loaded best model with validation loss: 0.299818
@@ -186,8 +185,7 @@ Test MAE: 30684331347735596563738010845184.000000
 Model saved to best_model.pth
 Total program execution time: 4h 57m 38.44s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>
-<p>参数：</p>
+<li><p>参数：</p>
 <pre class="line-numbers language-none"><code class="language-none">VAL_SIZE &#x3D; 0.15 
 TEST_SIZE &#x3D; 0.15
 RANDOM_STATE &#x3D; 42
@@ -208,6 +206,7 @@ ACTIVATION &#x3D; &quot;gelu&quot;
 num_epochs &#x3D; 5000
 learning_rate &#x3D; 1e-5
 weight_decay &#x3D; 5e-5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>result:</p>
 <pre class="line-numbers language-none"><code class="language-none">Early stopping at epoch 2478
 Loaded best model with validation loss: 0.224442
@@ -234,6 +233,7 @@ Test MSE: inf
 Test MAE: 30677696762837551478827223351296.000000
 Model saved to best_model.pth
 Total program execution time: 13h 48m 51.53s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>再训练：</p>
 <pre class="line-numbers language-none"><code class="language-none">Loaded best model with validation loss: 0.134111
 Log Targets max: 81.68307495117188 min: 0.6931471824645996 mean: 6.353330135345459
@@ -247,9 +247,10 @@ Test MAPE: 19.04%
 Test R2: nan
 Test MSE: inf
 Test MAE: 29035499183027956895681402109952.000000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 </li>
-<li>
-<p>parameter</p>
+<li><p>parameter</p>
 <pre class="line-numbers language-none"><code class="language-none">VAL_SIZE &#x3D; 0.15 
 TEST_SIZE &#x3D; 0.15
 RANDOM_STATE &#x3D; 42
@@ -270,6 +271,7 @@ ACTIVATION &#x3D; &quot;gelu&quot;
 num_epochs &#x3D; 5000
 learning_rate &#x3D; 1e-5
 weight_decay &#x3D; 5e-5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>result:</p>
 <pre class="line-numbers language-css" data-language="css"><code class="language-css">Early stopping at epoch 1286
 Loaded best model with validation <span class="token property">loss</span><span class="token punctuation">:</span> 0.220737
@@ -297,8 +299,7 @@ Test <span class="token property">MAE</span><span class="token punctuation">:</s
 Model saved to best_model.pth
 Total program execution <span class="token property">time</span><span class="token punctuation">:</span> 8h 40m 15.01s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>
-<p>parameter</p>
+<li><p>parameter</p>
 <pre class="line-numbers language-none"><code class="language-none">VAL_SIZE &#x3D; 0.15 
 TEST_SIZE &#x3D; 0.15
 RANDOM_STATE &#x3D; 42
@@ -319,6 +320,7 @@ ACTIVATION &#x3D; &quot;gelu&quot;
 num_epochs &#x3D; 5000
 learning_rate &#x3D; 1e-5
 weight_decay &#x3D; 5e-5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>result:</p>
 <pre class="line-numbers language-none"><code class="language-none">Epoch 4855&#x2F;5000 - Train Loss: 0.686776, Val Loss: 0.437137, LR: 0.000001
 Epoch 4856&#x2F;5000 - Train Loss: 0.683661, Val Loss: 0.437274, LR: 0.000001
@@ -336,14 +338,14 @@ Traceback (most recent call last):
     all_targets_original &#x3D; np.expm1(all_targets.numpy()) 
                                     ^^^^^^^^^^^^^^^^^^^
 RuntimeError: Numpy is not availabl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>一些问题：</strong></p>
 <ul>
 <li>严重的数值不稳定</li>
 <li>严重的数值溢出</li>
 </ul>
 </li>
-<li>
-<p>para</p>
+<li><p>para</p>
 <pre class="line-numbers language-none"><code class="language-none">BATCH_SIZE&#x3D;256
 
 # model parameters
@@ -361,6 +363,7 @@ ACTIVATION &#x3D; &quot;gelu&quot;
 num_epochs &#x3D; 200
 learning_rate &#x3D; 5e-7
 weight_decay &#x3D; 5e-5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>result:</p>
 <pre class="line-numbers language-none"><code class="language-none">Loaded best model with validation loss: 0.139121
 Log Targets max: 81.68307495117188 min: 0.6931471824645996 mean: 6.353330135345459
@@ -373,8 +376,7 @@ Test Loss: 0.145164
 Test MAPE: 19.41%
 Test R2: nan
 Test MSE: inf
-Test MAE: 27108348116128637299023937536000.000000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+Test MAE: 27108348116128637299023937536000.000000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <p><strong>改进：</strong></p>
 <ul>
@@ -382,8 +384,7 @@ Test MAE: 27108348116128637299023937536000.000000<span aria-hidden="true" class=
 <li>MAX_NORM从改为0.5？</li>
 <li>Huber Loss 替代 L1 Loss？</li>
 </ul>
-<h3 id="Model-1-改进">Model-1-改进</h3>
-</article><div class="tag_share"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+<h3 id="Model-1-改进"><a href="#Model-1-改进" class="headerlink" title="Model-1-改进"></a>Model-1-改进</h3></article><div class="tag_share"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
