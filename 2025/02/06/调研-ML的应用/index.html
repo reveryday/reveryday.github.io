@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>论文精读-ML的应用 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DL&amp;多层BUF1-用于放射性固体废物分拣的智能分类关键技术研究 数据库：  基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库 基于 NIST-XCOM 建立截面数据库 基于ICRP 出版物 116 号得到辐射量转换数据库  为提高点核积分算法的精度，提出了首个基于transformer 的辐射场计算神经网络 XSfor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文精读-ML的应用">
+<meta property="og:url" content="http://reveryday.github.io/2025/02/06/%E8%B0%83%E7%A0%94-ML%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Wens&#39;Blog">
+<meta property="og:description" content="DL&amp;多层BUF1-用于放射性固体废物分拣的智能分类关键技术研究 数据库：  基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库 基于 NIST-XCOM 建立截面数据库 基于ICRP 出版物 116 号得到辐射量转换数据库  为提高点核积分算法的精度，提出了首个基于transformer 的辐射场计算神经网络 XSfor">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://reveryday.github.io/images/wens.png">
+<meta property="article:published_time" content="2025-02-06T05:21:48.000Z">
+<meta property="article:modified_time" content="2025-10-19T11:14:08.899Z">
+<meta property="article:author" content="Wens">
+<meta property="article:tag" content="论文精读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://reveryday.github.io/images/wens.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "论文精读-ML的应用",
+  "url": "http://reveryday.github.io/2025/02/06/%E8%B0%83%E7%A0%94-ML%E7%9A%84%E5%BA%94%E7%94%A8/",
+  "image": "http://reveryday.github.io/images/wens.png",
+  "datePublished": "2025-02-06T05:21:48.000Z",
+  "dateModified": "2025-10-19T11:14:08.899Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wens",
+      "url": "http://reveryday.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/02/06/%E8%B0%83%E7%A0%94-ML%E7%9A%84%E5%BA%94%E7%94%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":false,"highlightLang":false,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '论文精读-ML的应用',
+  isHighlightShrink: undefined,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">论文精读-ML的应用</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">论文精读-ML的应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-06T05:21:48.000Z" title="发表于 2025-02-06 13:21:48">2025-02-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-19T11:14:08.899Z" title="更新于 2025-10-19 19:14:08">2025-10-19</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="DL-多层BUF"><a href="#DL-多层BUF" class="headerlink" title="DL&amp;多层BUF"></a>DL&amp;多层BUF</h3><p>1-<a target="_blank" rel="noopener" href="https://newetds.lib.tsinghua.edu.cn/qh/paper/summary?dbCode=ETDQH&sysId=295772">用于放射性固体废物分拣的智能分类关键技术研究</a></p>
+<p>数据库：</p>
+<ul>
+<li>基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库</li>
+<li>基于 NIST-XCOM 建立截面数据库</li>
+<li>基于ICRP 出版物 116 号得到辐射量转换数据库</li>
+</ul>
+<p>为提高点核积分算法的精度，提出了首个基于transformer 的辐射场计算神经网络 XSformer（X-ray Shield Transformer ），将<strong>深度学习与点核积分算法通过累积因子进行有机结合</strong>，引入了前沿设计 transformer 模块进行屏蔽层编码转译，成功训练出了专用于辐射场计算的神经网络模型。</p>
+<p>BUF算法：</p>
+<ul>
+<li>传统算法：多层屏蔽叠加系数的计算主要集中在<strong>经验公式拟合</strong>上， 在双层屏蔽下部分配置下即使是公认最准确的 GP 公式其误差已达到 10%以上，且随着屏蔽层数增加，这类算法的误差还会逐级放大。</li>
+<li>蒙卡方法：精度最优，且可以作为行业标准来使用，但难以避免耗时严重的问题，无法应对复杂多屏蔽问题下的实时计算需求。</li>
+<li>机器回归算法 SVR：其精度仍然不满足工程需求，而神经网络算法DNN，应对不同屏蔽配置需要分别训练网络，且<span style="color: blue;">泛化能力存疑</span>，目前公开的算法仅证明了在已训练的屏蔽配置下高速计算的能力。</li>
+</ul>
+<p>XSformer的设计：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250402154227416.webp" style="zoom:67%;" />
+
+<p>嵌入层的设计，似乎就是nist.xcom上给出的一些参数，Photoelectric Absorption（光电吸收）、Coherent Scattering（相干散射）、Incoherent Scattering（非相干散射）、Nuclear Field Pair Production、Electron Field Pair Production、thickness(mlp)。</p>
+<hr>
+<p>2-<a target="_blank" rel="noopener" href="https://kns.cnki.net/kcms2/article/abstract?v=uFh1Y7sXU0J_hFZeS2mgyTy-f3KRYH4srs36r_0fsRn17sK56-yblwWeFB_z1uaEPBnqtfLzumlUzETrKFbUYXIMPohVOCK_25XNzXxBQvMh4-DXZfx0eXTlWxvPNiDuoRf5lz7ZE1d9JarhXOXY1YX_G-RJVxu5gTf-tsMzuzRWT5pMDpSDvWn-I89VLyFw&uniplatform=NZKPT&language=CHS">基于MCs与极限树的γ射线累积因子计算研究</a></p>
+<p>数据来源：</p>
+<ul>
+<li>γ射线衰减系数：NIST的8号标准数据库XCOM：Photon Cross Sections Data． base，该网络数据库的内核是XCOM计算程序，可用于计算能量为lkeV到100GeV的任何元素、化合物或混合物的散射、光电吸收和电子对生成横截面以及总衰减系数</li>
+<li>转换系数：因为自由空气比释动能的轫致辐射损失份额很小，若忽略这一部分损失，则照射量累积因子可看做自由空气比释动能累积因子，我国卫生部于2002年发布实施的《用于光子外照射放射防护的剂量转换系数》职业卫生标准中，公布了单能光子自由空气比释动能Ka与光子注量之间的转换系数，入射光子能量范围为0.01MeV～10MeV</li>
+</ul>
+<p>Abstract：</p>
+<ol>
+<li>根据最新的光子相互作用截面库，考虑包括相干散射、轫致辐射在内的各种物理过程，使用MCNP程序结合窄束衰减规律计算Y照射量累积因子，建立了一个各种材料在不同v射线能量、不同屏蔽厚度下的新的<strong>BUF数据库EBFMC</strong>，并与ANS标准库进行对比。</li>
+<li>基于极限树算法，建立了适用于EBFMC数据的回归模型ETB，分别关于能量、屏蔽厚度和材料原子序数对模型进行了测试，并考察模型的计算效率，初步验证了模型的适用性。</li>
+<li>提出了一种新的<strong>双层屏蔽等效层原子序数计算方法</strong>，建立了用于多层屏蔽累积因子计算的迭代模型ETML。</li>
+</ol>
+<p>照射量BUF数据库ENFMC：</p>
+<ul>
+<li><p>目前的累计因子标准：1、标准库数据过于陈旧，2、物理过程考虑不全，而<strong>低能量时，相干散射的影响较大</strong>。</p>
+</li>
+<li><p>效原子序数Zeff：对于混合物或化合物，需要使用一定的方法确定其有效原子序数Zeff，有效原子系数对应于某种混合物或化合物的一个原子序数，该混合物或化合物与光子的相互作用和具有这一原子序数的单一元素物质与光子的相互作用是相同的。</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153756960.webp" style="zoom:60%;" /></li>
+</ul>
+<p>MCs（极限树）：</p>
+<p>极限树，属于机器学习中的一种集成学习算法，该算法的基本单元是决策树，通过集成学习的思路集成多棵决策树的输出结果，极限树模型：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250906145639864.webp" style="zoom:50%;" />
+
+<p>结论：</p>
+<ol>
+<li>MeV以下新数据与旧数据差异较明显， 1MeV以上，低z材料新旧数据较一致，高z材料新旧数据差异较明显，通过分析认为差异主要来自于对相干散射的考虑。</li>
+<li>ETB模型预测值与目标值平均相对误差均在3％以下，极少出现误差大于20％的情况。</li>
+<li>建立了新的基于极限树的多层屏蔽累积因子<strong>迭代计算模型ETML</strong>，准确性测试结果表明，三层与四层屏蔽计算的预测值与目标值平均相对误差分别为2.96％和3.65％，极少出现误差大于20％的情况，与Broder公式相比准确性显著提升。</li>
+</ol>
+<p>不足之处：</p>
+<ol>
+<li>计算范围问题：由于MCNP在计算深穿透问题时收敛速度较慢，需要很长时间才能使结果的统计误差降低到可接受的范围，可通过对MCNP采用适当的减方差技巧降低深穿透粒子模拟时间，得到更厚屏蔽下的累积因子数据，从而扩大可计算的屏蔽厚度范围</li>
+<li>由于<strong>高z材料的截面不连续性</strong>，其累积因子曲线在某些较低的能量处出现尖锐的峰，与大部分现有方法一样，本文方法在这些能量附近一定的能量区间内拟合效果较差</li>
+<li>对于分层屏蔽，由于射线经过在首层屏蔽中的衰减，到达后层屏蔽时部分光子能量可能接近材料的壳外电子结合能，当这部分光子所占份额较大时，最终的计算结果误差也会超出预期(当入射射线低于1MeV时，在某些小的能量区间内可能发生这种情况，因此，可在低能区进行更密集的单层和双层屏蔽累积因子数据采样，从而使这些能量区间尽可能小。</li>
+</ol>
+<p>Attention：</p>
+<ol>
+<li>无限大介质边界设置为最外层计数面半径的十倍，此时，各计数面的统计计数已基本不随后方介质厚度增加而改变</li>
+<li>预测值与真实值最大误差都出现在低能量、厚屏蔽处</li>
+<li>mcnp得到数据集后，剔除其中统计不确定性大于3％的数据点</li>
+<li>考察拟合方法好坏有两个标准：1、准确度，2、计算效率</li>
+</ol>
+<hr>
+<p>3-<a target="_blank" rel="noopener" href="https://www.oejournal.org/oea/article/doi/10.29026/oea.2024.240062">OptoGPT: A foundation model for inverse design in optical multilayer thin film structures</a></p>
+<blockquote>
+<p>OptoGPT：光学多层薄膜结构逆向设计的基础模型</p>
+</blockquote>
+<p>Diversity and flexibility：</p>
+<ul>
+<li>多样性是指单一方法可以输出多个设计</li>
+<li>可根据制造或设计需求对任何层的材料选择和厚度范围<strong>施加限制</strong></li>
+</ul>
+<p>模型框架图：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250406171248102.webp" style="zoom: 50%;" />
+
+<p>其中，第一个自注意力层用于学习分层结构之间的关系，而第二个交叉注意力层可以捕获输入频谱和多层结构之间的关系。</p>
+<p>Structure token &amp; structure serialization：</p>
+<ul>
+<li><p>材料+厚度作为输入序列：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250906145751041.webp" style="zoom: 67%;" /></li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/">论文精读</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div></div></body></html>
