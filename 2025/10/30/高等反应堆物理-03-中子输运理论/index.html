@@ -1,24 +1,24 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高等反应堆物理-03-中子输运理论及其数值解法 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="中子输运方程中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：  中子是点粒子。 中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）。 介质材料的性质是各向同性的，且不随时间改变。     菲克定律 中子输运理论    各向同性散射+弱吸收介质（离开边界足够远、离开强吸收体（如控制棒、可燃毒物）足够远） 各向异性：中子">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高等反应堆物理-03-中子输运理论 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="中子输运方程中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：  中子是点粒子。 中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）。 介质材料的性质是各向同性的，且不随时间改变。     菲克定律 中子输运理论    各向同性散射+弱吸收介质（离开边界足够远、离开强吸收体（如控制棒、可燃毒物）足够远） 各向异性：中子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高等反应堆物理-03-中子输运理论及其数值解法">
-<meta property="og:url" content="http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/index.html">
+<meta property="og:title" content="高等反应堆物理-03-中子输运理论">
+<meta property="og:url" content="http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
 <meta property="og:description" content="中子输运方程中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：  中子是点粒子。 中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）。 介质材料的性质是各向同性的，且不随时间改变。     菲克定律 中子输运理论    各向同性散射+弱吸收介质（离开边界足够远、离开强吸收体（如控制棒、可燃毒物）足够远） 各向异性：中子">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-10-30T10:56:52.000Z">
-<meta property="article:modified_time" content="2025-11-02T13:45:40.475Z">
+<meta property="article:modified_time" content="2025-11-02T14:39:55.281Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="反应堆物理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://reveryday.github.io/images/wens.png"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "高等反应堆物理-03-中子输运理论及其数值解法",
-  "url": "http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/",
+  "headline": "高等反应堆物理-03-中子输运理论",
+  "url": "http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-10-30T10:56:52.000Z",
-  "dateModified": "2025-11-02T13:45:40.475Z",
+  "dateModified": "2025-11-02T14:39:55.281Z",
   "author": [
     {
       "@type": "Person",
@@ -26,7 +26,7 @@
       "url": "http://reveryday.github.io/"
     }
   ]
-}</script><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+}</script><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -130,11 +130,11 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '高等反应堆物理-03-中子输运理论及其数值解法',
+  title: '高等反应堆物理-03-中子输运理论',
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">高等反应堆物理-03-中子输运理论及其数值解法</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">高等反应堆物理-03-中子输运理论及其数值解法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-30T10:56:52.000Z" title="发表于 2025-10-30 18:56:52">2025-10-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-02T13:45:40.475Z" title="更新于 2025-11-02 21:45:40">2025-11-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">高等反应堆物理</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="中子输运方程"><a href="#中子输运方程" class="headerlink" title="中子输运方程"></a>中子输运方程</h3><p>中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">高等反应堆物理-03-中子输运理论</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">高等反应堆物理-03-中子输运理论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-30T10:56:52.000Z" title="发表于 2025-10-30 18:56:52">2025-10-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-02T14:39:55.281Z" title="更新于 2025-11-02 22:39:55">2025-11-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">高等反应堆物理</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="中子输运方程"><a href="#中子输运方程" class="headerlink" title="中子输运方程"></a>中子输运方程</h3><p>中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：</p>
 <ul>
 <li>中子是点粒子。</li>
 <li>中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）。</li>
@@ -175,9 +175,17 @@
 <p>在中子输运理论中，$J$与$\phi$之间的关系（$J&#x3D; \int \Phi \Omega d\Omega$ ；中子流是由无数角中子流合成，恰如合力与分力的关系）很简单，且是精确关系。在中子扩散理论中，$J$与$\phi$之间的关系是菲克定律，是近似成立的关系。</p>
 </blockquote>
 <p>中子输运方程推导：</p>
+<blockquote>
+<p>2025&#x2F;11&#x2F;02英语课上又推了一遍，熟悉了一些。</p>
+</blockquote>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251030191513550.webp" style="zoom: 30%;" />
 
-<h3 id="输运方程的边界条件"><a href="#输运方程的边界条件" class="headerlink" title="输运方程的边界条件"></a>输运方程的边界条件</h3><ol>
+<h3 id="泄露算符-Omega-nabla-phi"><a href="#泄露算符-Omega-nabla-phi" class="headerlink" title="泄露算符$\Omega \nabla \phi $"></a>泄露算符$\Omega \nabla \phi $</h3><p>（1）直角坐标系</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251102222545918.webp" alt="f4det是1_g4dEdsaS" style="zoom: 15%;" />
+
+<p>（2）柱坐标系</p>
+<p>（3）球坐标系</p>
+<h3 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a>边界条件</h3><ol>
 <li>在方程适用的区域内，$\phi$应为有限、 非负的实数；</li>
 <li>在两种不同介质的分界面上，$\phi$沿$\Omega$方向是$r$的连续函数；</li>
 <li>凸自由边界条件；</li>
@@ -190,9 +198,17 @@
 
 <p>反应堆中只有两类<strong>稳态问题</strong>：（1）无外源临界问题，（2）有外源（与裂变源无关）的次临界问题。</p>
 <p>对于反应堆临界计算，大部分情况下采用 k  本征值，原因是：$k$ 本征值方程关注的是裂变链式反应的稳态平衡，它通过调整裂变源的强度来实现 $k_{\text{eff}}&#x3D;1$ 的目标，因此它适用于任何状态下的稳态平衡计算。</p>
-<img src="C:/Users/34001/AppData/Roaming/Typora/typora-user-images/image-20251102210622989.png" alt="image-20251102210622989" style="zoom: 80%;" />
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251102214741932.webp" alt="image-20251102210622989" style="zoom: 80%;" />
 
-
+<h3 id="源迭代法"><a href="#源迭代法" class="headerlink" title="源迭代法"></a>源迭代法</h3><p>收敛的物理依据：对于一个临界系统，开始时只要随便投入一些中子（不管如何分布），它们在堆内被慢化、吸收、引发裂变产生新一代中子……，经过很多代以后，系统中很快就会建立起稳定的中子注量率分布。  </p>
+<h3 id="碰撞概率法"><a href="#碰撞概率法" class="headerlink" title="碰撞概率法"></a>碰撞概率法</h3><p>（CPM：Collision Probability Method）</p>
+<p>CPM的基本假设：</p>
+<ol>
+<li>小区域上的平通量假设（区域要分的足够小）；</li>
+<li>散射各向同性假设（散射的各向异性不如$\phi$（$\Omega$） 的各向异性重要）；</li>
+</ol>
+<p>它求解的是中子注量率而非中子角注量率，但是它的基本思想也源自积分形式的中子输运方程，解的精度也接近输运解，高于扩散解。基本思想：区域中某点$P$的通量，可视为该区域中其他所有点发出的、未经碰撞而飞到$P$点的中子之总和。  </p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251102223524670.webp" style="zoom:67%;" />
 
 
 
