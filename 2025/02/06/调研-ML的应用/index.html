@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>论文精读-ML的应用 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DL&amp;多层BUF1-用于放射性固体废物分拣的智能分类关键技术研究 数据库：  基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库 基于 NIST-XCOM 建立截面数据库 基于ICRP 出版物 116 号得到辐射量转换数据库  为提高点核积分算法的精度，提出了首个基于transformer 的辐射场计算神经网络 XSfor">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>论文精读-ML的应用 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DL&amp;多层BUF 1-用于放射性固体废物分拣的智能分类关键技术研究 数据库：  基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库 基于 NIST-XCOM 建立截面数据库 基于ICRP 出版物 116 号得到辐射量转换数据库  为提高点核积分算法的精度，提出了首个基于transformer 的辐射场计算神经网络 XSformer（">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文精读-ML的应用">
 <meta property="og:url" content="http://reveryday.github.io/2025/02/06/%E8%B0%83%E7%A0%94-ML%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="DL&amp;多层BUF1-用于放射性固体废物分拣的智能分类关键技术研究 数据库：  基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库 基于 NIST-XCOM 建立截面数据库 基于ICRP 出版物 116 号得到辐射量转换数据库  为提高点核积分算法的精度，提出了首个基于transformer 的辐射场计算神经网络 XSfor">
+<meta property="og:description" content="DL&amp;多层BUF 1-用于放射性固体废物分拣的智能分类关键技术研究 数据库：  基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库 基于 NIST-XCOM 建立截面数据库 基于ICRP 出版物 116 号得到辐射量转换数据库  为提高点核积分算法的精度，提出了首个基于transformer 的辐射场计算神经网络 XSformer（">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-02-06T05:21:48.000Z">
@@ -134,10 +134,11 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">论文精读-ML的应用</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">论文精读-ML的应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-06T05:21:48.000Z" title="发表于 2025-02-06 13:21:48">2025-02-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-19T11:14:08.899Z" title="更新于 2025-10-19 19:14:08">2025-10-19</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="DL-多层BUF"><a href="#DL-多层BUF" class="headerlink" title="DL&amp;多层BUF"></a>DL&amp;多层BUF</h3><p>1-<a target="_blank" rel="noopener" href="https://newetds.lib.tsinghua.edu.cn/qh/paper/summary?dbCode=ETDQH&sysId=295772">用于放射性固体废物分拣的智能分类关键技术研究</a></p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">论文精读-ML的应用</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">论文精读-ML的应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-06T05:21:48.000Z" title="发表于 2025-02-06 13:21:48">2025-02-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-19T11:14:08.899Z" title="更新于 2025-10-19 19:14:08">2025-10-19</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="DL-多层BUF">DL&amp;多层BUF</h3>
+<p>1-<a target="_blank" rel="noopener" href="https://newetds.lib.tsinghua.edu.cn/qh/paper/summary?dbCode=ETDQH&amp;sysId=295772">用于放射性固体废物分拣的智能分类关键技术研究</a></p>
 <p>数据库：</p>
 <ul>
-<li>基于 ANSI&#x2F;ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库</li>
+<li>基于 ANSI/ANS-6.6.3 标准建立 GP（geometric progression） 公式数据库</li>
 <li>基于 NIST-XCOM 建立截面数据库</li>
 <li>基于ICRP 出版物 116 号得到辐射量转换数据库</li>
 </ul>
@@ -150,10 +151,9 @@
 </ul>
 <p>XSformer的设计：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250402154227416.webp" style="zoom:67%;" />
-
 <p>嵌入层的设计，似乎就是nist.xcom上给出的一些参数，Photoelectric Absorption（光电吸收）、Coherent Scattering（相干散射）、Incoherent Scattering（非相干散射）、Nuclear Field Pair Production、Electron Field Pair Production、thickness(mlp)。</p>
 <hr>
-<p>2-<a target="_blank" rel="noopener" href="https://kns.cnki.net/kcms2/article/abstract?v=uFh1Y7sXU0J_hFZeS2mgyTy-f3KRYH4srs36r_0fsRn17sK56-yblwWeFB_z1uaEPBnqtfLzumlUzETrKFbUYXIMPohVOCK_25XNzXxBQvMh4-DXZfx0eXTlWxvPNiDuoRf5lz7ZE1d9JarhXOXY1YX_G-RJVxu5gTf-tsMzuzRWT5pMDpSDvWn-I89VLyFw&uniplatform=NZKPT&language=CHS">基于MCs与极限树的γ射线累积因子计算研究</a></p>
+<p>2-<a target="_blank" rel="noopener" href="https://kns.cnki.net/kcms2/article/abstract?v=uFh1Y7sXU0J_hFZeS2mgyTy-f3KRYH4srs36r_0fsRn17sK56-yblwWeFB_z1uaEPBnqtfLzumlUzETrKFbUYXIMPohVOCK_25XNzXxBQvMh4-DXZfx0eXTlWxvPNiDuoRf5lz7ZE1d9JarhXOXY1YX_G-RJVxu5gTf-tsMzuzRWT5pMDpSDvWn-I89VLyFw&amp;uniplatform=NZKPT&amp;language=CHS">基于MCs与极限树的γ射线累积因子计算研究</a></p>
 <p>数据来源：</p>
 <ul>
 <li>γ射线衰减系数：NIST的8号标准数据库XCOM：Photon Cross Sections Data． base，该网络数据库的内核是XCOM计算程序，可用于计算能量为lkeV到100GeV的任何元素、化合物或混合物的散射、光电吸收和电子对生成横截面以及总衰减系数</li>
@@ -167,15 +167,17 @@
 </ol>
 <p>照射量BUF数据库ENFMC：</p>
 <ul>
-<li><p>目前的累计因子标准：1、标准库数据过于陈旧，2、物理过程考虑不全，而<strong>低能量时，相干散射的影响较大</strong>。</p>
+<li>
+<p>目前的累计因子标准：1、标准库数据过于陈旧，2、物理过程考虑不全，而<strong>低能量时，相干散射的影响较大</strong>。</p>
 </li>
-<li><p>效原子序数Zeff：对于混合物或化合物，需要使用一定的方法确定其有效原子序数Zeff，有效原子系数对应于某种混合物或化合物的一个原子序数，该混合物或化合物与光子的相互作用和具有这一原子序数的单一元素物质与光子的相互作用是相同的。</p>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153756960.webp" style="zoom:60%;" /></li>
+<li>
+<p>效原子序数Zeff：对于混合物或化合物，需要使用一定的方法确定其有效原子序数Zeff，有效原子系数对应于某种混合物或化合物的一个原子序数，该混合物或化合物与光子的相互作用和具有这一原子序数的单一元素物质与光子的相互作用是相同的。</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153756960.webp" style="zoom:60%;" />
+</li>
 </ul>
 <p>MCs（极限树）：</p>
 <p>极限树，属于机器学习中的一种集成学习算法，该算法的基本单元是决策树，通过集成学习的思路集成多棵决策树的输出结果，极限树模型：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250906145639864.webp" style="zoom:50%;" />
-
 <p>结论：</p>
 <ol>
 <li>MeV以下新数据与旧数据差异较明显， 1MeV以上，低z材料新旧数据较一致，高z材料新旧数据差异较明显，通过分析认为差异主要来自于对相干散射的考虑。</li>
@@ -207,12 +209,13 @@
 </ul>
 <p>模型框架图：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250406171248102.webp" style="zoom: 50%;" />
-
 <p>其中，第一个自注意力层用于学习分层结构之间的关系，而第二个交叉注意力层可以捕获输入频谱和多层结构之间的关系。</p>
 <p>Structure token &amp; structure serialization：</p>
 <ul>
-<li><p>材料+厚度作为输入序列：</p>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20250906145751041.webp" style="zoom: 67%;" /></li>
+<li>
+<p>材料+厚度作为输入序列：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250906145751041.webp" style="zoom: 67%;" />
+</li>
 </ul>
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/">论文精读</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
