@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL1-Introduction | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="IntroductionSupervised Learning（监督学习）：   在神经网络上获得更好的性能，往往就是：  训练一个更大的神经网络 投入更多的数据  Basics Activation Function   最简单的激活函数：         $$    \sigma (x)&#x3D;\left\{\begin{matrix}1\quad if \quad x&gt;0     \\0\quad">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL1-Introduction | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Introduction Supervised Learning（监督学习）：  在神经网络上获得更好的性能，往往就是：  训练一个更大的神经网络 投入更多的数据  Basics  Activation Function   最简单的激活函数：         $$    \sigma (x)&#x3D;\left\{\begin{matrix}1\quad if \quad x&gt;0     \\0\qua">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL1-Introduction">
 <meta property="og:url" content="http://reveryday.github.io/2025/02/08/DL1-introduction/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="IntroductionSupervised Learning（监督学习）：   在神经网络上获得更好的性能，往往就是：  训练一个更大的神经网络 投入更多的数据  Basics Activation Function   最简单的激活函数：         $$    \sigma (x)&#x3D;\left\{\begin{matrix}1\quad if \quad x&gt;0     \\0\quad">
+<meta property="og:description" content="Introduction Supervised Learning（监督学习）：  在神经网络上获得更好的性能，往往就是：  训练一个更大的神经网络 投入更多的数据  Basics  Activation Function   最简单的激活函数：         $$    \sigma (x)&#x3D;\left\{\begin{matrix}1\quad if \quad x&gt;0     \\0\qua">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-02-08T06:53:45.000Z">
@@ -134,15 +134,16 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL1-Introduction</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL1-Introduction</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-08T06:53:45.000Z" title="发表于 2025-02-08 14:53:45">2025-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-29T05:31:24.126Z" title="更新于 2025-10-29 13:31:24">2025-10-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Supervised Learning（监督学习）：</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL1-Introduction</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL1-Introduction</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-08T06:53:45.000Z" title="发表于 2025-02-08 14:53:45">2025-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-29T05:31:24.126Z" title="更新于 2025-10-29 13:31:24">2025-10-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="Introduction">Introduction</h3>
+<p>Supervised Learning（监督学习）：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250402154112716.webp" style="zoom:80%;" />
-
 <p>在神经网络上获得更好的性能，往往就是：</p>
 <ol>
 <li>训练一个更大的神经网络</li>
 <li>投入更多的数据</li>
 </ol>
-<h3 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h3><ol>
+<h3 id="Basics">Basics</h3>
+<ol>
 <li>Activation Function</li>
 </ol>
 <ul>
@@ -157,123 +158,170 @@
    $$
 
     
-
 <ul>
 <li>sigmoid函数：</li>
 </ul>
-<p>   $$<br>   sigmoid(x)&#x3D;\frac{1}{1+e^{-x} }<br>   $$</p>
+<p>$$<br>
+sigmoid(x)=\frac{1}{1+e^{-x} }<br>
+$$</p>
 <ul>
 <li>Tanh激活函数：</li>
 </ul>
-<p>   $$<br>   tanh(x)&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>   $$</p>
+<p>$$<br>
+tanh(x)=\frac{1-e^{-2x}}{1+e^{-2x}}<br>
+$$</p>
 <ul>
 <li>ReLU激活函数（最常用，计算速度快）：</li>
 </ul>
-<p>   $$<br>   ReLU(x)&#x3D;max(x,0)<br>   $$</p>
+<p>$$<br>
+ReLU(x)=max(x,0)<br>
+$$</p>
    <img src="https://gitee.com/wenswuu/pictures/raw/master/20251019194343630.webp" alt="image-20251019194338500" style="zoom:50%;" />
-
-<p>   神经网络方面的一个巨大突破是从sigmoid函数转换到一个ReLU函数，在x比较小的时候，sigmoid函数的梯度会接近零，所以学习的速度会变得非常缓慢，因为实现梯度下降以及梯度接近零的时候，参数会更新的很慢，学习的速率也会变的很慢。</p>
+<p>神经网络方面的一个巨大突破是从sigmoid函数转换到一个ReLU函数，在x比较小的时候，sigmoid函数的梯度会接近零，所以学习的速度会变得非常缓慢，因为实现梯度下降以及梯度接近零的时候，参数会更新的很慢，学习的速率也会变的很慢。</p>
 <ol start="2">
 <li>Loss function</li>
 </ol>
 <ul>
 <li>L1 Loss（绝对值损失）：</li>
 </ul>
-<p>   $$<br>   l(y,{y}’ )&#x3D;\frac{1}{2}|y-y’|<br>   $$</p>
+<p>$$<br>
+l(y,{y}’ )=\frac{1}{2}|y-y’|<br>
+$$</p>
 <ul>
 <li>L2 Loss（均方损失）：</li>
 </ul>
-<p>   $$<br>   l(y,{y}’ )&#x3D;\frac{1}{2} \left ( y-{y}’ \right ) ^{2}<br>   $$</p>
+<p>$$<br>
+l(y,{y}’ )=\frac{1}{2} \left ( y-{y}’ \right ) ^{2}<br>
+$$</p>
 <ul>
 <li>Huber Loss：</li>
 </ul>
    <img src="https://gitee.com/wenswuu/pictures/raw/master/20251019194935486.webp" style="zoom:33%;" />
-
-    
-
 <ol start="3">
-<li><p>优化算法-（梯度下降）SGD</p>
-<p>损失函数 $l(\theta)$ 是参数 $\theta$ 的函数，我们的目标是找到使 $l(\theta)$ 最小的 ${\theta}$。梯度表示损失函数在当前参数点处的变化率和方向，梯度的方向是损失函数增长最快的方向，梯度的反方向自然是损失函数下降最快的方向；参数更新的核心思想是利用损失函数对参数的梯度（导数），沿着梯度的反方向移动，以逐步减小损失：<br>$$<br>\theta &#x3D; \theta - \eta \cdot \frac{\partial L}{\partial \theta}<br>$$<br><span style="color:blue;">Adam优化算法</span>：可自动调整学习率</p>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251029132923571.webp" alt="image-20251029132918127" style="zoom:50%;" /></li>
+<li>
+<p>优化算法-（梯度下降）SGD</p>
+<p>损失函数 $l(\theta)$ 是参数 $\theta$ 的函数，我们的目标是找到使 $l(\theta)$ 最小的 ${\theta}$。梯度表示损失函数在当前参数点处的变化率和方向，梯度的方向是损失函数增长最快的方向，梯度的反方向自然是损失函数下降最快的方向；参数更新的核心思想是利用损失函数对参数的梯度（导数），沿着梯度的反方向移动，以逐步减小损失：<br>
+$$<br>
+\theta = \theta - \eta \cdot \frac{\partial L}{\partial \theta}<br>
+$$<br>
+<span style="color:blue;">Adam优化算法</span>：可自动调整学习率</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251029132923571.webp" alt="image-20251029132918127" style="zoom:50%;" />
+</li>
 </ol>
-<h3 id="Softmax-多类"><a href="#Softmax-多类" class="headerlink" title="Softmax-多类"></a>Softmax-多类</h3><img src="https://gitee.com/wenswuu/pictures/raw/master/20251029132017550.webp" alt="image-20251029132011495" style="zoom:50%;" />
-
+<h3 id="Softmax-多类">Softmax-多类</h3>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251029132017550.webp" alt="image-20251029132011495" style="zoom:50%;" />
 <p>从回归到分类（单输出到多输出）：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250402154305817.webp" style="zoom:50%;" />
-
-<p>对类别进行一位编码 –&gt; 使用均方损失训练 –&gt; 置信度最大的 i 对应的 y 即为预测值</p>
-<p>一位有效编码，得到y的<strong>真实概率</strong>：<br>$$<br>y&#x3D;\left [ y_{1},y_{2},…y_{n}  \right ] ^{T}<br>$$</p>
-<p>其中，if i &#x3D; y 则$y_{i}$&#x3D;1，其他皆为0，即第i个为真实类别，则$y_{i}$&#x3D;1，其余皆为0，<strong>预测概率</strong>（输出的匹配概率）：<br>$$<br>\hat{\mathbf{y}} &#x3D; \mathrm{softmax}(\mathbf{o})<br>$$</p>
-<p>$$<br>\text{其中}\quad \hat{y}_j &#x3D; \frac{\exp(o_j)}{\sum_k \exp(o_k)}<br>$$</p>
+<p>对类别进行一位编码 --&gt; 使用均方损失训练 --&gt; 置信度最大的 i 对应的 y 即为预测值</p>
+<p>一位有效编码，得到y的<strong>真实概率</strong>：<br>
+$$<br>
+y=\left [ y_{1},y_{2},…y_{n}  \right ] ^{T}<br>
+$$</p>
+<p>其中，if i = y 则$y_{i}$=1，其他皆为0，即第i个为真实类别，则$y_{i}$=1，其余皆为0，<strong>预测概率</strong>（输出的匹配概率）：<br>
+$$<br>
+\hat{\mathbf{y}} = \mathrm{softmax}(\mathbf{o})<br>
+$$</p>
+<p>$$<br>
+\text{其中}\quad \hat{y}_j = \frac{\exp(o_j)}{\sum_k \exp(o_k)}<br>
+$$</p>
 <p>假设我们读取了一个批量的样本$\mathbf{X}$，其中特征维度（输入数量）为$d$，批量大小为$n$，此外，假设我们在输出中有$q$个类别，那么小批量样本的特征为$\mathbf{X} \in \mathbb{R}^{n \times d}$，权重为$\mathbf{W} \in \mathbb{R}^{d \times q}$，偏置为$\mathbf{b} \in \mathbb{R}^{1\times q}$，softmax回归的矢量计算表达式为：</p>
 
 $$
 \begin{aligned} \mathbf{O} &= \mathbf{X} \mathbf{W} + \mathbf{b}, \\ \hat{\mathbf{Y}} & = \mathrm{softmax}(\mathbf{O}). \end{aligned}
 $$
 
-
-<p>因此则可以得到两个概率，一个真实概率 $y$ （一位编码得到的）一个预测概率 $\hat{y}$ ，将它们的区别作为损失，而<strong>交叉熵</strong>常用来衡量两个概率的区别，$H\left ( p,q \right ) &#x3D;-p_{i}\log_{}{q_{i}}  $，将它作为损失，则<br>$$<br>l\left ( y,\hat{y} \right ) &#x3D;-\sum_{i}^{}y_{i}\log_{}{\hat{y_{i}}}&#x3D;log_{}{\hat{y}_{y}}<br>$$<br>因为y里只有一个元素为1，其余皆为0，所以损失就是对真实类别对应的预测概率求log然后取负数。</p>
+<p>因此则可以得到两个概率，一个真实概率 $y$ （一位编码得到的）一个预测概率 $\hat{y}$ ，将它们的区别作为损失，而<strong>交叉熵</strong>常用来衡量两个概率的区别，$H\left ( p,q \right ) =-p_{i}\log_{}{q_{i}}  $，将它作为损失，则<br>
+$$<br>
+l\left ( y,\hat{y} \right ) =-\sum_{i}^{}y_{i}\log_{}{\hat{y_{i}}}=log_{}{\hat{y}_{y}}<br>
+$$<br>
+因为y里只有一个元素为1，其余皆为0，所以损失就是对真实类别对应的预测概率求log然后取负数。</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251019195509323.webp" style="zoom:50%;" />
-
-<h3 id="The-key-to-train-deep-neteorks"><a href="#The-key-to-train-deep-neteorks" class="headerlink" title="The key to train deep neteorks"></a>The key to train deep neteorks</h3><ul>
-<li><span style="color:blue;">评估指标</span>：<ol>
+<h3 id="The-key-to-train-deep-neteorks">The key to train deep neteorks</h3>
+<ul>
+<li><span style="color:blue;">评估指标</span>：
+<ol>
 <li>平均绝对误差 (MAE, Mean Absolute Error)</li>
 </ol>
 </li>
 </ul>
-<p>$$<br>MAE &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} |y_i - \hat{y}_i|<br>$$</p>
-<p>​          2. 均方根误差 (RMSE, Root Mean Squared Error)<br>$$<br>RMSE &#x3D; \sqrt{\frac{1}{n} \sum_{i&#x3D;1}^{n} (y_i - \hat{y}<em>i)^2}<br>$$<br>​          3. 均方误差 (MSE, Mean Squared Error)<br>$$<br>MSE &#x3D; \frac{1}{n} \sum</em>{i&#x3D;1}^{n} (y_i - \hat{y}<em>i)^2<br>$$<br>​          4. 平均绝对百分比误差 (MAPE, Mean Absolute Percentage Error)<br>$$<br>MAPE &#x3D; \frac{1}{n} \sum</em>{i&#x3D;1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100<br>$$<br>​          5. 决定系数 (R², Coefficient of Determination)</p>
+<p>$$<br>
+MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|<br>
+$$</p>
+<p>​          2. 均方根误差 (RMSE, Root Mean Squared Error)<br>
+$$<br>
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}<em>i)^2}<br>
+$$<br>
+​          3. 均方误差 (MSE, Mean Squared Error)<br>
+$$<br>
+MSE = \frac{1}{n} \sum</em>{i=1}^{n} (y_i - \hat{y}<em>i)^2<br>
+$$<br>
+​          4. 平均绝对百分比误差 (MAPE, Mean Absolute Percentage Error)<br>
+$$<br>
+MAPE = \frac{1}{n} \sum</em>{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100<br>
+$$<br>
+​          5. 决定系数 (R², Coefficient of Determination)</p>
 
 $$
 R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
 $$
 
-
 <ul>
-<li><p><span style="color:blue;">过拟合与欠拟合</span></p>
+<li>
+<p><span style="color:blue;">过拟合与欠拟合</span></p>
 <p>直观描述：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153558862.webp" style="zoom:50%;" />
-
 <ul>
-<li><p>误差：分为<strong>训练误差</strong>与<strong>泛化误差</strong>（model在新数据中的误差），关注的主要是泛化误差，而不关注训练误差。</p>
+<li>
+<p>误差：分为<strong>训练误差</strong>与<strong>泛化误差</strong>（model在新数据中的误差），关注的主要是泛化误差，而不关注训练误差。</p>
 </li>
-<li><p>模型容量：拟合各种函数的能力。低容量的模型难以拟合训练数据，而高容量的模型可以记住所有数据。模型容量难以在不同算法种类之间比较，给定一个模型时，主要有两个影响因素：1、参数的个数，2、参数值的范围。</p>
+<li>
+<p>模型容量：拟合各种函数的能力。低容量的模型难以拟合训练数据，而高容量的模型可以记住所有数据。模型容量难以在不同算法种类之间比较，给定一个模型时，主要有两个影响因素：1、参数的个数，2、参数值的范围。</p>
 </li>
-<li><p>数据复杂度：有多个影响因素（都是相对的概念），1、样本个数，2、每个样本的元素个数，3、时间空间结构，4、多样性。</p>
+<li>
+<p>数据复杂度：有多个影响因素（都是相对的概念），1、样本个数，2、每个样本的元素个数，3、时间空间结构，4、多样性。</p>
 </li>
 </ul>
 <p>数据简单而模型容量太高，模型记住了所有的数据（过于关注细节，以至于被一些无关的细节困扰住），失去了泛化性，因此需要选择合适的模型：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251019214253563.webp" style="zoom:50%;" />
-
 <p>调参数的原则，找到一个最优的位置，使得泛化误差尽可能小（LLM也是如此，核心任务是在模型足够大的情况下，通过控制模型容量，以得到一个比较小的泛化误差）：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153608485.webp" style="zoom: 37%;" />
-
 <p>解决过拟合欠拟合的方法：权重正则化。</p>
 </li>
-<li><p><span style="color:blue;">weight-decay（权重衰退）</span></p>
+<li>
+<p><span style="color:blue;">weight-decay（权重衰退）</span></p>
 <p>一般可以通过控制模型容量来解决过拟合的问题，1、减少参数的个数，2、减小参数值的范围，权重衰退就是通过第2种手段处理过拟合的常用方法。</p>
 <p>最简单地控制参数大小的方法，通过 $\theta$ 硬性控制 $w$ 的大小：</p>
-<p>$$<br>min \quad l(w,b) \quad subject\quad to \quad \left | w \right | \le  \theta<br>$$<br>改进之后以实现柔性控制的优化函数如下，超参数$\lambda$控制了正则项的重要程度，$\lambda&#x3D;0$则相当于无作用，$\lambda \to \infty ,w\to 0$相当于$\theta\to0$.<br>$$<br>min \quad l(w,b)+\frac{\lambda }{2} \left | w \right | ^{2}<br>$$</p>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251019215137599.webp" style="zoom:23%;" />
-
-
-
+<p>$$<br>
+min \quad l(w,b) \quad subject\quad to \quad \left | w \right | \le  \theta<br>
+$$<br>
+改进之后以实现柔性控制的优化函数如下，超参数$\lambda$控制了正则项的重要程度，$\lambda=0$则相当于无作用，$\lambda \to \infty ,w\to 0$相当于$\theta\to0$.<br>
+$$<br>
+min \quad l(w,b)+\frac{\lambda }{2} \left | w \right | ^{2}<br>
+$$<br>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251019215137599.webp" style="zoom:23%;" /></p>
 <p>generally，$\eta \lambda &lt; 1$，所以叫权重衰退，<strong>通过减小w的范围来防止过拟合</strong>。权重衰减已经集成到优化算法中，可以与任何损失函数结合使用。</p>
 </li>
-<li><p><span style="color:blue;">Dropout</span></p>
+<li>
+<p><span style="color:blue;">Dropout</span></p>
 <p>一个好的模型需要对输入数据的扰动鲁棒，Dropout（丢弃法）就是在层之间加入噪音，解决神经网络中的过拟合问题，同时增强模型的泛化能力。</p>
 <p>在训练深度神经网络时，某些神经元可能会过度依赖其他神经元的输出，形成一种“共适应（Co-adaptation）”关系，这种依赖会导致模型过于专注于训练数据中的特定模式，而在面对新数据时表现不佳，Dropout通过在训练过程中随机“丢弃”一部分神经元，强制网络不能完全依赖某些特定的神经元，从而打破了这种共适应性，网络被迫学习更鲁棒、更分布式的特征表示。</p>
 <blockquote>
 <p>dropout设计<strong>也受到生物神经系统的启发</strong>，在人脑中，神经元并非总是全部活跃，而是以一种稀疏的方式工作，丢弃法模拟了这种稀疏性，通过随机丢弃神经元来模仿生物系统中神经元的不确定性激活，从而使网络更加健壮。</p>
 </blockquote>
-<p>若无偏差的加入噪音，对于x加入噪音得到x’，我们希望：<br>$$<br>E\left [ x’ \right ] &#x3D;x<br>$$</p>
+<p>若无偏差的加入噪音，对于x加入噪音得到x’，我们希望：<br>
+$$<br>
+E\left [ x’ \right ] =x<br>
+$$</p>
 <p>Dropout对每个元素进行如下扰动：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251019215317555.webp" style="zoom:50%;" />
-
-<p>期望E(x)还是保持原来的没变：<br>$$<br>E(x’)&#x3D;p\cdot 0+(1-p)\cdot \frac{x_{i} }{1-p} &#x3D;x_{i}<br>$$</p>
+<p>期望E(x)还是保持原来的没变：<br>
+$$<br>
+E(x’)=p\cdot 0+(1-p)\cdot \frac{x_{i} }{1-p} =x_{i}<br>
+$$</p>
 <p>将一些输出项随机置零，来控制模型的复杂度，常作用于mlp的隐藏层（p常取0.1，0.5，0.9），训练中的 dropout，通常将丢弃法作用在隐藏全连接层的输出上，当作一个正则项，一般不在推理（预测）中使用 dropout。</p>
 </li>
-<li><p><span style="color:blue;">数值稳定性</span></p>
+<li>
+<p><span style="color:blue;">数值稳定性</span></p>
 <ul>
 <li>让梯度值在合理的范围内</li>
 <li>乘法变加法？（ResNet、LSTM）</li>
@@ -281,7 +329,8 @@ $$
 <li>合理的权重初始和激活函数</li>
 </ul>
 </li>
-<li><p><span style="color:blue;">Batch norm-批量归一化</span></p>
+<li>
+<p><span style="color:blue;">Batch norm-批量归一化</span></p>
 <p>（批量归一化可以加速收敛但一般不改变精度）</p>
 <ol>
 <li>数据预处理的方式通常会对最终结果产生巨大影响</li>
@@ -297,7 +346,6 @@ $$
   $\hat{\boldsymbol{\mu}}_\mathcal{B}$是小批量$\mathcal{B}$的样本均值，$\hat{\boldsymbol{\sigma}}_\mathcal{B}$是小批量$\mathcal{B}$的样本标准差。
 
   
-
 <p>应用标准化后，生成的小批量的平均值为0和单位方差为1，由于单位方差是一个主观的选择，因此我们通常包含拉伸参数（scale）$\boldsymbol{\gamma}$和偏移参数（shift）$\boldsymbol{\beta}$，它们的形状与$\mathbf{x}$相同，$\boldsymbol{\gamma}$和$\boldsymbol{\beta}$是需要与其他模型参数一起学习的参数。</p>
 <p>通常将Batch norm层置于FCNN层和激活函数之间，同样，对于卷积层，我们可以在卷积层之后和非线性激活函数之前应用Batch norm。 当卷积有多个输出通道时，我们需要对这些通道的“每个”输出执行批量规范化，每个通道都有自己的scale和shift参数，这两个参数都是标量。</p>
 </li>
