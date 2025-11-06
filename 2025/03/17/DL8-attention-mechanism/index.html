@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL8-Attention Mechanism | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="灵长类动物的视觉系统接受了大量的感官输入， 这些感官输入远远超过了大脑能够完全处理的程度。 然而，并非所有刺激的影响都是相等的。 意识的聚集和专注使灵长类动物能够在复杂的视觉环境中将注意力引向感兴趣的物体，例如猎物和天敌。 只关注一小部分信息的能力对进化更加有意义，使人类得以生存和成功。  query-value-key 在注意力机制的背景下，我们将自主性提示称为查询(Query)。对于任何给定">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DL8-Attention Mechanism | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="灵长类动物的视觉系统接受了大量的感官输入， 这些感官输入远远超过了大脑能够完全处理的程度。 然而，并非所有刺激的影响都是相等的。 意识的聚集和专注使灵长类动物能够在复杂的视觉环境中将注意力引向感兴趣的物体，例如猎物和天敌。 只关注一小部分信息的能力对进化更加有意义，使人类得以生存和成功。  query-value-key在注意力机制的背景下，我们将自主性提示称为查询(Query)。对于任何给定查">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DL8-Attention Mechanism">
 <meta property="og:url" content="http://reveryday.github.io/2025/03/17/DL8-attention-mechanism/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="灵长类动物的视觉系统接受了大量的感官输入， 这些感官输入远远超过了大脑能够完全处理的程度。 然而，并非所有刺激的影响都是相等的。 意识的聚集和专注使灵长类动物能够在复杂的视觉环境中将注意力引向感兴趣的物体，例如猎物和天敌。 只关注一小部分信息的能力对进化更加有意义，使人类得以生存和成功。  query-value-key 在注意力机制的背景下，我们将自主性提示称为查询(Query)。对于任何给定">
+<meta property="og:description" content="灵长类动物的视觉系统接受了大量的感官输入， 这些感官输入远远超过了大脑能够完全处理的程度。 然而，并非所有刺激的影响都是相等的。 意识的聚集和专注使灵长类动物能够在复杂的视觉环境中将注意力引向感兴趣的物体，例如猎物和天敌。 只关注一小部分信息的能力对进化更加有意义，使人类得以生存和成功。  query-value-key在注意力机制的背景下，我们将自主性提示称为查询(Query)。对于任何给定查">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-03-17T08:24:21.000Z">
@@ -137,61 +137,39 @@
 }</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL8-Attention Mechanism</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL8-Attention Mechanism</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-17T08:24:21.000Z" title="发表于 2025-03-17 16:24:21">2025-03-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-20T04:56:43.387Z" title="更新于 2025-10-20 12:56:43">2025-10-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
 <p>灵长类动物的视觉系统接受了大量的感官输入， 这些感官输入远远超过了大脑能够完全处理的程度。 然而，并非所有刺激的影响都是相等的。 意识的聚集和专注使灵长类动物能够在复杂的视觉环境中将注意力引向感兴趣的物体，例如猎物和天敌。 只关注一小部分信息的能力对进化更加有意义，使人类得以生存和成功。</p>
 </blockquote>
-<h3 id="query-value-key">query-value-key</h3>
-<p>在注意力机制的背景下，我们将自主性提示称为查询(Query)。对于任何给定查询，注意力机制通过集中注意力(Attention Pooling)选择感官输入(Sensory Input),这些感官输入被称为值(Value)。每个值都与其对应的非自主提示的一个键(Key)对应，通过集中注意力，为给定的查询(自主性提示)与键(非自主性提示)进行交互，从而引导选择偏向值(感官输入)</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153438675.webp" alt=""></p>
+<h3 id="query-value-key"><a href="#query-value-key" class="headerlink" title="query-value-key"></a>query-value-key</h3><p>在注意力机制的背景下，我们将自主性提示称为查询(Query)。对于任何给定查询，注意力机制通过集中注意力(Attention Pooling)选择感官输入(Sensory Input),这些感官输入被称为值(Value)。每个值都与其对应的非自主提示的一个键(Key)对应，通过集中注意力，为给定的查询(自主性提示)与键(非自主性提示)进行交互，从而引导选择偏向值(感官输入)</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153438675.webp"></p>
 <p>注意力机制与全连接层或者汇聚层的区别源于<strong>增加的自主提示query</strong>，query（自主提示）和key（非自主提示）之间的交互形成了注意力汇聚，注意力汇聚有选择地聚合了value以生成最终的输出。</p>
-<h3 id="注意力机制">注意力机制</h3>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153443443.webp" alt=""></p>
+<h3 id="注意力机制"><a href="#注意力机制" class="headerlink" title="注意力机制"></a>注意力机制</h3><p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153443443.webp"></p>
 <p>实现：编码器与解码器都可以采用RNN模型，  是比较常见的一种模型配置</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153449058.webp" alt=""></p>
-<h3 id="self-attention">self-attention</h3>
-<p>在深度学习中，经常使用卷积神经网络（CNN）或循环神经网络（RNN）对序列进行编码，有了注意力机制之后，我们将词元序列输入注意力池化中， 以便同一组词元同时充当query、key和value。 具体来说，每个query都会关注所有的key－value对并生成一个注意力输出。 由于query、key和value来自同一组输入，因此被称为 <strong>自注意力（self-attention）</strong></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153449058.webp"></p>
+<h3 id="self-attention"><a href="#self-attention" class="headerlink" title="self-attention"></a>self-attention</h3><p>在深度学习中，经常使用卷积神经网络（CNN）或循环神经网络（RNN）对序列进行编码，有了注意力机制之后，我们将词元序列输入注意力池化中， 以便同一组词元同时充当query、key和value。 具体来说，每个query都会关注所有的key－value对并生成一个注意力输出。 由于query、key和value来自同一组输入，因此被称为 <strong>自注意力（self-attention）</strong></p>
 <p>编码器模块中自注意力的主要计算步骤如下(解码器模块中的自注意力计算步骤与此类似)：</p>
 <ol>
-<li>
-<p>把输入单词转换为带时间(或时序)信息的嵌入向量</p>
+<li><p>把输入单词转换为带时间(或时序)信息的嵌入向量</p>
 </li>
-<li>
-<p>根据嵌入向量生成q、k、v三个向量，这三个向量分别表示query、key、value</p>
+<li><p>根据嵌入向量生成q、k、v三个向量，这三个向量分别表示query、key、value</p>
 </li>
-<li>
-<p>根据q,计算每个单词进行点积得到对应的得分score=q·k</p>
+<li><p>根据q,计算每个单词进行点积得到对应的得分score&#x3D;q·k</p>
 </li>
-<li>
-<p>对score进行规范化、softmax 处理，假设结果为a</p>
+<li><p>对score进行规范化、softmax 处理，假设结果为a</p>
 </li>
-<li>
-<p>a点积对应的v,然后累加得到当前语句各单词之间的自注意力</p>
+<li><p>a点积对应的v,然后累加得到当前语句各单词之间的自注意力</p>
 </li>
 </ol>
-<p>若嵌入向量的维度为$d_{model}$（一般比较大），q、k、v维度比较小，一般满足（其中$h$表示h个head）：<br>
-$$<br>
-d_{q}=d_{k}=d_{v}=\frac{d_{model}}{h}<br>
-$$<br>
-注意力的计算：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153454131.webp" alt=""></p>
-<h3 id="multihead-attention">multihead-attention</h3>
-<p>在实践中，当给定相同的查询、键和值的集合时， 我们希望模型可以基于相同的注意力机制学习到不同的行为， 然后将不同的行为作为知识组合起来， 捕获序列内各种范围的依赖关系，因此，允许注意力机制组合使用查询、键和值的不同 <em>子空间表示</em>（representation subspaces）可能是有益的。为此，与其只使用单独一个注意力汇聚， 我们可以用独立学习得到的组不同的 <em>线性投影</em>（linear projections）来变换查询、键和值。 然后，这组变换后的查询、键和值将并行地送到注意力汇聚中。 最后，将这个注意力汇聚的输出拼接在一起， 并且通过另一个可以学习的线性投影进行变换， 以产生最终输出。 这种设计被称为<em>多头注意力</em>（multihead attention）</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153459137.webp" alt=""></p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153502901.webp" alt=""></p>
-<h3 id="注意力汇聚（Nadaraya-Watson-核回归）">注意力汇聚（Nadaraya-Watson 核回归）</h3>
-<ol>
-<li>
-<p>平均汇聚，先使用最简单的估计器来解决回归问题，基于平均汇聚来计算所有训练样本输出值的平均值</p>
-<p>$$<br>
-f(x) = \frac{1}{n}\sum_{i=1}^n y_i<br>
-$$</p>
+<p>若嵌入向量的维度为$d_{model}$（一般比较大），q、k、v维度比较小，一般满足（其中$h$表示h个head）：<br>$$<br>d_{q}&#x3D;d_{k}&#x3D;d_{v}&#x3D;\frac{d_{model}}{h}<br>$$<br>注意力的计算：</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153454131.webp"></p>
+<h3 id="multihead-attention"><a href="#multihead-attention" class="headerlink" title="multihead-attention"></a>multihead-attention</h3><p>在实践中，当给定相同的查询、键和值的集合时， 我们希望模型可以基于相同的注意力机制学习到不同的行为， 然后将不同的行为作为知识组合起来， 捕获序列内各种范围的依赖关系，因此，允许注意力机制组合使用查询、键和值的不同 <em>子空间表示</em>（representation subspaces）可能是有益的。为此，与其只使用单独一个注意力汇聚， 我们可以用独立学习得到的组不同的 <em>线性投影</em>（linear projections）来变换查询、键和值。 然后，这组变换后的查询、键和值将并行地送到注意力汇聚中。 最后，将这个注意力汇聚的输出拼接在一起， 并且通过另一个可以学习的线性投影进行变换， 以产生最终输出。 这种设计被称为<em>多头注意力</em>（multihead attention）</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153459137.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153502901.webp"></p>
+<h3 id="注意力汇聚（Nadaraya-Watson-核回归）"><a href="#注意力汇聚（Nadaraya-Watson-核回归）" class="headerlink" title="注意力汇聚（Nadaraya-Watson 核回归）"></a>注意力汇聚（Nadaraya-Watson 核回归）</h3><ol>
+<li><p>平均汇聚，先使用最简单的估计器来解决回归问题，基于平均汇聚来计算所有训练样本输出值的平均值</p>
+<p>$$<br>f(x) &#x3D; \frac{1}{n}\sum_{i&#x3D;1}^n y_i<br>$$</p>
 </li>
-<li>
-<p>非参数注意力汇聚，根据输入的位置对输出$y_i$进行加权，其中$K$是<em>核</em>（kernel）</p>
-<p>$$<br>
-f(x) = \sum_{i=1}^n \frac{K(x - x_i)}{\sum_{j=1}^n K(x - x_j)} y_i<br>
-$$</p>
+<li><p>非参数注意力汇聚，根据输入的位置对输出$y_i$进行加权，其中$K$是<em>核</em>（kernel）</p>
+<p>$$<br>f(x) &#x3D; \sum_{i&#x3D;1}^n \frac{K(x - x_i)}{\sum_{j&#x3D;1}^n K(x - x_j)} y_i<br>$$</p>
 <p>受此启发，我们可以从注意力机制框架的角度重写，成为一个更加通用的<em>注意力汇聚</em>（attention pooling）公式：</p>
-<p>$$<br>
-f(x) = \sum_{i=1}^n \alpha(x, x_i) y_i<br>
-$$</p>
+<p>$$<br>f(x) &#x3D; \sum_{i&#x3D;1}^n \alpha(x, x_i) y_i<br>$$</p>
 <p>其中$x$是查询，$(x_i, y_i)$是键值对，将查询$x$和键$x_i$之间的关系建模为<em>注意力权重</em>（attention weight）$\alpha(x, x_i)$，这个权重将被分配给每一个对应值$y_i$，对于任何查询，模型在所有键值对注意力权重都是一个有效的概率分布：它们是非负的，并且总和为1</p>
 </li>
 </ol>
@@ -201,13 +179,13 @@ $$</p>
 <ol start="3">
 <li>带参数的注意力汇聚，非参数的Nadaraya-Watson核回归具有<em>一致性</em>（consistency）的优点： 如果有足够的数据，此模型会收敛到最优结果，尽管如此，我们还是可以轻松地将可学习的参数集成到注意力汇聚中，查询和键之间的距离乘以可学习参数w</li>
 </ol>
-<h3 id="注意力评分函数">注意力评分函数</h3>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153508153.webp" alt=""></p>
+<h3 id="注意力评分函数"><a href="#注意力评分函数" class="headerlink" title="注意力评分函数"></a>注意力评分函数</h3><p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153508153.webp"></p>
 <p>用数学语言描述，假设有一个查询$\mathbf{q} \in \mathbb{R}^q$和$m$个“键－值”对$(\mathbf{k}_1, \mathbf{v}_1), \ldots, (\mathbf{k}_m, \mathbf{v}_m)$，其中$\mathbf{k}_i \in \mathbb{R}^k$，$\mathbf{v}_i \in \mathbb{R}^v$，注意力汇聚函数$f$就被表示成值的加权和：</p>
 
 $$
 f(\mathbf{q}, (\mathbf{k}_1, \mathbf{v}_1), \ldots, (\mathbf{k}_m, \mathbf{v}_m)) = \sum_{i=1}^m \alpha(\mathbf{q}, \mathbf{k}_i) \mathbf{v}_i \in \mathbb{R}^v
 $$
+
 
 <p>其中查询$\mathbf{q}$和键$\mathbf{k}_i$的注意力权重（标量）是通过注意力评分函数$a$将两个向量映射成标量，再经过softmax运算得到的：</p>
 
@@ -215,13 +193,13 @@ $$
 \alpha(\mathbf{q}, \mathbf{k}_i) = \mathrm{softmax}(a(\mathbf{q}, \mathbf{k}_i)) = \frac{\exp(a(\mathbf{q}, \mathbf{k}_i))}{\sum_{j=1}^m \exp(a(\mathbf{q}, \mathbf{k}_j))} \in \mathbb{R}
 $$
 
+
 <ol>
 <li><strong>masked softmax operation</strong>，为了仅将有意义的词元作为值来获取注意力汇聚， 可以指定一个有效序列长度（即词元的个数）， 以便在计算softmax时过滤掉超出指定范围的位置。</li>
 <li><strong>additive attention</strong></li>
 <li><strong>scaled dot-product attention</strong></li>
 </ol>
-<h3 id="Positional-Encoding">Positional Encoding</h3>
-<p>在处理词元序列时，循环神经网络是逐个的重复地处理词元的， 而自注意力则因为并行计算而放弃了顺序操作。 为了使用序列的顺序信息，通过在输入表示中添加 <em>位置编码</em>（positional encoding）来注入绝对的或相对的位置信息。 位置编码可以通过学习得到也可以直接固定得到。</p>
+<h3 id="Positional-Encoding"><a href="#Positional-Encoding" class="headerlink" title="Positional Encoding"></a>Positional Encoding</h3><p>在处理词元序列时，循环神经网络是逐个的重复地处理词元的， 而自注意力则因为并行计算而放弃了顺序操作。 为了使用序列的顺序信息，通过在输入表示中添加 <em>位置编码</em>（positional encoding）来注入绝对的或相对的位置信息。 位置编码可以通过学习得到也可以直接固定得到。</p>
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Deep-Learning/">Deep Learning</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {

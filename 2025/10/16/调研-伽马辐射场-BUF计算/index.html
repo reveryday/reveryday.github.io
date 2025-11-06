@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>调研-Gamma辐射场-BUF计算 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="剂量学参数计算  gamma-ray shielding parameters (GSP) gammaray shielding enclosure (GSE) multi-layered buildup factor (MLBUF) 深穿透问题 deep penetrations（OT range 40–100 mfp）  1-Py-MLBUF: Development of an online">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>调研-Gamma辐射场-BUF计算 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="剂量学参数计算 gamma-ray shielding parameters (GSP) gammaray shielding enclosure (GSE)    multi-layered buildup factor (MLBUF)   深穿透问题 deep penetrations（OT range 40–100 mfp）    1-Py-MLBUF: Development of an">
 <meta property="og:type" content="article">
 <meta property="og:title" content="调研-Gamma辐射场-BUF计算">
 <meta property="og:url" content="http://reveryday.github.io/2025/10/16/%E8%B0%83%E7%A0%94-%E4%BC%BD%E9%A9%AC%E8%BE%90%E5%B0%84%E5%9C%BA-BUF%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="剂量学参数计算  gamma-ray shielding parameters (GSP) gammaray shielding enclosure (GSE) multi-layered buildup factor (MLBUF) 深穿透问题 deep penetrations（OT range 40–100 mfp）  1-Py-MLBUF: Development of an online">
+<meta property="og:description" content="剂量学参数计算 gamma-ray shielding parameters (GSP) gammaray shielding enclosure (GSE)    multi-layered buildup factor (MLBUF)   深穿透问题 deep penetrations（OT range 40–100 mfp）    1-Py-MLBUF: Development of an">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-10-16T05:56:28.000Z">
@@ -134,42 +134,38 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">调研-Gamma辐射场-BUF计算</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">调研-Gamma辐射场-BUF计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-16T05:56:28.000Z" title="发表于 2025-10-16 13:56:28">2025-10-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-21T14:14:40.138Z" title="更新于 2025-10-21 22:14:40">2025-10-21</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="剂量学参数计算">剂量学参数计算</h3>
-<blockquote>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">调研-Gamma辐射场-BUF计算</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">调研-Gamma辐射场-BUF计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-16T05:56:28.000Z" title="发表于 2025-10-16 13:56:28">2025-10-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-21T14:14:40.138Z" title="更新于 2025-10-21 22:14:40">2025-10-21</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="剂量学参数计算"><a href="#剂量学参数计算" class="headerlink" title="剂量学参数计算"></a>剂量学参数计算</h3><blockquote>
 <p>gamma-ray shielding parameters (GSP)</p>
-<p>gammaray shielding enclosure (GSE)</p>
-<p>multi-layered buildup factor (MLBUF)</p>
-<p>深穿透问题 deep penetrations（OT range 40–100 mfp）</p>
+<p>gammaray shielding enclosure (GSE)   </p>
+<p>multi-layered buildup factor (MLBUF)  </p>
+<p>深穿透问题 deep penetrations（OT range 40–100 mfp）  </p>
 </blockquote>
 <p>1-<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0306454920305430">Py-MLBUF: Development of an online-platform for gamma-ray shielding calculations and investigations</a></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Language</th>
-<th style="text-align:center">Energy</th>
-<th style="text-align:center">GSP Number</th>
-<th style="text-align:center">Max layers</th>
-<th style="text-align:center">Thickness</th>
+<th align="center">Language</th>
+<th align="center">Energy</th>
+<th align="center">GSP Number</th>
+<th align="center">Max layers</th>
+<th align="center">Thickness</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">Python</td>
-<td style="text-align:center">0.015–15 MeV</td>
-<td style="text-align:center">36</td>
-<td style="text-align:center">15</td>
-<td style="text-align:center">0.5-40mfp</td>
+<tbody><tr>
+<td align="center">Python</td>
+<td align="center">0.015–15 MeV</td>
+<td align="center">36</td>
+<td align="center">15</td>
+<td align="center">0.5-40mfp</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ol>
 <li>意义：材料的伽马射线屏蔽参数 (GSP) -&gt;设计伽马射线屏蔽室 (GSE)</li>
 <li>功能：（1）计算36个GSP，（2） 为MLSE寻找最佳组合（orientation and thickness of layers ）</li>
 <li>验证：与XCOM、XAAMDI、ANS 标准对比</li>
 <li>BUF计算方法：GP公式</li>
 </ol>
-<h3 id="BUF计算-Dataset">BUF计算-Dataset</h3>
-<p>1-<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0969806X25001884">Calculation of Gamma-Ray buildup factors up to 100 MFP by the Monte Carlo method</a></p>
+<h3 id="BUF计算-Dataset"><a href="#BUF计算-Dataset" class="headerlink" title="BUF计算-Dataset"></a>BUF计算-Dataset</h3><p>1-<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0969806X25001884">Calculation of Gamma-Ray buildup factors up to 100 MFP by the Monte Carlo method</a></p>
 <ul>
 <li>基于详细物理模型和先进的方差缩减技术，计算高达 100 MFP 的累积因子，并进行广泛的统计检验</li>
 <li>评估了物理模型、几何结构对累积因子的影响：考虑详细物理模型时，BUF 与标准数据相比最大增加了 523 倍，使标准数据库不再保守</li>
@@ -179,25 +175,23 @@
 <p>BUF计算研究大多局限于 20 MFP 以内，因为当计算规模超过约 10 MFP 时，MC 方法会遇到重大的“深度穿透挑战”，为了解决使用 MC 方法计算高达 100 MFP 的 BUF 时的深度穿透挑战，在 NPTS 程序中开发了一种基于粒子数控制方法的方差减少方案。</p>
 <p>2-<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41597-025-05814-y">A Simulated Comprehensive Photon Flux Shielding Spectra Dataset for Advanced Radiation Safety Assessment</a></p>
 <p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251021221432228.webp" alt="image-20251021221421350"></p>
-<h3 id="DL-单层BUF">DL&amp;单层BUF</h3>
-<p>1-<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0306454925007042">A unified surrogate model for enhanced photon shielding through an all-natural-element multi-group flux dataset</a></p>
+<h3 id="DL-单层BUF"><a href="#DL-单层BUF" class="headerlink" title="DL&amp;单层BUF"></a>DL&amp;单层BUF</h3><p>1-<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0306454925007042">A unified surrogate model for enhanced photon shielding through an all-natural-element multi-group flux dataset</a></p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251018142503359.webp" alt="CamScanner 10-16-2025 22.59" style="zoom: 20%;" />
+
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Energy</th>
-<th style="text-align:center">Thickness</th>
-<th style="text-align:center">Medel</th>
+<th align="center">Energy</th>
+<th align="center">Thickness</th>
+<th align="center">Medel</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">0.01-10MeV</td>
-<td style="text-align:center">0-40mfp</td>
-<td style="text-align:center">cGAN-U-Net</td>
+<tbody><tr>
+<td align="center">0.01-10MeV</td>
+<td align="center">0-40mfp</td>
+<td align="center">cGAN-U-Net</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li>数据处理：（1）对散射光子通量进行归一化</li>
 </ul>
@@ -205,49 +199,43 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">cGNet-Epoch</th>
-<th style="text-align:center">Batch size</th>
-<th style="text-align:center">Learning rate</th>
+<th align="center">cGNet-Epoch</th>
+<th align="center">Batch size</th>
+<th align="center">Learning rate</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">6000</td>
-<td style="text-align:center">64</td>
-<td style="text-align:center"></td>
+<tbody><tr>
+<td align="center">6000</td>
+<td align="center">64</td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>误差：95%的样本相对偏差在25%以下，</p>
 <p>创新点：</p>
 <p>3-<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0306454925006437">A fast and high-precision gamma-ray buildup factor prediction model based on ensemble machine learning</a></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Model</th>
-<th style="text-align:center">屏蔽材料</th>
-<th style="text-align:center">Energy</th>
-<th style="text-align:center">Thickness</th>
-<th style="text-align:center">Input</th>
-<th style="text-align:center">Output</th>
+<th align="center">Model</th>
+<th align="center">屏蔽材料</th>
+<th align="center">Energy</th>
+<th align="center">Thickness</th>
+<th align="center">Input</th>
+<th align="center">Output</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">ERT-XGBoost-ERT Ensemble</td>
-<td style="text-align:center">Be、B、C、N、O、Na、Mg、Al、Si、P、S、Ar、K、Ca、Cu、Mo、Sn、La、Gd、W、Pb 和 U</td>
-<td style="text-align:center">0.015-15 MeV</td>
-<td style="text-align:center">0-40mfp</td>
-<td style="text-align:center">E,Z,MAC,t</td>
-<td style="text-align:center">BUF</td>
+<tbody><tr>
+<td align="center">ERT-XGBoost-ERT Ensemble</td>
+<td align="center">Be、B、C、N、O、Na、Mg、Al、Si、P、S、Ar、K、Ca、Cu、Mo、Sn、La、Gd、W、Pb 和 U</td>
+<td align="center">0.015-15 MeV</td>
+<td align="center">0-40mfp</td>
+<td align="center">E,Z,MAC,t</td>
+<td align="center">BUF</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
-<li>
-<p>ERT-XGBoost-ERT Ensemble：随机树（ERT）和 XGBoost 组合作为基学习器，并以 ERT 作为元学习器进行堆叠。</p>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251016215258080.webp" style="zoom:67%;" />
-</li>
+<li><p>ERT-XGBoost-ERT Ensemble：随机树（ERT）和 XGBoost 组合作为基学习器，并以 ERT 作为元学习器进行堆叠。</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251016215258080.webp" style="zoom:67%;" /></li>
 </ul>
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/">论文精读</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {

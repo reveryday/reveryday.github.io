@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高等反应堆物理-03-中子输运理论 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="稳态问题 动态问题     能否维持链式反应 反应堆“偏离平衡，比如调棒、事故、温度变化时”，看功率怎么随时间变化    反应堆动力学-研究随时间变化的中子行为。 中子输运方程 中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：  中子是点粒子。 中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）。 介质材料的性">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高等反应堆物理-03-中子输运理论 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="中子输运方程中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：  中子是点粒子； 中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）； 介质材料的性质是各向同性的，且不随时间改变。     菲克定律 中子输运理论    各向同性散射+弱吸收介质（离开边界足够远、离开强吸收体（如控制棒、可燃毒物）足够远） 各向异性：中子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高等反应堆物理-03-中子输运理论">
 <meta property="og:url" content="http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="稳态问题 动态问题     能否维持链式反应 反应堆“偏离平衡，比如调棒、事故、温度变化时”，看功率怎么随时间变化    反应堆动力学-研究随时间变化的中子行为。 中子输运方程 中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：  中子是点粒子。 中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）。 介质材料的性">
+<meta property="og:description" content="中子输运方程中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：  中子是点粒子； 中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）； 介质材料的性质是各向同性的，且不随时间改变。     菲克定律 中子输运理论    各向同性散射+弱吸收介质（离开边界足够远、离开强吸收体（如控制棒、可燃毒物）足够远） 各向异性：中子">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-10-30T10:56:52.000Z">
-<meta property="article:modified_time" content="2025-11-06T01:29:27.860Z">
+<meta property="article:modified_time" content="2025-11-06T09:27:53.794Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="反应堆物理">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "http://reveryday.github.io/2025/10/30/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-03-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-10-30T10:56:52.000Z",
-  "dateModified": "2025-11-06T01:29:27.860Z",
+  "dateModified": "2025-11-06T09:27:53.794Z",
   "author": [
     {
       "@type": "Person",
@@ -134,144 +134,138 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">高等反应堆物理-03-中子输运理论</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">高等反应堆物理-03-中子输运理论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-30T10:56:52.000Z" title="发表于 2025-10-30 18:56:52">2025-10-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-06T01:29:27.860Z" title="更新于 2025-11-06 09:29:27">2025-11-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">高等反应堆物理</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><table>
-<thead>
-<tr>
-<th style="text-align:center">稳态问题</th>
-<th style="text-align:center">动态问题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">能否维持链式反应</td>
-<td style="text-align:center">反应堆“偏离平衡，比如调棒、事故、温度变化时”，看功率怎么随时间变化</td>
-</tr>
-</tbody>
-</table>
-<p>反应堆动力学-研究随<font color="green">时间</font>变化的中子行为。</p>
-<h3 id="中子输运方程">中子输运方程</h3>
-<p>中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">高等反应堆物理-03-中子输运理论</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">高等反应堆物理-03-中子输运理论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-30T10:56:52.000Z" title="发表于 2025-10-30 18:56:52">2025-10-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-06T09:27:53.794Z" title="更新于 2025-11-06 17:27:53">2025-11-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">高等反应堆物理</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="中子输运方程"><a href="#中子输运方程" class="headerlink" title="中子输运方程"></a>中子输运方程</h3><p>中子输运理论的假设比中子扩散理论少得多，因而限制少、适用范围广、也精确得多。菲克定律与中子输运理论的基本假设：</p>
 <ul>
-<li>中子是点粒子。</li>
-<li>中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）。</li>
+<li>中子是点粒子；</li>
+<li>中子之间的相互碰撞可以忽略（中子在与核的两次碰撞之间的运动轨迹是直线）；</li>
 <li>介质材料的性质是各向同性的，且不随时间改变。</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">菲克定律</th>
-<th style="text-align:center">中子输运理论</th>
+<th align="center">菲克定律</th>
+<th align="center">中子输运理论</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">各向同性散射+弱吸收介质（离开边界足够远、离开强吸收体（如控制棒、可燃毒物）足够远）</td>
-<td style="text-align:center">各向异性：中子的运动方向+中子与核碰撞后二次粒子的运动方向</td>
+<tbody><tr>
+<td align="center">各向同性散射+弱吸收介质（离开边界足够远、离开强吸收体（如控制棒、可燃毒物）足够远）</td>
+<td align="center">各向异性：中子的运动方向+中子与核碰撞后二次粒子的运动方向</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ol>
-<li>
-<p>泄露率：指的是不发生反应穿出微元的中子。</p>
+<li><p>泄露率：指的是不发生反应穿出微元的中子；</p>
 </li>
-<li>
-<p>移出率的三个来源：（1）中子被吸收。（2）中子发生散射从而在所研究的相空间（$r, E, \Omega$）基元中损失。</p>
+<li><p>移出率的三个来源：（1）中子被吸收。（2）中子发生散射从而在所研究的相空间（$r, E, \Omega$）基元中损失；</p>
 </li>
-<li>
-<p>产生率：散射、裂变、独立外源。</p>
+<li><p>产生率：散射、裂变、独立外源。</p>
 </li>
 </ol>
 <p><strong>引入：</strong></p>
 <ul>
-<li>
-<p>中子角密度$n$：单位体积、单位能量间隔、单位立体角的中子数。</p>
+<li><p>中子角密度$n$：单位体积、单位能量间隔、单位立体角的中子数；</p>
 </li>
-<li>
-<p>中子角注量率$\phi$（中子角通量）：单位面积、单位能量间隔、单位立体角、单位时间的中子数</p>
+<li><p>中子角注量率$\phi$（中子角通量）：单位面积、单位能量间隔、单位立体角、单位时间的中子数；</p>
 </li>
-<li>
-<p>中子角流$J$</p>
+<li><p>中子角流$J$；</p>
 </li>
-<li>
-<p>散射函数$f$</p>
+<li><p>散射函数$f$；</p>
 </li>
 </ul>
 <blockquote>
-<p>在中子输运理论中，$J$与$\phi$之间的关系（$J= \int \Phi \Omega d\Omega$ ；中子流是由无数角中子流合成，恰如合力与分力的关系）很简单，且是精确关系。在中子扩散理论中，$J$与$\phi$之间的关系是菲克定律，是近似成立的关系。</p>
+<p>在中子输运理论中，$J$与$\phi$之间的关系（$J&#x3D; \int \Phi \Omega d\Omega$ ；中子流是由无数角中子流合成，恰如合力与分力的关系）很简单，且是精确关系。在中子扩散理论中，$J$与$\phi$之间的关系是菲克定律，是近似成立的关系。</p>
 </blockquote>
 <p>中子输运方程推导：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251030191513550.webp" style="zoom: 30%;" />
-<p>中子输运方程是一个七维变量的微分-积分方程，在稳态（$\Sigma$近似认为不随时间变化；$\Sigma = \sigma N$，即认为$N$不随时间变化）的情况下，截面随能量的变化非常剧烈。</p>
-<h3 id="泄露算符-Omega-nabla-phi">泄露算符$\Omega \nabla \phi $</h3>
-<p>（1）直角坐标系</p>
+
+<p>中子输运方程是一个七维变量的微分-积分方程，在稳态（$\Sigma$近似认为不随时间变化；$\Sigma &#x3D; \sigma N$，即认为$N$不随时间变化）的情况下，截面随能量的变化非常剧烈。</p>
+<h3 id="泄露算符-Omega-nabla-phi"><a href="#泄露算符-Omega-nabla-phi" class="headerlink" title="泄露算符$\Omega \nabla \phi $"></a>泄露算符$\Omega \nabla \phi $</h3><p>（1）直角坐标系</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251102222545918.webp" alt="f4det是1_g4dEdsaS" style="zoom: 15%;" />
+
 <p>（2）柱坐标系</p>
 <p>（3）球坐标系</p>
-<h3 id="边界条件">边界条件</h3>
-<ol>
+<h3 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a>边界条件</h3><ol>
 <li>在方程适用的区域内，$\phi$应为有限、 非负的实数；</li>
 <li>在两种不同介质的分界面上，$\phi$沿$\Omega$方向是$r$的连续函数；</li>
 <li>凸自由边界条件；</li>
 </ol>
-<h3 id="本征值">本征值</h3>
-<p>转化比：<img src="https://gitee.com/wenswuu/pictures/raw/master/20251102203141531.webp" style="zoom:67%;" /></p>
+<h3 id="本征值"><a href="#本征值" class="headerlink" title="本征值"></a>本征值</h3><p>转化比：<img src="https://gitee.com/wenswuu/pictures/raw/master/20251102203141531.webp" style="zoom:67%;" /></p>
 <p>转化比CR&gt;1即为增殖介质，CR&lt;1，为非增值介质。</p>
-<p>无源的非定常输运方程可以简化为几种与时间无关的本征值方程，这样相当于引进了一个<strong>虚构的反应堆</strong>，它在某一特定时刻具有与真实反应堆一样的结构和成分。通过引入不同的本征值就相当于把一个真实的反应堆系统等效为一个虚拟的临界系统，这样<font color="blue">确定系统临界性</font>的问题就转变成为求解本征方程的本征值问题。</p>
+<p>无源的非定常输运方程可以简化为几种与时间无关的本征值方程，这样相当于引进了一个<strong>虚构的反应堆</strong>，它在某一特定时刻具有与真实反应堆一样的结构和成分。通过引入不同的本征值就相当于把一个真实的反应堆系统等效为一个虚拟的临界系统，这样<font color="blue">确定系统临界性</font>（稳态计算？）的问题就转变成为求解本征方程的本征值问题。</p>
 <p>四种本征值：</p>
 <blockquote>
-<p>expands the time dependent flux as a sum of several spatial eigenfunctions of the initial configuration of the reactor.</p>
+<p>expands the time dependent flux as a sum of several spatial eigenfunctions of the initial configuration of the reactor. </p>
 </blockquote>
 <p>反应堆中只有两类<strong>稳态问题</strong>：（1）无外源临界问题，（2）有外源（与裂变源无关）的次临界问题。</p>
-<p>对于反应堆临界计算，大部分情况下采用 k  本征值，原因是：$k$ 本征值方程关注的是裂变链式反应的稳态平衡，它通过调整裂变源的强度来实现 $k_{\text{eff}}=1$ 的目标，因此它适用于任何状态下的稳态平衡计算。而$\alpha$本征值：（1）在次临界情况下，可能会出现负的总截面值（在空洞处）；（2）在超临界情况下造成能谱硬化，在次临界情况下造成能谱软化。 （3）K本征值有明确的物理意义。</p>
+<p>对于反应堆临界计算，大部分情况下采用 k  本征值，原因是：$k$ 本征值方程关注的是裂变链式反应的稳态平衡，它通过调整裂变源的强度来实现 $k_{\text{eff}}&#x3D;1$ 的目标，因此它适用于任何状态下的稳态平衡计算。而$\alpha$本征值：（1）在次临界情况下，可能会出现负的总截面值（在空洞处）；（2）在超临界情况下造成能谱硬化，在次临界情况下造成能谱软化。 （3）K本征值有明确的物理意义。</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251102214741932.webp" alt="image-20251102210622989" style="zoom: 80%;" />
+
 <table>
 <thead>
 <tr>
-<th style="text-align:center">K</th>
-<th style="text-align:center">$\alpha / \lambda$</th>
-<th style="text-align:center">$\gamma$</th>
-<th style="text-align:center">$\delta$</th>
+<th align="center">Eigenvalue</th>
+<th align="center">K</th>
+<th align="center">$\alpha &#x2F; \lambda$</th>
+<th align="center">$\gamma$</th>
+<th align="center">$\delta$</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">effective fission multiplication factor</td>
-<td style="text-align:center">asymptotic（渐进的） inverse reactor period</td>
-<td style="text-align:center">effective  collision multiplication factor（碰撞的倍增因子）</td>
-<td style="text-align:center">effective  density factor,</td>
+<tbody><tr>
+<td align="center">物理意义</td>
+<td align="center">effective fission multiplication factor（有效增值因子）</td>
+<td align="center">asymptotic（渐进的） inverse reactor period（时间衰减常数）</td>
+<td align="center">effective  collision multiplication factor（有效碰撞增值因子）</td>
+<td align="center">effective  density factor（有效密度因子）</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">时变反应堆分析</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">for  critical size or concentration searches；</td>
+<td align="center">计算方法</td>
+<td align="center"></td>
+<td align="center">（1）直接模拟方法  （2）$k-\alpha$迭代</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
+<tr>
+<td align="center">应用</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">for  critical size or concentration searches</td>
+</tr>
+</tbody></table>
 <p>除了在临界系统中之外，不同的特征函数对应不同的特征值。</p>
-<h4 id="K-系统能否维持链式反应">$K$-系统能否维持链式反应</h4>
-<p>$$<br>
-K=\frac{系统下一代产生的中子总数}{系统上一代损失的中子总数}=\frac{裂变}{泄露+吸收}<br>
-$$</p>
+<h4 id="k"><a href="#k" class="headerlink" title="$k$"></a>$k$</h4><p>$$<br>K&#x3D;\frac{第n代中子数}{第n-1代中子数}&#x3D;\frac{裂变}{泄露+吸收}<br>$$</p>
 <blockquote>
-<p>我一直很不明白到底为什么k的定义是子代/父代？这是一个物理上的严格定义么？还是只跟1对比做一个参照。</p>
+<p>我一直很不明白到底为什么k的定义是子代&#x2F;父代？这是一个物理上的严格定义么？还是只跟1对比做一个参照。</p>
 </blockquote>
-<h4 id="alpha-lambda">$\alpha$/$\lambda$</h4>
-<h4 id="gamma">$\gamma$</h4>
-<p>定义了维持中子群体的稳态分布所需的每次碰撞平均次级中子数。</p>
-<h4 id="delta">$\delta$</h4>
-<p>可以被视为对<strong>空间坐标的重新缩放</strong>（re-scaling of the spatial coordinates）6，即修改了角流和角通量之间的关系。</p>
-<h3 id="源迭代法">源迭代法</h3>
-<p>收敛的物理依据：对于一个临界系统，开始时只要随便投入一些中子（不管如何分布），它们在堆内被慢化、吸收、引发裂变产生新一代中子……，经过很多代以后，系统中很快就会建立起稳定的中子注量率分布。</p>
-<h3 id="碰撞概率法">碰撞概率法</h3>
-<p>（CPM：Collision Probability Method）</p>
+<p>α偏离0越远表明系统中子增殖（或衰减）越快，系统偏离临界越远。但是对于含轻核素较多的次临界系统，由于中子寿命太长，α也将趋近0，所以此时α已经不能真实、客观地反映系统的临界特性对这种系统 k 比α更适合用于表征系统的临界特性。</p>
+<p><strong>应用实例 – 临界分析：</strong></p>
+<ul>
+<li>微型反应堆可作为月球表面动力、航天器动力等用于太空探索，反应堆发射前需要对发射事故的影响进行安全分析。反应堆高空坠落并撞击到混凝土是主要的临界安全分析场景</li>
+<li>熔盐堆是国际公认推荐的 6 种第四代反应堆型之一，可以使用液态核燃料，其核燃料生产、转运和贮存所涉及工艺过程与常规固态核燃料堆型也不同。为做好核燃料管理和核安全监管，有必要对其贮存的临界安全进行分析。</li>
+</ul>
+<h4 id="alpha-lambda"><a href="#alpha-lambda" class="headerlink" title="$\alpha$&#x2F;$\lambda$"></a>$\alpha$&#x2F;$\lambda$</h4><p>描述系统中子场随时间的变化行为，用于时变反应堆分析。</p>
+<ol>
+<li>直接模拟法：在直接模拟法当中， 给定任意源分布， 待系统达到稳态， 即中子分布达到本征分布的情况下， 通过拟合中子时间谱得到系统的 α 本征值；</li>
+</ol>
+<h4 id="gamma"><a href="#gamma" class="headerlink" title="$\gamma$"></a>$\gamma$</h4><p>定义了维持中子群体的稳态分布所需的每次碰撞平均次级中子数。</p>
+<h4 id="delta"><a href="#delta" class="headerlink" title="$\delta$"></a>$\delta$</h4><p>可以被视为对<font color="blue">空间坐标的重新缩放</font>（re-scaling of the spatial coordinates）6，即修改了角流和角通量之间的关系。在给定的某种介质下，通过改变其密度、引入作用于系统所有材料属性的特征值，应该有可能达到临界状态。</p>
+<h3 id="源迭代法"><a href="#源迭代法" class="headerlink" title="源迭代法"></a>源迭代法</h3><p>收敛的物理依据：对于一个临界系统，开始时只要随便投入一些中子（不管如何分布），它们在堆内被慢化、吸收、引发裂变产生新一代中子……，经过很多代以后，系统中很快就会建立起稳定的中子注量率分布。  </p>
+<h3 id="碰撞概率法"><a href="#碰撞概率法" class="headerlink" title="碰撞概率法"></a>碰撞概率法</h3><p>（CPM：Collision Probability Method）</p>
 <p>CPM的基本假设：</p>
 <ol>
 <li>小区域上的平通量假设（区域要分的足够小）；</li>
 <li>散射各向同性假设（散射的各向异性不如$\phi$（$\Omega$） 的各向异性重要）；</li>
 </ol>
-<p>它求解的是中子注量率而非中子角注量率，但是它的基本思想也源自积分形式的中子输运方程，解的精度也接近输运解，高于扩散解。基本思想：区域中某点$P$的通量，可视为该区域中其他所有点发出的、未经碰撞而飞到$P$点的中子之总和。</p>
+<p>它求解的是中子注量率而非中子角注量率，但是它的基本思想也源自积分形式的中子输运方程，解的精度也接近输运解，高于扩散解。基本思想：区域中某点$P$的通量，可视为该区域中其他所有点发出的、未经碰撞而飞到$P$点的中子之总和。  </p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251102223524670.webp" style="zoom:67%;" />
+
+
+
+
+
+
+
+
+
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">反应堆物理</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
