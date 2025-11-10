@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ML-02-高级学习算法 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="功能 Numpy Tensor     自动求导 不支持 支持   设备 仅支持CPU CPU、GPU、TPU   用途 纯数值计算 神经网络训练、反向传播     我其实不太喜欢吴恩达的ML课，总感觉很不适应、很抽象，就像我的数值分析这样一门基于计算机编程的课，却没有教一行代码一样的抽象，但这是公认的比较权威的ML课程，所以再不喜欢，也还是打算先刷一遍。  Convolutional La">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ML-02-高级学习算法 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="功能 Numpy Tensor    自动求导 不支持 支持   设备 仅支持CPU CPU、GPU、TPU   用途 纯数值计算 神经网络训练、反向传播    我其实不太喜欢吴恩达的ML课，总感觉很不适应、很抽象，就像我的数值分析这样一门基于计算机编程的课，却没有教一行代码一样的抽象，但这是公认的比较权威的ML课程，所以再不喜欢，也还是打算先刷一遍。  Convolutional Laye">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ML-02-高级学习算法">
 <meta property="og:url" content="http://reveryday.github.io/2025/10/28/ML-02-%E9%AB%98%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="功能 Numpy Tensor     自动求导 不支持 支持   设备 仅支持CPU CPU、GPU、TPU   用途 纯数值计算 神经网络训练、反向传播     我其实不太喜欢吴恩达的ML课，总感觉很不适应、很抽象，就像我的数值分析这样一门基于计算机编程的课，却没有教一行代码一样的抽象，但这是公认的比较权威的ML课程，所以再不喜欢，也还是打算先刷一遍。  Convolutional La">
+<meta property="og:description" content="功能 Numpy Tensor    自动求导 不支持 支持   设备 仅支持CPU CPU、GPU、TPU   用途 纯数值计算 神经网络训练、反向传播    我其实不太喜欢吴恩达的ML课，总感觉很不适应、很抽象，就像我的数值分析这样一门基于计算机编程的课，却没有教一行代码一样的抽象，但这是公认的比较权威的ML课程，所以再不喜欢，也还是打算先刷一遍。  Convolutional Laye">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-10-28T06:31:03.000Z">
-<meta property="article:modified_time" content="2025-11-09T15:14:27.303Z">
+<meta property="article:modified_time" content="2025-11-09T15:16:16.016Z">
 <meta property="article:author" content="Wens">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://reveryday.github.io/images/wens.png"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "http://reveryday.github.io/2025/10/28/ML-02-%E9%AB%98%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-10-28T06:31:03.000Z",
-  "dateModified": "2025-11-09T15:14:27.303Z",
+  "dateModified": "2025-11-09T15:16:16.016Z",
   "author": [
     {
       "@type": "Person",
@@ -133,91 +133,92 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">ML-02-高级学习算法</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ML-02-高级学习算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-28T06:31:03.000Z" title="发表于 2025-10-28 14:31:03">2025-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-09T15:14:27.303Z" title="更新于 2025-11-09 23:14:27">2025-11-09</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><table>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">ML-02-高级学习算法</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ML-02-高级学习算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-28T06:31:03.000Z" title="发表于 2025-10-28 14:31:03">2025-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-09T15:16:16.016Z" title="更新于 2025-11-09 23:16:16">2025-11-09</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><table>
 <thead>
 <tr>
-<th style="text-align:center">功能</th>
-<th style="text-align:center">Numpy</th>
-<th style="text-align:center">Tensor</th>
+<th align="center">功能</th>
+<th align="center">Numpy</th>
+<th align="center">Tensor</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">自动求导</td>
-<td style="text-align:center">不支持</td>
-<td style="text-align:center">支持</td>
+<tbody><tr>
+<td align="center">自动求导</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
 </tr>
 <tr>
-<td style="text-align:center">设备</td>
-<td style="text-align:center">仅支持CPU</td>
-<td style="text-align:center">CPU、GPU、TPU</td>
+<td align="center">设备</td>
+<td align="center">仅支持CPU</td>
+<td align="center">CPU、GPU、TPU</td>
 </tr>
 <tr>
-<td style="text-align:center">用途</td>
-<td style="text-align:center">纯数值计算</td>
-<td style="text-align:center">神经网络训练、反向传播</td>
+<td align="center">用途</td>
+<td align="center">纯数值计算</td>
+<td align="center">神经网络训练、反向传播</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <blockquote>
 <p>我其实不太喜欢吴恩达的ML课，总感觉很不适应、很抽象，就像我的数值分析这样一门基于计算机编程的课，却没有教一行代码一样的抽象，但这是公认的比较权威的ML课程，所以再不喜欢，也还是打算先刷一遍。</p>
 </blockquote>
-<h3 id="Convolutional-Layer-CNN">Convolutional Layer-CNN</h3>
-<p>每个卷积核只能看到一部分数据：</p>
+<h3 id="Convolutional-Layer-CNN"><a href="#Convolutional-Layer-CNN" class="headerlink" title="Convolutional Layer-CNN"></a>Convolutional Layer-CNN</h3><p>每个卷积核只能看到一部分数据：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029133756405.webp" alt="image-20251029133752376" style="zoom:50%;" />
-<h3 id="数据增强">数据增强</h3>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251029141454405.webp" style="zoom:30%;" />
+
+<h3 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h3><img src="https://gitee.com/wenswuu/pictures/raw/master/20251029141454405.webp" style="zoom:30%;" />
+
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029141534961.webp" style="zoom:35%;" />
+
 <p>增加噪音-人工增加训练数据的量</p>
-<h3 id="数据合成">数据合成</h3>
-<p>应用于计算机视觉任务</p>
+<h3 id="数据合成"><a href="#数据合成" class="headerlink" title="数据合成"></a>数据合成</h3><p>应用于计算机视觉任务</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029142113708.webp" alt="image-20251029142110177" style="zoom:50%;" />
-<h3 id="迁移学习">迁移学习</h3>
-<p>微调</p>
+
+<h3 id="迁移学习"><a href="#迁移学习" class="headerlink" title="迁移学习"></a>迁移学习</h3><p>微调</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029142918180.webp" style="zoom:50%;" />
-<h3 id="机器学习项目的完整周期">机器学习项目的完整周期</h3>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251029151109373.webp" alt="image-20251029150701732" style="zoom:40%;" />
+
+<h3 id="机器学习项目的完整周期"><a href="#机器学习项目的完整周期" class="headerlink" title="机器学习项目的完整周期"></a>机器学习项目的完整周期</h3><img src="https://gitee.com/wenswuu/pictures/raw/master/20251029151109373.webp" alt="image-20251029150701732" style="zoom:40%;" />
+
 <p>部署</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029151152341.webp" style="zoom:50%;" />
-<h3 id="倾斜数据集的误差指标">倾斜数据集的误差指标</h3>
-<p>源于这样一个问题：</p>
+
+<h3 id="倾斜数据集的误差指标"><a href="#倾斜数据集的误差指标" class="headerlink" title="倾斜数据集的误差指标"></a>倾斜数据集的误差指标</h3><p>源于这样一个问题：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029152854848.webp" style="zoom:40%;" />
+
 <p>Precision &amp; Recall</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029152932784.webp" style="zoom:50%;" />
+
 <p>权衡</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251029153530821.webp" alt="image-20251029153521096" style="zoom:50%;" />
-<h3 id="决策树-分类">决策树-分类</h3>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251109214307874.webp" alt="image-20251109214300203" style="zoom:57%;" />
+
+<h3 id="决策树-分类"><a href="#决策树-分类" class="headerlink" title="决策树-分类"></a>决策树-分类</h3><img src="https://gitee.com/wenswuu/pictures/raw/master/20251109214307874.webp" alt="image-20251109214300203" style="zoom:57%;" />
+
 <p>测量不纯度-衡量数值中的杂志：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109214850621.webp" style="zoom:57%;" />
+
 <p>熵的减少成为信息增益（Information gain），计算每个节点熵的减少量决定使用什么特征（选择信息增益最高的特征）以及什么时候停止。</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109220259207.webp" style="zoom:57%;" />
+
 <p>独热编码（one-hot encoding）-解决多值特征：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109222313758.webp" style="zoom:67%;" />
+
 <p>处理连续的特征-使用不同的值进行分割。</p>
-<h4 id="回归树">回归树</h4>
-<p>取平均值</p>
+<h4 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h4><p>取平均值</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109223446843.webp" style="zoom: 50%;" />
+
 <p>计算方差的减少-选择使用什么特征</p>
 <p>树集成：每一个决策树先实现预测，然后对结果进行投票，使其对单颗树的影响不那么敏感；</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109224840417.webp" style="zoom:67%;" />
+
 <p>放回抽样-创建新的数据集</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109230222945.webp" style="zoom:50%;" />
-<h4 id="随机森林">随机森林</h4>
-<p>数据探索了更多小变化</p>
+
+<h4 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h4><p>数据探索了更多小变化</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109225825561.webp" style="zoom: 50%;" />
-<p>一般：<br>
-$$<br>
-k=\sqrt{n}<br>
-$$</p>
-<h4 id="XGBoost">XGBoost</h4>
-<p>刻意练习：更高概率选择出错的数据</p>
+
+<p>一般：<br>$$<br>k&#x3D;\sqrt{n}<br>$$</p>
+<h4 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h4><p>刻意练习：更高概率选择出错的数据</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109230824362.webp" style="zoom: 67%;" />
-<h4 id="When-to-use-decision-trees">When to use decision trees?</h4>
-<ul>
-<li>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251109231411932.webp" style="zoom:67%;" />
-</li>
+
+<h4 id="When-to-use-decision-trees"><a href="#When-to-use-decision-trees" class="headerlink" title="When to use decision trees?"></a>When to use decision trees?</h4><ul>
+<li><img src="https://gitee.com/wenswuu/pictures/raw/master/20251109231411932.webp" style="zoom:57%;" /></li>
 </ul>
 </article><div class="tag_share"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
