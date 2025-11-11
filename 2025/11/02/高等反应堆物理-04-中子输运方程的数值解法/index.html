@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高等反应堆物理-04-中子输运方程的数值解法 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="稳态问题 动态问题     物理背景 反应堆配置（燃料、慢化剂、几何形状）能否自我维持链式反应 反应堆“偏离平衡，比如调棒、事故、温度变化时”，看功率怎么随时间变化   目的 $({\Sigma}t +{\Omega}{\nabla}){\phi}-{Q_s} &#x3D;\frac{1}{k}{Q_f}$ --&gt; 求解$k{eff}$ $\frac{1}{v}\frac{\partial \">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高等反应堆物理-04-中子输运方程的数值解法 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="稳态问题 动态问题     物理背景 反应堆配置（燃料、慢化剂、几何形状）能否自我维持链式反应 反应堆“偏离平衡，比如调棒、事故、温度变化时”，看功率怎么随时间变化   目的 $({\Sigma}t +{\Omega}{\nabla}){\phi}-{Q_s} &#x3D;\frac{1}{k}{Q_f}$  --&gt;  求解$k{eff}$ $\frac{1}{v}\frac{\partial">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高等反应堆物理-04-中子输运方程的数值解法">
 <meta property="og:url" content="http://reveryday.github.io/2025/11/02/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-04-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%9A%84%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="稳态问题 动态问题     物理背景 反应堆配置（燃料、慢化剂、几何形状）能否自我维持链式反应 反应堆“偏离平衡，比如调棒、事故、温度变化时”，看功率怎么随时间变化   目的 $({\Sigma}t +{\Omega}{\nabla}){\phi}-{Q_s} &#x3D;\frac{1}{k}{Q_f}$ --&gt; 求解$k{eff}$ $\frac{1}{v}\frac{\partial \">
+<meta property="og:description" content="稳态问题 动态问题     物理背景 反应堆配置（燃料、慢化剂、几何形状）能否自我维持链式反应 反应堆“偏离平衡，比如调棒、事故、温度变化时”，看功率怎么随时间变化   目的 $({\Sigma}t +{\Omega}{\nabla}){\phi}-{Q_s} &#x3D;\frac{1}{k}{Q_f}$  --&gt;  求解$k{eff}$ $\frac{1}{v}\frac{\partial">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/wens.png">
 <meta property="article:published_time" content="2025-11-02T14:40:47.000Z">
-<meta property="article:modified_time" content="2025-11-09T04:21:23.610Z">
+<meta property="article:modified_time" content="2025-11-11T15:27:20.713Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="反应堆物理">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "http://reveryday.github.io/2025/11/02/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86-04-%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%9A%84%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/",
   "image": "http://reveryday.github.io/images/wens.png",
   "datePublished": "2025-11-02T14:40:47.000Z",
-  "dateModified": "2025-11-09T04:21:23.610Z",
+  "dateModified": "2025-11-11T15:27:20.713Z",
   "author": [
     {
       "@type": "Person",
@@ -134,7 +134,7 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">高等反应堆物理-04-中子输运方程的数值解法</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">高等反应堆物理-04-中子输运方程的数值解法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-02T14:40:47.000Z" title="发表于 2025-11-02 22:40:47">2025-11-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-09T04:21:23.610Z" title="更新于 2025-11-09 12:21:23">2025-11-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">高等反应堆物理</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><table>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">高等反应堆物理-04-中子输运方程的数值解法</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">高等反应堆物理-04-中子输运方程的数值解法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-02T14:40:47.000Z" title="发表于 2025-11-02 22:40:47">2025-11-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-11T15:27:20.713Z" title="更新于 2025-11-11 23:27:20">2025-11-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%AB%98%E7%AD%89%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">高等反应堆物理</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><table>
 <thead>
 <tr>
 <th style="text-align:center"></th>
@@ -150,7 +150,7 @@
 </tr>
 <tr>
 <td style="text-align:center">目的</td>
-<td style="text-align:center">$({\Sigma}<em>t +{\Omega}{\nabla}){\phi}-{Q_s} =\frac{1}{k}{Q_f}$ --&gt; 求解$k</em>{eff}$</td>
+<td style="text-align:center">$({\Sigma}<em>t +{\Omega}{\nabla}){\phi}-{Q_s} =\frac{1}{k}{Q_f}$  --&gt;  求解$k</em>{eff}$</td>
 <td style="text-align:center">$\frac{1}{v}\frac{\partial \phi }{\partial t}+\Omega \nabla \phi +\Sigma _t \phi-Q_s=Q_f$ --&gt;求解$\phi$</td>
 </tr>
 <tr>
@@ -185,16 +185,24 @@
 <blockquote>
 <p>均匀化方法：</p>
 </blockquote>
-<h3 id="E-离散-多群中子输运方程">$E$离散- 多群中子输运方程</h3>
+<h3 id="（一）源迭代法">（一）源迭代法</h3>
+<p>$$<br>
+M\phi=\frac{1}{k_{eff}}F\phi<br>
+$$</p>
+<p>对于给定的系统，只有当特征值等于确定数值时方程才有解，但是要精确求出$k_{eff}$即其对应的特征函数$\phi_{g}®$是一件十分困难的事，因此在反应堆计算中，广泛使用源迭代法近似求解。</p>
+<p><font color="green">源迭代法收敛的物理解释：</font></p>
+<p>对于一个临界系统，开始时只要随便投入一些中子（不管如何分布），它们在堆内被慢化、吸收、引发裂变产生新一代中子，经过很多代以后，系统中很快就会建立起稳定的中子注量率分布。</p>
+<h3 id="（二）碰撞概率法">（二）碰撞概率法</h3>
+<p><font color="green">CPM（Collision Probability Method）的基本假设：</font></p>
+<ol>
+<li>小区域上的平通量假设（区域要分的足够小）；</li>
+<li>散射各向同性假设（散射的各向异性不如$\phi(\Omega)$ 的各向异性重要）；</li>
+</ol>
+<p>它求解的是中子注量率而非中子角注量率，但是它的基本思想也源自积分形式的中子输运方程，解的精度也接近输运解，高于扩散解。基本思想：区域中某点$P$的通量，可视为该区域中其他所有点发出的、未经碰撞而飞到$P$点的中子之总和。</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251111151047329.webp" style="zoom:67%;" />
+<h3 id="（三）-E-离散-多群中子输运方程">（三）$E$离散- 多群中子输运方程</h3>
 <p>将中子能量变化范围分为$G$个区间，能群从高能到低能进行编号，将中子输运方程对能量$E$从$E_{g+1}$到$E_g$积分 -&gt; 消除了能量变量。群参数的准确性是影响计算精度的重要因素，确定群常数时需要$\phi$，一般只能取近似的中子角通量谱。</p>
-<h3 id="Omega-展开-中子扩散近似（-P-1-近似）">$\Omega$展开- 中子扩散近似（$P_1$近似）</h3>
-<p>先将$\Omega$使用球谐函数进行展开，再能量分群。展开如下：<br>
-$$<br>
-\phi =\frac{1}{4\pi }[\phi_0 +3\Omega \cdot J]<br>
-$$<br>
-在真空边界或强吸收体附近，或者在介质非均匀性和$\phi$各向异性比较强的系统中，误差比较大。</p>
-<p>引入输运近似后，P1近似等效于扩散方程。</p>
-<h3 id="Omega-展开-P-n-方法">$\Omega$展开 - $P_n$方法</h3>
+<h3 id="（四）-Omega-展开-P-n-方法">（四）$\Omega$展开 - $P_n$方法</h3>
 <ul>
 <li>
 <p>目标：消去角度变量；</p>
@@ -204,12 +212,25 @@ $$<br>
 $$<br>
 \Phi(\vec{\Omega}) = \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \Phi_{l m} Y_{l m}(\vec{\Omega})<br>
 $$<br>
-其中，$Y_{l m}(\vec{\Omega})$ 就是球谐函数（Spherical Harmonics）。</p>
+其中，$Y_{l m}(\vec{\Omega})$ 就是球谐函数（Spherical Harmonics）。一维平板情况下，球谐函数退化为勒让德函数。</p>
 </li>
 </ul>
 <p><strong>勒让德多项式</strong></p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251102224822143.webp" style="zoom:67%;" />
-<h3 id="Omega-离散-S-N-方法">$\Omega$离散 - $S_N$方法</h3>
+<p>勒让德多项式的性质：（1）递推公式，（2）正交性，（3）加法定理。</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251111225856353.webp" alt="image-20251111225852615" style="zoom:67%;" />
+<p><strong>一维平板单速输运方程的$P_N$解法：</strong></p>
+<blockquote>
+<p>这个看了一下暂时没看懂，为什么要展开成$\phi(Z,\mu) = \phi_n(Z) P_n(\mu)$这样的形式。</p>
+</blockquote>
+<img src="C:/Users/34001/AppData/Local/Temp/Cache/oPlusConnect/TempFiles/ィ→维平板单能.jpg" alt="ィ→维平板单能" style="zoom: 25%;" />
+<p><font color=blue>中子扩散近似（$P_1$近似）：</font></p>
+<p>先将$\Omega$使用球谐函数进行展开，再能量分群。展开如下：<br>
+$$<br>
+\phi =\frac{1}{4\pi }[\phi_0 +3\Omega \cdot J]<br>
+$$<br>
+在真空边界或强吸收体附近，或者在介质非均匀性和$\phi$各向异性比较强的系统中，误差比较大。引入输运近似后，P1近似等效于扩散方程。</p>
+<h3 id="（五）-Omega-离散-S-N-方法">（五）$\Omega$离散 - $S_N$方法</h3>
 <p>每个方向$\Omega_m$可以看成单位球面上一点，其邻域面积为$\omega_m$（求积权重系数）-&gt; $\phi_{(g,m)}$。</p>
 <p>求积组{$\Omega _m,\omega _m$}的选取：常用高斯求积组、全对称求积组。</p>
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8F%8D%E5%BA%94%E5%A0%86%E7%89%A9%E7%90%86/">反应堆物理</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
