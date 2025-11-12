@@ -134,46 +134,49 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL6-recurrent-neural-networks</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL6-recurrent-neural-networks</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T13:24:03.000Z" title="发表于 2025-03-16 21:24:03">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-20T04:54:54.814Z" title="更新于 2025-10-20 12:54:54">2025-10-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>到目前为止我们默认数据都来自于某种分布， 并且所有样本都是独立同分布的，大多数的数据并非如此，且我们不仅仅需要接收一个序列作为输入，而是还期望继续猜测这个序列的后续。</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">DL6-recurrent-neural-networks</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">DL6-recurrent-neural-networks</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T13:24:03.000Z" title="发表于 2025-03-16 21:24:03">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-20T04:54:54.814Z" title="更新于 2025-10-20 12:54:54">2025-10-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Deep-Learning-PyTorch/">Deep Learning-PyTorch</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>到目前为止我们默认数据都来自于某种分布， 并且所有样本都是独立同分布的，大多数的数据并非如此，且我们不仅仅需要接收一个序列作为输入，而是还期望继续猜测这个序列的后续。</p>
 <blockquote>
 <p>CNN可以有效处理空间信息，RNN可以处理时间信息，或者样本之间并非独立同分布的数据。</p>
 </blockquote>
 <p>卷积神经网络可以有效地处理空间信息， 那么<strong>循环神经网络（RNN）则可以更好地处理序列信息</strong>，通过引入状态变量存储过去的信息和当前的输入，从而可以确定当前的输出。</p>
-<h3 id="自回归模型"><a href="#自回归模型" class="headerlink" title="自回归模型"></a>自回归模型</h3><ol>
-<li><p>$t &gt; \tau$时，用观测序列$x_{t-1}, \ldots, x_{t-\tau}$$x_{\tau}$预测当下，参数的数量不变，这种模型被称为<strong>自回归模型</strong>，因为它们是对自己执行回归</p>
+<h3 id="自回归模型">自回归模型</h3>
+<ol>
+<li>
+<p>$t &gt; \tau$时，用观测序列$x_{t-1}, \ldots, x_{t-\tau}$$x_{\tau}$预测当下，参数的数量不变，这种模型被称为<strong>自回归模型</strong>，因为它们是对自己执行回归</p>
 
 
 2. 保留一些对过去观测的总结$h_t$，同时更新预测$\hat{x}_t$和总结$h_t$，基于$\hat{x}_t = P(x_t \mid h_{t})$估计$x_t$，以及公式$h_t = g(h_{t-1}, x_{t-1})$更新的模型，由于$h_t$未被观测到，这类模型称为**隐变量自回归模型**
 
    
-
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153534088.webp"></p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153534088.webp" alt=""></p>
 </li>
 </ol>
-<h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><p>处理逻辑：</p>
+<h2 id="RNN">RNN</h2>
+<p>处理逻辑：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153538416.webp" style="zoom: 20%;" />
 $$
 P(x_t \mid x_{t-1}, \ldots, x_1) \approx P(x_t \mid h_{t-1})
 $$
-
-<p>$$<br>h_t &#x3D; f(x_{t}, h_{t-1})<br>$$</p>
+<p>$$<br>
+h_t = f(x_{t}, h_{t-1})<br>
+$$</p>
 <p>这些变量捕获并保留了序列直到其当前时间步的历史信息， 就如当前时间步下神经网络的状态或记忆。由于在当前时间步中， 隐状态使用的定义与前一个时间步中使用的定义相同， 因此计算是<em>循环的</em>（recurrent），于是基于循环计算的隐状态神经网络被命名为 <strong>循环神经网络</strong>（RNN），在循环神经网络中执行隐变量计算的层称为<strong>循环层</strong>（recurrent layer）</p>
 <blockquote>
 <p>即使在不同的时间步，循环神经网络也总是使用这些模型参数，因此，循环神经网络的参数开销不会随着时间步的增加而增加。</p>
 </blockquote>
 <p>初始化：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">rnn <span class="token operator">=</span> nn<span class="token punctuation">.</span>RNN<span class="token punctuation">(</span>input_size<span class="token punctuation">,</span> hidden_size<span class="token punctuation">,</span> num_layers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> batch_first<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> nonlinearity<span class="token operator">=</span><span class="token string">'tanh'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <ul>
 <li>num_layers：RNN层数。</li>
 <li>batch_first：输入数据是否以(batch_size, seq_length, input_size)格式排列。</li>
 <li>nonlinearity：激活函数，默认是tanh，可选relu</li>
 </ul>
-<h3 id="encoder-decoder"><a href="#encoder-decoder" class="headerlink" title="encoder-decoder"></a>encoder-decoder</h3><p>机器翻译是序列转换模型的一个核心问题， 其输入和输出都是长度可变的序列，为了处理这种类型的输入和输出，可以设计一个包含两个主要组件的架构： 第一个组件是一个<em>编码器</em>（encoder）： 它接受一个长度可变的序列作为输入， 并将其转换为具有固定形状的编码状态；第二个组件是<em>解码器</em>（decoder）： 它将固定形状的编码状态映射到长度可变的序列。 这被称为<em>编码器-解码器</em>（encoder-decoder）架构。</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153543515.webp"></p>
-<h3 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h3><p>编码器与解码器都可以用一个RNN实现，编码器使用长度可变的序列作为输入， 将其转换为固定形状的隐状态，输入序列的信息被<em>编码</em>到循环神经网络编码器的隐状态中，解码器是基于输入序列的编码信息+已经输出的token来预测下一个token。 </p>
+<h3 id="encoder-decoder">encoder-decoder</h3>
+<p>机器翻译是序列转换模型的一个核心问题， 其输入和输出都是长度可变的序列，为了处理这种类型的输入和输出，可以设计一个包含两个主要组件的架构： 第一个组件是一个<em>编码器</em>（encoder）： 它接受一个长度可变的序列作为输入， 并将其转换为具有固定形状的编码状态；第二个组件是<em>解码器</em>（decoder）： 它将固定形状的编码状态映射到长度可变的序列。 这被称为<em>编码器-解码器</em>（encoder-decoder）架构。</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153543515.webp" alt=""></p>
+<h3 id="seq2seq">seq2seq</h3>
+<p>编码器与解码器都可以用一个RNN实现，编码器使用长度可变的序列作为输入， 将其转换为固定形状的隐状态，输入序列的信息被<em>编码</em>到循环神经网络编码器的隐状态中，解码器是基于输入序列的编码信息+已经输出的token来预测下一个token。</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20250402153547508.webp" style="zoom:10%;" />
-
 
 
 假设输入序列是$x_1, \ldots, x_T$，RNN将词元$x_t$的输入特征向量$\mathbf{x}_t$和$\mathbf{h} _{t-1}$转换为$\mathbf{h}_t$，使用一个函数$f$来描述循环神经网络的循环层所做的变换：
@@ -197,15 +200,6 @@ $$
    \mathbf{s}_{t^\prime} = g(y_{t^\prime-1}, \mathbf{c}, \mathbf{s}_{t^\prime-1})
    $$
    
-
-
-
-
-
-
-
-
-
 
 
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Deep-Learning/">Deep Learning</a></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
