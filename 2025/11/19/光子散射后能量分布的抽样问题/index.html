@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>蒙卡-光子散射后能量分布的抽样问题 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="乘加抽样问题想明白了其实就很简单，但是我今天被这个绕了很久。 分布密度函数其实离散化就是概率，也就是画一个频率的直方图即可作为子样分布图，画一个密度函数曲线即可作为理论分布图： import matplotlib.pyplot as plt  def plot_histogram(samples, pdf_func, title, x_range, bins&#x3D;50):     &quot;&quot;&quot;辅助绘图函数&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蒙卡-光子散射后能量分布的抽样问题">
+<meta property="og:url" content="http://reveryday.github.io/2025/11/19/%E5%85%89%E5%AD%90%E6%95%A3%E5%B0%84%E5%90%8E%E8%83%BD%E9%87%8F%E5%88%86%E5%B8%83%E7%9A%84%E6%8A%BD%E6%A0%B7%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Wens&#39;Blog">
+<meta property="og:description" content="乘加抽样问题想明白了其实就很简单，但是我今天被这个绕了很久。 分布密度函数其实离散化就是概率，也就是画一个频率的直方图即可作为子样分布图，画一个密度函数曲线即可作为理论分布图： import matplotlib.pyplot as plt  def plot_histogram(samples, pdf_func, title, x_range, bins&#x3D;50):     &quot;&quot;&quot;辅助绘图函数&quot;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://reveryday.github.io/images/wens.png">
+<meta property="article:published_time" content="2025-11-18T16:04:11.000Z">
+<meta property="article:modified_time" content="2025-11-18T16:20:45.907Z">
+<meta property="article:author" content="Wens">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://reveryday.github.io/images/wens.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "蒙卡-光子散射后能量分布的抽样问题",
+  "url": "http://reveryday.github.io/2025/11/19/%E5%85%89%E5%AD%90%E6%95%A3%E5%B0%84%E5%90%8E%E8%83%BD%E9%87%8F%E5%88%86%E5%B8%83%E7%9A%84%E6%8A%BD%E6%A0%B7%E9%97%AE%E9%A2%98/",
+  "image": "http://reveryday.github.io/images/wens.png",
+  "datePublished": "2025-11-18T16:04:11.000Z",
+  "dateModified": "2025-11-18T16:20:45.907Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wens",
+      "url": "http://reveryday.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/11/19/%E5%85%89%E5%AD%90%E6%95%A3%E5%B0%84%E5%90%8E%E8%83%BD%E9%87%8F%E5%88%86%E5%B8%83%E7%9A%84%E6%8A%BD%E6%A0%B7%E9%97%AE%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":false,"highlightLang":false,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '蒙卡-光子散射后能量分布的抽样问题',
+  isHighlightShrink: undefined,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/wens.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">蒙卡-光子散射后能量分布的抽样问题</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">蒙卡-光子散射后能量分布的抽样问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-18T16:04:11.000Z" title="发表于 2025-11-19 00:04:11">2025-11-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-18T16:20:45.907Z" title="更新于 2025-11-19 00:20:45">2025-11-19</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>乘加抽样问题想明白了其实就很简单，但是我今天被这个绕了很久。</p>
+<p>分布密度函数其实离散化就是概率，也就是画一个频率的直方图即可作为子样分布图，画一个密度函数曲线即可作为理论分布图：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+<span class="token keyword">def</span> <span class="token function">plot_histogram</span><span class="token punctuation">(</span>samples<span class="token punctuation">,</span> pdf_func<span class="token punctuation">,</span> title<span class="token punctuation">,</span> x_range<span class="token punctuation">,</span> bins<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""辅助绘图函数"""</span>
+    plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment"># 绘制抽样结果直方图</span>
+    plt<span class="token punctuation">.</span>hist<span class="token punctuation">(</span>samples<span class="token punctuation">,</span> bins<span class="token operator">=</span>bins<span class="token punctuation">,</span> density<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.6</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'g'</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'Simulation'</span><span class="token punctuation">)</span>
+    <span class="token comment"># 绘制曲线</span>
+    x <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span>x_range<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x_range<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
+    y <span class="token operator">=</span> pdf_func<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token string">'r-'</span><span class="token punctuation">,</span> lw<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'Theoretical distribution'</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span>title<span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">'Density'</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>legend<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>一个乘方分布$f(x)&#x3D;f_1(x)H_1(x)+f_2(x)H_2(x)$的抽样：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251119000832903.webp" style="zoom:70%;" />
+
+<p>它的流程应该是，先抽出一个随机数xi1，然后进行第一层判断，如果是$\le$，则要抽出$X_{f_1}$，此时应该要再次抽出一个随机数xi2得到$X_{f_1}$，再抽一个随机数xi3，进行第二层判断，如果是$\le$，则得到一个$X_f$。</p>
+<p>第一层判断其实不存在”舍去”，因为有两条线，xi1其实决定了抽样的总次数，但到了第二层是否取值则存在一定的概率，xi2、xi3决定了最终子样的个数，故也可能这几个随机数都废了，那就进行下一次抽样，最终得到满足$f$分布的子样。</p>
+<p>明白了这个流程再用代码实现就变得很清晰了，alpha是散射前的能量，相当于一个已知量，xi2抽取的结果决定了从$f_1(x),f_2(x)$中抽取$X_{f_1},X_{f_2}$的结果，虽然都用xi2表示，但其实数值不相等，每次都要重新抽取。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 第三题</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+alpha<span class="token operator">=</span><span class="token number">2</span> <span class="token comment">#alpha值可以改为任意的能量</span>
+samples<span class="token operator">=</span><span class="token number">1000000</span>
+xi1<span class="token operator">=</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span>samples<span class="token punctuation">)</span> <span class="token comment">#生成随机数</span>
+X_f<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token comment">#定义K(alpha)函数</span>
+<span class="token keyword">def</span> <span class="token function">func_K</span><span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    y<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span><span class="token punctuation">(</span>alpha<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span>alpha<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    y<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">-</span>y<span class="token punctuation">)</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>alpha<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">0.5</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token operator">/</span>alpha<span class="token punctuation">)</span><span class="token operator">-</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>alpha<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> y
+
+<span class="token comment">#定义本题的分布密度函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>alpha<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    y<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>alpha<span class="token operator">+</span><span class="token number">1</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token operator">/</span>alpha<span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
+    y<span class="token operator">=</span>y<span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span>x<span class="token punctuation">)</span>
+    y<span class="token operator">=</span>y<span class="token operator">/</span><span class="token punctuation">(</span>x<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
+    y<span class="token operator">=</span>y<span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span>x<span class="token punctuation">)</span><span class="token operator">-</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token punctuation">(</span>x<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    y<span class="token operator">=</span>y<span class="token operator">/</span><span class="token punctuation">(</span>func_K<span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> y
+
+<span class="token comment"># 定义H1/M1函数</span>
+<span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> alpha<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    y<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span>alpha<span class="token operator">+</span><span class="token number">1</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token operator">/</span>alpha<span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span>
+    y<span class="token operator">=</span>y<span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span>x<span class="token punctuation">)</span>
+    y<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">*</span>y
+    <span class="token keyword">return</span> y
+
+<span class="token comment"># 定义H2/M2函数</span>
+<span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    y<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span>x<span class="token punctuation">)</span><span class="token operator">-</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token punctuation">(</span>x<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    y<span class="token operator">=</span><span class="token number">4</span><span class="token operator">*</span>y
+    <span class="token keyword">return</span> y
+
+<span class="token keyword">for</span> xi1 <span class="token keyword">in</span> xi1<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> xi1 <span class="token operator">&lt;=</span> <span class="token punctuation">(</span><span class="token number">8</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>alpha<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        xi2<span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#生成一个随机数xi2</span>
+        x1<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>alpha<span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>alpha<span class="token operator">*</span>xi2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#抽样得到X_&#123;f_1&#125;</span>
+        xi3<span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> xi3 <span class="token operator">&lt;=</span> func1<span class="token punctuation">(</span>x1<span class="token punctuation">,</span> alpha<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            X_f<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x1<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        xi2<span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#生成一个随机数xi2</span>
+        x2<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> alpha <span class="token operator">*</span> xi2 <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#抽样得到X_&#123;f_2&#125;</span>
+        xi3<span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> xi3 <span class="token operator">&lt;=</span> func2<span class="token punctuation">(</span>x2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            X_f<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x2<span class="token punctuation">)</span>
+
+X_f <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>X_f<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            
+plot_histogram<span class="token punctuation">(</span>X_f<span class="token punctuation">,</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> func<span class="token punctuation">(</span>x<span class="token punctuation">,</span> alpha<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+               <span class="token string">"Sampling"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>alpha<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</article><div class="tag_share"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div></div></body></html>
