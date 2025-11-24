@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python-100-Days-1-Basics | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="教材：https:&#x2F;&#x2F;github.com&#x2F;jackfrued&#x2F;Python-100-Days&#x2F;tree&#x2F;master  1_变量和类型变量是数据的载体，简单的说就是一块用来保存数据的内存空间，变量的值可以被读取和修改。变量名由字母、数字和下划线构成，数字不能开头。    数据类型 int float str bool    Python 中可以处理任意大小的整数，而且支持二进制、八进制、十进制和">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python-100-Days-1-Basics | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="教材：https:&#x2F;&#x2F;github.com&#x2F;jackfrued&#x2F;Python-100-Days&#x2F;tree&#x2F;master  1_变量和类型 变量是数据的载体，简单的说就是一块用来保存数据的内存空间，变量的值可以被读取和修改。变量名由字母、数字和下划线构成，数字不能开头。    数据类型 int float str bool    Python 中可以处理任意大小的整数，而且支持二进制、八进制、十进制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python-100-Days-1-Basics">
 <meta property="og:url" content="http://reveryday.github.io/2025/11/01/Python-100-Days-1/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="教材：https:&#x2F;&#x2F;github.com&#x2F;jackfrued&#x2F;Python-100-Days&#x2F;tree&#x2F;master  1_变量和类型变量是数据的载体，简单的说就是一块用来保存数据的内存空间，变量的值可以被读取和修改。变量名由字母、数字和下划线构成，数字不能开头。    数据类型 int float str bool    Python 中可以处理任意大小的整数，而且支持二进制、八进制、十进制和">
+<meta property="og:description" content="教材：https:&#x2F;&#x2F;github.com&#x2F;jackfrued&#x2F;Python-100-Days&#x2F;tree&#x2F;master  1_变量和类型 变量是数据的载体，简单的说就是一块用来保存数据的内存空间，变量的值可以被读取和修改。变量名由字母、数字和下划线构成，数字不能开头。    数据类型 int float str bool    Python 中可以处理任意大小的整数，而且支持二进制、八进制、十进制">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/image1.png">
 <meta property="article:published_time" content="2025-11-01T15:50:35.000Z">
@@ -139,103 +139,107 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Python-100-Days-1-Basics</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Python-100-Days-1-Basics</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-01T15:50:35.000Z" title="发表于 2025-11-01 23:50:35">2025-11-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-24T15:32:00.009Z" title="更新于 2025-11-24 23:32:00">2025-11-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/Python-100-Days/">Python-100-Days</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>教材：<a target="_blank" rel="noopener" href="https://github.com/jackfrued/Python-100-Days/tree/master">https://github.com/jackfrued/Python-100-Days/tree/master</a></p>
+}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Python-100-Days-1-Basics</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Python-100-Days-1-Basics</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-01T15:50:35.000Z" title="发表于 2025-11-01 23:50:35">2025-11-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-24T15:32:00.009Z" title="更新于 2025-11-24 23:32:00">2025-11-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/Python-100-Days/">Python-100-Days</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>教材：<a target="_blank" rel="noopener" href="https://github.com/jackfrued/Python-100-Days/tree/master">https://github.com/jackfrued/Python-100-Days/tree/master</a></p>
 <hr>
-<h3 id="1-变量和类型"><a href="#1-变量和类型" class="headerlink" title="1_变量和类型"></a>1_变量和类型</h3><p>变量是数据的载体，简单的说就是一块用来保存数据的内存空间，变量的值可以被读取和修改。变量名由字母、数字和下划线构成，数字不能开头。</p>
+<h3 id="1-变量和类型">1_变量和类型</h3>
+<p>变量是数据的载体，简单的说就是一块用来保存数据的内存空间，变量的值可以被读取和修改。变量名由字母、数字和下划线构成，数字不能开头。</p>
 <table>
 <thead>
 <tr>
-<th align="center">数据类型</th>
-<th align="center">int</th>
-<th align="center">float</th>
-<th align="center">str</th>
-<th align="center">bool</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">int</th>
+<th style="text-align:center">float</th>
+<th style="text-align:center">str</th>
+<th style="text-align:center">bool</th>
 </tr>
 </thead>
 </table>
 <p>Python 中可以处理任意大小的整数，而且支持二进制、八进制、十进制和十六进制的表示法。</p>
-<h3 id="2-运算符"><a href="#2-运算符" class="headerlink" title="2_运算符"></a>2_运算符</h3><table>
+<h3 id="2-运算符">2_运算符</h3>
+<table>
 <thead>
 <tr>
-<th align="center">运算符</th>
-<th align="center">描述</th>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">[] 、 [:]</td>
-<td align="center">索引、切片</td>
+<tbody>
+<tr>
+<td style="text-align:center">[] 、 [:]</td>
+<td style="text-align:center">索引、切片</td>
 </tr>
 <tr>
-<td align="center">~</td>
-<td align="center">按位取反（-x-1）</td>
+<td style="text-align:center">~</td>
+<td style="text-align:center">按位取反（-x-1）</td>
 </tr>
 <tr>
-<td align="center">**  、 * 、 &#x2F; 、 % 、 &#x2F;&#x2F;</td>
-<td align="center">幂、乘、除、模、整除</td>
+<td style="text-align:center">**  、 * 、 / 、 % 、 //</td>
+<td style="text-align:center">幂、乘、除、模、整除</td>
 </tr>
 <tr>
-<td align="center">&gt;&gt; 、 &lt;&lt;</td>
-<td align="center">右移、左移</td>
+<td style="text-align:center">&gt;&gt; 、 &lt;&lt;</td>
+<td style="text-align:center">右移、左移</td>
 </tr>
 <tr>
-<td align="center">is 、 is not</td>
-<td align="center">身份运算符</td>
+<td style="text-align:center">is 、 is not</td>
+<td style="text-align:center">身份运算符</td>
 </tr>
 <tr>
-<td align="center">in 、 not in</td>
-<td align="center">成员运算符</td>
+<td style="text-align:center">in 、 not in</td>
+<td style="text-align:center">成员运算符</td>
 </tr>
 <tr>
-<td align="center">not 、 or 、 and</td>
-<td align="center">逻辑运算符</td>
+<td style="text-align:center">not 、 or 、 and</td>
+<td style="text-align:center">逻辑运算符</td>
 </tr>
 <tr>
-<td align="center">**&#x3D; 、 &amp;&#x3D; 、 ^&#x3D; 、 &gt;&gt;&#x3D; 、 &lt;&lt;&#x3D;</td>
-<td align="center">赋值运算符</td>
+<td style="text-align:center">**= 、 &amp;= 、 ^= 、 &gt;&gt;= 、 &lt;&lt;=</td>
+<td style="text-align:center">赋值运算符</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>其中，切片 [:] 的取值是左闭右开；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">b<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># 输出[2, 3, 4]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <p>例：我在处理Dataset时，iloc是 纯位置索引，语法：df.iloc[行位置, 列位置]，只写一部分时，缺失的维度默认全选。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">data<span class="token operator">=</span>pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> header<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
 X<span class="token operator">=</span>data<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">]</span>       <span class="token comment">#取前7行</span>
 Y<span class="token operator">=</span>data<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">]</span>   <span class="token comment">#取前7列</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <table>
 <thead>
 <tr>
-<th align="center">写法</th>
-<th align="center">等价于</th>
-<th align="center">含义</th>
+<th style="text-align:center">写法</th>
+<th style="text-align:center">等价于</th>
+<th style="text-align:center">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">df.iloc[:7]</td>
-<td align="center">df.iloc[:7, :]</td>
-<td align="center">前 7 行，所有列</td>
+<tbody>
+<tr>
+<td style="text-align:center">df.iloc[:7]</td>
+<td style="text-align:center">df.iloc[:7, :]</td>
+<td style="text-align:center">前 7 行，所有列</td>
 </tr>
 <tr>
-<td align="center">df.iloc[:, :7]</td>
-<td align="center"></td>
-<td align="center">所有行，前 7 列</td>
+<td style="text-align:center">df.iloc[:, :7]</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">所有行，前 7 列</td>
 </tr>
 <tr>
-<td align="center">df.iloc[:7, :3]</td>
-<td align="center"></td>
-<td align="center">前 7 行 + 前 3 列</td>
+<td style="text-align:center">df.iloc[:7, :3]</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">前 7 行 + 前 3 列</td>
 </tr>
-</tbody></table>
-<h3 id="3-分支结构"><a href="#3-分支结构" class="headerlink" title="3_分支结构"></a>3_分支结构</h3><ol>
+</tbody>
+</table>
+<h3 id="3-分支结构">3_分支结构</h3>
+<ol>
 <li>if-else</li>
 <li>match-case</li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">if</span><span class="token punctuation">:</span>
 <span class="token keyword">elif</span><span class="token punctuation">:</span>
 <span class="token keyword">else</span><span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">status <span class="token operator">=</span> <span class="token number">100</span>
 <span class="token keyword">match</span> status<span class="token punctuation">:</span>
     <span class="token keyword">case</span> <span class="token number">90</span><span class="token punctuation">:</span>
@@ -243,19 +247,17 @@ Y<span class="token operator">=</span>data<span class="token punctuation">.</spa
     <span class="token keyword">case</span> <span class="token number">100</span><span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"刚好"</span><span class="token punctuation">)</span>
 <span class="token comment"># 输出：刚好</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="4-循环结构"><a href="#4-循环结构" class="headerlink" title="4_循环结构"></a>4_循环结构</h3><p>1-for in循环：</p>
+<h3 id="4-循环结构">4_循环结构</h3>
+<p>1-for in循环：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"It is time to go to sleep"</span><span class="token punctuation">)</span>
     time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>2-while循环：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">i<span class="token operator">=</span><span class="token number">0</span>
 <span class="token keyword">while</span> i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">:</span>
     i <span class="token operator">+=</span><span class="token number">1</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>Python 没有  ++ （自增）或  – （自减）这种操作符，我竟然才知道，真的很少自己手搓代码。</p>
 </blockquote>
@@ -268,128 +270,124 @@ total<span class="token operator">=</span><span class="token number">0</span>
         <span class="token keyword">continue</span>
     total <span class="token operator">+=</span> i
 <span class="token keyword">print</span><span class="token punctuation">(</span>total<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
-<p>Day09 - 2025&#x2F;11&#x2F;9</p>
+<p>Day09 - 2025/11/9</p>
 </blockquote>
-<h3 id="5-常用数据结构-列表（list）"><a href="#5-常用数据结构-列表（list）" class="headerlink" title="5_常用数据结构-列表（list）"></a>5_常用数据结构-列表（list）</h3><p><font color="blue">列表</font>：由一系元素按特定顺序构成的数据序列。</p>
+<h3 id="5-常用数据结构-列表（list）">5_常用数据结构-列表（list）</h3>
+<p><font color="blue">列表</font>：由一系元素按特定顺序构成的数据序列。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">item <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>   <span class="token comment"># 列表（list）</span>
 item1 <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span>  <span class="token comment"># 集合（set）</span>
 item2<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment"># tuple</span>
 item3<span class="token operator">=</span><span class="token string">"1,2,3,4,5"</span> <span class="token comment">#str</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <table>
 <thead>
 <tr>
-<th align="center">list （列表）</th>
-<th align="center">tuple（元组）</th>
-<th align="center">set （集合）</th>
-<th align="center">Str（字符串）</th>
+<th style="text-align:center">list （列表）</th>
+<th style="text-align:center">tuple（元组）</th>
+<th style="text-align:center">set （集合）</th>
+<th style="text-align:center">Str（字符串）</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">有序</td>
-<td align="center">有序</td>
-<td align="center">无序</td>
-<td align="center">有序</td>
+<tbody>
+<tr>
+<td style="text-align:center">有序</td>
+<td style="text-align:center">有序</td>
+<td style="text-align:center">无序</td>
+<td style="text-align:center">有序</td>
 </tr>
 <tr>
-<td align="center">允许重复元素</td>
-<td align="center"></td>
-<td align="center">不允许重复元素</td>
-<td align="center">允许</td>
+<td style="text-align:center">允许重复元素</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">不允许重复元素</td>
+<td style="text-align:center">允许</td>
 </tr>
 <tr>
-<td align="center">支持索引访问：  item[0]</td>
-<td align="center">支持索引访问</td>
-<td align="center">不支持索引访问</td>
-<td align="center">支持索引</td>
+<td style="text-align:center">支持索引访问：  item[0]</td>
+<td style="text-align:center">支持索引访问</td>
+<td style="text-align:center">不支持索引访问</td>
+<td style="text-align:center">支持索引</td>
 </tr>
 <tr>
-<td align="center">可变</td>
-<td align="center">适合多线程环境、不可变类型在创建时间上优于对应的可变类型</td>
-<td align="center">可变</td>
-<td align="center"></td>
+<td style="text-align:center">可变</td>
+<td style="text-align:center">适合多线程环境、不可变类型在创建时间上优于对应的可变类型</td>
+<td style="text-align:center">可变</td>
+<td style="text-align:center"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
-<th align="center">计算符（-a）</th>
-<th align="center">操作</th>
+<th style="text-align:center">计算符（-a）</th>
+<th style="text-align:center">操作</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">+&#x2F;*</td>
-<td align="center">两个列表的拼接&#x2F;列表的重复运算</td>
+<tbody>
+<tr>
+<td style="text-align:center">+/*</td>
+<td style="text-align:center">两个列表的拼接/列表的重复运算</td>
 </tr>
 <tr>
-<td align="center">in&#x2F;not in</td>
-<td align="center">判断一个元素在不在列表中</td>
+<td style="text-align:center">in/not in</td>
+<td style="text-align:center">判断一个元素在不在列表中</td>
 </tr>
 <tr>
-<td align="center">a[0]</td>
-<td align="center">索引</td>
+<td style="text-align:center">a[0]</td>
+<td style="text-align:center">索引</td>
 </tr>
 <tr>
-<td align="center">a[start: end: stride]</td>
-<td align="center">切片</td>
+<td style="text-align:center">a[start: end: stride]</td>
+<td style="text-align:center">切片</td>
 </tr>
 <tr>
-<td align="center">a.append()&#x2F;a.insert()</td>
-<td align="center">插入元素</td>
+<td style="text-align:center">a.append()/a.insert()</td>
+<td style="text-align:center">插入元素</td>
 </tr>
 <tr>
-<td align="center">a.remove()&#x2F;a.pop()&#x2F;a.clear()</td>
-<td align="center">删除指定元素&#x2F;清空列表</td>
+<td style="text-align:center">a.remove()/a.pop()/a.clear()</td>
+<td style="text-align:center">删除指定元素/清空列表</td>
 </tr>
 <tr>
-<td align="center">a.index(“element”,1)</td>
-<td align="center">（从索引位置1开始）查找element在列表中的索引位置</td>
+<td style="text-align:center">a.index(“element”,1)</td>
+<td style="text-align:center">（从索引位置1开始）查找element在列表中的索引位置</td>
 </tr>
 <tr>
-<td align="center">a.count(“element”)</td>
-<td align="center">统计element出现次数</td>
+<td style="text-align:center">a.count(“element”)</td>
+<td style="text-align:center">统计element出现次数</td>
 </tr>
 <tr>
-<td align="center">a.sort()&#x2F;a.reverse()</td>
-<td align="center">排序&#x2F;反转</td>
+<td style="text-align:center">a.sort()/a.reverse()</td>
+<td style="text-align:center">排序/反转</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>使用 + 运算符实现两个列表的拼接，使用 * 运算符实现列表的重复运算，使用 in 或 not in 运算符判断一个元素在不在列表中；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">11</span> <span class="token keyword">in</span> item1<span class="token punctuation">)</span>
 <span class="token comment"># False</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>正向索引， [0] 可以访问列表中的第一个元素， [N - 1] 可以访问最后一个元素；对于反向索引， [-1] 可以访问列表中的最后一个元素， [-N] 可以访问第一个元素，越界的情况会出现IndexError错误；</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109140100903.webp" alt="image-20251109140018708" style="zoom:70%;" />
-
 <p>一次性访问列表中的多个元素，可使用切片运算：形如 [start:end:stride] 的运算符， end 代表访问列表元素的终止位置（终止位置的元素无法访问）：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>item1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment">#[2, 3]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>其中，如果 start 值等于 0 时可以将其省略；如果 end 值等于 N 时可以将其省略；如果 stride 值等于 1 时也可以将其省略。</p>
 <p>元素的遍历有两种方法：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109140831434.webp" style="zoom:75%;" />
-
 <p>使用列表的 append 方法向列表中追加元素，将元素添加到列表的末尾，使用 insert 方法向列表中插入元素，在指定的位置添加新元素；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">item1<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
 item1<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>item1<span class="token punctuation">)</span>
 <span class="token comment">#[0, 1, 2, 3, 4, 5, 6]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>用列表的 remove 或者 pop （ pop 方法默认删除列表中的最后一个元素）从列表中删除指定元素， clear 方法，可以清空列表中的元素；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">,</span><span class="token string">"c"</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">]</span>
 s<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span>  <span class="token comment">#删的是第一个</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
 <span class="token comment">#['b', 'c', 'a']</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>列表的 index 方法可以查找某个元素在列表中的索引位置，如果找不到指定的元素， index 方法会引发 ValueError 错误；列表的 count 方法可以统计一个元素在列表中出现的次数；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">,</span><span class="token string">"c"</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment">#3</span>
 <span class="token comment">#2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>列表的 sort 操作可以实现列表元素的排序，而 reverse 操作可以实现元素的反转；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">s<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
@@ -397,10 +395,8 @@ s<span class="token punctuation">.</span>reverse<span class="token punctuation">
 <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
 <span class="token comment">#['a', 'a', 'b', 'c']</span>
 <span class="token comment">#['c', 'b', 'a', 'a']</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>列表生成式：</p>
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20251109165840236.webp" alt="image-20251109165828457" style="zoom: 67%;" />
-
 <p>嵌套列表：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
 b<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">]</span>
@@ -410,11 +406,11 @@ d<span class="token operator">=</span><span class="token punctuation">[</span>a<
 <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment">#[[1, 2, 3], [11, 22, 33], [111, 222, 333]]</span>
 <span class="token comment">#1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
-<p>Day10-2025&#x2F;11&#x2F;10</p>
+<p>Day10-2025/11/10</p>
 </blockquote>
-<h3 id="6-常用数据结构-元组（tuple）"><a href="#6-常用数据结构-元组（tuple）" class="headerlink" title="6_常用数据结构-元组（tuple）"></a>6_常用数据结构-元组（tuple）</h3><p><font color="blue">元组</font>也是多个元素按照一定顺序构成的序列。元组和列表的不同之处在于，元组是不可变类型，其类型的变量一旦定义，其中的元素不能再添加或删除，而且元素的值也不能修改，元组与列表是可以互相转换的。</p>
+<h3 id="6-常用数据结构-元组（tuple）">6_常用数据结构-元组（tuple）</h3>
+<p><font color="blue">元组</font>也是多个元素按照一定顺序构成的序列。元组和列表的不同之处在于，元组是不可变类型，其类型的变量一旦定义，其中的元素不能再添加或删除，而且元素的值也不能修改，元组与列表是可以互相转换的。</p>
 <p>如果元组中只有一个元素，需要加上一个逗号：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">m<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
 n<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -422,23 +418,21 @@ n<span class="token operator">=</span><span class="token punctuation">(</span><s
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment">#&lt;class 'tuple'></span>
 <span class="token comment">#&lt;class 'int'></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>把多个用逗号分隔的值赋给一个变量时，多个值会打包成一个元组类型，把一个元组赋值给多个变量时，元组会解包成多个值然后分别赋给对应的变量；</p>
 <p>在解包时，如果解包出来的元素个数和变量个数不对应，会引发 ValueError 异常，错误信息为： too many values to unpack （解包的值太多）或 not enough values to unpack （解包的值不足）。通过星号表达式，可以让一个变量接收多个值，用星号表达式修饰的变量会变成一个列表，列表中有0个或多个元素；其次，在解包语法中，星号表达式只能出现一次。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">m1<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span>
 i<span class="token punctuation">,</span><span class="token operator">*</span>j<span class="token punctuation">,</span>k<span class="token operator">=</span>m1
 <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">,</span>k<span class="token punctuation">)</span>
 <span class="token comment">#1 [2, 3, 4, 5] 6</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
-<p>Day11-2025&#x2F;11&#x2F;11</p>
+<p>Day11-2025/11/11</p>
 </blockquote>
-<h3 id="7-常用数据结构-字符串（str）"><a href="#7-常用数据结构-字符串（str）" class="headerlink" title="7_常用数据结构-字符串（str）"></a>7_常用数据结构-字符串（str）</h3><p>字符串，就是由零个或多个字符组成的有限序列。在字符串中使用 \ （反斜杠）来表示转义，Python 中有一种以 r 或 R 开头的字符串，这种字符串被称为原始字符串；</p>
+<h3 id="7-常用数据结构-字符串（str）">7_常用数据结构-字符串（str）</h3>
+<p>字符串，就是由零个或多个字符组成的有限序列。在字符串中使用 \ （反斜杠）来表示转义，Python 中有一种以 r 或 R 开头的字符串，这种字符串被称为原始字符串；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"hello \nworld"</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">r"hello \nworld"</span><span class="token punctuation">)</span>
 <span class="token comment">#print("hello \nworld")</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">r"hello \nworld"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>字符串的特殊表示：Python 中还允许在 \ 后面还可以跟一个八进制或者十六进制数来表示字符，在 \u 后面跟 Unicode 字符编码；</p>
 <p>字符串的运算：可以使用 + 运算符来实现字符串的拼接，可以使用 * 运算符来重复一个字符串的内容，可以使用 in 和 not in 来判断一个字符串是否包含另外一个字符串，用 [] 和 [:] 运算符从字符串取出某个字符或某些字符。</p>
 <p>字符串的比较：两个字符串类型的变量，可以用比较运算符来比较两个str的大小，字符串在计算机内存中也是以二进制形式存在的，所以字符串的大小比较比的是每个字符对应的编码的大小。</p>
@@ -446,23 +440,26 @@ i<span class="token punctuation">,</span><span class="token operator">*</span>j<
 <table>
 <thead>
 <tr>
-<th align="center">a.title()</th>
-<th align="center">a.capitalize()</th>
-<th align="center">a.upper（）</th>
-<th align="center">a.lower()</th>
+<th style="text-align:center">a.title()</th>
+<th style="text-align:center">a.capitalize()</th>
+<th style="text-align:center">a.upper（）</th>
+<th style="text-align:center">a.lower()</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">字符串每个单词首字母大写</td>
-<td align="center">字符串首字母大写</td>
-<td align="center">字符串变大写</td>
-<td align="center">字符串变小写</td>
+<tbody>
+<tr>
+<td style="text-align:center">字符串每个单词首字母大写</td>
+<td style="text-align:center">字符串首字母大写</td>
+<td style="text-align:center">字符串变大写</td>
+<td style="text-align:center">字符串变小写</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
-<p>Day12+13-2025&#x2F;11&#x2F;13</p>
+<p>Day12+13-2025/11/13</p>
 </blockquote>
-<h3 id="8-常用数据结构之集合（set）"><a href="#8-常用数据结构之集合（set）" class="headerlink" title="8_常用数据结构之集合（set）"></a>8_常用数据结构之集合（set）</h3><p>集合需满足：（1）无序性，（2）互异性，（3）确定性；</p>
+<h3 id="8-常用数据结构之集合（set）">8_常用数据结构之集合（set）</h3>
+<p>集合需满足：（1）无序性，（2）互异性，（3）确定性；</p>
 <p>集合中的元素必须是 hashable 类型，所谓 hashable 类型指的是能够计算出哈希码的数据类型，通常不可变类型都是 hashable 类型，如整数（ int ）、浮点小数（ float ）、布尔值（ bool ）、字符串（ str ）、元组（ tuple ）等。可变类型都不是 hashable 类型，因为可变类型无法计算出确定的哈希码，所以它们不能放到集合中。</p>
 <p>元素的遍历：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 集合</span>
@@ -473,10 +470,10 @@ set1<span class="token operator">=</span><span class="token punctuation">&#123;<
 <span class="token comment">#3</span>
 <span class="token comment">#4</span>
 <span class="token comment">#5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>集合的运算：可以求交集，并集差集等等，可以用 &#x3D;&#x3D; 和 !&#x3D; 进行相等性判断，Python 为集合类型提供了判断子集和超集的运算符，就是熟悉的 &lt; 、 &lt;&#x3D; 、 &gt; 、 &gt;&#x3D; 这些运算符。</p>
+<p>集合的运算：可以求交集，并集差集等等，可以用 == 和 != 进行相等性判断，Python 为集合类型提供了判断子集和超集的运算符，就是熟悉的 &lt; 、 &lt;= 、 &gt; 、 &gt;= 这些运算符。</p>
 <p>不可变集合：Python 中还有一种不可变类型的集合，名字叫 frozenset ，除了不能添加和删除元素， frozenset 在其他方面跟 set 是一样的。</p>
-<h3 id="9-常用数据结构之字典（dict）"><a href="#9-常用数据结构之字典（dict）" class="headerlink" title="9_常用数据结构之字典（dict）"></a>9_常用数据结构之字典（dict）</h3><p>Python 中创建字典使用 {} 字面量语法，跟集合是一样的，但字典的 {} 中的元素是以键值对的形式存在的，每个元素由 : 分隔的两个值构成， : 前面是键， : 后面是值；</p>
+<h3 id="9-常用数据结构之字典（dict）">9_常用数据结构之字典（dict）</h3>
+<p>Python 中创建字典使用 {} 字面量语法，跟集合是一样的，但字典的 {} 中的元素是以键值对的形式存在的，每个元素由 : 分隔的两个值构成， : 前面是键， : 后面是值；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 字典</span>
 person <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
     <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'王大锤'</span><span class="token punctuation">,</span>
@@ -490,7 +487,6 @@ person <span class="token operator">=</span> <span class="token punctuation">&#1
 <span class="token keyword">print</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span>
 person1 <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">'王大锤'</span><span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">55</span><span class="token punctuation">,</span> height<span class="token operator">=</span><span class="token number">168</span><span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">,</span> addr<span class="token operator">=</span><span class="token string">'成都市武侯区科华北路62号1栋101'</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>person1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>可使用 for 循环对字典的键进行遍历，对于字典类型来说，成员运算和索引运算是很重要的，字典中因为保存的是键值对，所以字典需要用键去索引对应的值。字典中的键必须是不可变类型，例如整数（ int ）、浮点数（ float ）、字符串（ str ）、元组（ tuple ）等类型，这一点跟集合类型对元素的要求是一样的。</p>
 <p>字典的方法： get 方法可以通过键来获取对应的值，使用 keys 方法获取字典中所有的键；使用 values 方法获取字典中所有的值， update 方法实现两个字典的合并操作；跟列表一样，从字典中删除元素也可以使用 del 关键字。</p>
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/Python/">Python</a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">1_变量和类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text">2_运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">3_分支结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">4_循环结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%88%97%E8%A1%A8%EF%BC%88list%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">5_常用数据结构-列表（list）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%85%83%E7%BB%84%EF%BC%88tuple%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">6_常用数据结构-元组（tuple）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88str%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">7_常用数据结构-字符串（str）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%9B%86%E5%90%88%EF%BC%88set%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">8_常用数据结构之集合（set）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%AD%97%E5%85%B8%EF%BC%88dict%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">9_常用数据结构之字典（dict）</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"><script>(() => {
