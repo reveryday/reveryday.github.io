@@ -1696,7 +1696,7 @@ pre[class*='language-'] pre > code.highlight {
 .container code {
   padding: 2px 5px;
   background: rgba(27,31,35,0.05);
-  color: #f47466;
+  color: ;
 }
 .container pre {
   padding: 10px 20px;
