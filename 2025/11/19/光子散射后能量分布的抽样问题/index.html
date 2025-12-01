@@ -158,10 +158,10 @@
     plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">)</span>
     plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>一个乘方分布$f(x)=f_1(x)H_1(x)+f_2(x)H_2(x)$的抽样：</p>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251119000832903.webp" style="zoom:70%;" />
-<p>它的流程应该是，先抽出一个随机数$\xi_1$，然后进行第一层判断，如果是$\le$，则要抽出$X_{f_1}$，此时应该要再次抽出一个随机数$\xi_2$得到$X_{f_1}$，再抽一个随机数$\xi_3$，进行第二层判断，如果是$\le$，则得到一个$X_f$。</p>
-<p>第一层判断其实不存在&quot;舍去&quot;，因为有两条线，$\xi_1$其实决定了抽样的总次数，但到了第二层是否取值则存在一定的概率，$\xi_2,\xi_3$决定了最终子样的个数，故也可能这几个随机数都废了，那就进行下一次抽样，最终得到满足$f$分布的子样。</p>
-<p>明白了这个流程再用代码实现就变得很清晰了，$\alpha$是散射前的能量，相当于一个已知量，$\xi_2$抽取的结果决定了从$f_1(x),f_2(x)$中抽取$X_{f_1},X_{f_2}$的结果，虽然都用$\xi_2$表示，但其实数值不相等，每次都要重新抽取。</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251119000832903.webp" style="zoom:70%;" /></p>
+<p>它的流程应该是，先抽出一个随机数$\xi<em>1$，然后进行第一层判断，如果是$\le$，则要抽出$X</em>{f<em>1}$，此时应该要再次抽出一个随机数$\xi_2$得到$X</em>{f_1}$，再抽一个随机数$\xi_3$，进行第二层判断，如果是$\le$，则得到一个$X_f$。</p>
+<p>第一层判断其实不存在”舍去”，因为有两条线，$\xi_1$其实决定了抽样的总次数，但到了第二层是否取值则存在一定的概率，$\xi_2,\xi_3$决定了最终子样的个数，故也可能这几个随机数都废了，那就进行下一次抽样，最终得到满足$f$分布的子样。</p>
+<p>明白了这个流程再用代码实现就变得很清晰了，$\alpha$是散射前的能量，相当于一个已知量，$\xi<em>2$抽取的结果决定了从$f_1(x),f_2(x)$中抽取$X</em>{f<em>1},X</em>{f_2}$的结果，虽然都用$\xi_2$表示，但其实数值不相等，每次都要重新抽取。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 第三题</span>
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 alpha<span class="token operator">=</span><span class="token number">2</span> <span class="token comment">#alpha值可以改为任意的能量</span>
