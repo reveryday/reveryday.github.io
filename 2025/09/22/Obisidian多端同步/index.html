@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Obisidian多端同步 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="由于一些笔记不太好放在博客这样的公开平台上，起初尝试了Notion，但Notion的界面让我觉得很难受，而且似乎对markdown语法的渲染效果不是很好。所以最近又搬到了Obisidian上，Obisidian的界面就看着舒服得多，且由于Obisidian的笔记存储在本地，运行起来非常流畅，但也因此出现了一个问题：怎么实现笔记的多端同步？ win端同步到坚果云其实Obisidian同步也就是要同步">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Obisidian多端同步 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="之前用过Notion做笔记，但Notion的界面让我觉得很难受，而且似乎对markdown语法的渲染效果不是很好。所以最近又搬到了Obisidian上，Obisidian的界面就看着舒服得多，且由于Obisidian的笔记存储在本地，运行起来非常流畅，但也因此出现了一个问题：怎么实现笔记的多端同步？ win端同步到坚果云 其实Obisidian同步也就是要同步整个笔记文件夹，首先需要把Window">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Obisidian多端同步">
 <meta property="og:url" content="http://reveryday.github.io/2025/09/22/Obisidian%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="由于一些笔记不太好放在博客这样的公开平台上，起初尝试了Notion，但Notion的界面让我觉得很难受，而且似乎对markdown语法的渲染效果不是很好。所以最近又搬到了Obisidian上，Obisidian的界面就看着舒服得多，且由于Obisidian的笔记存储在本地，运行起来非常流畅，但也因此出现了一个问题：怎么实现笔记的多端同步？ win端同步到坚果云其实Obisidian同步也就是要同步">
+<meta property="og:description" content="之前用过Notion做笔记，但Notion的界面让我觉得很难受，而且似乎对markdown语法的渲染效果不是很好。所以最近又搬到了Obisidian上，Obisidian的界面就看着舒服得多，且由于Obisidian的笔记存储在本地，运行起来非常流畅，但也因此出现了一个问题：怎么实现笔记的多端同步？ win端同步到坚果云 其实Obisidian同步也就是要同步整个笔记文件夹，首先需要把Window">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/image1.png">
 <meta property="article:published_time" content="2025-09-22T04:46:48.000Z">
-<meta property="article:modified_time" content="2025-11-29T06:36:54.838Z">
+<meta property="article:modified_time" content="2025-12-04T05:02:45.747Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="Tool&amp;Configuration">
 <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
   "url": "http://reveryday.github.io/2025/09/22/Obisidian%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/",
   "image": "http://reveryday.github.io/images/image1.png",
   "datePublished": "2025-09-22T04:46:48.000Z",
-  "dateModified": "2025-11-29T06:36:54.838Z",
+  "dateModified": "2025-12-04T05:02:45.747Z",
   "author": [
     {
       "@type": "Person",
@@ -139,34 +139,44 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Obisidian多端同步</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Obisidian多端同步</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-22T04:46:48.000Z" title="发表于 2025-09-22 12:46:48">2025-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-29T06:36:54.838Z" title="更新于 2025-11-29 14:36:54">2025-11-29</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>由于一些笔记不太好放在博客这样的公开平台上，起初尝试了Notion，但Notion的界面让我觉得很难受，而且似乎对markdown语法的渲染效果不是很好。所以最近又搬到了Obisidian上，Obisidian的界面就看着舒服得多，且由于Obisidian的笔记存储在本地，运行起来非常流畅，但也因此出现了一个问题：怎么实现笔记的多端同步？</p>
-<h3 id="win端同步到坚果云"><a href="#win端同步到坚果云" class="headerlink" title="win端同步到坚果云"></a>win端同步到坚果云</h3><p>其实Obisidian同步也就是要同步整个笔记文件夹，首先需要把Windows本地的文件传到坚果云。注册一个坚果云账号，然后设置好本地同步即可：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250922125442019.webp" alt="image-20250922125435691" style="zoom:67%;" /></p>
+}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Obisidian多端同步</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Obisidian多端同步</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-22T04:46:48.000Z" title="发表于 2025-09-22 12:46:48">2025-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-04T05:02:45.747Z" title="更新于 2025-12-04 13:02:45">2025-12-04</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>之前用过Notion做笔记，但Notion的界面让我觉得很难受，而且似乎对markdown语法的渲染效果不是很好。所以最近又搬到了Obisidian上，Obisidian的界面就看着舒服得多，且由于Obisidian的笔记存储在本地，运行起来非常流畅，但也因此出现了一个问题：怎么实现笔记的多端同步？</p>
+<h3 id="win端同步到坚果云">win端同步到坚果云</h3>
+<p>其实Obisidian同步也就是要同步整个笔记文件夹，首先需要把Windows本地的文件传到坚果云。注册一个坚果云账号，然后设置好本地同步即可：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250922125442019.webp" alt="image-20250922125435691" style="zoom:67%;" />
 <blockquote>
-<p>from维基百科:<strong>基于Web的分布式编写和版本控制</strong>（英语：<strong>W</strong>eb-based <strong>D</strong>istributed <strong>A</strong>uthoring and <strong>V</strong>ersioning，缩写：<strong>WebDAV</strong>）是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/超文本传输协议">超文本传输协议</a>（HTTP）的扩展，有利于用户间协同编辑和管理存储在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/万维网">万维网</a>服务器文档。WebDAV由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/互联网工程任务组">互联网工程任务组</a>的工作组在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/RFC">RFC</a> <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc4918">4918</a>中定义。</p>
+<p>from维基百科:<strong>基于Web的分布式编写和版本控制</strong>（英语：<strong>W</strong>eb-based <strong>D</strong>istributed <strong>A</strong>uthoring and <strong>V</strong>ersioning，缩写：<strong>WebDAV</strong>）是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">超文本传输协议</a>（HTTP）的扩展，有利于用户间协同编辑和管理存储在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91">万维网</a>服务器文档。WebDAV由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E4%BB%BB%E5%8A%A1%E7%BB%84">互联网工程任务组</a>的工作组在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/RFC">RFC</a> <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc4918">4918</a>中定义。</p>
 </blockquote>
-<h3 id="Android端：坚果云-FolderSync"><a href="#Android端：坚果云-FolderSync" class="headerlink" title="Android端：坚果云+FolderSync"></a>Android端：坚果云+FolderSync</h3><ol>
-<li><p>坚果云网页端账户信息&gt;安全选项&gt;添加应用：用于授权第三方应用利用 WebDAV 协议访问团队的文件。</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250922130041776.webp" alt="image-20250922130037909" style="zoom:67%;" /></p>
+<h3 id="Android端：坚果云-FolderSync">Android端：坚果云+FolderSync</h3>
+<ol>
+<li>
+<p>坚果云网页端账户信息&gt;安全选项&gt;添加应用：用于授权第三方应用利用 WebDAV 协议访问团队的文件。</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250922130041776.webp" alt="image-20250922130037909" style="zoom:67%;" />
 </li>
-<li><p>Android端基于FolderSync实现手动同步，相关设置如下（可根据自己的需求自定义）：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250922130730068.webp" style="zoom:20%;" /></p>
+<li>
+<p>Android端基于FolderSync实现手动同步，相关设置如下（可根据自己的需求自定义）：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250922130730068.webp" style="zoom:20%;" />
 </li>
 </ol>
-<h3 id="Ipad端：坚果云-Remotely-Save"><a href="#Ipad端：坚果云-Remotely-Save" class="headerlink" title="Ipad端：坚果云+Remotely Save"></a>Ipad端：坚果云+Remotely Save</h3><ol>
-<li><p>ipad打开Obisidian选择新建一个库，库的名称需要跟win端一致，安装并启用Remotely Save插件:</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250922131400639.webp" alt="IMG_2138" style="zoom: 33%;" /></p>
+<h3 id="Ipad端：坚果云-Remotely-Save">Ipad端：坚果云+Remotely Save</h3>
+<ol>
+<li>
+<p>ipad打开Obisidian选择新建一个库，库的名称需要跟win端一致，安装并启用Remotely Save插件:</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250922131400639.webp" alt="IMG_2138" style="zoom: 33%;" />
 </li>
-<li><p>在Remotely Save设置中选择远程服务为Webdav，并配置相关信息：</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20250922131946062.webp" alt="IMG_2139" style="zoom: 33%;" /></p>
+<li>
+<p>在Remotely Save设置中选择远程服务为Webdav，并配置相关信息：</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20250922131946062.webp" alt="IMG_2139" style="zoom: 33%;" />
 <p>配置完成后点击左侧的同步即可从坚果云上抓取笔记。</p>
 </li>
 </ol>
-<h3 id="Obisidian的问题"><a href="#Obisidian的问题" class="headerlink" title="Obisidian的问题"></a>Obisidian的问题</h3><ul>
-<li><p>代码块的显示似乎有些怪怪的，在Typora上编辑的Markdown文件在Obisidian无法很好的显示；</p>
+<h3 id="Obisidian的问题">Obisidian的问题</h3>
+<ul>
+<li>
+<p>代码块的显示似乎有些怪怪的，在Typora上编辑的Markdown文件在Obisidian无法很好的显示；</p>
 </li>
-<li><p>ios端同步的问题；</p>
-<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251021125134190.webp" alt="IMG_2158" style="zoom:30%;" /></p>
+<li>
+<p>ios端同步的问题；</p>
+<img src="https://gitee.com/wenswuu/pictures/raw/master/20251021125134190.webp" alt="IMG_2158" style="zoom:30%;" />
 </li>
 </ul>
 </article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/Tool-Configuration/">Tool&amp;Configuration</a></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#win%E7%AB%AF%E5%90%8C%E6%AD%A5%E5%88%B0%E5%9D%9A%E6%9E%9C%E4%BA%91"><span class="toc-number">1.</span> <span class="toc-text">win端同步到坚果云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android%E7%AB%AF%EF%BC%9A%E5%9D%9A%E6%9E%9C%E4%BA%91-FolderSync"><span class="toc-number">2.</span> <span class="toc-text">Android端：坚果云+FolderSync</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ipad%E7%AB%AF%EF%BC%9A%E5%9D%9A%E6%9E%9C%E4%BA%91-Remotely-Save"><span class="toc-number">3.</span> <span class="toc-text">Ipad端：坚果云+Remotely Save</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Obisidian%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">Obisidian的问题</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"><script>(() => {
