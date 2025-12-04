@@ -1,24 +1,24 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python-100-Days-7-SQL-1 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Day36+37-12&#x2F;4  关系型数据库最核心的特点是使用表格来存储数据，这些表格之间可以建立关系（Relation），其统一使用结构化查询语言 (SQL - Structured Query Language) 来进行数据的管理、操作和查询。 通常可以将 SQL 分为四类，分别是：   DDL（数据定义语言）：主要用于创建、删除、修改数据库中的对象，比如创建、删除和修改二维表，核心的关键字包">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python-100-Days-6-SQL-1 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Day36+37-12&#x2F;4  关系型数据库最核心的特点是使用表格来存储数据，这些表格之间可以建立关系（Relation），其统一使用结构化查询语言 (SQL - Structured Query Language) 来进行数据的管理、操作和查询。 通常可以将 SQL 分为四类，分别是：  DDL（数据定义语言）：主要用于创建、删除、修改数据库中的对象，比如创建、删除和修改二维表，核心的关键字包括">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python-100-Days-7-SQL-1">
-<meta property="og:url" content="http://reveryday.github.io/2025/12/04/Python-100-Days-7-SQL-1/index.html">
+<meta property="og:title" content="Python-100-Days-6-SQL-1">
+<meta property="og:url" content="http://reveryday.github.io/2025/12/04/Python-100-Days-6-SQL-1/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="Day36+37-12&#x2F;4  关系型数据库最核心的特点是使用表格来存储数据，这些表格之间可以建立关系（Relation），其统一使用结构化查询语言 (SQL - Structured Query Language) 来进行数据的管理、操作和查询。 通常可以将 SQL 分为四类，分别是：   DDL（数据定义语言）：主要用于创建、删除、修改数据库中的对象，比如创建、删除和修改二维表，核心的关键字包">
+<meta property="og:description" content="Day36+37-12&#x2F;4  关系型数据库最核心的特点是使用表格来存储数据，这些表格之间可以建立关系（Relation），其统一使用结构化查询语言 (SQL - Structured Query Language) 来进行数据的管理、操作和查询。 通常可以将 SQL 分为四类，分别是：  DDL（数据定义语言）：主要用于创建、删除、修改数据库中的对象，比如创建、删除和修改二维表，核心的关键字包括">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/image1.png">
 <meta property="article:published_time" content="2025-12-04T04:57:59.000Z">
-<meta property="article:modified_time" content="2025-12-04T08:58:35.888Z">
+<meta property="article:modified_time" content="2025-12-04T12:55:43.659Z">
 <meta property="article:author" content="Wens">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://reveryday.github.io/images/image1.png"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Python-100-Days-7-SQL-1",
-  "url": "http://reveryday.github.io/2025/12/04/Python-100-Days-7-SQL-1/",
+  "headline": "Python-100-Days-6-SQL-1",
+  "url": "http://reveryday.github.io/2025/12/04/Python-100-Days-6-SQL-1/",
   "image": "http://reveryday.github.io/images/image1.png",
   "datePublished": "2025-12-04T04:57:59.000Z",
-  "dateModified": "2025-12-04T08:58:35.888Z",
+  "dateModified": "2025-12-04T12:55:43.659Z",
   "author": [
     {
       "@type": "Person",
@@ -26,7 +26,7 @@
       "url": "http://reveryday.github.io/"
     }
   ]
-}</script><link rel="shortcut icon" href="../../../../images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/12/04/Python-100-Days-7-SQL-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+}</script><link rel="shortcut icon" href="../../../../images/logo.png"><link rel="canonical" href="http://reveryday.github.io/2025/12/04/Python-100-Days-6-SQL-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta/><link rel="stylesheet" href="../../../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -135,28 +135,22 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Python-100-Days-7-SQL-1',
+  title: 'Python-100-Days-6-SQL-1',
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Python-100-Days-7-SQL-1</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Python-100-Days-7-SQL-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-04T04:57:59.000Z" title="发表于 2025-12-04 12:57:59">2025-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-04T08:58:35.888Z" title="更新于 2025-12-04 16:58:35">2025-12-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/Python-100-Days/">Python-100-Days</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Python-100-Days-6-SQL-1</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Python-100-Days-6-SQL-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-04T04:57:59.000Z" title="发表于 2025-12-04 12:57:59">2025-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-04T12:55:43.659Z" title="更新于 2025-12-04 20:55:43">2025-12-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/Python-100-Days/">Python-100-Days</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
 <p>Day36+37-12/4</p>
 </blockquote>
 <p>关系型数据库最核心的特点是使用表格来存储数据，这些表格之间可以建立关系（Relation），其统一使用结构化查询语言 (SQL - Structured Query Language) 来进行数据的管理、操作和查询。</p>
 <p>通常可以将 SQL 分为四类，分别是：</p>
 <ul>
-<li>
-<p>DDL（数据定义语言）：主要用于创建、删除、修改数据库中的对象，比如创建、删除和修改二维表，核心的关键字包括<code>create</code>、<code>drop</code>和<code>alter</code>；</p>
+<li><p>DDL（数据定义语言）：主要用于创建、删除、修改数据库中的对象，比如创建、删除和修改二维表，核心的关键字包括<code>create</code>、<code>drop</code>和<code>alter</code>；</p>
 </li>
-<li>
-<p>DML（数据操作语言）：主要负责数据的插入、删除、更新和查询，关键词包括<code>insert</code>、<code>delete</code>、<code>update</code>和<code>select</code>；</p>
+<li><p>DML（数据操作语言）：主要负责数据的插入、删除、更新和查询，关键词包括<code>insert</code>、<code>delete</code>、<code>update</code>和<code>select</code>；</p>
 </li>
-<li>
-<p>DCL（数据控制语言）：DCL 用于授予和召回权限，核心关键词是<code>grant</code>和<code>revoke</code>；</p>
-</li>
-<li>
-<p>TCL（事务控制语言）：TCL 通常用于事务控制；</p>
-</li>
+<li>DCL（数据控制语言）：DCL 用于授予和召回权限，核心关键词是<code>grant</code>和<code>revoke</code>；</li>
+<li>TCL（事务控制语言）：TCL 通常用于事务控制；</li>
 </ul>
 <p>建一个表：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">USE</span> <span class="token identifier"><span class="token punctuation">`</span>school<span class="token punctuation">`</span></span><span class="token punctuation">;</span>
