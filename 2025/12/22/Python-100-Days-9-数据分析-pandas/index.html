@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python-100-Days-9-数据分析-pandas | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Pandas 核心的数据类型是Series（数据系列）、DataFrame（数据窗&#x2F;数据框），分别用于处理一维和二维的数据，除此之外，还有一个名为Index的类型及其子类型，它们为Series和DataFrame提供了索引功能。日常工作中DataFrame使用得最为广泛，因为二维的数据结构刚好可以对应有行有列的表格。 Series对象 Pandas 库中的Series对象（由数据data与索引in">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python-100-Days-9-数据分析-pandas | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Pandas 核心的数据类型是Series（数据系列）、DataFrame（数据窗&#x2F;数据框），分别用于处理一维和二维的数据，除此之外，还有一个名为Index的类型及其子类型，它们为Series和DataFrame提供了索引功能。日常工作中DataFrame使用得最为广泛，因为二维的数据结构刚好可以对应有行有列的表格。 Series对象Pandas 库中的Series对象（由数据data与索引ind">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python-100-Days-9-数据分析-pandas">
 <meta property="og:url" content="http://reveryday.github.io/2025/12/22/Python-100-Days-9-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="Pandas 核心的数据类型是Series（数据系列）、DataFrame（数据窗&#x2F;数据框），分别用于处理一维和二维的数据，除此之外，还有一个名为Index的类型及其子类型，它们为Series和DataFrame提供了索引功能。日常工作中DataFrame使用得最为广泛，因为二维的数据结构刚好可以对应有行有列的表格。 Series对象 Pandas 库中的Series对象（由数据data与索引in">
+<meta property="og:description" content="Pandas 核心的数据类型是Series（数据系列）、DataFrame（数据窗&#x2F;数据框），分别用于处理一维和二维的数据，除此之外，还有一个名为Index的类型及其子类型，它们为Series和DataFrame提供了索引功能。日常工作中DataFrame使用得最为广泛，因为二维的数据结构刚好可以对应有行有列的表格。 Series对象Pandas 库中的Series对象（由数据data与索引ind">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/image1.png">
 <meta property="article:published_time" content="2025-12-22T07:15:29.000Z">
@@ -139,9 +139,8 @@
   isHighlightShrink: undefined,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Python-100-Days-9-数据分析-pandas</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Python-100-Days-9-数据分析-pandas</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-22T07:15:29.000Z" title="发表于 2025-12-22 15:15:29">2025-12-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-09T14:25:33.282Z" title="更新于 2026-01-09 22:25:33">2026-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/Python-100-Days/">Python-100-Days</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>Pandas 核心的数据类型是<code>Series</code>（数据系列）、<code>DataFrame</code>（数据窗/数据框），分别用于处理一维和二维的数据，除此之外，还有一个名为<code>Index</code>的类型及其子类型，它们为<code>Series</code>和<code>DataFrame</code>提供了索引功能。日常工作中<code>DataFrame</code>使用得最为广泛，因为二维的数据结构刚好可以对应有行有列的表格。</p>
-<h3 id="Series对象">Series对象</h3>
-<p>Pandas 库中的<code>Series</code>对象（由数据data与索引index构成）可以用来表示一维数据结构，其内部结构包含了两个数组，一个用来保存数据，另一个用来保存数据的索引。1-创建Series对象：</p>
+}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">Python-100-Days-9-数据分析-pandas</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Python-100-Days-9-数据分析-pandas</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-22T07:15:29.000Z" title="发表于 2025-12-22 15:15:29">2025-12-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-09T14:25:33.282Z" title="更新于 2026-01-09 22:25:33">2026-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../../../categories/Python-100-Days/">Python-100-Days</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>Pandas 核心的数据类型是<code>Series</code>（数据系列）、<code>DataFrame</code>（数据窗/数据框），分别用于处理一维和二维的数据，除此之外，还有一个名为<code>Index</code>的类型及其子类型，它们为<code>Series</code>和<code>DataFrame</code>提供了索引功能。日常工作中<code>DataFrame</code>使用得最为广泛，因为二维的数据结构刚好可以对应有行有列的表格。</p>
+<h3 id="Series对象"><a href="#Series对象" class="headerlink" title="Series对象"></a>Series对象</h3><p>Pandas 库中的<code>Series</code>对象（由数据data与索引index构成）可以用来表示一维数据结构，其内部结构包含了两个数组，一个用来保存数据，另一个用来保存数据的索引。1-创建Series对象：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
 s1<span class="token operator">=</span>pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">380</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">360</span><span class="token punctuation">]</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'一季度'</span><span class="token punctuation">,</span> <span class="token string">'二季度'</span><span class="token punctuation">,</span> <span class="token string">'三季度'</span><span class="token punctuation">,</span> <span class="token string">'四季度'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -180,30 +179,22 @@ s1<span class="token operator">=</span>pd<span class="token punctuation">.</span
 <span class="token keyword">print</span><span class="token punctuation">(</span>ser2<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment"># 找最小</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>ser2<span class="token punctuation">.</span>std<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment"># 求标准差</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>ser2<span class="token punctuation">.</span>var<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment"># 求方差</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="处理Series数据">处理Series数据</h4>
-<ul>
-<li>
-<p><code>Series</code>对象的<code>isna()</code>和<code>isnull()</code>方法可以用于空值的判断，<code>notna()</code>和<code>notnull()</code>方法可以用于非空值的判断；</p>
+<h4 id="处理Series数据"><a href="#处理Series数据" class="headerlink" title="处理Series数据"></a>处理Series数据</h4><ul>
+<li><p><code>Series</code>对象的<code>isna()</code>和<code>isnull()</code>方法可以用于空值的判断，<code>notna()</code>和<code>notnull()</code>方法可以用于非空值的判断；</p>
 </li>
-<li>
-<p><code>Series</code>对象的<code>dropna()</code>和<code>fillna()</code>方法分别用来删除空值和填充空值；</p>
+<li><p><code>Series</code>对象的<code>dropna()</code>和<code>fillna()</code>方法分别用来删除空值和填充空值；</p>
 <p>（<code>dropna()</code>和<code>fillna()</code>方法都有一个名为<code>inplace</code>的参数，它的默认值是<code>False</code>，表示删除空值或填充空值不会修改原来的<code>Series</code>对象，而是返回一个新的<code>Series</code>对象。如果将<code>inplace</code>参数的值修改为<code>True</code>，那么删除或填充空值会就地操作，直接修改原来的<code>Series</code>对象，此时方法的返回值是<code>None</code>。）</p>
 </li>
-<li>
-<p><code>Series</code>对象的<code>mask()</code>和<code>where()</code>（s2.where(cond, other)，当条件不满足时替换为other值，mask刚好相反）方法可以将满足或不满足条件的值进行替换；</p>
+<li><p><code>Series</code>对象的<code>mask()</code>和<code>where()</code>（s2.where(cond, other)，当条件不满足时替换为other值，mask刚好相反）方法可以将满足或不满足条件的值进行替换；</p>
 </li>
-<li>
-<p><code>Series</code>对象的<code>duplicated()</code>方法可以找出重复的数据，而<code>drop_duplicates()</code>方法可以删除重复数据。</p>
+<li><p><code>Series</code>对象的<code>duplicated()</code>方法可以找出重复的数据，而<code>drop_duplicates()</code>方法可以删除重复数据。</p>
 </li>
-<li>
-<p><code>apply()</code>和<code>map()</code>方法；</p>
+<li><p><code>apply()</code>和<code>map()</code>方法；</p>
 </li>
-<li>
-<p><code>Series</code>对象的<code>sort_index()</code>和<code>sort_values()</code>方法可以用于对索引和数据的排序，排序方法有一个名为<code>ascending</code>的布尔类型参数，该参数用于控制排序的结果是升序还是降序；而名为<code>kind</code>的参数则用来控制排序使用的算法，默认使用了<code>quicksort</code>，也可以选择<code>mergesort</code>或<code>heapsort</code>；如果存在空值，那么可以用<code>na_position</code>参数空值放在最前还是最后，默认是<code>last</code>；</p>
+<li><p><code>Series</code>对象的<code>sort_index()</code>和<code>sort_values()</code>方法可以用于对索引和数据的排序，排序方法有一个名为<code>ascending</code>的布尔类型参数，该参数用于控制排序的结果是升序还是降序；而名为<code>kind</code>的参数则用来控制排序使用的算法，默认使用了<code>quicksort</code>，也可以选择<code>mergesort</code>或<code>heapsort</code>；如果存在空值，那么可以用<code>na_position</code>参数空值放在最前还是最后，默认是<code>last</code>；</p>
 </li>
 </ul>
-<h4 id="绘制图表">绘制图表</h4>
-<p><code>Series</code>对象有一个名为<code>plot</code>的方法可以用来生成图表，如果选择生成折线图、饼图、柱状图等，默认会使用<code>Series</code>对象的索引作为横坐标，使用<code>Series</code>对象的数据作为纵坐标。</p>
+<h4 id="绘制图表"><a href="#绘制图表" class="headerlink" title="绘制图表"></a>绘制图表</h4><p><code>Series</code>对象有一个名为<code>plot</code>的方法可以用来生成图表，如果选择生成折线图、饼图、柱状图等，默认会使用<code>Series</code>对象的索引作为横坐标，使用<code>Series</code>对象的数据作为纵坐标。</p>
 <p>绘制柱状图：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
@@ -218,30 +209,25 @@ plt<span class="token punctuation">.</span>xticks<span class="token punctuation"
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>ser9<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">:</span>
     plt<span class="token punctuation">.</span>text<span class="token punctuation">(</span>i<span class="token punctuation">,</span> ser9<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">,</span> ser9<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> ha<span class="token operator">=</span><span class="token string">'center'</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251222185727713.webp" style="zoom: 50%;" />
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251222185727713.webp" style="zoom: 50%;" /></p>
 <p>绘制饼图：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># plot方法的kind参数指定了图表类型为饼图</span>
 <span class="token comment"># autopct会自动计算并显示百分比</span>
 <span class="token comment"># pctdistance用来控制百分比到圆心的距离</span>
 ser9<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>kind<span class="token operator">=</span><span class="token string">'pie'</span><span class="token punctuation">,</span> autopct<span class="token operator">=</span><span class="token string">'%.1f%%'</span><span class="token punctuation">,</span> pctdistance<span class="token operator">=</span><span class="token number">0.65</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<img src="https://gitee.com/wenswuu/pictures/raw/master/20251222185709354.webp" alt="image-20251222185705440" style="zoom: 50%;" />
-<h3 id="DataFrame对象">DataFrame对象</h3>
-<ul>
-<li>
-<p>通过二维数组创造DataFrame；</p>
+<p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251222185709354.webp" alt="image-20251222185705440" style="zoom: 50%;" /></p>
+<h3 id="DataFrame对象"><a href="#DataFrame对象" class="headerlink" title="DataFrame对象"></a>DataFrame对象</h3><ul>
+<li><p>通过二维数组创造DataFrame；</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">scores <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 courses <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span>
 stu_ids <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
 d1 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token operator">=</span>scores<span class="token punctuation">,</span> columns<span class="token operator">=</span>courses<span class="token punctuation">,</span> index<span class="token operator">=</span>stu_ids<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>d1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>
-<p>通过字典创造DataFrame；</p>
+<li><p>通过字典创造DataFrame；</p>
 </li>
-<li>
-<p>通过读取CSV文件创造DataFrame，可以通过<code>pandas</code> 模块的<code>read_csv</code>函数来读取 CSV 文件，<code>read_csv</code>函数的参数非常多：</p>
-<ul>
+<li>通过读取CSV文件创造DataFrame，可以通过<code>pandas</code> 模块的<code>read_csv</code>函数来读取 CSV 文件，<code>read_csv</code>函数的参数非常多：<ul>
 <li><code>sep</code> / <code>delimiter</code>：分隔符，默认是<code>,</code>。</li>
 <li><code>header</code>：表头（列索引）的位置，默认值是<code>infer</code>，用第一行的内容作为表头（列索引）。</li>
 <li><code>index_col</code>：用作行索引（标签）的列。</li>
@@ -252,15 +238,12 @@ d1 <span class="token operator">=</span> pd<span class="token punctuation">.</sp
 <li><code>iterator</code>：设置为<code>True</code>，函数返回迭代器对象。</li>
 </ul>
 </li>
-<li>
-<p>读取Excel工作表创建DataFrame对象；</p>
+<li><p>读取Excel工作表创建DataFrame对象；</p>
 </li>
-<li>
-<p>读取关系数据库二维表创建DataFrame对象；</p>
+<li><p>读取关系数据库二维表创建DataFrame对象；</p>
 </li>
 </ul>
-<h4 id="操作数据">操作数据</h4>
-<p>索引：如取出<code>emp_df</code>的<code>ename</code>列，可以使用下面的两种方式：</p>
+<h4 id="操作数据"><a href="#操作数据" class="headerlink" title="操作数据"></a>操作数据</h4><p>索引：如取出<code>emp_df</code>的<code>ename</code>列，可以使用下面的两种方式：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">emp_df<span class="token punctuation">.</span>ename
 emp_df<span class="token punctuation">[</span><span class="token string">'ename'</span><span class="token punctuation">]</span>
 emp_df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'ename'</span><span class="token punctuation">,</span> <span class="token string">'job'</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token comment"># 获取多个列</span>

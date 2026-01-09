@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数值积分-高斯求积 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="无论是复合求积公式（如复合梯形公式、复合辛普森公式）还是龙贝格算法，其都需要增加节点以提高代数精度。而对于一个积分：$\int_a^bf(x)dx$，高斯求积能在不增加求积节点的情况下，达到最大的代数精度，如果有n+1个求积点： $$ \int_a^bf(x)dx&#x3D;\sum_{k&#x3D;0}^nA_kf(x_k) $$ $x_k$称为求积节点，$A_k$称为求积系数，也叫伴随$x_k$的权，权$A_k$">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数值积分-高斯求积 | Wens'Blog</title><meta name="author" content="Wens"><meta name="copyright" content="Wens"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="无论是复合求积公式（如复合梯形公式、复合辛普森公式）还是龙贝格算法，其都需要增加节点以提高代数精度。而对于一个积分：$\int_a^bf(x)dx$，高斯求积能在不增加求积节点的情况下，达到最大的代数精度，如果有n+1个求积点：  \int_a^bf(x)dx&#x3D;\sum_{k&#x3D;0}^nA_kf(x_k)$x_k$称为求积节点，$A_k$称为求积系数，也叫伴随$x_k$的权，权$A_k$的选取仅与节">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数值积分-高斯求积">
 <meta property="og:url" content="http://reveryday.github.io/2025/12/21/%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86-%E9%AB%98%E6%96%AF%E6%B1%82%E7%A7%AF/index.html">
 <meta property="og:site_name" content="Wens&#39;Blog">
-<meta property="og:description" content="无论是复合求积公式（如复合梯形公式、复合辛普森公式）还是龙贝格算法，其都需要增加节点以提高代数精度。而对于一个积分：$\int_a^bf(x)dx$，高斯求积能在不增加求积节点的情况下，达到最大的代数精度，如果有n+1个求积点： $$ \int_a^bf(x)dx&#x3D;\sum_{k&#x3D;0}^nA_kf(x_k) $$ $x_k$称为求积节点，$A_k$称为求积系数，也叫伴随$x_k$的权，权$A_k$">
+<meta property="og:description" content="无论是复合求积公式（如复合梯形公式、复合辛普森公式）还是龙贝格算法，其都需要增加节点以提高代数精度。而对于一个积分：$\int_a^bf(x)dx$，高斯求积能在不增加求积节点的情况下，达到最大的代数精度，如果有n+1个求积点：  \int_a^bf(x)dx&#x3D;\sum_{k&#x3D;0}^nA_kf(x_k)$x_k$称为求积节点，$A_k$称为求积系数，也叫伴随$x_k$的权，权$A_k$的选取仅与节">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://reveryday.github.io/images/image1.png">
 <meta property="article:published_time" content="2025-12-21T11:07:14.000Z">
@@ -139,70 +139,56 @@
   isHighlightShrink: undefined,
   isToc: false,
   pageType: 'post'
-}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">数值积分-高斯求积</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">数值积分-高斯求积</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-21T11:07:14.000Z" title="发表于 2025-12-21 19:07:14">2025-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-22T07:16:09.261Z" title="更新于 2025-12-22 15:16:09">2025-12-22</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>无论是复合求积公式（如复合梯形公式、复合辛普森公式）还是龙贝格算法，其都需要增加节点以提高代数精度。而对于一个积分：$\int_a^bf(x)dx$，高斯求积能在不增加求积节点的情况下，达到最大的代数精度，如果有n+1个求积点：<br>
-$$<br>
-\int_a^bf(x)dx=\sum_{k=0}^nA_kf(x_k)<br>
-$$<br>
-$x_k$称为求积节点，$A_k$称为求积系数，也叫伴随$x_k$的权，<strong>权$A_k$的选取仅与节点有关，而不依赖于被积函数的具体形式</strong>。</p>
+}</script><link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5073185_9ng9btivjo.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="../../../../index.html"></a><a class="nav-page-title" href="../../../../index.html"><span class="site-name">数值积分-高斯求积</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-user-circle"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Friends</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">数值积分-高斯求积</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-21T11:07:14.000Z" title="发表于 2025-12-21 19:07:14">2025-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-22T07:16:09.261Z" title="更新于 2025-12-22 15:16:09">2025-12-22</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>无论是复合求积公式（如复合梯形公式、复合辛普森公式）还是龙贝格算法，其都需要增加节点以提高代数精度。而对于一个积分：$\int_a^bf(x)dx$，高斯求积能在不增加求积节点的情况下，达到最大的代数精度，如果有n+1个求积点：</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)dx=\sum_{k=0}^nA_kf(x_k)</script><p>$x_k$称为求积节点，$A_k$称为求积系数，也叫伴随$x_k$的权，<strong>权$A_k$的选取仅与节点有关，而不依赖于被积函数的具体形式</strong>。</p>
 <p>上式方程有2n+2个参数（n+1个$A_k$，n+1个$x_k$），可列2n+2个方程，理论上可以做到$f(x)=1,x,…,x^{2n+1}$（2n+2个方程）时等式都成立，即选取适当的$x_k$可达到2n+1次代数精度（代数精度的定义）。</p>
 <p>那现在的问题在于，如何选取高斯求积节点（即高斯点）呢？</p>
-<p>基于拉格朗日插值可得：<br>
-$$<br>
-R_n(x)=f(x)-L_n(x)=\frac{1}{(n+1)!}f^{(n+1)}(\xi)w_{n+1}(x)\<br>
-$$<br>
-其中，$x_0,x_1,…,x_n$是拉格朗日插值的插值点，也就是本章的求积节点（本质都是要通过这些点去还原$f(x)$，在插值时叫插值点，求积分的时候叫求积节点）。</p>
-<p>这个等式是严格成立的，那进一步可得：<br>
-$$<br>
-R(I)=\int_a^bf(x)\rho(x)dx-\int_a^bL_n(x)\rho(x)dx\<br>
-=\int_a^b\frac{1}{(n+1)!}f^{(n+1)}(\xi)w_{n+1}(x)\rho(x)dx<br>
-$$<br>
-其中，$w_{n+1}(x)=(x-x_0)(x-x_1)…(x-x_n)$，欲使$R(I)=0$，即：<br>
-$$<br>
-\int_a^bp(x)w_{n+1}(x)\rho(x)dx=0<br>
-$$<br>
-其中，$p(x)=\frac{1}{(n+1)!}f^{(n+1)}(\xi)$，由于$f(x)=1,x,…,x^{2n+1}$，则$p(x)$是个次数不超过n次的多项式。所以$w_{n+1}(x)$应该有这<strong>两个要求</strong>：</p>
+<p>基于拉格朗日插值可得：</p>
+<script type="math/tex; mode=display">
+R_n(x)=f(x)-L_n(x)=\frac{1}{(n+1)!}f^{(n+1)}(\xi)w_{n+1}(x)\\</script><p>其中，$x_0,x_1,…,x_n$是拉格朗日插值的插值点，也就是本章的求积节点（本质都是要通过这些点去还原$f(x)$，在插值时叫插值点，求积分的时候叫求积节点）。</p>
+<p>这个等式是严格成立的，那进一步可得：</p>
+<script type="math/tex; mode=display">
+R(I)=\int_a^bf(x)\rho(x)dx-\int_a^bL_n(x)\rho(x)dx\\
+=\int_a^b\frac{1}{(n+1)!}f^{(n+1)}(\xi)w_{n+1}(x)\rho(x)dx</script><p>其中，$w_{n+1}(x)=(x-x_0)(x-x_1)…(x-x_n)$，欲使$R(I)=0$，即：</p>
+<script type="math/tex; mode=display">
+\int_a^bp(x)w_{n+1}(x)\rho(x)dx=0</script><p>其中，$p(x)=\frac{1}{(n+1)!}f^{(n+1)}(\xi)$，由于$f(x)=1,x,…,x^{2n+1}$，则$p(x)$是个次数不超过n次的多项式。所以$w_{n+1}(x)$应该有这<strong>两个要求</strong>：</p>
 <ul>
-<li>$x_0,x_1,…,x_n$是$w_{n+1}(x)$的零点；</li>
+<li>$x<em>0,x_1,…,x_n$是$w</em>{n+1}(x)$的零点；</li>
 <li>$w_{n+1}(x)$与任意不超过n次的多项式$p(x)$带权正交；</li>
 </ul>
-<p>先回顾一下什么叫做正交：<br>
-$$<br>
-(f(x),g(x))=\int_a^bf(x)g(x)\rho(x)dx=0<br>
-$$<br>
-则称$f(x)$与$g(x)$在$[a,b]$上带权$\rho(x)$正交，若函数族$\varphi_0(x),\varphi_1(x),…,\varphi_n(x)$满足：</p>
+<p>先回顾一下什么叫做正交：</p>
+<script type="math/tex; mode=display">
+(f(x),g(x))=\int_a^bf(x)g(x)\rho(x)dx=0</script><p>则称$f(x)$与$g(x)$在$[a,b]$上带权$\rho(x)$正交，若函数族$\varphi_0(x),\varphi_1(x),…,\varphi_n(x)$满足：</p>
 <ul>
 <li>$j\ne k$时，$(\varphi_j(x),\varphi_k(x))=0$；</li>
 <li>$j=k$时，$(\varphi_j(x),\varphi_k(x))=A_k&gt;0$；</li>
 </ul>
 <p>则称多项式序列${\varphi_k(x)}$，是$[a,b]$上带权$\rho(x)$的正交函数族（比如有三角函数族），如果这个序列都是一群多项式，则该序列中的每一项叫做正交多项式。</p>
 <p>给定了区间$[a,b]$与权函数$\rho(x)$，均可由一族线性无关的幂函数，利用格拉姆-施密特正交化方法，构造出正交多项式序列${\varphi_n(x)}$。反之，若${\varphi_n(x)}$是正交多项式，则$\varphi_0(x),\varphi_1(x),…,\varphi_n(x)$是线性无关的（即互相内积为0）。</p>
-<p>而$w_{n+1}(x)$是次数为n+1的多项式，$p(x)$是个次数不超过n次的多项式，所以$w_{n+1}(x)$的第2个要求其实就让$w_{n+1}(x)$为次数为n+1次的正交多项式就可以了，基于此再反过来去满足第一个要求，则可求得高斯点就是次数为n+1次的正交多项式的零点。</p>
+<p>而$w<em>{n+1}(x)$是次数为n+1的多项式，$p(x)$是个次数不超过n次的多项式，所以$w</em>{n+1}(x)$的第2个要求其实就让$w_{n+1}(x)$为次数为n+1次的正交多项式就可以了，基于此再反过来去满足第一个要求，则可求得高斯点就是次数为n+1次的正交多项式的零点。</p>
 <p>n取决于要用几个求积节点去求积分，一般是一开始确定的，基于精度与效率的平衡。</p>
 <ul>
 <li>一般的高斯求积公式；</li>
 <li>高斯勒让德求积；</li>
 </ul>
-<p>如果<strong>区间是$[-1,1]$</strong>，权函数为1，则格拉姆-施密特正交化得到的多项式就是<strong>勒让德多项式</strong>，如要使用两点高斯求积公式，则高斯点为：<br>
-$$<br>
-P_2(x) = \frac{1}{2}(3x^2 - 1) = 0\<br>
-3x^2 = 1 \implies x^2 = \frac{1}{3}<br>
-$$<br>
-解得两个高斯点：$x_1 = -\frac{1}{\sqrt{3}} \approx -0.57735, \quad x_2 = \frac{1}{\sqrt{3}} \approx 0.57735$。求得高斯点之后代入$f(x)=1,x,x^2,x^3$：<br>
-$$<br>
-\int_{-1}^11dx=A_1+A_2=2\<br>
-\int_{-1}^1xdx=-\frac{1}{\sqrt{3}}A_1+\frac{1}{\sqrt{3}}A_2=0\<br>
-\int_{-1}^1x^2dx=\frac{1}{3}A_1+\frac{1}{3}A_2=\frac{2}{3}\<br>
-\int_{-1}^1x^3dx=-\frac{1}{3\sqrt{3}}A_1+\frac{1}{3\sqrt{3}}A_2=0<br>
-$$<br>
-最后解得$A_1=A_2=1$，高斯勒让德求积的求积节点与权都不取决于$f(x)$的具体形式，是固定的。</p>
+<p>如果<strong>区间是$[-1,1]$</strong>，权函数为1，则格拉姆-施密特正交化得到的多项式就是<strong>勒让德多项式</strong>，如要使用两点高斯求积公式，则高斯点为：</p>
+<script type="math/tex; mode=display">
+P_2(x) = \frac{1}{2}(3x^2 - 1) = 0\\
+3x^2 = 1 \implies x^2 = \frac{1}{3}</script><p>解得两个高斯点：$x_1 = -\frac{1}{\sqrt{3}} \approx -0.57735, \quad x_2 = \frac{1}{\sqrt{3}} \approx 0.57735$。求得高斯点之后代入$f(x)=1,x,x^2,x^3$：</p>
+<script type="math/tex; mode=display">
+\int_{-1}^11dx=A_1+A_2=2\\
+\int_{-1}^1xdx=-\frac{1}{\sqrt{3}}A_1+\frac{1}{\sqrt{3}}A_2=0\\
+\int_{-1}^1x^2dx=\frac{1}{3}A_1+\frac{1}{3}A_2=\frac{2}{3}\\
+\int_{-1}^1x^3dx=-\frac{1}{3\sqrt{3}}A_1+\frac{1}{3\sqrt{3}}A_2=0</script><p>最后解得$A_1=A_2=1$，高斯勒让德求积的求积节点与权都不取决于$f(x)$的具体形式，是固定的。</p>
 <p>高斯求积的一般流程：</p>
 <ul>
 <li>先求出高斯点，如果是高斯勒让德求积那就直接是勒让德多项式的零点，再代入求得其求积系数；</li>
-<li>如果是一般的高斯求积，利用第二点“$w_{n+1}(x)$与任意不超过n次的多项式$p(x)$带权正交”求出$w_{n+1}(x)$得到高斯点，再代入得到求积系数。</li>
+<li>如果是一般的高斯求积，利用第二点“$w<em>{n+1}(x)$与任意不超过n次的多项式$p(x)$带权正交”求出$w</em>{n+1}(x)$得到高斯点，再代入得到求积系数。</li>
 </ul>
 <p>高斯求积真正伟大之处在于：高斯点和权重是基于区间[-1,1]上的勒让德多项式推导的，它们与具体的被积函数 <code>f(x)</code> 无关！所以可以直接通过查表得到一个n点高斯求积的高斯点和权！</p>
 <p><img src="https://gitee.com/wenswuu/pictures/raw/master/20251222141343553.webp" alt="CamScanner 12-22-2025 14.06"></p>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/">数值计算</a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wens</div><div class="author-info-description"></div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/reveryday"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"><script>(() => {
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../tags/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/">数值计算</a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="../images/image1.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wens</div><div class="author-info-description"></div><div class="site-data"><a href="../archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/reveryday"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By Wens</div><div class="footer_custom_text">天道酬勤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js"></script><script src="../../../../js/main.js"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
