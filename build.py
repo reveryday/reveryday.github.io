@@ -15,10 +15,7 @@ ROOT = Path(__file__).parent
 POSTS_DIR = ROOT / "posts"
 OUTPUT_DIR = ROOT / "dist"
 
-SITE_TITLE = "MyBlog"
-SITE_DESCRIPTION = (
-    "A reading-first blog inspired by Lilian Weng's calm, technical writing style."
-)
+SITE_TITLE = "Wens'Blog"
 HEAD_EXTRAS = """
     <link
       rel="stylesheet"
@@ -48,16 +45,15 @@ FOOTER_SCRIPTS = """
       });
     </script>
 """
-HOME_EYEBROW = "Personal Notes and Essays"
-HOME_HEADING = "Welcome to MyBlog"
+HOME_HEADING = "Welcome to my world!"
 HOME_LEDE = (
-    "I write about engineering, machine learning, and the systems work "
+    "I write about nuclear energy,machine learning, and my stuff"
     "that usually matters more than the demo."
 )
 SOCIAL_LINKS = [
-    ("GitHub", "https://github.com/"),
-    ("X", "https://x.com/"),
-    ("LinkedIn", "https://www.linkedin.com/"),
+    ("GitHub", "https://github.com/reveryday"),
+    #("X", "https://x.com/"),
+    #("LinkedIn", "https://www.linkedin.com/"),
 ]
 NAV_LINKS = [
     ("Posts", "index.html"),
