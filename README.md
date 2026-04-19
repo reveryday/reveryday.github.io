@@ -6,14 +6,14 @@ A reading-first static blog.
 
 1. Write or edit Markdown posts in `posts/`.
 2. Run `python build.py`.
-3. Open `index.html` directly in a browser.
+3. Open `dist/index.html` directly in a browser.
 
 ## Publish to GitHub Pages
 
 1. Push this repository to the `main` branch.
 2. In GitHub, open `Settings -> Pages`.
 3. Set the source to `GitHub Actions`.
-4. Every push to `main` will run `python build.py` and deploy the generated site.
+4. Every push to `main` will run `python build.py` and deploy `dist/`.
 
 ## Add a new post
 
@@ -34,8 +34,8 @@ Your Markdown content starts here.
 
 The build step will automatically generate:
 
-- `posts/*.html`
-- `index.html`
-- `archive.html`
-- `tags.html`
-- `assets/search.js`
+- `dist/posts/*.html`
+- `dist/index.html`
+- `dist/archive.html`
+- `dist/tags.html`
+- `dist/assets/search.js`

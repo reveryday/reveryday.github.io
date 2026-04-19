@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
@@ -11,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 POSTS_DIR = ROOT / "posts"
+OUTPUT_DIR = ROOT / "dist"
 
 SITE_TITLE = "MyBlog"
 SITE_DESCRIPTION = (
@@ -244,6 +246,18 @@ def render_layout(title: str, content: str, current_href: str, description: str 
 """
 
 
+def render_page_header(current_href: str, heading: str) -> str:
+    return f"""      <header class="site-header compact">
+        <nav class="top-nav" aria-label="Primary">
+          <a class="brand" href="index.html">{SITE_TITLE}</a>
+          <div class="nav-links">
+{render_nav(current_href)}
+          </div>
+        </nav>
+        <h1>{heading}</h1>
+      </header>"""
+
+
 def render_home(posts: list[Post]) -> str:
     cards = []
     for post in posts:
@@ -291,15 +305,7 @@ def render_archive(posts: list[Post]) -> str:
         f'          <li><span>{post.iso_date}</span> <a href="{post.url}">{escape(post.title)}</a></li>'
         for post in posts
     )
-    content = f"""      <header class="site-header compact">
-        <nav class="top-nav" aria-label="Primary">
-          <a class="brand" href="index.html">{SITE_TITLE}</a>
-          <div class="nav-links">
-{render_nav("archive.html")}
-          </div>
-        </nav>
-        <h1>Archive</h1>
-      </header>
+    content = f"""{render_page_header("archive.html", "Archive")}
 
       <main class="content-page">
         <ul class="archive-list">
@@ -329,20 +335,40 @@ def render_tags(posts: list[Post]) -> str:
 
     empty_state = '<p class="meta">No tags yet.</p>' if not sections else ""
     body = "\n".join(sections) if sections else f"        {empty_state}"
-    content = f"""      <header class="site-header compact">
-        <nav class="top-nav" aria-label="Primary">
-          <a class="brand" href="index.html">{SITE_TITLE}</a>
-          <div class="nav-links">
-{render_nav("tags.html")}
-          </div>
-        </nav>
-        <h1>Tags</h1>
-      </header>
+    content = f"""{render_page_header("tags.html", "Tags")}
 
       <main class="content-page">
 {body}
       </main>"""
     return render_layout(f"Tags | {SITE_TITLE}", content, "tags.html")
+
+
+def render_search_page() -> str:
+    content = f"""{render_page_header("search.html", "Search")}
+
+      <main class="content-page">
+        <label class="search-panel" for="query">
+          <span class="search-label">Search by title or summary</span>
+          <input id="query" type="search" placeholder="Try 'deployment' or 'reading'" />
+        </label>
+        <div id="results" class="search-results"></div>
+      </main>
+      <script src="assets/search.js"></script>"""
+    return render_layout(f"Search | {SITE_TITLE}", content, "search.html")
+
+
+def render_faq_page() -> str:
+    content = f"""{render_page_header("faq.html", "FAQ")}
+
+      <main class="content-page prose">
+        <h2>What is this blog for?</h2>
+        <p>Long-form notes, technical essays, and project writeups.</p>
+        <h2>How is it deployed?</h2>
+        <p>As a static site on GitHub Pages through a GitHub Actions workflow.</p>
+        <h2>How do I publish new posts?</h2>
+        <p>Write a new Markdown file in <code>posts/</code> with frontmatter, then push to <code>main</code>. GitHub Actions will generate the HTML pages automatically.</p>
+      </main>"""
+    return render_layout(f"FAQ | {SITE_TITLE}", content, "faq.html")
 
 
 def render_search_index(posts: list[Post]) -> str:
@@ -435,6 +461,7 @@ def render_post_page(post: Post) -> str:
 
 
 def write_text(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8", newline="\n")
 
 
@@ -443,13 +470,20 @@ def main() -> None:
     if not posts:
         raise SystemExit("No Markdown posts found in posts/")
 
-    write_text(ROOT / "index.html", render_home(posts))
-    write_text(ROOT / "archive.html", render_archive(posts))
-    write_text(ROOT / "tags.html", render_tags(posts))
-    write_text(ROOT / "assets" / "search.js", render_search_index(posts))
+    if OUTPUT_DIR.exists():
+        shutil.rmtree(OUTPUT_DIR)
+
+    shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets")
+
+    write_text(OUTPUT_DIR / "index.html", render_home(posts))
+    write_text(OUTPUT_DIR / "archive.html", render_archive(posts))
+    write_text(OUTPUT_DIR / "tags.html", render_tags(posts))
+    write_text(OUTPUT_DIR / "search.html", render_search_page())
+    write_text(OUTPUT_DIR / "faq.html", render_faq_page())
+    write_text(OUTPUT_DIR / "assets" / "search.js", render_search_index(posts))
 
     for post in posts:
-        write_text(POSTS_DIR / f"{post.slug}.html", render_post_page(post))
+        write_text(OUTPUT_DIR / "posts" / f"{post.slug}.html", render_post_page(post))
 
 
 if __name__ == "__main__":
