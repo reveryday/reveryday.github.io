@@ -16,6 +16,7 @@ POSTS_DIR = ROOT / "posts"
 OUTPUT_DIR = ROOT / "dist"
 
 SITE_TITLE = "Wens'Blog"
+SITE_DESCRIPTION = "Wens' personal blog about nuclear energy, machine learning, and technical notes."
 HEAD_EXTRAS = """
     <link
       rel="stylesheet"
@@ -47,7 +48,7 @@ FOOTER_SCRIPTS = """
 """
 HOME_HEADING = "Welcome to my world!"
 HOME_LEDE = (
-    "I write about nuclear energy,machine learning, and my stuff"
+    "I write about nuclear energy,machine learning, and my stuff "
     "that usually matters more than the demo."
 )
 SOCIAL_LINKS = [
@@ -421,7 +422,7 @@ def load_posts() -> list[Post]:
         date = parse_date(metadata["date"])
         summary = metadata.get("summary", "").strip() or extract_summary(body)
         read_time = metadata.get("read_time", "5 min")
-        author = metadata.get("author", "You")
+        author = metadata.get("author", "Wens")
         tags = parse_tags(metadata.get("tags", ""))
         posts.append(
             Post(
@@ -501,6 +502,8 @@ def render_home(posts: list[Post]) -> str:
         f'            <a href="{href}" target="_blank" rel="noreferrer">{escape(label)}</a>'
         for label, href in SOCIAL_LINKS
     )
+    eyebrow = globals().get("HOME_EYEBROW", "").strip()
+    eyebrow_html = f'          <p class="eyebrow">{escape(eyebrow)}</p>\n' if eyebrow else ""
 
     content = f"""      <header class="site-header">
         <nav class="top-nav" aria-label="Primary">
@@ -510,7 +513,7 @@ def render_home(posts: list[Post]) -> str:
           </div>
         </nav>
         <section class="hero">
-          <p class="eyebrow">{HOME_EYEBROW}</p>
+{eyebrow_html}\
           <h1>{HOME_HEADING}</h1>
           <p class="lede">
             {HOME_LEDE}
