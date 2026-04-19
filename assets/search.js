@@ -1,16 +1,14 @@
 const posts = [
   {
-    title: "Building a Reading-First Blog",
-    summary:
-      "A practical breakdown of what makes long-form technical blogs feel calm, readable, and worth returning to.",
-    url: "posts/building-a-reading-first-blog.html",
+    "title": "Building a Reading-First Blog",
+    "summary": "A practical breakdown of what makes long-form technical blogs feel calm, readable, and worth returning to.",
+    "url": "posts/building-a-reading-first-blog.html"
   },
   {
-    title: "Shipping Static Sites With Confidence",
-    summary:
-      "Why a small static deployment surface is often the right tradeoff for a personal site that needs to stay fast and cheap.",
-    url: "posts/shipping-static-sites-with-confidence.html",
-  },
+    "title": "Shipping Static Sites With Confidence",
+    "summary": "Why a small static deployment surface is often the right tradeoff for a personal site that needs to stay fast and cheap.",
+    "url": "posts/shipping-static-sites-with-confidence.html"
+  }
 ];
 
 const queryInput = document.querySelector("#query");
