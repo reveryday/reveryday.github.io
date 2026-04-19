@@ -52,7 +52,6 @@ HOME_LEDE = (
     "that usually matters more than the demo."
 )
 SOCIAL_LINKS = [
-    ("GitHub", "https://github.com/reveryday"),
     #("X", "https://x.com/"),
     #("LinkedIn", "https://www.linkedin.com/"),
 ]
