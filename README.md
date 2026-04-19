@@ -39,3 +39,32 @@ The build step will automatically generate:
 - `dist/archive.html`
 - `dist/tags.html`
 - `dist/assets/search.js`
+
+## Images and formulas
+
+- Inline math: `$E=mc^2$`
+- Display math:
+
+```md
+$$
+\int_a^b f(x)\,dx
+$$
+```
+
+- Markdown image:
+
+```md
+![Example](https://example.com/image.png)
+```
+
+- Markdown image with size:
+
+```md
+![Example](https://example.com/image.png){ width=50% }
+```
+
+- Raw HTML image with Typora-style zoom is also supported:
+
+```html
+<img src="https://example.com/image.png" style="zoom: 50%;" />
+```

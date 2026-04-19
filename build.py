@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
@@ -18,6 +19,35 @@ SITE_TITLE = "MyBlog"
 SITE_DESCRIPTION = (
     "A reading-first blog inspired by Lilian Weng's calm, technical writing style."
 )
+HEAD_EXTRAS = """
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css"
+    />
+"""
+FOOTER_SCRIPTS = """
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+      onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\\\[',right:'\\\\]',display:true},{left:'$',right:'$',display:false},{left:'\\\\(',right:'\\\\)',display:false}]});"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.hljs) {
+          window.hljs.highlightAll();
+        }
+      });
+    </script>
+"""
 HOME_EYEBROW = "Personal Notes and Essays"
 HOME_HEADING = "Welcome to MyBlog"
 HOME_LEDE = (
@@ -94,16 +124,102 @@ def parse_tags(value: str) -> list[str]:
 
 
 def slugify(path: Path) -> str:
-    return re.sub(r"[^a-z0-9-]+", "-", path.stem.lower()).strip("-")
+    stem = unicodedata.normalize("NFKC", path.stem).strip().lower()
+    stem = stem.replace("_", "-").replace(" ", "-")
+    stem = re.sub(r"[^\w\-]+", "-", stem, flags=re.UNICODE)
+    stem = re.sub(r"-{2,}", "-", stem).strip("-")
+    return stem or "post"
+
+
+def parse_date(value: str) -> datetime:
+    value = value.strip()
+    for fmt in ("%Y-%m-%d", "%Y-%m-%d %H:%M:%S"):
+        try:
+            return datetime.strptime(value, fmt)
+        except ValueError:
+            continue
+    raise ValueError(f"Unsupported date format: {value}")
+
+
+def stash_token(store: list[str], html: str) -> str:
+    token = f"@@TOKEN{len(store)}@@"
+    store.append(html)
+    return token
+
+
+def restore_tokens(text: str, store: list[str]) -> str:
+    for index, value in enumerate(store):
+        text = text.replace(f"@@TOKEN{index}@@", value)
+    return text
+
+
+def normalize_image_html(source: str, alt: str = "", style: str = "") -> str:
+    normalized_style = style.strip()
+    zoom_match = re.search(r"zoom\s*:\s*([\d.]+)%", normalized_style, re.IGNORECASE)
+    if zoom_match:
+        normalized_style = re.sub(
+            r"zoom\s*:\s*[\d.]+%\s*;?",
+            f"width: {zoom_match.group(1)}%;",
+            normalized_style,
+            flags=re.IGNORECASE,
+        ).strip()
+
+    style_attr = f' style="{escape(normalized_style, quote=True)}"' if normalized_style else ""
+    caption = f"<figcaption>{escape(alt)}</figcaption>" if alt else ""
+    return f'<figure class="prose-figure"><img src="{escape(source, quote=True)}" alt="{escape(alt, quote=True)}" loading="lazy"{style_attr} />{caption}</figure>'
+
+
+def parse_image_attributes(raw: str) -> str:
+    raw = raw.strip()
+    if not raw:
+        return ""
+
+    parts = re.split(r"\s+", raw)
+    styles: list[str] = []
+    for part in parts:
+        key, sep, value = part.partition("=")
+        if not sep:
+            continue
+        key = key.strip().lower()
+        value = value.strip().strip('"').strip("'")
+        if key in {"width", "height", "max-width"} and value:
+            styles.append(f"{key}: {value};")
+    return " ".join(styles)
 
 
 def render_inline(text: str) -> str:
+    stored: list[str] = []
+
+    def keep_raw_html(match: re.Match[str]) -> str:
+        return stash_token(stored, match.group(0))
+
+    def keep_inline_code(match: re.Match[str]) -> str:
+        return stash_token(stored, f"<code>{escape(match.group(1))}</code>")
+
+    def keep_inline_math(match: re.Match[str]) -> str:
+        return stash_token(stored, f"\\({match.group(1).strip()}\\)")
+
+    text = re.sub(r"<img\s+[^>]*?/?>", keep_raw_html, text)
+    text = re.sub(r"`([^`]+)`", keep_inline_code, text)
+    text = re.sub(r"(?<!\\)\$(.+?)(?<!\\)\$", keep_inline_math, text)
+
     escaped = escape(text)
-    escaped = re.sub(r"`([^`]+)`", r"<code>\1</code>", escaped)
-    escaped = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', escaped)
+
+    def render_image(match: re.Match[str]) -> str:
+        alt = escape(match.group(1))
+        src = escape(match.group(2), quote=True)
+        return f'<img src="{src}" alt="{alt}" loading="lazy" />'
+
+    def render_link(match: re.Match[str]) -> str:
+        label = match.group(1)
+        href = escape(match.group(2), quote=True)
+        return f'<a href="{href}">{label}</a>'
+
+    escaped = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", render_image, escaped)
+    escaped = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", render_link, escaped)
     escaped = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", escaped)
-    escaped = re.sub(r"\*([^*]+)\*", r"<em>\1</em>", escaped)
-    return escaped
+    escaped = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", escaped)
+    return restore_tokens(escaped, stored)
 
 
 def markdown_to_html(markdown: str) -> str:
@@ -111,8 +227,12 @@ def markdown_to_html(markdown: str) -> str:
     blocks: list[str] = []
     paragraph: list[str] = []
     list_items: list[str] = []
+    list_kind: str | None = None
     in_code_block = False
     code_lines: list[str] = []
+    code_language = ""
+    in_display_math = False
+    math_lines: list[str] = []
 
     def flush_paragraph() -> None:
         nonlocal paragraph
@@ -121,11 +241,13 @@ def markdown_to_html(markdown: str) -> str:
             paragraph = []
 
     def flush_list() -> None:
-        nonlocal list_items
+        nonlocal list_items, list_kind
         if list_items:
             items = "".join(f"<li>{render_inline(item)}</li>" for item in list_items)
-            blocks.append(f"<ul>{items}</ul>")
+            tag = "ol" if list_kind == "ol" else "ul"
+            blocks.append(f"<{tag}>{items}</{tag}>")
             list_items = []
+            list_kind = None
 
     for line in lines:
         stripped = line.strip()
@@ -135,15 +257,35 @@ def markdown_to_html(markdown: str) -> str:
             flush_list()
             if in_code_block:
                 code_html = escape("\n".join(code_lines))
-                blocks.append(f"<pre><code>{code_html}</code></pre>")
+                language_class = f' class="language-{escape(code_language)}"' if code_language else ""
+                blocks.append(f"<pre><code{language_class}>{code_html}</code></pre>")
                 code_lines = []
+                code_language = ""
                 in_code_block = False
             else:
                 in_code_block = True
+                code_language = stripped[3:].strip()
             continue
 
         if in_code_block:
             code_lines.append(line)
+            continue
+
+        if stripped == "$$":
+            flush_paragraph()
+            flush_list()
+            if in_display_math:
+                blocks.append(
+                    '<div class="math-display">\\[' + "\n".join(math_lines).strip() + "\\]</div>"
+                )
+                math_lines = []
+                in_display_math = False
+            else:
+                in_display_math = True
+            continue
+
+        if in_display_math:
+            math_lines.append(line)
             continue
 
         if not stripped:
@@ -169,9 +311,58 @@ def markdown_to_html(markdown: str) -> str:
             blocks.append(f"<h1>{render_inline(stripped[2:])}</h1>")
             continue
 
+        if stripped.startswith("> "):
+            flush_paragraph()
+            flush_list()
+            blocks.append(f"<blockquote><p>{render_inline(stripped[2:])}</p></blockquote>")
+            continue
+
+        ordered_match = re.match(r"(\d+)\.\s+(.+)", stripped)
+        if ordered_match:
+            flush_paragraph()
+            if list_kind not in (None, "ol"):
+                flush_list()
+            list_kind = "ol"
+            list_items.append(ordered_match.group(2).strip())
+            continue
+
         if stripped.startswith("- "):
             flush_paragraph()
+            if list_kind not in (None, "ul"):
+                flush_list()
+            list_kind = "ul"
             list_items.append(stripped[2:].strip())
+            continue
+
+        image_match = re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)(?:\s*\{([^}]+)\})?", stripped)
+        if image_match:
+            flush_paragraph()
+            flush_list()
+            blocks.append(
+                normalize_image_html(
+                    image_match.group(2),
+                    image_match.group(1),
+                    parse_image_attributes(image_match.group(3) or ""),
+                )
+            )
+            continue
+
+        if stripped.lower().startswith("<img "):
+            flush_paragraph()
+            flush_list()
+            src_match = re.search(r'src="([^"]+)"', stripped, re.IGNORECASE)
+            alt_match = re.search(r'alt="([^"]*)"', stripped, re.IGNORECASE)
+            style_match = re.search(r'style="([^"]*)"', stripped, re.IGNORECASE)
+            if src_match:
+                blocks.append(
+                    normalize_image_html(
+                        src_match.group(1),
+                        alt_match.group(1) if alt_match else "",
+                        style_match.group(1) if style_match else "",
+                    )
+                )
+            else:
+                blocks.append(stripped)
             continue
 
         paragraph.append(stripped)
@@ -181,9 +372,48 @@ def markdown_to_html(markdown: str) -> str:
 
     if in_code_block:
         code_html = escape("\n".join(code_lines))
-        blocks.append(f"<pre><code>{code_html}</code></pre>")
+        language_class = f' class="language-{escape(code_language)}"' if code_language else ""
+        blocks.append(f"<pre><code{language_class}>{code_html}</code></pre>")
+
+    if in_display_math:
+        blocks.append('<div class="math-display">\\[' + "\n".join(math_lines).strip() + "\\]</div>")
 
     return "\n          ".join(blocks)
+
+
+def extract_summary(markdown: str, limit: int = 160) -> str:
+    lines: list[str] = []
+    in_code_block = False
+
+    for line in markdown.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("```"):
+            in_code_block = not in_code_block
+            continue
+        if in_code_block or not stripped:
+            continue
+        if stripped.startswith("#"):
+            continue
+        if stripped.startswith("![](") or stripped.startswith("!["):
+            continue
+        if stripped.startswith("<img"):
+            continue
+
+        cleaned = re.sub(r"`([^`]+)`", r"\1", stripped)
+        cleaned = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1", cleaned)
+        cleaned = re.sub(r"\*\*([^*]+)\*\*", r"\1", cleaned)
+        cleaned = re.sub(r"\*([^*]+)\*", r"\1", cleaned)
+        cleaned = re.sub(r"\$([^$]+)\$", r"\1", cleaned)
+        cleaned = re.sub(r"<[^>]+>", "", cleaned).strip()
+        if cleaned:
+            lines.append(cleaned)
+        if lines:
+            break
+
+    summary = " ".join(lines).strip()
+    if len(summary) > limit:
+        summary = summary[: limit - 1].rstrip() + "..."
+    return summary or "No summary yet."
 
 
 def load_posts() -> list[Post]:
@@ -192,8 +422,8 @@ def load_posts() -> list[Post]:
         metadata, body = parse_frontmatter(path.read_text(encoding="utf-8"))
         slug = metadata.get("slug", "").strip() or slugify(path)
         title = metadata["title"]
-        date = datetime.strptime(metadata["date"], "%Y-%m-%d")
-        summary = metadata["summary"]
+        date = parse_date(metadata["date"])
+        summary = metadata.get("summary", "").strip() or extract_summary(body)
         read_time = metadata.get("read_time", "5 min")
         author = metadata.get("author", "You")
         tags = parse_tags(metadata.get("tags", ""))
@@ -236,11 +466,13 @@ def render_layout(title: str, content: str, current_href: str, description: str 
     <title>{escape(title)}</title>
     <meta name="description" content="{escape(meta_description)}" />
     <link rel="stylesheet" href="assets/style.css" />
+{HEAD_EXTRAS}
   </head>
   <body>
     <div class="page-shell">
 {content}
     </div>
+{FOOTER_SCRIPTS}
   </body>
 </html>
 """
@@ -435,6 +667,7 @@ def render_post_page(post: Post) -> str:
     <title>{escape(post.title)} | {SITE_TITLE}</title>
     <meta name="description" content="{escape(post.summary)}" />
     <link rel="stylesheet" href="../assets/style.css" />
+    {HEAD_EXTRAS}
   </head>
   <body>
     <div class="page-shell">
@@ -455,6 +688,7 @@ def render_post_page(post: Post) -> str:
         </article>
       </main>
     </div>
+    {FOOTER_SCRIPTS}
   </body>
 </html>
 """
@@ -465,15 +699,23 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8", newline="\n")
 
 
+def copy_static_assets(source_dir: Path, target_dir: Path) -> None:
+    for source_path in source_dir.rglob("*"):
+        if source_path.is_dir():
+            continue
+        relative = source_path.relative_to(source_dir)
+        destination = target_dir / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_path, destination)
+
+
 def main() -> None:
     posts = load_posts()
     if not posts:
         raise SystemExit("No Markdown posts found in posts/")
 
-    if OUTPUT_DIR.exists():
-        shutil.rmtree(OUTPUT_DIR)
-
-    shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets")
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    copy_static_assets(ROOT / "assets", OUTPUT_DIR / "assets")
 
     write_text(OUTPUT_DIR / "index.html", render_home(posts))
     write_text(OUTPUT_DIR / "archive.html", render_archive(posts))
