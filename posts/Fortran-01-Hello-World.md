@@ -1,13 +1,14 @@
 ---
 title: Fortran-01-Hello World!
 date: 2026-03-30 22:56:17
+published: false
 tags:
 ---
 
 Fortran是一门编译型的编程语言，特长是科学计算，教程：
 
-1. Fortran语言实践：https://fortran-lang.org/zh_CN/learn/best_practices/
-2. 现代Fortran程序设计：https://fortran-fans.github.io/Modern-Fortran-Programming/
+1. [Fortran语言实践](https://fortran-lang.org/zh_CN/learn/best_practices/)
+2. [现代Fortran程序设计](https://fortran-fans.github.io/Modern-Fortran-Programming/)
 3. https://github.com/zang-langyan/Fortran-Tutorial-CN
 
 ### 变量

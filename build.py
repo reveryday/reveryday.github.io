@@ -48,7 +48,7 @@ FOOTER_SCRIPTS = """
 """
 HOME_HEADING = "Welcome to my world!"
 HOME_LEDE = (
-    "A blog about nuclear energy, machine learning, and technical notes. I write about things I'm learning, projects I'm working on, and topics."
+    "I write about things I'm learning, projects I'm working on, and topics."
 )
 SOCIAL_LINKS = [
     #("X", "https://x.com/"),
@@ -201,7 +201,7 @@ def render_inline(text: str) -> str:
         return stash_token(stored, f"<code>{escape(match.group(1))}</code>")
 
     def keep_inline_math(match: re.Match[str]) -> str:
-        return stash_token(stored, f"\\({match.group(1).strip()}\\)")
+        return stash_token(stored, f"\\({escape(match.group(1).strip())}\\)")
 
     text = re.sub(r"<img\s+[^>]*?/?>", keep_raw_html, text)
     text = re.sub(r"`([^`]+)`", keep_inline_code, text)
@@ -230,8 +230,13 @@ def markdown_to_html(markdown: str) -> str:
     lines = markdown.splitlines()
     blocks: list[str] = []
     paragraph: list[str] = []
-    list_items: list[str] = []
+
+    # List state
     list_kind: str | None = None
+    list_items: list[list[str]] = []
+    list_start_number: int = 1
+
+    # Block state
     in_code_block = False
     code_lines: list[str] = []
     code_language = ""
@@ -245,97 +250,159 @@ def markdown_to_html(markdown: str) -> str:
             paragraph = []
 
     def flush_list() -> None:
-        nonlocal list_items, list_kind
+        nonlocal list_items, list_kind, list_start_number
         if list_items:
-            items = "".join(f"<li>{render_inline(item)}</li>" for item in list_items)
+            rendered_items = []
+            for item_lines in list_items:
+                if not item_lines:
+                    continue
+                
+                content_lines = list(item_lines)
+                
+                min_indent = 999
+                for l in content_lines[1:]:
+                    if l.strip():
+                        min_indent = min(min_indent, len(l) - len(l.lstrip()))
+                
+                if min_indent != 999 and min_indent > 0:
+                    for j in range(1, len(content_lines)):
+                        if len(content_lines[j]) >= min_indent:
+                            content_lines[j] = content_lines[j][min_indent:]
+                        elif not content_lines[j].strip():
+                            content_lines[j] = ""
+                        else:
+                            content_lines[j] = content_lines[j].lstrip()
+
+                item_html = markdown_to_html("\n".join(content_lines).strip())
+                rendered_items.append(f"<li>{item_html}</li>")
+
             tag = "ol" if list_kind == "ol" else "ul"
-            blocks.append(f"<{tag}>{items}</{tag}>")
+            start_attr = (
+                f' start="{list_start_number}"'
+                if list_kind == "ol" and list_start_number != 1
+                else ""
+            )
+            blocks.append(f"<{tag}{start_attr}>{''.join(rendered_items)}</{tag}>")
             list_items = []
             list_kind = None
+            list_start_number = 1
 
-    for line in lines:
+    i = 0
+    while i < len(lines):
+        line = lines[i]
         stripped = line.strip()
+        indent = len(line) - len(line.lstrip())
 
-        if stripped.startswith("```"):
+        if list_kind and not in_code_block and not in_display_math:
+            is_list_continuation = False
+            
+            if indent >= 2:
+                is_list_continuation = True
+            elif not stripped:
+                next_non_empty = -1
+                for j in range(i + 1, len(lines)):
+                    if lines[j].strip():
+                        next_non_empty = j
+                        break
+                if next_non_empty != -1:
+                    next_line = lines[next_non_empty]
+                    next_indent = len(next_line) - len(next_line.lstrip())
+                    if next_indent >= 2 or re.match(r"^(\d+)\.\s+", next_line.lstrip()) or next_line.lstrip().startswith("- "):
+                        is_list_continuation = True
+            
+            if is_list_continuation:
+                list_items[-1].append(line)
+                i += 1
+                continue
+
+        ol_match = re.match(r"^(\d+)\.\s+(.*)", line.lstrip())
+        ul_match = re.match(r"^- (.*)", line.lstrip())
+        
+        if not in_code_block and not in_display_math and (ol_match or ul_match) and indent < 4:
             flush_paragraph()
+            kind = "ol" if ol_match else "ul"
+            content = ol_match.group(2) if ol_match else ul_match.group(1)
+            num = int(ol_match.group(1)) if ol_match else 1
+
+            if list_kind and list_kind != kind:
+                flush_list()
+
+            if not list_kind:
+                list_kind = kind
+                list_start_number = num
+
+            list_items.append([content])
+            i += 1
+            continue
+
+        if list_kind and not in_code_block and not in_display_math:
             flush_list()
-            if in_code_block:
+
+        if in_code_block:
+            if stripped.startswith("```"):
                 code_html = escape("\n".join(code_lines))
-                language_class = f' class="language-{escape(code_language)}"' if code_language else ""
-                blocks.append(f"<pre><code{language_class}>{code_html}</code></pre>")
+                lang_class = f' class="language-{escape(code_language)}"' if code_language else ""
+                blocks.append(f"<pre><code{lang_class}>{code_html}</code></pre>")
                 code_lines = []
                 code_language = ""
                 in_code_block = False
             else:
-                in_code_block = True
-                code_language = stripped[3:].strip()
+                code_lines.append(line)
+            i += 1
             continue
 
-        if in_code_block:
-            code_lines.append(line)
-            continue
-
-        if stripped == "$$":
-            flush_paragraph()
-            flush_list()
-            if in_display_math:
+        if in_display_math:
+            if stripped == "$$":
                 blocks.append(
-                    '<div class="math-display">\\[' + "\n".join(math_lines).strip() + "\\]</div>"
+                    '<div class="math-display">\\[' + escape("\n".join(math_lines).strip()) + "\\]</div>"
                 )
                 math_lines = []
                 in_display_math = False
             else:
-                in_display_math = True
+                math_lines.append(line)
+            i += 1
             continue
 
-        if in_display_math:
-            math_lines.append(line)
+        if stripped.startswith("```"):
+            flush_paragraph()
+            in_code_block = True
+            code_language = stripped[3:].strip()
+            i += 1
+            continue
+
+        if stripped == "$$":
+            flush_paragraph()
+            in_display_math = True
+            i += 1
             continue
 
         if not stripped:
             flush_paragraph()
-            flush_list()
+            i += 1
             continue
 
         if stripped.startswith("### "):
             flush_paragraph()
-            flush_list()
             blocks.append(f"<h3>{render_inline(stripped[4:])}</h3>")
+            i += 1
             continue
 
         if stripped.startswith("## "):
             flush_paragraph()
-            flush_list()
             blocks.append(f"<h2>{render_inline(stripped[3:])}</h2>")
+            i += 1
             continue
 
         if stripped.startswith("# "):
             flush_paragraph()
-            flush_list()
             blocks.append(f"<h1>{render_inline(stripped[2:])}</h1>")
+            i += 1
             continue
 
         if stripped.startswith("> "):
             flush_paragraph()
-            flush_list()
             blocks.append(f"<blockquote><p>{render_inline(stripped[2:])}</p></blockquote>")
-            continue
-
-        ordered_match = re.match(r"(\d+)\.\s+(.+)", stripped)
-        if ordered_match:
-            flush_paragraph()
-            if list_kind not in (None, "ol"):
-                flush_list()
-            list_kind = "ol"
-            list_items.append(ordered_match.group(2).strip())
-            continue
-
-        if stripped.startswith("- "):
-            flush_paragraph()
-            if list_kind not in (None, "ul"):
-                flush_list()
-            list_kind = "ul"
-            list_items.append(stripped[2:].strip())
+            i += 1
             continue
 
         image_match = re.fullmatch(r"!\[([^\]]*)\]\(([^)]+)\)(?:\s*\{([^}]+)\})?", stripped)
@@ -349,6 +416,7 @@ def markdown_to_html(markdown: str) -> str:
                     parse_image_attributes(image_match.group(3) or ""),
                 )
             )
+            i += 1
             continue
 
         if stripped.lower().startswith("<img "):
@@ -367,21 +435,22 @@ def markdown_to_html(markdown: str) -> str:
                 )
             else:
                 blocks.append(stripped)
+            i += 1
             continue
 
+        if list_kind:
+            flush_list()
         paragraph.append(stripped)
+        i += 1
 
     flush_paragraph()
     flush_list()
-
     if in_code_block:
         code_html = escape("\n".join(code_lines))
-        language_class = f' class="language-{escape(code_language)}"' if code_language else ""
-        blocks.append(f"<pre><code{language_class}>{code_html}</code></pre>")
-
+        lang_class = f' class="language-{escape(code_language)}"' if code_language else ""
+        blocks.append(f"<pre><code{lang_class}>{code_html}</code></pre>")
     if in_display_math:
-        blocks.append('<div class="math-display">\\[' + "\n".join(math_lines).strip() + "\\]</div>")
-
+        blocks.append('<div class="math-display">\\[' + escape("\n".join(math_lines).strip()) + "\\]</div>")
     return "\n          ".join(blocks)
 
 
@@ -424,6 +493,8 @@ def load_posts() -> list[Post]:
     posts: list[Post] = []
     for path in sorted(POSTS_DIR.glob("*.md")):
         metadata, body = parse_frontmatter(path.read_text(encoding="utf-8"))
+        if metadata.get("published", "").lower() == "false":
+            continue
         slug = metadata.get("slug", "").strip() or slugify(path)
         title = metadata["title"]
         date = parse_date(metadata["date"])
