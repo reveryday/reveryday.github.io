@@ -48,8 +48,7 @@ FOOTER_SCRIPTS = """
 """
 HOME_HEADING = "Welcome to my world!"
 HOME_LEDE = (
-    "I write about nuclear energy,machine learning, and my stuff "
-    "that usually matters more than the demo."
+    "A blog about nuclear energy, machine learning, and technical notes. I write about things I'm learning, projects I'm working on, and topics."
 )
 SOCIAL_LINKS = [
     #("X", "https://x.com/"),
@@ -70,6 +69,7 @@ class Post:
     slug: str
     title: str
     date: datetime
+    updated: datetime
     summary: str
     read_time: str
     author: str
@@ -87,6 +87,14 @@ class Post:
     @property
     def display_date(self) -> str:
         return self.date.strftime("%B %d, %Y").replace(" 0", " ")
+
+    @property
+    def display_updated(self) -> str:
+        return self.updated.strftime("%B %d, %Y").replace(" 0", " ")
+
+    @property
+    def display_tags(self) -> str:
+        return ", ".join(self.tags) if self.tags else "None"
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -419,6 +427,7 @@ def load_posts() -> list[Post]:
         slug = metadata.get("slug", "").strip() or slugify(path)
         title = metadata["title"]
         date = parse_date(metadata["date"])
+        updated = parse_date(metadata["updated"]) if metadata.get("updated") else date
         summary = metadata.get("summary", "").strip() or extract_summary(body)
         read_time = metadata.get("read_time", "5 min")
         author = metadata.get("author", "Wens")
@@ -429,6 +438,7 @@ def load_posts() -> list[Post]:
                 slug=slug,
                 title=title,
                 date=date,
+                updated=updated,
                 summary=summary,
                 read_time=read_time,
                 author=author,
@@ -493,7 +503,7 @@ def render_home(posts: list[Post]) -> str:
             f"""        <article class="post-card">
           <h2><a href="{post.url}">{escape(post.title)}</a></h2>
           <p>{escape(post.summary)}</p>
-          <p class="meta">Date: {post.display_date} | Estimated Reading Time: {escape(post.read_time)} | Author: {escape(post.author)}</p>
+          <p class="meta">Date: {post.display_date} | Updated: {post.display_updated} | Tags: {escape(post.display_tags)}</p>
         </article>"""
         )
 
@@ -681,7 +691,7 @@ def render_post_page(post: Post) -> str:
       <main class="article-page prose">
         <article>
           <h1>{escape(post.title)}</h1>
-          <p class="meta">Date: {post.display_date} | Estimated Reading Time: {escape(post.read_time)} | Author: {escape(post.author)}</p>
+          <p class="meta">Date: {post.display_date} | Updated: {post.display_updated} | Tags: {escape(post.display_tags)}</p>
           {post.body_html}
         </article>
       </main>
