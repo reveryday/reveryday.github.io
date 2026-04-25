@@ -498,7 +498,7 @@ def load_posts() -> list[Post]:
         slug = metadata.get("slug", "").strip() or slugify(path)
         title = metadata["title"]
         date = parse_date(metadata["date"])
-        updated = parse_date(metadata["updated"]) if metadata.get("updated") else date
+        updated = datetime.fromtimestamp(path.stat().st_mtime)
         summary = metadata.get("summary", "").strip() or extract_summary(body)
         read_time = metadata.get("read_time", "5 min")
         author = metadata.get("author", "Wens")
