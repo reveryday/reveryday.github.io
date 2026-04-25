@@ -1,8 +1,10 @@
 ---
-title: Hexo Blog Configuration
+title: How to build your own blog
 date: 2025-02-09 21:53:10
-tags: Tool&Configuration
+tags: Tool
 ---
+
+### Hexo
 
 1. 安装Git，安装好后检查版本信息；
 
@@ -66,11 +68,11 @@ tags: Tool&Configuration
      repo: https://github.com/reveryday/reveryday.github.io.git
      branch: main
    ```
-   
+
    安装deploy-git：
 
    ```
    $ npm install hexo-deployer-git --save
    ```
-   
+
    则配置完成！

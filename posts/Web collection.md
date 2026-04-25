@@ -2,9 +2,9 @@
 title: Web collection
 date: 2025-08-07 15:00:10
 sticky: 100
-tags: Tool&Configuration
+tags: Tool
 ---
-### Repository
+#### Repository
 
 - [AI 视频笔记助手](https://github.com/JefferyHcool/BiliNote)
 - [Openmc基于GPU加速](https://github.com/exasmr/openmc)
@@ -12,13 +12,13 @@ tags: Tool&Configuration
 - [自动投递简历](https://github.com/loks666/get_jobs)
 - [专为年会场景设计的 3D 动态抽奖应用](github.com/LOG1997/log-lottery)
 
-### Posts
+#### Posts
 
 - [Andrej Karpathy关于2025的LLM年度回顾](https://x.com/karpathy/status/2002118205729562949)
 - [OpenAI AI 编程实战手册](https://openai.com/zh-Hans-CN/index/shipping-sora-for-android-with-codex/)
 - [Anthropic有关skills的讲解](https://www.youtube.com/watch?v=CEvIs9y1uog)
 
-### ml-learn
+#### ml-learn
 
 - [吴恩达-DL课程笔记](http://www.ai-start.com/dl2017/)
 - [李沐-动手学深度学习](https://courses.d2l.ai/zh-v2/)
@@ -30,7 +30,7 @@ tags: Tool&Configuration
 - [文字可视化为token的小工具](https://platform.openai.com/tokenizer)
 - [快速获取arxiv中文章具体做了一件什么事](https://papers.cool/)
 
-### Blog
+#### Blog
 
 - [沉浸式翻译-owen](https://www.owenyoung.com/)
 - [阮一峰](https://www.ruanyifeng.com/blog)
@@ -40,28 +40,28 @@ tags: Tool&Configuration
 - [justin](https://justinyan.me/)
 - [白月黑羽](https://www.byhy.net/ai/usecases/autotest/)
 
-### 具身智能
+#### 具身智能
 
 - [ Tnkr-开源机器人社区](https://tnkr.ai/overview)
 
-### MCP
+#### MCP
 
 - [Chrome DevTools (MCP) for your AI agent](https://developer.chrome.com/blog/chrome-devtools-mcp?hl=en)
 - [Zotero MCP](https://github.com/54yyyu/zotero-mcp)
 
-### 学术-Agent
+#### 学术-Agent
 
 - [复旦大学-AI学术工具-WisPaper](https://www.wispaper.ai/search/)
 - [玻尔文献工具](https://www.bohrium.com/)
 - [将arxiv上的paper用中文总结](https://dw-dengwei.github.io/daily-arXiv-ai-enhanced/)
 
-### 粒子输运计算
+#### 粒子输运计算
 
 - [查各种衰减系数](https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html)
 - [计算BUF](https://pymlbuf.pythonanywhere.com/enter)
 - [核数据](https://www.nndc.bnl.gov/nudat3/)
 
-### 好用的工具
+#### 好用的工具
 
 - [多段同步、页面更美观的网页收藏工具](https://cubox.cc/)
 - [合并pdf文件工具](https://smallpdf.com/cn/merge-pdf)
@@ -70,7 +70,7 @@ tags: Tool&Configuration
 - [白嫖AI计算资源：超算互联网](https://www.scnet.cn/ui/mall/search/resource?resource1=COMMON_RESOURCE_TYPE-AI)
 - [文件格式转换](https://pandoc.org/installing.html)
 
-### Apps in Windows
+#### Apps in Windows
 
 - [anytxt-通过内容搜索文件](https://anytxt.net/download/)
 - Everything-通过文件名搜索文件
@@ -79,7 +79,7 @@ tags: Tool&Configuration
 - [Obs Studio-开源又好用的录屏软件](https://obsproject.com/)
 - [Koodo reader-开源美观且功能完善的阅读器](https://koodoreader.com/en)
 
-### Chrome/Edge插件
+#### Chrome/Edge插件
 
 - [支持跳过知乎、少数派、掘金、CSDN、简书等常见论坛的中转提示页面](https://github.com/dogodo-cc/chrome-redirect-skipper)
 - [更好看、更好用的 B 站体验](https://github.com/keleus/BewlyCat?tab=readme-ov-file)
