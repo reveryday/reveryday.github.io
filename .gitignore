@@ -1,2 +1,4 @@
 dist/
 posts/Python数据结构.md
+__pycache__/
+*.pyc

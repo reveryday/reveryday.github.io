@@ -39,8 +39,8 @@ FOOTER_SCRIPTS = """
       });
     </script>
 """
-HOME_HEADING = "Welcome to my world!"
-HOME_LEDE = "I write about things I'm learning, projects I'm working on, and topics."
+HOME_HEADING = "Welcome to my world."
+HOME_LEDE = " I write about what I am learning, building, and figuring out along the way, from technical notes and project write-ups to ideas that are still taking shape."
 HOME_EYEBROW = ""
 SOCIAL_LINKS = [
     # ("X", "https://x.com/"),

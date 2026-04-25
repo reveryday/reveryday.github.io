@@ -2,20 +2,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from pathlib import Path
 
 
 @dataclass
 class Post:
-    source_path: Path
     slug: str
     title: str
     date: datetime
     updated: datetime
     sticky: int
     summary: str
-    read_time: str
-    author: str
     tags: list[str]
     body_html: str
 

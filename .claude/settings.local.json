@@ -10,7 +10,10 @@
       "Bash(curl -s \"https://fortran-lang.org/zh_CN/learn/quickstart/derived_types/\")",
       "Bash(curl -s \"https://fortran-lang.org/_static/custom.css?v=0a3c677e\")",
       "Bash(curl -s \"https://fortran-lang.org/_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf\" -o /tmp/pst.css)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(sort -u cat /tmp/vars.txt echo \"\" echo \"--- variables referenced \\(var\\(--xxx\\) usages\\) ---\" grep -oE -- \"var\\\\\\(--[a-z-]+\\\\\\)\" D:/Projects/MyBlog/assets/style.css)",
+      "Bash(sort -u cat /tmp/varuse.txt echo \"\" echo \"--- defined but never referenced ---\" comm -23 /tmp/vars.txt /tmp/varuse.txt)",
+      "Bash(grep -E \"\\\\.pyc$|__pycache__\")"
     ]
   }
 }

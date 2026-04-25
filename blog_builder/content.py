@@ -107,20 +107,15 @@ def load_posts() -> list[Post]:
         updated = resolve_updated_date(path)
         sticky = parse_sticky(metadata.get("sticky", ""))
         summary = metadata.get("summary", "").strip() or extract_summary(body)
-        read_time = metadata.get("read_time", "5 min")
-        author = metadata.get("author", "Wens")
         tags = parse_tags(metadata.get("tags", ""))
         posts.append(
             Post(
-                source_path=path,
                 slug=slug,
                 title=title,
                 date=date,
                 updated=updated,
                 sticky=sticky,
                 summary=summary,
-                read_time=read_time,
-                author=author,
                 tags=tags,
                 body_html=markdown_to_html(body),
             )

@@ -30,7 +30,7 @@ def render_post_nav() -> str:
     return "\n".join(f'            <a href="../{href}">{label}</a>' for label, href in NAV_LINKS)
 
 
-def render_layout(title: str, content: str, current_href: str, description: str = "") -> str:
+def render_layout(title: str, content: str, description: str = "") -> str:
     meta_description = description or SITE_DESCRIPTION
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -104,7 +104,7 @@ def render_home(posts: list[Post]) -> str:
 {chr(10).join(cards)}
       </main>"""
 
-    return render_layout(SITE_TITLE, content, "index.html", SITE_DESCRIPTION)
+    return render_layout(SITE_TITLE, content, SITE_DESCRIPTION)
 
 
 def render_archive(posts: list[Post]) -> str:
@@ -119,7 +119,7 @@ def render_archive(posts: list[Post]) -> str:
 {items}
         </ul>
       </main>"""
-    return render_layout(f"Archive | {SITE_TITLE}", content, "archive.html")
+    return render_layout(f"Archive | {SITE_TITLE}", content)
 
 
 def render_tags(posts: list[Post]) -> str:
@@ -147,7 +147,7 @@ def render_tags(posts: list[Post]) -> str:
       <main class="content-page">
 {body}
       </main>"""
-    return render_layout(f"Tags | {SITE_TITLE}", content, "tags.html")
+    return render_layout(f"Tags | {SITE_TITLE}", content)
 
 
 def render_search_page() -> str:
@@ -161,7 +161,7 @@ def render_search_page() -> str:
         <div id="results" class="search-results"></div>
       </main>
       <script src="assets/search.js"></script>"""
-    return render_layout(f"Search | {SITE_TITLE}", content, "search.html")
+    return render_layout(f"Search | {SITE_TITLE}", content)
 
 
 def render_faq_page() -> str:
@@ -173,7 +173,7 @@ def render_faq_page() -> str:
         <h2>How is it deployed?</h2>
         <p>As a static site on GitHub Pages through a GitHub Actions workflow.</p>
       </main>"""
-    return render_layout(f"FAQ | {SITE_TITLE}", content, "faq.html")
+    return render_layout(f"FAQ | {SITE_TITLE}", content)
 
 
 def render_friends_page() -> str:
@@ -187,7 +187,7 @@ def render_friends_page() -> str:
           </a>
         </p>
       </main>"""
-    return render_layout(f"Friends | {SITE_TITLE}", content, "friends.html")
+    return render_layout(f"Friends | {SITE_TITLE}", content)
 
 
 def render_search_index(posts: list[Post]) -> str:
