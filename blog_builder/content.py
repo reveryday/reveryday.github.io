@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 import re
-import subprocess
 import unicodedata
 from datetime import datetime
 from pathlib import Path
 
-from .config import POSTS_DIR, ROOT
+from .config import POSTS_DIR
 from .markdown_renderer import extract_summary, markdown_to_html
 from .models import Post
 
@@ -63,36 +62,18 @@ def parse_date(value: str) -> datetime:
     raise ValueError(f"Unsupported date format: {value}")
 
 
-def resolve_updated_date(path: Path, metadata: dict[str, str], date: datetime) -> datetime:
-    updated_value = metadata.get("updated", "").strip()
-    if updated_value:
-        return parse_date(updated_value)
+def resolve_updated_date(path: Path) -> datetime:
+    return datetime.fromtimestamp(path.stat().st_mtime)
 
+
+def parse_sticky(value: str) -> int:
+    value = value.strip()
+    if not value:
+        return 0
     try:
-        result = subprocess.run(
-            [
-                "git",
-                "-c",
-                f"safe.directory={ROOT}",
-                "log",
-                "-1",
-                "--format=%cI",
-                "--",
-                str(path),
-            ],
-            check=True,
-            capture_output=True,
-            text=True,
-            cwd=ROOT,
-        )
-    except (FileNotFoundError, subprocess.CalledProcessError):
-        return date
-
-    git_updated = result.stdout.strip()
-    if not git_updated:
-        return date
-
-    return datetime.fromisoformat(git_updated.replace("Z", "+00:00")).replace(tzinfo=None)
+        return int(value)
+    except ValueError:
+        return 1 if value.lower() in {"true", "yes", "on"} else 0
 
 
 def load_posts() -> list[Post]:
@@ -104,7 +85,8 @@ def load_posts() -> list[Post]:
         slug = metadata.get("slug", "").strip() or slugify(path)
         title = metadata["title"]
         date = parse_date(metadata["date"])
-        updated = resolve_updated_date(path, metadata, date)
+        updated = resolve_updated_date(path)
+        sticky = parse_sticky(metadata.get("sticky", ""))
         summary = metadata.get("summary", "").strip() or extract_summary(body)
         read_time = metadata.get("read_time", "5 min")
         author = metadata.get("author", "Wens")
@@ -116,6 +98,7 @@ def load_posts() -> list[Post]:
                 title=title,
                 date=date,
                 updated=updated,
+                sticky=sticky,
                 summary=summary,
                 read_time=read_time,
                 author=author,
@@ -124,4 +107,4 @@ def load_posts() -> list[Post]:
             )
         )
 
-    return sorted(posts, key=lambda post: post.date, reverse=True)
+    return sorted(posts, key=lambda post: (post.sticky, post.date), reverse=True)

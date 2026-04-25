@@ -209,6 +209,15 @@ a:hover {
   max-width: 42rem;
 }
 
+.prose li {
+  line-height: 1.45;
+}
+
+.prose li > p {
+  margin: 0;
+  max-width: none;
+}
+
 .prose p,
 .prose ul,
 .prose ol,
@@ -230,10 +239,11 @@ a:hover {
 .prose ol {
   max-width: 42rem;
   padding-left: 1.4rem;
+  margin: 0.65rem 0;
 }
 
 .prose li + li {
-  margin-top: 0.3rem;
+  margin-top: 0.12rem;
 }
 
 .prose blockquote {

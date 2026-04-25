@@ -12,6 +12,7 @@ class Post:
     title: str
     date: datetime
     updated: datetime
+    sticky: int
     summary: str
     read_time: str
     author: str

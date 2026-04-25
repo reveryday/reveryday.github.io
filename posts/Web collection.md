@@ -4,7 +4,6 @@ date: 2025-08-07 15:00:10
 sticky: 100
 tags: Tool&Configuration
 ---
-
 ### Repository
 
 - [AI 视频笔记助手](https://github.com/JefferyHcool/BiliNote)
@@ -67,11 +66,8 @@ tags: Tool&Configuration
 - [多段同步、页面更美观的网页收藏工具](https://cubox.cc/)
 - [合并pdf文件工具](https://smallpdf.com/cn/merge-pdf)
 - [Tbox导航](https://www.tboxn.com/)
-
 - [✈：肥猫云](https://a03.fcvipaffa02.cc/#/register?code=QCkPGRL0)
-
 - [白嫖AI计算资源：超算互联网](https://www.scnet.cn/ui/mall/search/resource?resource1=COMMON_RESOURCE_TYPE-AI)
-
 - [文件格式转换](https://pandoc.org/installing.html)
 
 ### Apps in Windows
@@ -86,5 +82,4 @@ tags: Tool&Configuration
 ### Chrome/Edge插件
 
 - [支持跳过知乎、少数派、掘金、CSDN、简书等常见论坛的中转提示页面](https://github.com/dogodo-cc/chrome-redirect-skipper)
-
 - [更好看、更好用的 B 站体验](https://github.com/keleus/BewlyCat?tab=readme-ov-file)
