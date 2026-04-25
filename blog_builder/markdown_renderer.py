@@ -245,6 +245,12 @@ def markdown_to_html(markdown: str) -> str:
             i += 1
             continue
 
+        if stripped.startswith("#### "):
+            flush_paragraph()
+            blocks.append(f"<h4>{render_inline(stripped[5:])}</h4>")
+            i += 1
+            continue
+
         if stripped.startswith("### "):
             flush_paragraph()
             blocks.append(f"<h3>{render_inline(stripped[4:])}</h3>")
