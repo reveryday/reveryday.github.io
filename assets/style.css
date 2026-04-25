@@ -213,10 +213,17 @@ a:hover {
 .prose ul,
 .prose ol,
 .prose blockquote,
+.prose hr,
 .prose pre,
 .prose .math-display,
 .prose .prose-figure {
   margin: 0.95rem 0;
+}
+
+.prose hr {
+  max-width: 42rem;
+  border: 0;
+  border-top: 1px solid var(--border);
 }
 
 .prose ul,
