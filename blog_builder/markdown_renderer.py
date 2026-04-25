@@ -263,9 +263,10 @@ def markdown_to_html(markdown: str) -> str:
             i += 1
             continue
 
-        if stripped.startswith("> "):
+        if stripped.startswith(">"):
             flush_paragraph()
-            blocks.append(f"<blockquote><p>{render_inline(stripped[2:])}</p></blockquote>")
+            quote_text = stripped[1:].lstrip()
+            blocks.append(f"<blockquote><p>{render_inline(quote_text)}</p></blockquote>")
             i += 1
             continue
 
