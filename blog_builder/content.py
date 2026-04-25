@@ -1,13 +1,28 @@
 from __future__ import annotations
 
+import json
 import re
 import unicodedata
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
 
 from .config import POSTS_DIR
 from .markdown_renderer import extract_summary, markdown_to_html
 from .models import Post
+
+MTIMES_FILE = POSTS_DIR / ".mtimes.json"
+
+
+@lru_cache(maxsize=1)
+def _load_mtime_manifest() -> dict[str, float]:
+    if not MTIMES_FILE.exists():
+        return {}
+    try:
+        data = json.loads(MTIMES_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return {str(k): float(v) for k, v in data.items()} if isinstance(data, dict) else {}
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -63,6 +78,10 @@ def parse_date(value: str) -> datetime:
 
 
 def resolve_updated_date(path: Path) -> datetime:
+    manifest = _load_mtime_manifest()
+    ts = manifest.get(path.name)
+    if ts is not None:
+        return datetime.fromtimestamp(ts)
     return datetime.fromtimestamp(path.stat().st_mtime)
 
 

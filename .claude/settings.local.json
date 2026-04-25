@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python build.py)",
+      "Bash(CI=true python *)",
+      "Bash(grep -nA3 \"^\\\\.prose h[1-6]\\\\|^\\\\.tag-group h2\" dist/assets/style.css)",
+      "Bash(grep -nA1 \"^\\\\.prose pre \" dist/assets/style.css)",
+      "Bash(grep -nA1 \"language-\\\\|<pre\" D:/Projects/MyBlog/dist/posts/Fortran-01-Hello-World.html)",
+      "WebFetch(domain:fortran-lang.org)",
+      "Bash(curl -s \"https://fortran-lang.org/zh_CN/learn/quickstart/derived_types/\")",
+      "Bash(curl -s \"https://fortran-lang.org/_static/custom.css?v=0a3c677e\")",
+      "Bash(curl -s \"https://fortran-lang.org/_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf\" -o /tmp/pst.css)",
+      "Read(//tmp/**)"
+    ]
+  }
+}
