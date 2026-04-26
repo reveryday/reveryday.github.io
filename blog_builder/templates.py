@@ -190,7 +190,7 @@ def render_playground_page() -> str:
     content = f"""{render_page_header("playground.html", "Playground")}
 
       <main class="content-page playground-page">
-        <p class="meta">Write code and run it in your browser. Powered by the free, public <a href="https://godbolt.org/" target="_blank" rel="noreferrer">Compiler Explorer</a> API. Your code, language, and stdin are saved locally.</p>
+        <p class="meta">Write code and run it in your browser. Powered by the free, public <a href="https://godbolt.org/" target="_blank" rel="noreferrer">Compiler Explorer</a> API. Python uses the standard library only &mdash; third-party packages like numpy or torch are not available. Your code, language, and stdin are saved locally.</p>
 
         <div class="pg-lang-buttons" role="group" aria-label="Language">
           <button type="button" class="pg-lang-btn" data-lang="python" aria-pressed="false">Python</button>
