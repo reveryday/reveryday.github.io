@@ -164,6 +164,47 @@ def render_search_page() -> str:
     return render_layout(f"Search | {SITE_TITLE}", content)
 
 
+def render_playground_page() -> str:
+    content = f"""{render_page_header("playground.html", "Playground")}
+
+      <main class="content-page playground-page">
+        <p class="meta">Write code and run it in your browser. Powered by the free, public <a href="https://godbolt.org/" target="_blank" rel="noreferrer">Compiler Explorer</a> API. Your code, language, and stdin are saved locally.</p>
+
+        <div class="pg-lang-buttons" role="group" aria-label="Language">
+          <button type="button" class="pg-lang-btn" data-lang="python" aria-pressed="false">Python</button>
+          <button type="button" class="pg-lang-btn" data-lang="cpp" aria-pressed="false">C++</button>
+          <button type="button" class="pg-lang-btn" data-lang="fortran" aria-pressed="false">Fortran</button>
+        </div>
+
+        <div class="pg-editor-wrap">
+          <textarea id="pg-code" spellcheck="false"></textarea>
+        </div>
+
+        <div class="pg-section-label">Stdin (optional)</div>
+        <textarea id="pg-stdin" class="pg-stdin" spellcheck="false" placeholder="Input passed to the program's standard input..."></textarea>
+
+        <div class="pg-run-row">
+          <button type="button" id="pg-run" class="pg-run-btn">&#9654; Run</button>
+          <span id="pg-compiler-info" class="pg-compiler-info"></span>
+        </div>
+
+        <div class="pg-output-header">
+          <span class="pg-section-label">Output</span>
+          <button type="button" id="pg-clear" class="pg-clear-btn">Clear</button>
+        </div>
+        <div id="pg-output" class="pg-output"></div>
+      </main>
+
+      <link rel="stylesheet" href="assets/playground.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css" />
+      <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/clike/clike.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/fortran/fortran.min.js"></script>
+      <script defer src="assets/playground.js"></script>"""
+    return render_layout(f"Playground | {SITE_TITLE}", content)
+
+
 def render_faq_page() -> str:
     content = f"""{render_page_header("faq.html", "FAQ")}
 

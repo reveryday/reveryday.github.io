@@ -1,0 +1,213 @@
+.playground-page {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.playground-page > .meta {
+  margin: 0 0 1rem;
+}
+
+.playground-page > .meta a {
+  color: #0969da;
+}
+
+.pg-lang-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.8rem;
+}
+
+.pg-lang-btn {
+  padding: 0.35rem 0.95rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.88rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.pg-lang-btn:hover {
+  color: var(--text);
+}
+
+.pg-lang-btn.is-active {
+  background: var(--accent-soft);
+  color: var(--text);
+  border-color: #c8c8c8;
+}
+
+.pg-lang-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pg-editor-wrap {
+  border: 1px solid #d1d5da;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background: #f6f8fa;
+}
+
+.pg-editor-wrap .CodeMirror {
+  height: 320px;
+  font-family: "SFMono-Regular", Menlo, Consolas, Monaco,
+               "Liberation Mono", "Lucida Console", monospace;
+  font-size: 0.9rem;
+  background: #f6f8fa;
+}
+
+.pg-section-label {
+  margin: 1rem 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.pg-stdin {
+  width: 100%;
+  min-height: 4.5rem;
+  resize: vertical;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #d1d5da;
+  border-radius: 0.25rem;
+  background: #f6f8fa;
+  font-family: "SFMono-Regular", Menlo, Consolas, Monaco,
+               "Liberation Mono", "Lucida Console", monospace;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text);
+  outline: 0;
+  box-sizing: border-box;
+}
+
+.pg-stdin:focus {
+  border-color: #adb5bd;
+}
+
+.pg-run-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 0.9rem 0 0.6rem;
+}
+
+.pg-compiler-info {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Menlo, Consolas, Monaco,
+               "Liberation Mono", "Lucida Console", monospace;
+  font-size: 0.8rem;
+}
+
+.pg-run-btn {
+  padding: 0.45rem 1.2rem;
+  border: 1px solid #c8c8c8;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.pg-run-btn:hover:not(:disabled) {
+  background: #000;
+}
+
+.pg-run-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+.pg-output-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 1rem 0 0.35rem;
+}
+
+.pg-output-header .pg-section-label {
+  margin: 0;
+}
+
+.pg-clear-btn {
+  padding: 0.18rem 0.65rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.78rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.pg-clear-btn:hover:not(:disabled) {
+  color: var(--text);
+}
+
+.pg-clear-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pg-output {
+  margin-top: 0.4rem;
+  border: 1px solid #d1d5da;
+  border-radius: 0.25rem;
+  background: #f6f8fa;
+  padding: 0.6rem 0.8rem;
+  min-height: 3.5rem;
+}
+
+.pg-output:empty::before {
+  content: "Output will appear here.";
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.pg-output-block {
+  margin: 0 0 0.6rem;
+}
+
+.pg-output-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.pg-output-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-bottom: 0.15rem;
+}
+
+.pg-output pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-family: "SFMono-Regular", Menlo, Consolas, Monaco,
+               "Liberation Mono", "Lucida Console", monospace;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+}
+
+.pg-stderr pre {
+  color: #b32f2f;
+}
+
+.pg-output-meta {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 720px) {
+  .pg-editor-wrap .CodeMirror {
+    height: 260px;
+  }
+}

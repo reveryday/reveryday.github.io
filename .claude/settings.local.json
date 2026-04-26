@@ -13,7 +13,10 @@
       "Read(//tmp/**)",
       "Bash(sort -u cat /tmp/vars.txt echo \"\" echo \"--- variables referenced \\(var\\(--xxx\\) usages\\) ---\" grep -oE -- \"var\\\\\\(--[a-z-]+\\\\\\)\" D:/Projects/MyBlog/assets/style.css)",
       "Bash(sort -u cat /tmp/varuse.txt echo \"\" echo \"--- defined but never referenced ---\" comm -23 /tmp/vars.txt /tmp/varuse.txt)",
-      "Bash(grep -E \"\\\\.pyc$|__pycache__\")"
+      "Bash(grep -E \"\\\\.pyc$|__pycache__\")",
+      "WebFetch(domain:wandbox.org)",
+      "WebFetch(domain:godbolt.org)",
+      "Bash(curl *)"
     ]
   }
 }

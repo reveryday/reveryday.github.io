@@ -10,6 +10,7 @@ from .templates import (
     render_faq_page,
     render_friends_page,
     render_home,
+    render_playground_page,
     render_post_page,
     render_search_index,
     render_search_page,
@@ -102,6 +103,7 @@ def main() -> None:
     write_text(OUTPUT_DIR / "archive.html", render_archive(posts))
     write_text(OUTPUT_DIR / "tags.html", render_tags(posts))
     write_text(OUTPUT_DIR / "search.html", render_search_page())
+    write_text(OUTPUT_DIR / "playground.html", render_playground_page())
     write_text(OUTPUT_DIR / "faq.html", render_faq_page())
     write_text(OUTPUT_DIR / "friends.html", render_friends_page())
     write_text(OUTPUT_DIR / "assets" / "search.js", render_search_index(posts))

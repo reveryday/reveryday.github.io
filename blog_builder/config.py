@@ -50,6 +50,7 @@ NAV_LINKS = [
     ("Posts", "index.html"),
     ("Archive", "archive.html"),
     ("Search", "search.html"),
+    ("Playground", "playground.html"),
     ("Tags", "tags.html"),
     ("Friends", "friends.html"),
     ("FAQ", "faq.html"),
