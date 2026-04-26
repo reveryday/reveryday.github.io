@@ -8,12 +8,15 @@ from .content import load_posts
 from .templates import (
     render_archive,
     render_faq_page,
+    render_feed_atom,
     render_friends_page,
     render_home,
     render_playground_page,
     render_post_page,
+    render_robots_txt,
     render_search_index,
     render_search_page,
+    render_sitemap,
     render_tags,
 )
 
@@ -107,6 +110,9 @@ def main() -> None:
     write_text(OUTPUT_DIR / "faq.html", render_faq_page())
     write_text(OUTPUT_DIR / "friends.html", render_friends_page())
     write_text(OUTPUT_DIR / "assets" / "search.js", render_search_index(posts))
+    write_text(OUTPUT_DIR / "sitemap.xml", render_sitemap(posts))
+    write_text(OUTPUT_DIR / "robots.txt", render_robots_txt())
+    write_text(OUTPUT_DIR / "feed.xml", render_feed_atom(posts))
 
     for post in posts:
         write_text(OUTPUT_DIR / "posts" / f"{post.slug}.html", render_post_page(post))

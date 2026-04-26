@@ -9,6 +9,8 @@ OUTPUT_DIR = ROOT / "dist"
 
 SITE_TITLE = "Wens'Blog"
 SITE_DESCRIPTION = "Wens' personal blog about nuclear energy, machine learning, and technical notes."
+SITE_BASE_URL = "https://reveryday.github.io/"
+SITE_AUTHOR = "Wens"
 HEAD_EXTRAS = """
     <link
       rel="stylesheet"

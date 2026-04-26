@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
+from datetime import datetime, timezone
 from html import escape
+from urllib.parse import quote
 
 from .config import (
     FOOTER_SCRIPTS,
@@ -11,11 +13,22 @@ from .config import (
     HOME_HEADING,
     HOME_LEDE,
     NAV_LINKS,
+    SITE_AUTHOR,
+    SITE_BASE_URL,
     SITE_DESCRIPTION,
     SITE_TITLE,
     SOCIAL_LINKS,
 )
 from .models import Post
+
+
+def _absolute_url(path: str) -> str:
+    base = SITE_BASE_URL if SITE_BASE_URL.endswith("/") else SITE_BASE_URL + "/"
+    return base + quote(path, safe="/")
+
+
+def _iso_datetime(dt: datetime) -> str:
+    return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def render_nav(current_href: str) -> str:
@@ -30,8 +43,9 @@ def render_post_nav() -> str:
     return "\n".join(f'            <a href="../{href}">{label}</a>' for label, href in NAV_LINKS)
 
 
-def render_layout(title: str, content: str, description: str = "") -> str:
+def render_layout(title: str, content: str, description: str = "", *, page_url: str = "") -> str:
     meta_description = description or SITE_DESCRIPTION
+    full_url = _absolute_url(page_url)
     return f"""<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,6 +53,14 @@ def render_layout(title: str, content: str, description: str = "") -> str:
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{escape(title)}</title>
     <meta name="description" content="{escape(meta_description)}" />
+    <link rel="canonical" href="{escape(full_url)}" />
+    <meta property="og:title" content="{escape(title)}" />
+    <meta property="og:description" content="{escape(meta_description)}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{escape(full_url)}" />
+    <meta property="og:site_name" content="{escape(SITE_TITLE)}" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="alternate" type="application/atom+xml" href="feed.xml" title="{escape(SITE_TITLE)} feed" />
     <link rel="stylesheet" href="assets/style.css" />
 {HEAD_EXTRAS}
   </head>
@@ -104,7 +126,7 @@ def render_home(posts: list[Post]) -> str:
 {chr(10).join(cards)}
       </main>"""
 
-    return render_layout(SITE_TITLE, content, SITE_DESCRIPTION)
+    return render_layout(SITE_TITLE, content, SITE_DESCRIPTION, page_url="")
 
 
 def render_archive(posts: list[Post]) -> str:
@@ -119,7 +141,7 @@ def render_archive(posts: list[Post]) -> str:
 {items}
         </ul>
       </main>"""
-    return render_layout(f"Archive | {SITE_TITLE}", content)
+    return render_layout(f"Archive | {SITE_TITLE}", content, page_url="archive.html")
 
 
 def render_tags(posts: list[Post]) -> str:
@@ -147,7 +169,7 @@ def render_tags(posts: list[Post]) -> str:
       <main class="content-page">
 {body}
       </main>"""
-    return render_layout(f"Tags | {SITE_TITLE}", content)
+    return render_layout(f"Tags | {SITE_TITLE}", content, page_url="tags.html")
 
 
 def render_search_page() -> str:
@@ -161,7 +183,7 @@ def render_search_page() -> str:
         <div id="results" class="search-results"></div>
       </main>
       <script src="assets/search.js"></script>"""
-    return render_layout(f"Search | {SITE_TITLE}", content)
+    return render_layout(f"Search | {SITE_TITLE}", content, page_url="search.html")
 
 
 def render_playground_page() -> str:
@@ -202,7 +224,7 @@ def render_playground_page() -> str:
       <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/clike/clike.min.js"></script>
       <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/fortran/fortran.min.js"></script>
       <script defer src="assets/playground.js"></script>"""
-    return render_layout(f"Playground | {SITE_TITLE}", content)
+    return render_layout(f"Playground | {SITE_TITLE}", content, page_url="playground.html")
 
 
 def render_faq_page() -> str:
@@ -214,7 +236,7 @@ def render_faq_page() -> str:
         <h2>How is it deployed?</h2>
         <p>As a static site on GitHub Pages through a GitHub Actions workflow.</p>
       </main>"""
-    return render_layout(f"FAQ | {SITE_TITLE}", content)
+    return render_layout(f"FAQ | {SITE_TITLE}", content, page_url="faq.html")
 
 
 def render_friends_page() -> str:
@@ -228,7 +250,7 @@ def render_friends_page() -> str:
           </a>
         </p>
       </main>"""
-    return render_layout(f"Friends | {SITE_TITLE}", content)
+    return render_layout(f"Friends | {SITE_TITLE}", content, page_url="friends.html")
 
 
 def render_search_index(posts: list[Post]) -> str:
@@ -287,6 +309,7 @@ if (queryInput) {
 
 
 def render_post_page(post: Post) -> str:
+    canonical = _absolute_url(post.url)
     return f"""<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -294,6 +317,16 @@ def render_post_page(post: Post) -> str:
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{escape(post.title)} | {SITE_TITLE}</title>
     <meta name="description" content="{escape(post.summary)}" />
+    <link rel="canonical" href="{escape(canonical)}" />
+    <meta property="og:title" content="{escape(post.title)}" />
+    <meta property="og:description" content="{escape(post.summary)}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{escape(canonical)}" />
+    <meta property="og:site_name" content="{escape(SITE_TITLE)}" />
+    <meta property="article:published_time" content="{_iso_datetime(post.date)}" />
+    <meta property="article:modified_time" content="{_iso_datetime(post.updated)}" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="{escape(SITE_TITLE)} feed" />
     <link rel="stylesheet" href="../assets/style.css" />
     {HEAD_EXTRAS}
   </head>
@@ -320,3 +353,83 @@ def render_post_page(post: Post) -> str:
   </body>
 </html>
 """
+
+
+_STATIC_SITEMAP_PAGES = [
+    ("", "weekly"),
+    ("archive.html", "weekly"),
+    ("tags.html", "monthly"),
+    ("search.html", "monthly"),
+    ("playground.html", "monthly"),
+    ("faq.html", "yearly"),
+    ("friends.html", "yearly"),
+]
+
+
+def render_sitemap(posts: list[Post]) -> str:
+    entries: list[str] = []
+    for path, freq in _STATIC_SITEMAP_PAGES:
+        entries.append(
+            f"  <url>\n    <loc>{escape(_absolute_url(path))}</loc>\n"
+            f"    <changefreq>{freq}</changefreq>\n  </url>"
+        )
+    for post in posts:
+        entries.append(
+            f"  <url>\n    <loc>{escape(_absolute_url(post.url))}</loc>\n"
+            f"    <lastmod>{post.updated.strftime('%Y-%m-%d')}</lastmod>\n  </url>"
+        )
+    body = "\n".join(entries)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{body}\n"
+        "</urlset>\n"
+    )
+
+
+def render_robots_txt() -> str:
+    sitemap_url = _absolute_url("sitemap.xml")
+    return (
+        "User-agent: *\n"
+        "Allow: /\n\n"
+        f"Sitemap: {sitemap_url}\n"
+    )
+
+
+def render_feed_atom(posts: list[Post], limit: int = 20) -> str:
+    latest = posts[:limit]
+    if latest:
+        feed_updated = _iso_datetime(max(post.updated for post in latest))
+    else:
+        feed_updated = _iso_datetime(datetime.now(timezone.utc).replace(tzinfo=None))
+
+    entries: list[str] = []
+    for post in latest:
+        entry_url = _absolute_url(post.url)
+        entries.append(
+            "  <entry>\n"
+            f"    <title>{escape(post.title)}</title>\n"
+            f'    <link href="{escape(entry_url)}" />\n'
+            f"    <id>{escape(entry_url)}</id>\n"
+            f"    <published>{_iso_datetime(post.date)}</published>\n"
+            f"    <updated>{_iso_datetime(post.updated)}</updated>\n"
+            f"    <summary>{escape(post.summary)}</summary>\n"
+            "  </entry>"
+        )
+
+    site_url = _absolute_url("")
+    feed_url = _absolute_url("feed.xml")
+    body = "\n".join(entries)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<feed xmlns="http://www.w3.org/2005/Atom">\n'
+        f"  <title>{escape(SITE_TITLE)}</title>\n"
+        f"  <subtitle>{escape(SITE_DESCRIPTION)}</subtitle>\n"
+        f'  <link href="{escape(site_url)}" />\n'
+        f'  <link href="{escape(feed_url)}" rel="self" />\n'
+        f"  <id>{escape(site_url)}</id>\n"
+        f"  <updated>{feed_updated}</updated>\n"
+        f"  <author><name>{escape(SITE_AUTHOR)}</name></author>\n"
+        f"{body}\n"
+        "</feed>\n"
+    )
