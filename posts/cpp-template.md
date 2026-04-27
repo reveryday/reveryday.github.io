@@ -5,7 +5,9 @@ tags:
 published: false
 ---
 
-ptrdiff_t-指针算数：
+两种数据类型：
+
+ptrdiff_t（有符号数据类型）-表示两个指针之间的距离：
 
 ```c++
 int arr[10];
@@ -16,7 +18,7 @@ std::ptrdiff_t diff = ptr1 - ptr2;  // 结果为 3（ptr1比ptr2大3个位置）
 std::ptrdiff_t diff2 = ptr2 - ptr1; // 结果为 -3
 ```
 
-std::size_t-无符号整数类型:
+std::size_t（无符号整数类型）-表述大小或数量:
 
 ```c++
 std::vector<int> vec(10);
@@ -25,6 +27,8 @@ std::size_t sz = vec.size();  // vector::size() 返回 std::size_t
 char arr[100];
 std::size_t arr_sz = sizeof(arr);  // sizeof 操作符返回 std::size_t
 ```
+
+#### 可变参数模板
 
 
 
