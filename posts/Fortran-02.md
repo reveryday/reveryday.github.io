@@ -1,6 +1,6 @@
 ---
 title: Fortran control and modularity
-date: 2026-03-30 22:56:17
+date: 2026-04-26 22:56:17
 tags:
 ---
 
