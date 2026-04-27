@@ -187,11 +187,16 @@ def render_search_page() -> str:
 
 
 def render_playground_page() -> str:
-    content = f"""{render_page_header("playground.html", "Playground")}
+    content = f"""      <header class="site-header compact">
+        <nav class="top-nav" aria-label="Primary">
+          <a class="brand" href="index.html">{SITE_TITLE}</a>
+          <div class="nav-links">
+{render_nav("playground.html")}
+          </div>
+        </nav>
+      </header>
 
       <main class="content-page playground-page">
-        <p class="meta">Write code and run it in your browser. Powered by the free, public <a href="https://godbolt.org/" target="_blank" rel="noreferrer">Compiler Explorer</a> API. Python uses the standard library only &mdash; third-party packages like numpy or torch are not available. Your code, language, and stdin are saved locally.</p>
-
         <div class="pg-lang-buttons" role="group" aria-label="Language">
           <button type="button" class="pg-lang-btn" data-lang="python" aria-pressed="false">Python</button>
           <button type="button" class="pg-lang-btn" data-lang="cpp" aria-pressed="false">C++</button>
@@ -201,9 +206,6 @@ def render_playground_page() -> str:
         <div class="pg-editor-wrap">
           <textarea id="pg-code" spellcheck="false"></textarea>
         </div>
-
-        <div class="pg-section-label">Stdin (optional)</div>
-        <textarea id="pg-stdin" class="pg-stdin" spellcheck="false" placeholder="Input passed to the program's standard input..."></textarea>
 
         <div class="pg-run-row">
           <button type="button" id="pg-run" class="pg-run-btn">&#9654; Run</button>
@@ -332,15 +334,6 @@ def render_post_page(post: Post) -> str:
   </head>
   <body>
     <div class="page-shell">
-      <header class="site-header compact">
-        <nav class="top-nav" aria-label="Primary">
-          <a class="brand" href="../index.html">{SITE_TITLE}</a>
-          <div class="nav-links">
-{render_post_nav()}
-          </div>
-        </nav>
-      </header>
-
       <main class="article-page prose">
         <article>
           <h1>{escape(post.title)}</h1>

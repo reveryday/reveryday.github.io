@@ -57,10 +57,6 @@
     return loadStored("code:" + lang, LANGUAGES[lang].defaultCode);
   }
 
-  function getStdinFor(lang) {
-    return loadStored("stdin:" + lang, "");
-  }
-
   function setActiveButton(lang) {
     document.querySelectorAll(".pg-lang-btn").forEach(function (btn) {
       const isActive = btn.dataset.lang === lang;
@@ -91,10 +87,6 @@
     if (editor) {
       saveStored("code:" + currentLang, editor.getValue());
     }
-    const stdinEl = document.getElementById("pg-stdin");
-    if (stdinEl) {
-      saveStored("stdin:" + currentLang, stdinEl.value);
-    }
 
     currentLang = lang;
     saveStored("lang", lang);
@@ -103,9 +95,6 @@
     if (editor) {
       editor.setOption("mode", LANGUAGES[lang].cmMode);
       editor.setValue(getCodeFor(lang));
-    }
-    if (stdinEl) {
-      stdinEl.value = getStdinFor(lang);
     }
     updateCompilerInfo();
   }
@@ -176,11 +165,8 @@
   function runCode() {
     if (!editor) return;
     const code = editor.getValue();
-    const stdinEl = document.getElementById("pg-stdin");
-    const stdin = stdinEl ? stdinEl.value : "";
 
     saveStored("code:" + currentLang, code);
-    saveStored("stdin:" + currentLang, stdin);
 
     const cfg = LANGUAGES[currentLang];
 
@@ -196,7 +182,7 @@
         lang: cfg.godboltLang,
         options: {
           userArguments: "",
-          executeParameters: { args: [], stdin: stdin },
+          executeParameters: { args: [], stdin: "" },
           compilerOptions: { executorRequest: true },
           filters: { execute: true },
         },
@@ -250,20 +236,6 @@
     editor.on("change", function () {
       saveStored("code:" + currentLang, editor.getValue());
     });
-
-    const stdinEl = document.getElementById("pg-stdin");
-    if (stdinEl) {
-      stdinEl.value = getStdinFor(currentLang);
-      stdinEl.addEventListener("input", function () {
-        saveStored("stdin:" + currentLang, stdinEl.value);
-      });
-      stdinEl.addEventListener("keydown", function (e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-          e.preventDefault();
-          runCode();
-        }
-      });
-    }
 
     setActiveButton(currentLang);
     updateCompilerInfo();

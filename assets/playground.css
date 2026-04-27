@@ -56,34 +56,19 @@
   font-family: "SFMono-Regular", Menlo, Consolas, Monaco,
                "Liberation Mono", "Lucida Console", monospace;
   font-size: 0.9rem;
+  line-height: 1.45;
   background: #f6f8fa;
+}
+
+.pg-editor-wrap .CodeMirror-cursor {
+  height: 1em !important;
+  margin-top: 0.225em;
 }
 
 .pg-section-label {
   margin: 1rem 0 0.35rem;
   color: var(--muted);
   font-size: 0.85rem;
-}
-
-.pg-stdin {
-  width: 100%;
-  min-height: 4.5rem;
-  resize: vertical;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid #d1d5da;
-  border-radius: 0.25rem;
-  background: #f6f8fa;
-  font-family: "SFMono-Regular", Menlo, Consolas, Monaco,
-               "Liberation Mono", "Lucida Console", monospace;
-  font-size: 0.9rem;
-  line-height: 1.45;
-  color: var(--text);
-  outline: 0;
-  box-sizing: border-box;
-}
-
-.pg-stdin:focus {
-  border-color: #adb5bd;
 }
 
 .pg-run-row {
