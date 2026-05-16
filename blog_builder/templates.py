@@ -261,6 +261,63 @@ def render_friends_page() -> str:
     return render_layout(f"Friends | {SITE_TITLE}", content, page_url="friends.html")
 
 
+def render_tracker_page() -> str:
+    content = f"""{render_page_header("tracker.html", "Work & Study Tracker")}
+
+      <main class="content-page tracker-page">
+        <section class="tracker-summary" aria-label="Tracker summary">
+          <div>
+            <span class="tracker-label">Work target</span>
+            <strong id="work-target">-- h/day</strong>
+          </div>
+          <div>
+            <span class="tracker-label">Completion</span>
+            <strong id="work-completion">--</strong>
+          </div>
+          <div>
+            <span class="tracker-label">Study total</span>
+            <strong id="study-total">-- h</strong>
+          </div>
+        </section>
+
+        <section class="tracker-section" aria-labelledby="work-calendar-title">
+          <div class="tracker-section-header">
+            <h2 id="work-calendar-title">Work check-in</h2>
+            <p class="meta">Daily target completion over the latest year.</p>
+          </div>
+          <div class="calendar-wrap" aria-label="Work target calendar">
+            <div id="work-calendar" class="work-calendar"></div>
+          </div>
+          <div class="calendar-legend" aria-label="Calendar legend">
+            <span>No record</span>
+            <span class="calendar-swatch empty"></span>
+            <span class="calendar-swatch partial"></span>
+            <span class="calendar-swatch done"></span>
+            <span>Done</span>
+          </div>
+        </section>
+
+        <section class="tracker-section" aria-labelledby="study-chart-title">
+          <div class="tracker-section-header">
+            <div>
+              <h2 id="study-chart-title">Study hours</h2>
+              <p class="meta">Switch between daily, weekly, and monthly views.</p>
+            </div>
+            <div class="chart-tabs" role="group" aria-label="Study chart view">
+              <button type="button" data-view="day" aria-pressed="true">Day</button>
+              <button type="button" data-view="week" aria-pressed="false">Week</button>
+              <button type="button" data-view="month" aria-pressed="false">Month</button>
+            </div>
+          </div>
+          <div id="study-chart" class="study-chart" aria-label="Study hours line chart"></div>
+        </section>
+      </main>
+
+      <script src="assets/tracker-data.js"></script>
+      <script src="assets/tracker.js"></script>"""
+    return render_layout(f"Work & Study Tracker | {SITE_TITLE}", content, page_url="tracker.html")
+
+
 def render_search_index(posts: list[Post]) -> str:
     search_posts = [
         {
@@ -360,6 +417,7 @@ _STATIC_SITEMAP_PAGES = [
     ("tags.html", "monthly"),
     ("search.html", "monthly"),
     ("playground.html", "monthly"),
+    ("tracker.html", "weekly"),
     ("faq.html", "yearly"),
     ("friends.html", "yearly"),
 ]

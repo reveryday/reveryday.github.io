@@ -271,6 +271,186 @@ a:hover {
   font-size: 0.95rem;
 }
 
+.tracker-page {
+  max-width: 860px;
+}
+
+.tracker-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0.8rem 0 1.2rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.tracker-summary div {
+  min-width: 0;
+}
+
+.tracker-label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.tracker-summary strong {
+  display: block;
+  margin-top: 0.18rem;
+  font-size: 1.15rem;
+  font-weight: 650;
+}
+
+.tracker-section {
+  padding: 1.2rem 0 1.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tracker-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.tracker-section h2 {
+  margin: 0 0 0.15rem;
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+.tracker-section .meta {
+  margin: 0;
+}
+
+.calendar-wrap {
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+}
+
+.work-calendar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 12px);
+  grid-auto-columns: 12px;
+  gap: 3px;
+  width: max-content;
+  min-height: 102px;
+}
+
+.calendar-day {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: #ebedf0;
+}
+
+.calendar-day.partial {
+  background: #9be9a8;
+}
+
+.calendar-day.done {
+  background: #216e39;
+}
+
+.calendar-day.muted {
+  opacity: 0.35;
+}
+
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.calendar-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: #ebedf0;
+}
+
+.calendar-swatch.partial {
+  background: #9be9a8;
+}
+
+.calendar-swatch.done {
+  background: #216e39;
+}
+
+.chart-tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.chart-tabs button {
+  min-width: 4rem;
+  padding: 0.35rem 0.65rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.chart-tabs button[aria-pressed="true"] {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.study-chart {
+  min-height: 280px;
+  overflow-x: auto;
+}
+
+.study-chart svg {
+  display: block;
+  width: 100%;
+  min-width: 520px;
+  height: auto;
+}
+
+.chart-grid {
+  stroke: #eeeeee;
+  stroke-width: 1;
+}
+
+.chart-axis {
+  stroke: #d8dee4;
+  stroke-width: 1;
+}
+
+.chart-line {
+  fill: none;
+  stroke: #0969da;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.chart-point {
+  fill: #ffffff;
+  stroke: #0969da;
+  stroke-width: 2;
+}
+
+.chart-label {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
 .prose h2 {
   margin: 1.6rem 0 0.4rem;
   font-size: 1.5rem;
@@ -495,5 +675,22 @@ code {
 
   .friend-arrow {
     display: none;
+  }
+
+  .tracker-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .tracker-section-header {
+    display: block;
+  }
+
+  .chart-tabs {
+    margin-top: 0.75rem;
+    width: 100%;
+  }
+
+  .chart-tabs button {
+    flex: 1;
   }
 }

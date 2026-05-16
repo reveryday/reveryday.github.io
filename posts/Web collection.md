@@ -33,6 +33,7 @@ tags: Tool
 
 #### Blog
 
+- [工作/学习打卡](../tracker.html)
 - [Andrej Karpathy blog](https://karpathy.github.io/)
 - [沉浸式翻译-owen](https://www.owenyoung.com/)
 - [阮一峰](https://www.ruanyifeng.com/blog)
