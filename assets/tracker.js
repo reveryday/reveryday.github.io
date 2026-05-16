@@ -4,12 +4,10 @@
     .map((entry) => ({
       date: entry.date,
       workHours: Number(entry.workHours) || 0,
-      studyHours: Number(entry.studyHours) || 0,
     }))
     .sort((a, b) => a.date.localeCompare(b.date));
 
   const entryByDate = new Map(entries.map((entry) => [entry.date, entry]));
-  const dayMs = 24 * 60 * 60 * 1000;
 
   function pad(value) {
     return String(value).padStart(2, "0");
@@ -33,11 +31,11 @@
   function renderSummary() {
     const targetEl = document.querySelector("#work-target");
     const completionEl = document.querySelector("#work-completion");
-    const studyTotalEl = document.querySelector("#study-total");
+    const totalHoursEl = document.querySelector("#total-hours");
     const target = Number(config.workTargetHours) || 8;
     const recorded = entries.filter((entry) => entry.workHours > 0);
     const completed = recorded.filter((entry) => entry.workHours >= target).length;
-    const studyTotal = entries.reduce((sum, entry) => sum + entry.studyHours, 0);
+    const totalHours = entries.reduce((sum, entry) => sum + entry.workHours, 0);
 
     if (targetEl) targetEl.textContent = `${formatHours(target)} h/day`;
     if (completionEl) {
@@ -45,7 +43,7 @@
         ? `${completed}/${recorded.length}`
         : "0/0";
     }
-    if (studyTotalEl) studyTotalEl.textContent = `${formatHours(studyTotal)} h`;
+    if (totalHoursEl) totalHoursEl.textContent = `${formatHours(totalHours)} h`;
   }
 
   function renderCalendar() {
@@ -75,7 +73,7 @@
 
       cell.className = `calendar-day ${state}${outOfRange ? " muted" : ""}`;
       cell.title = entry
-        ? `${key}: work ${formatHours(entry.workHours)}h, study ${formatHours(entry.studyHours)}h`
+        ? `${key}: ${formatHours(entry.workHours)}h`
         : `${key}: no record`;
       calendar.appendChild(cell);
     }
@@ -92,26 +90,26 @@
     if (view === "day") {
       return entries.map((entry) => ({
         label: entry.date.slice(5),
-        value: entry.studyHours,
+        value: entry.workHours,
       }));
     }
 
     const grouped = new Map();
     entries.forEach((entry) => {
       const key = view === "week" ? weekKey(entry.date) : entry.date.slice(0, 7);
-      grouped.set(key, (grouped.get(key) || 0) + entry.studyHours);
+      grouped.set(key, (grouped.get(key) || 0) + entry.workHours);
     });
 
     return Array.from(grouped.entries()).map(([label, value]) => ({ label, value }));
   }
 
   function renderChart(view) {
-    const chart = document.querySelector("#study-chart");
+    const chart = document.querySelector("#work-chart");
     if (!chart) return;
 
     const points = aggregate(view);
     if (!points.length) {
-      chart.innerHTML = '<p class="meta">No study records yet.</p>';
+      chart.innerHTML = '<p class="meta">No work hour records yet.</p>';
       return;
     }
 
@@ -139,7 +137,7 @@
     const labelEvery = Math.max(1, Math.ceil(points.length / 6));
 
     chart.innerHTML = `
-      <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Study hours ${view} chart">
+      <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Work hours ${view} chart">
         <line class="chart-grid" x1="${padLeft}" y1="${padTop}" x2="${width - padRight}" y2="${padTop}"></line>
         <line class="chart-grid" x1="${padLeft}" y1="${midline}" x2="${width - padRight}" y2="${midline}"></line>
         <line class="chart-axis" x1="${padLeft}" y1="${baseline}" x2="${width - padRight}" y2="${baseline}"></line>

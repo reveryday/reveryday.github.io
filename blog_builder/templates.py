@@ -262,7 +262,7 @@ def render_friends_page() -> str:
 
 
 def render_tracker_page() -> str:
-    content = f"""{render_page_header("tracker.html", "Work & Study Tracker")}
+    content = f"""{render_page_header("tracker.html", "Work Hours Tracker")}
 
       <main class="content-page tracker-page">
         <section class="tracker-summary" aria-label="Tracker summary">
@@ -275,8 +275,8 @@ def render_tracker_page() -> str:
             <strong id="work-completion">--</strong>
           </div>
           <div>
-            <span class="tracker-label">Study total</span>
-            <strong id="study-total">-- h</strong>
+            <span class="tracker-label">Total hours</span>
+            <strong id="total-hours">-- h</strong>
           </div>
         </section>
 
@@ -297,25 +297,25 @@ def render_tracker_page() -> str:
           </div>
         </section>
 
-        <section class="tracker-section" aria-labelledby="study-chart-title">
+        <section class="tracker-section" aria-labelledby="work-chart-title">
           <div class="tracker-section-header">
             <div>
-              <h2 id="study-chart-title">Study hours</h2>
+              <h2 id="work-chart-title">Work hours</h2>
               <p class="meta">Switch between daily, weekly, and monthly views.</p>
             </div>
-            <div class="chart-tabs" role="group" aria-label="Study chart view">
+            <div class="chart-tabs" role="group" aria-label="Work hours chart view">
               <button type="button" data-view="day" aria-pressed="true">Day</button>
               <button type="button" data-view="week" aria-pressed="false">Week</button>
               <button type="button" data-view="month" aria-pressed="false">Month</button>
             </div>
           </div>
-          <div id="study-chart" class="study-chart" aria-label="Study hours line chart"></div>
+          <div id="work-chart" class="study-chart" aria-label="Work hours line chart"></div>
         </section>
       </main>
 
       <script src="assets/tracker-data.js"></script>
       <script src="assets/tracker.js"></script>"""
-    return render_layout(f"Work & Study Tracker | {SITE_TITLE}", content, page_url="tracker.html")
+    return render_layout(f"Work Hours Tracker | {SITE_TITLE}", content, page_url="tracker.html")
 
 
 def render_search_index(posts: list[Post]) -> str:
