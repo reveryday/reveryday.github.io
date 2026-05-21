@@ -1,5 +1,5 @@
 ---
-title: 关于vibe coding的一些想法
+title: 关于vibe coding
 date: 2026-05-06 14:02:28
 tags:
 ---
