@@ -86,14 +86,29 @@ def render_page_header(current_href: str, heading: str) -> str:
       </header>"""
 
 
+def _tag_color_class(tag: str) -> str:
+    return f"tag-color-{sum(ord(char) for char in tag) % 5}"
+
+
 def render_home(posts: list[Post]) -> str:
     cards = []
     for post in posts:
+        tags = "".join(
+            f'            <span class="tag-chip {_tag_color_class(tag)}">{escape(tag)}</span>\n'
+            for tag in post.tags
+        )
+        tags_html = tags if tags else '            <span class="tag-chip muted">None</span>\n'
         cards.append(
             f"""        <article class="post-card">
           <h2><a href="{post.url}">{escape(post.title)}</a></h2>
-          <p>{escape(post.summary)}</p>
-          <p class="meta">Date: {post.display_date} | Updated: {post.display_updated} | Tags: {escape(post.display_tags)}</p>
+          <p class="post-summary">{escape(post.summary)}</p>
+          <div class="post-meta-row">
+            <span>Published {post.display_date}</span>
+            <span>Updated {post.display_updated}</span>
+          </div>
+          <div class="post-tags" aria-label="Tags">
+{tags_html.rstrip()}
+          </div>
         </article>"""
         )
 
