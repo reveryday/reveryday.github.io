@@ -18,15 +18,30 @@ HEAD_EXTRAS = """
       href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
     />
     <link
+      id="hljs-light"
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css"
       media="(prefers-color-scheme: light)"
     />
     <link
+      id="hljs-dark"
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github-dark.min.css"
       media="(prefers-color-scheme: dark)"
     />
+    <script>
+      window.__setTheme = function (theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        var l = document.getElementById("hljs-light");
+        var d = document.getElementById("hljs-dark");
+        if (l) l.media = theme === "dark" ? "not all" : "all";
+        if (d) d.media = theme === "dark" ? "all" : "not all";
+      };
+      try {
+        var stored = localStorage.getItem("theme");
+        if (stored === "dark" || stored === "light") window.__setTheme(stored);
+      } catch (e) {}
+    </script>
 """
 FOOTER_SCRIPTS = """
     <script
@@ -46,6 +61,32 @@ FOOTER_SCRIPTS = """
           window.hljs.highlightAll();
         }
       });
+    </script>
+    <script>
+      (function () {
+        function effective() {
+          var t = document.documentElement.getAttribute("data-theme");
+          if (t === "dark" || t === "light") return t;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "theme-toggle";
+        function sync() {
+          var dark = effective() === "dark";
+          btn.textContent = dark ? "\\u2600" : "\\u263e";
+          btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+          btn.setAttribute("aria-pressed", String(dark));
+        }
+        sync();
+        btn.addEventListener("click", function () {
+          var next = effective() === "dark" ? "light" : "dark";
+          if (window.__setTheme) window.__setTheme(next);
+          try { localStorage.setItem("theme", next); } catch (e) {}
+          sync();
+        });
+        document.body.appendChild(btn);
+      })();
     </script>
 """
 HOME_HEADING = "Welcome to my world."

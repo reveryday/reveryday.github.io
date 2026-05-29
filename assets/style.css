@@ -16,6 +16,14 @@
   --shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   --card-shadow-rest: 0 1px 2px rgba(15, 23, 42, 0.04), 0 2px 6px rgba(15, 23, 42, 0.06);
   --card-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+  --summary-text: #374151;
+  --quote-text: #5f4b32;
+  --chip-muted-bg: #f7f8f8;
+  --cal-empty: #ebedf0;
+  --chart-grid: #eeeeee;
+  --chart-axis: #d8dee4;
+  --on-accent: #ffffff;
+  --code-block-bg: #f4f8fb;
   --max-width: 720px;
 }
 
@@ -219,7 +227,7 @@ a:hover {
   display: -webkit-box;
   margin: 0.35rem 0 0.7rem;
   overflow: hidden;
-  color: #374151;
+  color: var(--summary-text);
   line-height: 1.62;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -254,8 +262,8 @@ a:hover {
 }
 
 .tag-chip.muted {
-  border-color: #e5e7eb;
-  background: #f7f8f8;
+  border-color: var(--border);
+  background: var(--chip-muted-bg);
   color: var(--muted);
 }
 
@@ -382,7 +390,7 @@ a:hover {
   width: 2.6rem;
   height: 2.6rem;
   place-items: center;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--accent-soft);
   color: var(--accent);
@@ -484,7 +492,7 @@ a:hover {
   width: 12px;
   height: 12px;
   border-radius: 2px;
-  background: #ebedf0;
+  background: var(--cal-empty);
 }
 
 .calendar-day.partial {
@@ -513,7 +521,7 @@ a:hover {
   width: 12px;
   height: 12px;
   border-radius: 2px;
-  background: #ebedf0;
+  background: var(--cal-empty);
 }
 
 .calendar-swatch.partial {
@@ -546,7 +554,7 @@ a:hover {
 
 .chart-tabs button[aria-pressed="true"] {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
 }
 
 .study-chart {
@@ -562,12 +570,12 @@ a:hover {
 }
 
 .chart-grid {
-  stroke: #eeeeee;
+  stroke: var(--chart-grid);
   stroke-width: 1;
 }
 
 .chart-axis {
-  stroke: #d8dee4;
+  stroke: var(--chart-axis);
   stroke-width: 1;
 }
 
@@ -580,7 +588,7 @@ a:hover {
 }
 
 .chart-point {
-  fill: #ffffff;
+  fill: var(--paper);
   stroke: var(--accent);
   stroke-width: 2;
 }
@@ -687,7 +695,7 @@ a:hover {
   margin-left: 0;
   padding-left: 1rem;
   border-left: 3px solid #f59e0b;
-  color: #5f4b32;
+  color: var(--quote-text);
   background: linear-gradient(90deg, var(--amber-soft), transparent 70%);
 }
 
@@ -717,9 +725,9 @@ a:hover {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--paper);
 }
 
 .prose-figure figcaption {
@@ -744,9 +752,9 @@ a:hover {
   max-width: 46rem;
   overflow-x: auto;
   padding: 0.55rem 0.85rem;
-  border: 1px solid #d7e3ea;
+  border: 1px solid var(--border);
   border-radius: 0.25rem;
-  background: #f4f8fb;
+  background: var(--code-block-bg);
   line-height: 1.45;
 }
 
@@ -772,7 +780,7 @@ a:hover {
 .search-panel {
   display: block;
   padding: 0.85rem 0;
-  border: 1px solid #cddcf4;
+  border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--paper);
   box-shadow: var(--shadow);
@@ -870,8 +878,38 @@ code {
   }
 }
 
+/* Dark theme variables. Applied when the OS prefers dark (unless the user
+   has explicitly forced light), or when the user toggles data-theme="dark". */
+:root[data-theme="dark"] {
+  --bg: #0d1117;
+  --paper: #161b22;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --border: #2a3038;
+  --accent: #58a6ff;
+  --accent-hover: #79c0ff;
+  --accent-soft: #15243d;
+  --amber: #e3b341;
+  --amber-soft: #2a2616;
+  --surface-hover: #1a2230;
+  --card-bg: #161b22;
+  --code-inline-bg: #1c2433;
+  --header-bg: rgba(13, 17, 23, 0.82);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --card-shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --card-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  --summary-text: #c9d1d9;
+  --quote-text: #d8c7a8;
+  --chip-muted-bg: #1c2330;
+  --cal-empty: #21262d;
+  --chart-grid: #21262d;
+  --chart-axis: #30363d;
+  --on-accent: #0d1117;
+  --code-block-bg: #161b22;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #0d1117;
     --paper: #161b22;
     --text: #e6edf3;
@@ -889,58 +927,39 @@ code {
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     --card-shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.35);
     --card-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+    --summary-text: #c9d1d9;
+    --quote-text: #d8c7a8;
+    --chip-muted-bg: #1c2330;
+    --cal-empty: #21262d;
+    --chart-grid: #21262d;
+    --chart-axis: #30363d;
+    --on-accent: #0d1117;
+    --code-block-bg: #161b22;
   }
+}
 
-  .post-summary {
-    color: #c9d1d9;
-  }
+.theme-toggle {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 50;
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--card-shadow-rest);
+  transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
+}
 
-  .tag-chip.muted {
-    border-color: var(--border);
-    background: #1c2330;
-  }
-
-  .friend-mark {
-    border-color: var(--border);
-  }
-
-  .calendar-day,
-  .calendar-swatch {
-    background: #21262d;
-  }
-
-  .chart-grid {
-    stroke: #21262d;
-  }
-
-  .chart-axis {
-    stroke: #30363d;
-  }
-
-  .chart-point {
-    fill: var(--paper);
-  }
-
-  .chart-tabs button[aria-pressed="true"] {
-    color: var(--bg);
-  }
-
-  .prose blockquote {
-    color: #d8c7a8;
-  }
-
-  .prose-figure img,
-  .prose p img {
-    border-color: var(--border);
-    background: #0d1117;
-  }
-
-  .prose pre {
-    border-color: var(--border);
-    background: #161b22;
-  }
-
-  .search-panel {
-    border-color: var(--border);
-  }
+.theme-toggle:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: var(--card-shadow);
+  transform: translateY(-1px);
 }
