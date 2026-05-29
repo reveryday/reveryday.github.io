@@ -9,16 +9,14 @@ from urllib.parse import quote
 from .config import (
     FOOTER_SCRIPTS,
     HEAD_EXTRAS,
-    HOME_EYEBROW,
-    HOME_HEADING,
-    HOME_LEDE,
     NAV_LINKS,
+    PAGES_DIR,
     SITE_AUTHOR,
     SITE_BASE_URL,
     SITE_DESCRIPTION,
     SITE_TITLE,
-    SOCIAL_LINKS,
 )
+from .markdown_renderer import markdown_to_html
 from .models import Post
 
 
@@ -112,13 +110,6 @@ def render_home(posts: list[Post]) -> str:
         </article>"""
         )
 
-    socials = "\n".join(
-        f'            <a href="{href}" target="_blank" rel="noreferrer">{escape(label)}</a>'
-        for label, href in SOCIAL_LINKS
-    )
-    eyebrow_html = f'          <p class="eyebrow">{escape(HOME_EYEBROW)}</p>\n' if HOME_EYEBROW else ""
-    lede_html = f'          <p class="lede">{escape(HOME_LEDE)}</p>\n' if HOME_LEDE else ""
-
     content = f"""      <header class="site-header">
         <nav class="top-nav" aria-label="Primary">
           <a class="brand" href="index.html">{SITE_TITLE}</a>
@@ -126,14 +117,6 @@ def render_home(posts: list[Post]) -> str:
 {render_nav("index.html")}
           </div>
         </nav>
-        <section class="hero">
-{eyebrow_html}\
-          <h1>{HOME_HEADING}</h1>
-{lede_html}\
-          <div class="social-links">
-{socials}
-          </div>
-        </section>
       </header>
 
       <main class="post-feed">
@@ -252,6 +235,16 @@ def render_faq_page() -> str:
         <p>As a static site on GitHub Pages through a GitHub Actions workflow.</p>
       </main>"""
     return render_layout(f"FAQ | {SITE_TITLE}", content, page_url="faq.html")
+
+
+def render_collection_page() -> str:
+    source = (PAGES_DIR / "collection.md").read_text(encoding="utf-8")
+    content = f"""{render_page_header("collection.html", "Collection")}
+
+      <main class="content-page prose collection-page">
+          {markdown_to_html(source)}
+      </main>"""
+    return render_layout(f"Collection | {SITE_TITLE}", content, page_url="collection.html")
 
 
 def render_friends_page() -> str:
@@ -435,6 +428,7 @@ _STATIC_SITEMAP_PAGES = [
     ("tracker.html", "weekly"),
     ("faq.html", "yearly"),
     ("friends.html", "yearly"),
+    ("collection.html", "weekly"),
 ]
 
 

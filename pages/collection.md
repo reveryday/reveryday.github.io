@@ -1,16 +1,15 @@
----
-title: Web collection
-date: 2025-08-07 15:00:10
-sticky: 100
-tags: Tool
----
+#### 本站工具
+
+- [Playground - 在线运行 Python / C++ / Fortran](playground.html)
+- [工作时长打卡](tracker.html)
+
 #### Repository
 
 - [AI 视频笔记助手](https://github.com/JefferyHcool/BiliNote)
 - [Openmc基于GPU加速](https://github.com/exasmr/openmc)
 - [运行 macOS 系统](https://github.com/luchina-gabriel/OSX-PROXMOX)
 - [自动投递简历](https://github.com/loks666/get_jobs)
-- [专为年会场景设计的 3D 动态抽奖应用](github.com/LOG1997/log-lottery)
+- [专为年会场景设计的 3D 动态抽奖应用](https://github.com/LOG1997/log-lottery)
 
 #### Posts
 
@@ -33,7 +32,6 @@ tags: Tool
 
 #### Blog
 
-- [工作时长打卡](../tracker.html)
 - [Andrej Karpathy blog](https://karpathy.github.io/)
 - [沉浸式翻译-owen](https://www.owenyoung.com/)
 - [阮一峰](https://www.ruanyifeng.com/blog)

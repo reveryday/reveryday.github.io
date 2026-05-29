@@ -7,6 +7,7 @@ from .config import OUTPUT_DIR, ROOT
 from .content import load_posts
 from .templates import (
     render_archive,
+    render_collection_page,
     render_faq_page,
     render_feed_atom,
     render_friends_page,
@@ -111,6 +112,7 @@ def main() -> None:
     write_text(OUTPUT_DIR / "tracker.html", render_tracker_page())
     write_text(OUTPUT_DIR / "faq.html", render_faq_page())
     write_text(OUTPUT_DIR / "friends.html", render_friends_page())
+    write_text(OUTPUT_DIR / "collection.html", render_collection_page())
     write_text(OUTPUT_DIR / "assets" / "search.js", render_search_index(posts))
     write_text(OUTPUT_DIR / "sitemap.xml", render_sitemap(posts))
     write_text(OUTPUT_DIR / "robots.txt", render_robots_txt())

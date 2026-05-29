@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = ROOT / "posts"
+PAGES_DIR = ROOT / "pages"
 OUTPUT_DIR = ROOT / "dist"
 
 SITE_TITLE = "Wens'Blog"
@@ -19,6 +20,12 @@ HEAD_EXTRAS = """
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github-dark.min.css"
+      media="(prefers-color-scheme: dark)"
     />
 """
 FOOTER_SCRIPTS = """
@@ -52,7 +59,7 @@ NAV_LINKS = [
     ("Posts", "index.html"),
     ("Archive", "archive.html"),
     ("Search", "search.html"),
-    ("Playground", "playground.html"),
     ("Tags", "tags.html"),
+    ("Collection", "collection.html"),
     ("Friends", "friends.html"),
 ]
