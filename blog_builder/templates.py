@@ -1,14 +1,16 @@
 from __future__ import annotations
 
 import json
+import re
 from collections import defaultdict
 from datetime import datetime, timezone
-from html import escape
+from html import escape, unescape
 from urllib.parse import quote
 
 from .config import (
     FOOTER_SCRIPTS,
     HEAD_EXTRAS,
+    HOME_HEADING,
     NAV_LINKS,
     PAGES_DIR,
     SITE_AUTHOR,
@@ -72,15 +74,15 @@ def render_layout(title: str, content: str, description: str = "", *, page_url: 
 """
 
 
-def render_page_header(current_href: str, heading: str) -> str:
+def render_page_header(current_href: str, heading: str = "") -> str:
+    heading_html = f"\n        <h1>{heading}</h1>" if heading else ""
     return f"""      <header class="site-header compact">
         <nav class="top-nav" aria-label="Primary">
           <a class="brand" href="index.html">{SITE_TITLE}</a>
           <div class="nav-links">
 {render_nav(current_href)}
           </div>
-        </nav>
-        <h1>{heading}</h1>
+        </nav>{heading_html}
       </header>"""
 
 
@@ -119,6 +121,8 @@ def render_home(posts: list[Post]) -> str:
         </nav>
       </header>
 
+      <p class="home-motto">{escape(HOME_HEADING)}</p>
+
       <main class="post-feed">
 {chr(10).join(cards)}
       </main>"""
@@ -131,7 +135,7 @@ def render_archive(posts: list[Post]) -> str:
         f'          <li><span>{post.iso_date}</span> <a href="{post.url}">{escape(post.title)}</a></li>'
         for post in posts
     )
-    content = f"""{render_page_header("archive.html", "Archive")}
+    content = f"""{render_page_header("archive.html")}
 
       <main class="content-page">
         <ul class="archive-list">
@@ -161,7 +165,7 @@ def render_tags(posts: list[Post]) -> str:
 
     empty_state = '<p class="meta">No tags yet.</p>' if not sections else ""
     body = "\n".join(sections) if sections else f"        {empty_state}"
-    content = f"""{render_page_header("tags.html", "Tags")}
+    content = f"""{render_page_header("tags.html")}
 
       <main class="content-page">
 {body}
@@ -170,7 +174,7 @@ def render_tags(posts: list[Post]) -> str:
 
 
 def render_search_page() -> str:
-    content = f"""{render_page_header("search.html", "Search")}
+    content = f"""{render_page_header("search.html")}
 
       <main class="content-page">
         <label class="search-panel" for="query">
@@ -239,7 +243,7 @@ def render_faq_page() -> str:
 
 def render_collection_page() -> str:
     source = (PAGES_DIR / "collection.md").read_text(encoding="utf-8")
-    content = f"""{render_page_header("collection.html", "Collection")}
+    content = f"""{render_page_header("collection.html")}
 
       <main class="content-page prose collection-page">
           {markdown_to_html(source)}
@@ -248,7 +252,7 @@ def render_collection_page() -> str:
 
 
 def render_friends_page() -> str:
-    content = f"""{render_page_header("friends.html", "Friends")}
+    content = f"""{render_page_header("friends.html")}
 
       <main class="content-page friends-page">
         <section class="friends-intro">
@@ -326,12 +330,19 @@ def render_tracker_page() -> str:
     return render_layout(f"Work Hours Tracker | {SITE_TITLE}", content, page_url="tracker.html")
 
 
+def _search_text(body_html: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", body_html)
+    text = unescape(text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def render_search_index(posts: list[Post]) -> str:
     search_posts = [
         {
             "title": post.title,
             "summary": post.summary,
             "url": post.url,
+            "content": _search_text(post.body_html),
         }
         for post in posts
     ]
@@ -371,7 +382,8 @@ if (queryInput) {
     const matches = posts.filter((post) => {
       return (
         post.title.toLowerCase().includes(term) ||
-        post.summary.toLowerCase().includes(term)
+        post.summary.toLowerCase().includes(term) ||
+        (post.content && post.content.toLowerCase().includes(term))
       );
     });
 
