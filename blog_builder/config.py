@@ -95,7 +95,7 @@ FOOTER_SCRIPTS = """
       })();
     </script>
 """
-HOME_HEADING = "天道酬勤"
+HOME_HEADING = "天道酬勤."
 HOME_LEDE = ""
 HOME_EYEBROW = ""
 SOCIAL_LINKS = [

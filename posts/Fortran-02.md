@@ -3,7 +3,6 @@ title: Fortran control and modularity
 date: 2026-04-26 22:56:17
 tags:
 ---
-
 控制程序流有两种主要形式：
 
 - *Conditional* (if)：根据布尔值（真或假）选择程序路径；
@@ -20,14 +19,12 @@ tags:
     print *, 'Angle is obtuse'
   end if
   ```
-
 - 循环结构`do` 循环；
-
 - 条件循环`do while`：
 
   ```fortran
   integer :: i
-  
+
   i = 1
   do while (i < 11)
     print *, i
@@ -149,6 +146,3 @@ end program use_mod
 显示导入列表：`use my_mod, only: public_var`，别名导入：`use my_mod, only: printMat=>print_matrix`。
 
 > 每个模块都应该写在一个单独的 `.f90` 源文件中。模块需要在任何 `use` 它们的程序单元之前编译。
-
-
-

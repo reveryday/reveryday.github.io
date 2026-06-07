@@ -1,87 +1,29 @@
-#### 本站工具
+本站工具：
 
 - [Playground - 在线运行 Python / C++ / Fortran](playground.html)
-- [工作时长打卡](tracker.html)
 
-#### Repository
+有很多我认为在大学前就应该且值得一看的东西，但限于我国高中教育对信息检索、筛选的忽略以及自身的局限，那时候没能接触到，但现在看到依然觉得受益匪浅，世界正因开源精神、知识共享而伟大，推荐[大学生的百科全书](https://ac-wiki.org/)，[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)。
 
-- [AI 视频笔记助手](https://github.com/JefferyHcool/BiliNote)
-- [Openmc基于GPU加速](https://github.com/exasmr/openmc)
-- [运行 macOS 系统](https://github.com/luchina-gabriel/OSX-PROXMOX)
-- [自动投递简历](https://github.com/loks666/get_jobs)
-- [专为年会场景设计的 3D 动态抽奖应用](https://github.com/LOG1997/log-lottery)
+当拥有自己的一台个人电脑后，都会忍不住“倒腾”下载很多App，Windows自带的文件搜索往往很慢，可以使用[Anytxt](https://anytxt.net/download/)通过内容搜索文件，也可以使用Everything通过文件名搜索文件，[LocalSend](https://localsend.org/)是一个开源的跨设备文件传输工具，如果你想要一个轻量且启动速度快的编辑器，那么[Notepad](https://notepad-plus-plus.org/downloads/)可以很好地满足你的要求。
 
-#### Posts
+[Obs Studio](https://obsproject.com/)是一个开源好用的录屏软件，[Koodo reader](https://koodoreader.com/en)是我很喜欢且在用的开源美观、功能完善的Windows阅读器，可以使用[Cubox](https://cubox.cc/)管理收藏的网页，使用[Smallpdf](https://smallpdf.com/cn/merge-pdf)对pdf文件进行基本的编辑，使用[Pandoc](https://pandoc.org/installing.html)进行文件格式转换，[肥猫云](https://a03.fcvipaffa02.cc/#/register?code=QCkPGRL0)是我比较推荐的机场。
 
-- [喜欢扎克伯格在哈佛的这个演讲](https://www.douyin.com/user/self?from_tab_name=main&modal_id=7629744353535200558&showTab=favorite_collection)
-- [Andrej Karpathy关于2025的LLM年度回顾](https://x.com/karpathy/status/2002118205729562949)
-- [OpenAI AI 编程实战手册](https://openai.com/zh-Hans-CN/index/shipping-sora-for-android-with-codex/)
-- [Anthropic有关skills的讲解](https://www.youtube.com/watch?v=CEvIs9y1uog)
+喜欢[扎克伯格在哈佛的演讲](https://www.douyin.com/user/self?from_tab_name=main&modal_id=7629744353535200558&showTab=favorite_collection)，说得还挺让人心情澎湃的x，Andrej Karpathy应该无人不知，可以看看其[个人博客](https://karpathy.github.io/)，认真看的话应该会受益很多，但我还没认真看。通过一个播客关注到了沉浸式翻译的开发者，他的[博客](https://www.owenyoung.com/)还挺有意思的，我觉得是一个有趣的灵魂。没事也可以看看[阮一峰的网络日志](https://www.ruanyifeng.com/blog/)，除此之外还有[白月黑羽](https://www.byhy.net/)，[Justin](https://justinyan.me/)，[翁荔](https://lilianweng.github.io/)，[学习让我快乐](https://blog.hidva.com/)，[喵神](https://onevcat.com/)等等。
 
-#### ml-learn
+如果需要学习**机器学习**，[李沐-动手学深度学习](https://courses.d2l.ai/zh-v2/)是我最推荐的入门教材，最好搭配其视频教程学习，其直接上手写代码的风格是我比较喜欢的，吴恩达的深度学习课程比较经典，如果像我一样不喜欢看英文视频，可以只看看其[课程笔记](http://www.ai-start.com/dl2017/)，但我个人不太适应其教学风格，总觉得更像在看一个科普视频。
 
-- [吴恩达-DL课程笔记](http://www.ai-start.com/dl2017/)
-- [李沐-动手学深度学习](https://courses.d2l.ai/zh-v2/)
-- [整理了论文+对应代码实现](https://github.com/paperswithcode)
-- [用代码逐行注释论文实现](https://nn.labml.ai/)
-- [一个教材](http://neuralnetworksanddeeplearning.com/)
-- [可视化Transformer](https://poloclub.github.io/transformer-explainer/)
-- [开源的python机器学习库](https://scikit-learn.org/stable/)
-- [文字可视化为token的小工具](https://platform.openai.com/tokenizer)
-- [快速获取arxiv中文章具体做了一件什么事](https://papers.cool/)
+ML存在很多“有趣”的网站待发现，比如一个深度学习教材[Neural network and deep learning](http://neuralnetworksanddeeplearning.com/)，[Tokenizer](https://platform.openai.com/tokenizer)可以将文字可视化为token，[Transformer-explainer](https://poloclub.github.io/transformer-explainer/)可以可视化transformer架构。
 
-#### Blog
+如果需要自己训练模型，可以先使用[超算互联网](https://www.scnet.cn/ui/mall/search/resource?resource1=COMMON_RESOURCE_TYPE-AI)中的免费资源，阿里官方云平台也有一些免费额度。
 
-- [Andrej Karpathy blog](https://karpathy.github.io/)
-- [沉浸式翻译-owen](https://www.owenyoung.com/)
-- [阮一峰](https://www.ruanyifeng.com/blog)
-- [学习让我快乐](https://blog.hidva.com/)
-- [翁荔](https://lilianweng.github.io/)
-- [喵神](https://onevcat.com/)
-- [justin](https://justinyan.me/)
-- [白月黑羽](https://www.byhy.net/ai/usecases/autotest/)
+有关**vibe coding**，可以看看[OpenAI AI 编程实战手册](https://openai.com/zh-Hans-CN/index/shipping-sora-for-android-with-codex/)，[Anthropic有关skills的讲解](https://www.youtube.com/watch?v=CEvIs9y1uog)，[Andrej Karpathy关于2025的LLM年度回顾](https://x.com/karpathy/status/2002118205729562949)等。
 
-#### 具身智能
+如果想了解具身智能（现在我也还完全是门外汉），[Tnkr](https://tnkr.ai/overview)是一个开源的机器人社区。
 
-- [ Tnkr-开源机器人社区](https://tnkr.ai/overview)
+如果需要阅读**文献**/刷文献/文献调研，[Papers.cool](https://papers.cool/)可以快速获取Arxiv中的文章具体做了一件什么事，适合刷文章。[玻尔](https://www.bohrium.com/)也是一个文献工具，我暂时也主要用来刷刷文献，[WisPaper](https://www.wispaper.ai/search/)是复旦大学开发的AI学术工具，但暂时没发挥很大的用处（？）
 
-#### MCP
+如果你也需要学习**并行编程**、高性能计算，且也不喜欢从一些“枯燥”的理论开始，那么可以参考[MPI Tutorial](https://mpitutorial.com/tutorials/mpi-introduction/zh_cn/)，[SJTU HPC 入门指南](https://xflops.sjtu.edu.cn/hpc-start-guide/)，[清华-高性能计算导论实验文档](https://lab.cs.tsinghua.edu.cn/hpc/doc/cluster/)，[计算机教育中缺失的一课](https://missing-semester-cn.github.io/)。
 
-- [Chrome DevTools (MCP) for your AI agent](https://developer.chrome.com/blog/chrome-devtools-mcp?hl=en)
-- [Zotero MCP](https://github.com/54yyyu/zotero-mcp)
+经常在各大平台看到Github某某仓库“又炸了”，但大多都在收藏夹里吃灰，添加star后再也没打开过，所以我认为有必要记录一些我认为真正有意义的**Repo**，[运行MacOS 系统](https://github.com/luchina-gabriel/OSX-PROXMOX)。
 
-#### 学术-Agent
-
-- [复旦大学-AI学术工具-WisPaper](https://www.wispaper.ai/search/)
-- [玻尔文献工具](https://www.bohrium.com/)
-- [将arxiv上的paper用中文总结](https://dw-dengwei.github.io/daily-arXiv-ai-enhanced/)
-
-#### 粒子输运计算
-
-- [查各种衰减系数](https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html)
-- [计算BUF](https://pymlbuf.pythonanywhere.com/enter)
-- [核数据](https://www.nndc.bnl.gov/nudat3/)
-
-#### 好用的工具
-
-- [多段同步、页面更美观的网页收藏工具](https://cubox.cc/)
-- [合并pdf文件工具](https://smallpdf.com/cn/merge-pdf)
-- [Tbox导航](https://www.tboxn.com/)
-- [✈：肥猫云](https://a03.fcvipaffa02.cc/#/register?code=QCkPGRL0)
-- [白嫖AI计算资源：超算互联网](https://www.scnet.cn/ui/mall/search/resource?resource1=COMMON_RESOURCE_TYPE-AI)
-- [文件格式转换](https://pandoc.org/installing.html)
-
-#### Apps in Windows
-
-- [anytxt-通过内容搜索文件](https://anytxt.net/download/)
-- Everything-通过文件名搜索文件
-- [The FASTEST Disk Space Analyzer](https://diskanalyzer.com/)
-- [LocalSend-跨设备文件传输](https://localsend.org/)
-- [Notepad-一个非常轻量启动速度非常快的编辑器](https://notepad-plus-plus.org/downloads/)
-- [Obs Studio-开源又好用的录屏软件](https://obsproject.com/)
-- [Koodo reader-开源美观且功能完善的阅读器](https://koodoreader.com/en)
-
-#### Chrome/Edge插件
-
-- [支持跳过知乎、少数派、掘金、CSDN、简书等常见论坛的中转提示页面](https://github.com/dogodo-cc/chrome-redirect-skipper)
-- [更好看、更好用的 B 站体验](https://github.com/keleus/BewlyCat?tab=readme-ov-file)
+作为核专业的学生，一般在[Xcom](https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html)中查询衰减系数数据，[pymlbuf](https://pymlbuf.pythonanywhere.com/enter)是一个计算伽马辐射场累积因子（BUF）的在线平台，[nudat](https://www.nndc.bnl.gov/nudat3/)是核数据网站。
