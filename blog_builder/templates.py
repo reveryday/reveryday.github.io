@@ -450,7 +450,11 @@ def render_post_page(post: Post) -> str:
 {render_article_toc(post)}
         <article class="article-content">
           <h1>{escape(post.title)}</h1>
-          <p class="meta">发布于：{post.display_date} | 更新于：{post.display_updated} | 标签：{escape(post.display_tags)}</p>
+          <p class="meta article-meta">
+            <span>发布于 {post.display_date}</span>
+            <span>更新于 {post.display_updated}</span>
+            <span>标签 {escape(post.display_tags)}</span>
+          </p>
           {post.body_html}
         </article>
       </main>
