@@ -2,6 +2,15 @@ from __future__ import annotations
 
 import re
 from html import escape
+from unicodedata import normalize
+
+from .models import TocItem
+
+
+class HeadingState:
+    def __init__(self) -> None:
+        self.items: list[TocItem] = []
+        self.seen: dict[str, int] = {}
 
 
 def stash_token(store: list[str], html: str) -> str:
@@ -88,7 +97,49 @@ def render_inline(text: str) -> str:
     return restore_tokens(escaped, stored)
 
 
+def plain_heading_text(text: str) -> str:
+    cleaned = re.sub(r"`([^`]+)`", r"\1", text)
+    cleaned = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", r"\1", cleaned)
+    cleaned = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1", cleaned)
+    cleaned = re.sub(r"\*\*([^*]+)\*\*", r"\1", cleaned)
+    cleaned = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"\1", cleaned)
+    cleaned = re.sub(r"\$([^$]+)\$", r"\1", cleaned)
+    cleaned = re.sub(r"<[^>]+>", "", cleaned)
+    return cleaned.strip()
+
+
+def heading_anchor(title: str, state: HeadingState) -> str:
+    normalized = normalize("NFKC", title).strip().lower()
+    normalized = normalized.replace("_", "-").replace(" ", "-")
+    slug = re.sub(r"[^\w\-]+", "-", normalized, flags=re.UNICODE)
+    slug = re.sub(r"-{2,}", "-", slug).strip("-") or "heading"
+    count = state.seen.get(slug, 0)
+    state.seen[slug] = count + 1
+    return f"{slug}-{count + 1}" if count else slug
+
+
+def render_heading(level: int, raw_text: str, state: HeadingState | None) -> str:
+    rendered = render_inline(raw_text)
+    if state is None:
+        return f"<h{level}>{rendered}</h{level}>"
+
+    title = plain_heading_text(raw_text)
+    anchor = heading_anchor(title, state)
+    if 1 <= level <= 4:
+        state.items.append(TocItem(level=level, title=title, anchor=anchor))
+    return f'<h{level} id="{escape(anchor, quote=True)}">{rendered}</h{level}>'
+
+
 def markdown_to_html(markdown: str) -> str:
+    return _markdown_to_html(markdown)
+
+
+def markdown_to_html_with_toc(markdown: str) -> tuple[str, list[TocItem]]:
+    heading_state = HeadingState()
+    return _markdown_to_html(markdown, heading_state), heading_state.items
+
+
+def _markdown_to_html(markdown: str, heading_state: HeadingState | None = None) -> str:
     lines = markdown.splitlines()
     blocks: list[str] = []
     paragraph: list[str] = []
@@ -134,7 +185,7 @@ def markdown_to_html(markdown: str) -> str:
                     else:
                         content_lines[index] = content_lines[index].lstrip()
 
-            item_html = markdown_to_html("\n".join(content_lines).strip())
+            item_html = _markdown_to_html("\n".join(content_lines).strip(), heading_state)
             rendered_items.append(f"<li>{item_html}</li>")
 
         tag = "ol" if list_kind == "ol" else "ul"
@@ -247,25 +298,25 @@ def markdown_to_html(markdown: str) -> str:
 
         if stripped.startswith("#### "):
             flush_paragraph()
-            blocks.append(f"<h4>{render_inline(stripped[5:])}</h4>")
+            blocks.append(render_heading(4, stripped[5:], heading_state))
             i += 1
             continue
 
         if stripped.startswith("### "):
             flush_paragraph()
-            blocks.append(f"<h3>{render_inline(stripped[4:])}</h3>")
+            blocks.append(render_heading(3, stripped[4:], heading_state))
             i += 1
             continue
 
         if stripped.startswith("## "):
             flush_paragraph()
-            blocks.append(f"<h2>{render_inline(stripped[3:])}</h2>")
+            blocks.append(render_heading(2, stripped[3:], heading_state))
             i += 1
             continue
 
         if stripped.startswith("# "):
             flush_paragraph()
-            blocks.append(f"<h1>{render_inline(stripped[2:])}</h1>")
+            blocks.append(render_heading(1, stripped[2:], heading_state))
             i += 1
             continue
 

@@ -5,6 +5,13 @@ from datetime import datetime
 
 
 @dataclass
+class TocItem:
+    level: int
+    title: str
+    anchor: str
+
+
+@dataclass
 class Post:
     slug: str
     title: str
@@ -14,6 +21,7 @@ class Post:
     summary: str
     tags: list[str]
     body_html: str
+    toc: list[TocItem]
 
     @property
     def url(self) -> str:
@@ -25,12 +33,12 @@ class Post:
 
     @property
     def display_date(self) -> str:
-        return self.date.strftime("%B %d, %Y").replace(" 0", " ")
+        return f"{self.date.year}年{self.date.month}月{self.date.day}日"
 
     @property
     def display_updated(self) -> str:
-        return self.updated.strftime("%B %d, %Y").replace(" 0", " ")
+        return f"{self.updated.year}年{self.updated.month}月{self.updated.day}日"
 
     @property
     def display_tags(self) -> str:
-        return ", ".join(self.tags) if self.tags else "None"
+        return ", ".join(self.tags) if self.tags else "无"

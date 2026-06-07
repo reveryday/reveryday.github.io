@@ -47,7 +47,7 @@ def render_layout(title: str, content: str, description: str = "", *, page_url: 
     meta_description = description or SITE_DESCRIPTION
     full_url = _absolute_url(page_url)
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,7 +77,7 @@ def render_layout(title: str, content: str, description: str = "", *, page_url: 
 def render_page_header(current_href: str, heading: str = "") -> str:
     heading_html = f"\n        <h1>{heading}</h1>" if heading else ""
     return f"""      <header class="site-header compact">
-        <nav class="top-nav" aria-label="Primary">
+        <nav class="top-nav" aria-label="主导航">
           <a class="brand" href="index.html">{SITE_TITLE}</a>
           <div class="nav-links">
 {render_nav(current_href)}
@@ -97,23 +97,23 @@ def render_home(posts: list[Post]) -> str:
             f'            <span class="tag-chip {_tag_color_class(tag)}">{escape(tag)}</span>\n'
             for tag in post.tags
         )
-        tags_html = tags if tags else '            <span class="tag-chip muted">None</span>\n'
+        tags_html = tags if tags else '            <span class="tag-chip muted">无</span>\n'
         cards.append(
             f"""        <article class="post-card">
           <h2><a href="{post.url}">{escape(post.title)}</a></h2>
           <p class="post-summary">{escape(post.summary)}</p>
           <div class="post-meta-row">
-            <span>Published {post.display_date}</span>
-            <span>Updated {post.display_updated}</span>
+            <span>发布于 {post.display_date}</span>
+            <span>更新于 {post.display_updated}</span>
           </div>
-          <div class="post-tags" aria-label="Tags">
+          <div class="post-tags" aria-label="标签">
 {tags_html.rstrip()}
           </div>
         </article>"""
         )
 
     content = f"""      <header class="site-header">
-        <nav class="top-nav" aria-label="Primary">
+        <nav class="top-nav" aria-label="主导航">
           <a class="brand" href="index.html">{SITE_TITLE}</a>
           <div class="nav-links">
 {render_nav("index.html")}
@@ -142,7 +142,7 @@ def render_archive(posts: list[Post]) -> str:
 {items}
         </ul>
       </main>"""
-    return render_layout(f"Archive | {SITE_TITLE}", content, page_url="archive.html")
+    return render_layout(f"归档 | {SITE_TITLE}", content, page_url="archive.html")
 
 
 def render_tags(posts: list[Post]) -> str:
@@ -163,14 +163,14 @@ def render_tags(posts: list[Post]) -> str:
         </section>"""
         )
 
-    empty_state = '<p class="meta">No tags yet.</p>' if not sections else ""
+    empty_state = '<p class="meta">暂无标签。</p>' if not sections else ""
     body = "\n".join(sections) if sections else f"        {empty_state}"
     content = f"""{render_page_header("tags.html")}
 
       <main class="content-page">
 {body}
       </main>"""
-    return render_layout(f"Tags | {SITE_TITLE}", content, page_url="tags.html")
+    return render_layout(f"标签 | {SITE_TITLE}", content, page_url="tags.html")
 
 
 def render_search_page() -> str:
@@ -178,17 +178,17 @@ def render_search_page() -> str:
 
       <main class="content-page">
         <label class="search-panel" for="query">
-          <input id="query" type="search" placeholder="Try 'deployment' or 'reading'" />
+          <input id="query" type="search" placeholder="搜索文章标题、摘要或正文" />
         </label>
         <div id="results" class="search-results"></div>
       </main>
       <script src="assets/search.js"></script>"""
-    return render_layout(f"Search | {SITE_TITLE}", content, page_url="search.html")
+    return render_layout(f"搜索 | {SITE_TITLE}", content, page_url="search.html")
 
 
 def render_playground_page() -> str:
     content = f"""      <header class="site-header compact">
-        <nav class="top-nav" aria-label="Primary">
+        <nav class="top-nav" aria-label="主导航">
           <a class="brand" href="index.html">{SITE_TITLE}</a>
           <div class="nav-links">
 {render_nav("playground.html")}
@@ -248,7 +248,7 @@ def render_collection_page() -> str:
       <main class="content-page prose collection-page">
           {markdown_to_html(source)}
       </main>"""
-    return render_layout(f"Collection | {SITE_TITLE}", content, page_url="collection.html")
+    return render_layout(f"收藏 | {SITE_TITLE}", content, page_url="collection.html")
 
 
 def render_friends_page() -> str:
@@ -256,7 +256,7 @@ def render_friends_page() -> str:
 
       <main class="content-page friends-page">
         <section class="friends-intro">
-          <h2>People worth reading.</h2>
+          <h2>值得一读的人。</h2>
         </section>
 
         <div class="friend-grid">
@@ -270,7 +270,7 @@ def render_friends_page() -> str:
           </a>
         </div>
       </main>"""
-    return render_layout(f"Friends | {SITE_TITLE}", content, page_url="friends.html")
+    return render_layout(f"友链 | {SITE_TITLE}", content, page_url="friends.html")
 
 
 def render_tracker_page() -> str:
@@ -349,6 +349,34 @@ def render_search_index(posts: list[Post]) -> str:
     return "const posts = " + json.dumps(search_posts, ensure_ascii=False, indent=2) + ";\n\n" + SEARCH_SCRIPT_BODY
 
 
+def render_article_toc(post: Post) -> str:
+    if not post.toc:
+        return ""
+
+    counters: list[int] = []
+    numbered_links: list[tuple[str, str, str]] = []
+    for item in post.toc:
+        level = max(1, min(item.level, 4))
+        while len(counters) < level:
+            counters.append(0)
+        counters = counters[:level]
+        counters[-1] += 1
+        number = ".".join(str(value) for value in counters if value)
+        numbered_links.append((f"toc-level-{level}", number, item.title))
+
+    links = "\n".join(
+        f'            <a class="{class_name}" href="#{escape(item.anchor, quote=True)}">'
+        f'<span class="toc-number">{number}</span><span>{escape(title)}</span></a>'
+        for item, (class_name, number, title) in zip(post.toc, numbered_links)
+    )
+    return f"""        <aside class="article-toc" aria-label="文章目录">
+          <p class="article-toc-title">目录</p>
+          <nav>
+{links}
+          </nav>
+        </aside>"""
+
+
 SEARCH_SCRIPT_BODY = """const queryInput = document.querySelector("#query");
 const results = document.querySelector("#results");
 
@@ -358,7 +386,7 @@ function render(matches) {
   }
 
   if (matches.length === 0) {
-    results.innerHTML = '<p class="meta">No matching posts yet.</p>';
+    results.innerHTML = '<p class="meta">没有找到匹配的文章。</p>';
     return;
   }
 
@@ -395,8 +423,9 @@ if (queryInput) {
 
 def render_post_page(post: Post) -> str:
     canonical = _absolute_url(post.url)
+    toc_class = " has-toc" if post.toc else ""
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -417,10 +446,11 @@ def render_post_page(post: Post) -> str:
   </head>
   <body>
     <div class="page-shell">
-      <main class="article-page prose">
-        <article>
+      <main class="article-page prose{toc_class}">
+{render_article_toc(post)}
+        <article class="article-content">
           <h1>{escape(post.title)}</h1>
-          <p class="meta">Date: {post.display_date} | Updated: {post.display_updated} | Tags: {escape(post.display_tags)}</p>
+          <p class="meta">发布于：{post.display_date} | 更新于：{post.display_updated} | 标签：{escape(post.display_tags)}</p>
           {post.body_html}
         </article>
       </main>

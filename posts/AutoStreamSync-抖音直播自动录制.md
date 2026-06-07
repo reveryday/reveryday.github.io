@@ -8,7 +8,7 @@ tags:
 
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20260504225521471.webp" alt="image-20260504225510718" style="zoom:67%;" />
 
-> 主要是前几天无聊的时候想看圆圆直播，但又懒得守着她直播，于是就整了一个，勉强可用，但仍存在一些小问题，如录制时间的bug，但应该不会改了。
+> 勉强可用，但仍存在很多小问题，如录制时间的bug，应该不会改了。
 
 - [项目地址](https://github.com/reveryday/AutoStreamSync)
 

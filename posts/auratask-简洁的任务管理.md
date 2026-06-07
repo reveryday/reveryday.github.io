@@ -10,7 +10,7 @@ tags:
 
 - [下载](https://github.com/reveryday/AuraTask/releases/latest)
 
-> Aura有曙光的意思，代表着希望，所以仍寄托于它能帮助我走出最近不好的情绪、糟糕的状态，走出阴霾，奔向曙光。
+> Aura有曙光的意思，代表着希望。
 
 ## 它做什么
 

@@ -207,6 +207,78 @@ a:hover {
   margin-right: auto;
 }
 
+.article-page.has-toc {
+  position: relative;
+}
+
+.article-page.has-toc article {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-toc {
+  position: fixed;
+  top: 5.5rem;
+  left: max(1rem, calc((100vw - var(--max-width)) / 2 - 13.5rem));
+  width: 11.5rem;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  padding: 0.15rem 0 0.15rem 0.9rem;
+  border-left: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.article-toc-title {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.article-toc nav {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.article-toc a {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.38rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.toc-number {
+  color: color-mix(in srgb, var(--muted) 78%, var(--accent));
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.article-toc a:hover {
+  color: var(--accent);
+}
+
+.article-toc .toc-level-1 {
+  padding-left: 0;
+}
+
+.article-toc .toc-level-2 {
+  padding-left: 0.45rem;
+}
+
+.article-toc .toc-level-3 {
+  padding-left: 0.9rem;
+}
+
+.article-toc .toc-level-4 {
+  padding-left: 1.35rem;
+}
+
 .home-motto {
   max-width: var(--max-width);
   margin: 0.2rem auto 1.4rem;
@@ -333,6 +405,13 @@ a:hover {
 .content-page,
 .article-page {
   padding-top: 0.35rem;
+}
+
+.prose h1[id],
+.prose h2[id],
+.prose h3[id],
+.prose h4[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 .archive-list {
@@ -874,6 +953,14 @@ code {
 
   .nav-links a {
     padding: 0.24rem 0.48rem;
+  }
+
+  .article-page.has-toc {
+    display: block;
+  }
+
+  .article-toc {
+    display: none;
   }
 
   .post-card {

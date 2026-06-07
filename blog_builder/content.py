@@ -8,7 +8,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from .config import POSTS_DIR
-from .markdown_renderer import extract_summary, markdown_to_html
+from .markdown_renderer import extract_summary, markdown_to_html_with_toc
 from .models import Post
 
 MTIMES_FILE = POSTS_DIR / ".mtimes.json"
@@ -108,6 +108,7 @@ def load_posts() -> list[Post]:
         sticky = parse_sticky(metadata.get("sticky", ""))
         summary = metadata.get("summary", "").strip() or extract_summary(body)
         tags = parse_tags(metadata.get("tags", ""))
+        body_html, toc = markdown_to_html_with_toc(body)
         posts.append(
             Post(
                 slug=slug,
@@ -117,7 +118,8 @@ def load_posts() -> list[Post]:
                 sticky=sticky,
                 summary=summary,
                 tags=tags,
-                body_html=markdown_to_html(body),
+                body_html=body_html,
+                toc=toc,
             )
         )
 

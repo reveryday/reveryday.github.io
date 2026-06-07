@@ -103,10 +103,10 @@ SOCIAL_LINKS = [
     # ("LinkedIn", "https://www.linkedin.com/"),
 ]
 NAV_LINKS = [
-    ("Posts", "index.html"),
-    ("Archive", "archive.html"),
-    ("Search", "search.html"),
-    ("Tags", "tags.html"),
-    ("Collection", "collection.html"),
-    ("Friends", "friends.html"),
+    ("文章", "index.html"),
+    ("归档", "archive.html"),
+    ("搜索", "search.html"),
+    ("标签", "tags.html"),
+    ("收藏", "collection.html"),
+    ("友链", "friends.html"),
 ]
