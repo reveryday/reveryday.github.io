@@ -95,7 +95,7 @@ FOOTER_SCRIPTS = """
       })();
     </script>
 """
-HOME_HEADING = "天道酬勤."
+HOME_HEADING = "天道酬勤"
 HOME_LEDE = ""
 HOME_EYEBROW = ""
 SOCIAL_LINKS = [
@@ -103,7 +103,7 @@ SOCIAL_LINKS = [
     # ("LinkedIn", "https://www.linkedin.com/"),
 ]
 NAV_LINKS = [
-    ("文章", "index.html"),
+    ("首页", "index.html"),
     ("归档", "archive.html"),
     ("搜索", "search.html"),
     ("标签", "tags.html"),

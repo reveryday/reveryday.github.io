@@ -256,7 +256,7 @@ def render_friends_page() -> str:
 
       <main class="content-page friends-page">
         <section class="friends-intro">
-          <h2>值得一读的人。</h2>
+          <h2>值得一读</h2>
         </section>
 
         <div class="friend-grid">
@@ -350,9 +350,6 @@ def render_search_index(posts: list[Post]) -> str:
 
 
 def render_article_toc(post: Post) -> str:
-    if not post.toc:
-        return ""
-
     counters: list[int] = []
     numbered_links: list[tuple[str, str, str]] = []
     for item in post.toc:
@@ -423,7 +420,6 @@ if (queryInput) {
 
 def render_post_page(post: Post) -> str:
     canonical = _absolute_url(post.url)
-    toc_class = " has-toc" if post.toc else ""
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -446,7 +442,7 @@ def render_post_page(post: Post) -> str:
   </head>
   <body>
     <div class="page-shell">
-      <main class="article-page prose{toc_class}">
+      <main class="article-page prose has-toc">
 {render_article_toc(post)}
         <article class="article-content">
           <h1>{escape(post.title)}</h1>

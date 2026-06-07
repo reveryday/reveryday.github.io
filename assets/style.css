@@ -176,6 +176,11 @@ a:hover {
   color: #14342f;
 }
 
+.article-page h1 {
+  font-size: clamp(1.7rem, 2.8vw, 2.25rem);
+  line-height: 1.16;
+}
+
 .lede {
   max-width: 38rem;
   font-size: 1rem;
@@ -214,6 +219,7 @@ a:hover {
 .article-page.has-toc article {
   margin-left: auto;
   margin-right: auto;
+  transform: translateX(1rem);
 }
 
 .article-toc {
@@ -968,6 +974,10 @@ code {
 
   .article-page.has-toc {
     display: block;
+  }
+
+  .article-page.has-toc article {
+    transform: none;
   }
 
   .article-toc {
