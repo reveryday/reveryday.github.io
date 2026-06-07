@@ -6,9 +6,9 @@
 
 ### App
 
-当拥有自己的一台个人电脑后，都会忍不住“倒腾”下载很多App，Windows自带的文件搜索往往很慢，可以使用[Anytxt](https://anytxt.net/download/)通过内容搜索文件，也可以使用[Everything](https://www.voidtools.com/)通过文件名搜索文件，[LocalSend](https://localsend.org/)是一个开源的跨设备文件传输工具，如果你想要一个轻量且启动速度快的编辑器，那么[Notepad](https://notepad-plus-plus.org/downloads/)可以很好地满足你的要求。
+Windows自带的文件搜索往往很慢，可以使用[Anytxt](https://anytxt.net/download/)通过内容搜索文件，也可以使用[Everything](https://www.voidtools.com/)通过文件名搜索文件，[LocalSend](https://localsend.org/)是一个开源的跨设备文件传输工具，如果你想要一个轻量且启动速度快的编辑器，那么[Notepad](https://notepad-plus-plus.org/downloads/)可以很好地满足你的要求。
 
-[Obs Studio](https://obsproject.com/)是一个开源好用的录屏软件，[Koodo reader](https://koodoreader.com/en)是我很喜欢且在用的开源美观、功能完善的Windows阅读器，可以使用[Cubox](https://cubox.cc/)管理收藏的网页，使用[Smallpdf](https://smallpdf.com/cn/merge-pdf)对pdf文件进行基本的编辑，使用[Pandoc](https://pandoc.org/installing.html)进行文件格式转换，[肥猫云](https://a03.fcvipaffa02.cc/#/register?code=QCkPGRL0)是我比较推荐的机场。
+[Obs Studio](https://obsproject.com/)是一个挺好的录屏软件，Windows阅读器非常推荐[Koodo reader](https://koodoreader.com/en)，开源美观，且功能完善。可以使用[Cubox](https://cubox.cc/)管理收藏的网页，使用[Smallpdf](https://smallpdf.com/cn/merge-pdf)对pdf文件进行基本的编辑，使用[Pandoc](https://pandoc.org/installing.html)进行文件格式转换。
 
 ### Posts
 

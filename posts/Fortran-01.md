@@ -1,7 +1,7 @@
 ---
 title: Hello Fortran!
 date: 2026-03-30 22:56:17
-tags:
+tags: Fortran
 ---
 
 Fortran是一门编译型的编程语言，特长是科学计算，教程：

@@ -31,6 +31,9 @@
   --code: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
           "DejaVu Sans Mono", monospace;
   --max-width: 720px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 999px;
 }
 
 * {
@@ -212,21 +215,34 @@ a:hover {
   margin-right: auto;
 }
 
-.article-page.has-toc {
-  position: relative;
+/* Reading layout: the content column stays centered in the viewport while the
+   TOC sits in the left gutter. The symmetric 1fr / content / 1fr track pair is
+   what keeps the centre column truly centred (no translateX offset). The
+   sidebar only appears at >=1200px, where the gutter is wide enough to hold an
+   11.5rem TOC without crowding or clipping the text; below that it collapses to
+   a card above the content (see the 1200px media query). */
+.has-toc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, var(--max-width)) minmax(0, 1fr);
+  column-gap: 2.4rem;
+  align-items: start;
+  max-width: none;
 }
 
-.article-page.has-toc article {
-  margin-left: auto;
-  margin-right: auto;
-  transform: translateX(1rem);
+.has-toc > .home-main,
+.has-toc > .article-content,
+.has-toc > .collection-content {
+  grid-column: 2;
+  min-width: 0;
 }
 
 .article-toc {
-  position: fixed;
-  top: 5.5rem;
-  left: max(1rem, calc((100vw - var(--max-width)) / 2 - 13.5rem));
+  grid-column: 1;
+  justify-self: end;
   width: 11.5rem;
+  position: sticky;
+  top: 5.5rem;
+  align-self: start;
   max-height: calc(100vh - 7rem);
   overflow-y: auto;
   padding: 0.15rem 0 0.15rem 0.9rem;
@@ -234,6 +250,21 @@ a:hover {
   color: var(--muted);
   font-size: 0.84rem;
   line-height: 1.5;
+}
+
+.article-toc > summary.article-toc-title {
+  display: block;
+  list-style: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+.article-toc > summary.article-toc-title::-webkit-details-marker {
+  display: none;
+}
+
+.article-toc > summary.article-toc-title::marker {
+  content: "";
 }
 
 .article-toc-title {
@@ -250,12 +281,14 @@ a:hover {
   gap: 0.3rem;
 }
 
-.article-toc a {
+.article-toc a,
+.prose .article-toc a {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   gap: 0.38rem;
   color: var(--muted);
   text-decoration: none;
+  text-decoration-color: transparent;
 }
 
 .toc-number {
@@ -265,7 +298,18 @@ a:hover {
   font-variant-numeric: tabular-nums;
 }
 
-.article-toc a:hover {
+.article-toc a:hover,
+.prose .article-toc a:hover {
+  color: var(--accent);
+}
+
+.article-toc a[aria-current="true"],
+.prose .article-toc a[aria-current="true"] {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.article-toc a[aria-current="true"] .toc-number {
   color: var(--accent);
 }
 
@@ -387,6 +431,12 @@ a:hover {
   font-size: 0.72rem;
   letter-spacing: 0.02em;
   line-height: 1.2;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+a.tag-chip:hover {
+  color: var(--accent);
 }
 
 .tag-chip::before {
@@ -417,6 +467,15 @@ a:hover {
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.45;
+}
+
+.article-meta a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.article-meta a:hover {
+  color: var(--accent);
 }
 
 .content-page,
@@ -459,6 +518,7 @@ a:hover {
 .tag-group {
   padding: 0.85rem 0;
   border-top: 1px solid var(--border);
+  scroll-margin-top: 5.5rem;
 }
 
 .tag-group h2 {
@@ -469,6 +529,31 @@ a:hover {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.tag-post-list {
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.tag-post-list li {
+  padding: 0.18rem 0 0.18rem 0.2rem;
+  color: var(--muted);
+}
+
+.tag-post-list li::marker {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tag-post-list a {
+  color: var(--text);
+  text-decoration-color: var(--border);
+}
+
+.tag-post-list a:hover {
+  color: var(--accent);
 }
 
 .friends-page {
@@ -501,7 +586,7 @@ a:hover {
   align-items: center;
   padding: 0.95rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--paper);
   text-decoration: none;
   transition: border-color 160ms ease, transform 160ms ease;
@@ -518,7 +603,7 @@ a:hover {
   height: 2.6rem;
   place-items: center;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--accent-soft);
   color: var(--accent);
   font-weight: 700;
@@ -664,7 +749,7 @@ a:hover {
   gap: 0.25rem;
   padding: 0.2rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
 }
 
 .chart-tabs button {
@@ -750,7 +835,7 @@ a:hover {
   bottom: 0.16em;
   left: 0;
   width: 0.22rem;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--accent);
   content: "";
 }
@@ -854,13 +939,13 @@ a:hover {
   height: auto;
   margin: 0 auto;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--paper);
 }
 
 .prose-figure figcaption {
   margin-top: 0.45rem;
-  color: #8a8a8a;
+  color: var(--muted);
   font-size: 0.8rem;
   line-height: 1.5;
   text-align: center;
@@ -881,7 +966,7 @@ a:hover {
   overflow-x: auto;
   padding: 0.55rem 0.85rem;
   border: 1px solid var(--border);
-  border-radius: 0.25rem;
+  border-radius: var(--radius-md);
   background: var(--code-block-bg);
   line-height: 1.45;
 }
@@ -908,7 +993,7 @@ a:hover {
   display: block;
   padding: 0.85rem 0;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--paper);
   box-shadow: var(--shadow);
 }
@@ -940,11 +1025,137 @@ a:hover {
 
 code {
   padding: 0.12rem 0.35rem;
-  border-radius: 0.2rem;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--code-inline-bg);
   font-family: var(--code);
   font-size: 0.9em;
+}
+
+/* Reading progress bar (top of viewport). */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* Hover anchor links on headings. */
+.heading-anchor {
+  margin-left: 0.4rem;
+  color: var(--accent);
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.prose h2:hover .heading-anchor,
+.prose h3:hover .heading-anchor,
+.prose h4:hover .heading-anchor,
+.heading-anchor:focus {
+  opacity: 0.55;
+}
+
+.heading-anchor:hover {
+  opacity: 1;
+}
+
+/* Search result snippet + match highlight. */
+.search-snippet {
+  margin: 0;
+  color: var(--summary-text);
+}
+
+mark {
+  padding: 0 0.15em;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: inherit;
+}
+
+/* Site footer. */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  max-width: var(--max-width);
+  margin: 3rem auto 0;
+  padding: 1.4rem 0 0.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.1rem;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* Below 1200px the gutter is too narrow for a sidebar TOC, so the layout
+   stacks: content goes full-width (centered) and the TOC becomes a collapsible
+   card above it. The home post list is dropped (the feed is right below). */
+@media (max-width: 1200px) {
+  .has-toc {
+    display: block;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .article-toc.home-post-nav {
+    display: none;
+  }
+
+  details.article-toc {
+    width: auto;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin: 0 0 1.2rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+
+  details.article-toc > summary.article-toc-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  details.article-toc > summary.article-toc-title::after {
+    content: "▾";
+    transition: transform 160ms ease;
+  }
+
+  details.article-toc:not([open]) > summary.article-toc-title::after {
+    transform: rotate(-90deg);
+  }
+
+  details.article-toc[open] > summary.article-toc-title {
+    margin-bottom: 0.6rem;
+  }
 }
 
 @media (max-width: 720px) {
@@ -970,18 +1181,6 @@ code {
 
   .nav-links a {
     padding: 0.24rem 0.48rem;
-  }
-
-  .article-page.has-toc {
-    display: block;
-  }
-
-  .article-page.has-toc article {
-    transform: none;
-  }
-
-  .article-toc {
-    display: none;
   }
 
   .post-card {
@@ -1092,7 +1291,7 @@ code {
   height: 2.6rem;
   place-items: center;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--card-bg);
   color: var(--text);
   font-size: 1.15rem;
@@ -1105,4 +1304,28 @@ code {
 .theme-toggle:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+/* Smooth color crossfade while toggling light/dark. The class is added only
+   for the duration of a toggle (see config.FOOTER_SCRIPTS), so page loads and
+   navigation never animate. Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition body,
+  html.theme-transition .site-header,
+  html.theme-transition .post-card,
+  html.theme-transition .friend-card,
+  html.theme-transition .friend-mark,
+  html.theme-transition .search-panel,
+  html.theme-transition .article-toc,
+  html.theme-transition .chart-tabs,
+  html.theme-transition pre,
+  html.theme-transition code,
+  html.theme-transition mark,
+  html.theme-transition .theme-toggle,
+  html.theme-transition .reading-progress,
+  html.theme-transition .site-footer {
+    transition: background-color 300ms ease, border-color 300ms ease,
+      color 300ms ease;
+  }
 }

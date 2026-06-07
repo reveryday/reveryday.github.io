@@ -1,5 +1,5 @@
 ---
-title: AutoStreamSync-抖音直播自动录制
+title: AutoStreamSync：抖音直播自动录制
 date: 2026-05-03 19:03:54
 tags:
 ---
@@ -8,7 +8,7 @@ tags:
 
 <img src="https://gitee.com/wenswuu/pictures/raw/master/20260504225521471.webp" alt="image-20260504225510718" style="zoom:67%;" />
 
-> 勉强可用，但仍存在很多小问题，如录制时间的bug，应该不会改了。
+> 本意是录制再自动上传到b站，但上传部分没写，所以只有录制功能。勉强可用，但仍存在很多小问题，如录制时间的bug，应该不会改了。
 
 - [项目地址](https://github.com/reveryday/AutoStreamSync)
 

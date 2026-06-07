@@ -1,7 +1,7 @@
 ---
 title: Fortran control and modularity
 date: 2026-04-26 22:56:17
-tags:
+tags: Fortran
 ---
 控制程序流有两种主要形式：
 
@@ -24,7 +24,7 @@ tags:
 
   ```fortran
   integer :: i
-
+  
   i = 1
   do while (i < 11)
     print *, i

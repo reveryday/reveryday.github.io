@@ -18,8 +18,8 @@ from .config import (
     SITE_DESCRIPTION,
     SITE_TITLE,
 )
-from .markdown_renderer import markdown_to_html
-from .models import Post
+from .markdown_renderer import markdown_to_html_with_toc
+from .models import Post, TocItem
 
 
 def _absolute_url(path: str) -> str:
@@ -29,6 +29,24 @@ def _absolute_url(path: str) -> str:
 
 def _iso_datetime(dt: datetime) -> str:
     return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _tag_slug(tag: str) -> str:
+    normalized = tag.strip().lower().replace(" ", "-")
+    slug = re.sub(r"[^\w\-]+", "-", normalized, flags=re.UNICODE)
+    slug = re.sub(r"-{2,}", "-", slug).strip("-")
+    return slug or "tag"
+
+
+def render_footer(prefix: str = "") -> str:
+    year = datetime.now().year
+    return f"""      <footer class="site-footer">
+        <span>© {year} {escape(SITE_TITLE)}</span>
+        <nav class="footer-links" aria-label="页脚">
+          <a href="{prefix}feed.xml">RSS</a>
+          <a href="#top">回到顶部 ↑</a>
+        </nav>
+      </footer>"""
 
 
 def render_nav(current_href: str) -> str:
@@ -65,8 +83,9 @@ def render_layout(title: str, content: str, description: str = "", *, page_url: 
 {HEAD_EXTRAS}
   </head>
   <body>
-    <div class="page-shell">
+    <div class="page-shell" id="top">
 {content}
+{render_footer()}
     </div>
 {FOOTER_SCRIPTS}
   </body>
@@ -90,11 +109,25 @@ def _tag_color_class(tag: str) -> str:
     return f"tag-color-{sum(ord(char) for char in tag) % 5}"
 
 
+def render_home_post_nav(posts: list[Post]) -> str:
+    links = "\n".join(
+        f'            <a href="{post.url}"><span class="toc-number">{index}</span>'
+        f"<span>{escape(post.title)}</span></a>"
+        for index, post in enumerate(posts, start=1)
+    )
+    return f"""      <aside class="article-toc home-post-nav" aria-label="文章导航">
+        <p class="article-toc-title">文章</p>
+        <nav>
+{links}
+        </nav>
+      </aside>"""
+
+
 def render_home(posts: list[Post]) -> str:
     cards = []
     for post in posts:
         tags = "".join(
-            f'            <span class="tag-chip {_tag_color_class(tag)}">{escape(tag)}</span>\n'
+            f'            <a class="tag-chip {_tag_color_class(tag)}" href="tags.html#{_tag_slug(tag)}">{escape(tag)}</a>\n'
             for tag in post.tags
         )
         tags_html = tags if tags else '            <span class="tag-chip muted">无</span>\n'
@@ -121,11 +154,16 @@ def render_home(posts: list[Post]) -> str:
         </nav>
       </header>
 
-      <p class="home-motto">{escape(HOME_HEADING)}</p>
+      <div class="has-toc home-body">
+{render_home_post_nav(posts)}
+        <div class="home-main">
+          <p class="home-motto">{escape(HOME_HEADING)}</p>
 
-      <main class="post-feed">
+          <main class="post-feed">
 {chr(10).join(cards)}
-      </main>"""
+          </main>
+        </div>
+      </div>"""
 
     return render_layout(SITE_TITLE, content, SITE_DESCRIPTION, page_url="")
 
@@ -154,12 +192,15 @@ def render_tags(posts: list[Post]) -> str:
     sections = []
     for tag in sorted(grouped):
         links = "\n".join(
-            f'          <p><a href="{post.url}">{escape(post.title)}</a></p>' for post in grouped[tag]
+            f'          <li><a href="{post.url}">{escape(post.title)}</a></li>'
+            for post in grouped[tag]
         )
         sections.append(
-            f"""        <section class="tag-group">
+            f"""        <section class="tag-group" id="{_tag_slug(tag)}">
           <h2>{escape(tag)}</h2>
+          <ol class="tag-post-list">
 {links}
+          </ol>
         </section>"""
         )
 
@@ -243,10 +284,14 @@ def render_faq_page() -> str:
 
 def render_collection_page() -> str:
     source = (PAGES_DIR / "collection.md").read_text(encoding="utf-8")
+    body_html, toc = markdown_to_html_with_toc(source)
     content = f"""{render_page_header("collection.html")}
 
-      <main class="content-page prose collection-page">
-          {markdown_to_html(source)}
+      <main class="content-page prose collection-page has-toc">
+{render_toc(toc)}
+        <article class="collection-content">
+          {body_html}
+        </article>
       </main>"""
     return render_layout(f"收藏 | {SITE_TITLE}", content, page_url="collection.html")
 
@@ -349,10 +394,10 @@ def render_search_index(posts: list[Post]) -> str:
     return "const posts = " + json.dumps(search_posts, ensure_ascii=False, indent=2) + ";\n\n" + SEARCH_SCRIPT_BODY
 
 
-def render_article_toc(post: Post) -> str:
+def render_toc(toc: list[TocItem]) -> str:
     counters: list[int] = []
     numbered_links: list[tuple[str, str, str]] = []
-    for item in post.toc:
+    for item in toc:
         level = max(1, min(item.level, 4))
         while len(counters) < level:
             counters.append(0)
@@ -364,20 +409,64 @@ def render_article_toc(post: Post) -> str:
     links = "\n".join(
         f'            <a class="{class_name}" href="#{escape(item.anchor, quote=True)}">'
         f'<span class="toc-number">{number}</span><span>{escape(title)}</span></a>'
-        for item, (class_name, number, title) in zip(post.toc, numbered_links)
+        for item, (class_name, number, title) in zip(toc, numbered_links)
     )
-    return f"""        <aside class="article-toc" aria-label="文章目录">
-          <p class="article-toc-title">目录</p>
+    return f"""        <details class="article-toc" open aria-label="文章目录">
+          <summary class="article-toc-title">目录</summary>
           <nav>
 {links}
           </nav>
-        </aside>"""
+        </details>"""
+
+
+def render_article_toc(post: Post) -> str:
+    return render_toc(post.toc)
 
 
 SEARCH_SCRIPT_BODY = """const queryInput = document.querySelector("#query");
 const results = document.querySelector("#results");
 
-function render(matches) {
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function highlight(text, term) {
+  if (!term) {
+    return escapeHtml(text);
+  }
+  const lower = text.toLowerCase();
+  let out = "";
+  let from = 0;
+  let at = lower.indexOf(term, from);
+  while (at !== -1) {
+    out += escapeHtml(text.slice(from, at));
+    out += "<mark>" + escapeHtml(text.slice(at, at + term.length)) + "</mark>";
+    from = at + term.length;
+    at = lower.indexOf(term, from);
+  }
+  return out + escapeHtml(text.slice(from));
+}
+
+function snippet(content, term) {
+  if (!content) {
+    return "";
+  }
+  if (!term) {
+    return content.slice(0, 150);
+  }
+  const at = content.toLowerCase().indexOf(term);
+  if (at === -1) {
+    return content.slice(0, 150);
+  }
+  const start = Math.max(0, at - 60);
+  const end = Math.min(content.length, at + term.length + 110);
+  return (start > 0 ? "…" : "") + content.slice(start, end) + (end < content.length ? "…" : "");
+}
+
+function render(matches, term) {
   if (!results) {
     return;
   }
@@ -388,19 +477,22 @@ function render(matches) {
   }
 
   results.innerHTML = matches
-    .map(
-      (post) => `
-        <article class="search-result">
-          <h2><a href="${post.url}">${post.title}</a></h2>
-          <p>${post.summary}</p>
-        </article>
-      `
-    )
+    .map((post) => {
+      const body = term
+        ? '<p class="search-snippet">' + highlight(snippet(post.content || post.summary, term), term) + "</p>"
+        : "<p>" + escapeHtml(post.summary) + "</p>";
+      return (
+        '<article class="search-result">' +
+        '<h2><a href="' + post.url + '">' + highlight(post.title, term) + "</a></h2>" +
+        body +
+        "</article>"
+      );
+    })
     .join("");
 }
 
 if (queryInput) {
-  render(posts);
+  render(posts, "");
 
   queryInput.addEventListener("input", (event) => {
     const term = event.target.value.trim().toLowerCase();
@@ -412,7 +504,7 @@ if (queryInput) {
       );
     });
 
-    render(matches);
+    render(matches, term);
   });
 }
 """
@@ -420,6 +512,12 @@ if (queryInput) {
 
 def render_post_page(post: Post) -> str:
     canonical = _absolute_url(post.url)
+    if post.tags:
+        tag_markup = "标签 " + " ".join(
+            f'<a href="../tags.html#{_tag_slug(tag)}">{escape(tag)}</a>' for tag in post.tags
+        )
+    else:
+        tag_markup = "标签 无"
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -441,7 +539,16 @@ def render_post_page(post: Post) -> str:
     {HEAD_EXTRAS}
   </head>
   <body>
-    <div class="page-shell">
+    <div class="page-shell" id="top">
+      <header class="site-header compact">
+        <nav class="top-nav" aria-label="主导航">
+          <a class="brand" href="../index.html">{SITE_TITLE}</a>
+          <div class="nav-links">
+{render_post_nav()}
+          </div>
+        </nav>
+      </header>
+
       <main class="article-page prose has-toc">
 {render_article_toc(post)}
         <article class="article-content">
@@ -449,11 +556,12 @@ def render_post_page(post: Post) -> str:
           <p class="meta article-meta">
             <span>发布于 {post.display_date}</span>
             <span>更新于 {post.display_updated}</span>
-            <span>标签 {escape(post.display_tags)}</span>
+            <span>{tag_markup}</span>
           </p>
           {post.body_html}
         </article>
       </main>
+{render_footer("../")}
     </div>
     {FOOTER_SCRIPTS}
   </body>

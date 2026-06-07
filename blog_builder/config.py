@@ -86,12 +86,78 @@ FOOTER_SCRIPTS = """
         }
         sync();
         btn.addEventListener("click", function () {
+          try {
+            document.documentElement.classList.add("theme-transition");
+            window.clearTimeout(window.__themeTransitionTimer);
+            window.__themeTransitionTimer = window.setTimeout(function () {
+              document.documentElement.classList.remove("theme-transition");
+            }, 360);
+          } catch (e) {}
           var next = effective() === "dark" ? "light" : "dark";
           if (window.__setTheme) window.__setTheme(next);
           try { localStorage.setItem("theme", next); } catch (e) {}
           sync();
         });
         document.body.appendChild(btn);
+      })();
+    </script>
+    <script>
+      (function () {
+        var bar = document.createElement("div");
+        bar.className = "reading-progress";
+        document.body.appendChild(bar);
+        var root = document.documentElement;
+        function update() {
+          var max = root.scrollHeight - root.clientHeight;
+          var pct = max > 0 ? root.scrollTop / max : 0;
+          bar.style.transform = "scaleX(" + pct + ")";
+        }
+        window.addEventListener("scroll", update, { passive: true });
+        window.addEventListener("resize", update);
+        update();
+      })();
+      (function () {
+        var prose = document.querySelector(".prose");
+        if (!prose) return;
+        var heads = prose.querySelectorAll("h2[id], h3[id], h4[id]");
+        for (var k = 0; k < heads.length; k++) {
+          var link = document.createElement("a");
+          link.className = "heading-anchor";
+          link.href = "#" + heads[k].id;
+          link.setAttribute("aria-label", "Link to this section");
+          link.textContent = "#";
+          heads[k].appendChild(link);
+        }
+      })();
+      (function () {
+        var toc = document.querySelector(".article-toc");
+        if (!toc || !("IntersectionObserver" in window)) return;
+        var links = toc.querySelectorAll('a[href^="#"]');
+        if (!links.length) return;
+        var map = {};
+        var targets = [];
+        for (var i = 0; i < links.length; i++) {
+          var id = decodeURIComponent(links[i].getAttribute("href").slice(1));
+          var el = document.getElementById(id);
+          if (el) { map[id] = links[i]; targets.push(el); }
+        }
+        if (!targets.length) return;
+        var current = null;
+        function setActive(a) {
+          if (current === a) return;
+          if (current) current.removeAttribute("aria-current");
+          if (a) a.setAttribute("aria-current", "true");
+          current = a;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          for (var j = 0; j < entries.length; j++) {
+            if (entries[j].isIntersecting) {
+              var a = map[entries[j].target.id];
+              if (a) setActive(a);
+            }
+          }
+        }, { rootMargin: "-12% 0px -75% 0px", threshold: 0 });
+        for (var t = 0; t < targets.length; t++) observer.observe(targets[t]);
       })();
     </script>
 """
