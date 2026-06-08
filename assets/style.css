@@ -1110,8 +1110,8 @@ mark {
 }
 
 /* Below 1200px the gutter is too narrow for a sidebar TOC, so the layout
-   stacks: content goes full-width (centered) and the TOC becomes a collapsible
-   card above it. The home post list is dropped (the feed is right below). */
+   stacks: content goes full-width (centered). The TOC (and the home post
+   list) are dropped entirely rather than crammed above the content. */
 @media (max-width: 1200px) {
   .has-toc {
     display: block;
@@ -1120,41 +1120,8 @@ mark {
     margin-right: auto;
   }
 
-  .article-toc.home-post-nav {
+  .article-toc {
     display: none;
-  }
-
-  details.article-toc {
-    width: auto;
-    position: static;
-    max-height: none;
-    overflow: visible;
-    margin: 0 0 1.2rem;
-    padding: 0.7rem 0.9rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-  }
-
-  details.article-toc > summary.article-toc-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-    cursor: pointer;
-    pointer-events: auto;
-  }
-
-  details.article-toc > summary.article-toc-title::after {
-    content: "▾";
-    transition: transform 160ms ease;
-  }
-
-  details.article-toc:not([open]) > summary.article-toc-title::after {
-    transform: rotate(-90deg);
-  }
-
-  details.article-toc[open] > summary.article-toc-title {
-    margin-bottom: 0.6rem;
   }
 }
 
