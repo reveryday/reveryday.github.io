@@ -38,7 +38,3 @@ class Post:
     @property
     def display_updated(self) -> str:
         return f"{self.updated.year}年{self.updated.month}月{self.updated.day}日"
-
-    @property
-    def display_tags(self) -> str:
-        return ", ".join(self.tags) if self.tags else "无"

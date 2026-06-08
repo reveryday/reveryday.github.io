@@ -130,10 +130,6 @@ def render_heading(level: int, raw_text: str, state: HeadingState | None) -> str
     return f'<h{level} id="{escape(anchor, quote=True)}">{rendered}</h{level}>'
 
 
-def markdown_to_html(markdown: str) -> str:
-    return _markdown_to_html(markdown)
-
-
 def markdown_to_html_with_toc(markdown: str) -> tuple[str, list[TocItem]]:
     heading_state = HeadingState()
     return _markdown_to_html(markdown, heading_state), heading_state.items

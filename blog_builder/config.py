@@ -162,12 +162,6 @@ FOOTER_SCRIPTS = """
     </script>
 """
 HOME_HEADING = "天道酬勤"
-HOME_LEDE = ""
-HOME_EYEBROW = ""
-SOCIAL_LINKS = [
-    # ("X", "https://x.com/"),
-    # ("LinkedIn", "https://www.linkedin.com/"),
-]
 NAV_LINKS = [
     ("首页", "index.html"),
     ("归档", "archive.html"),
