@@ -305,6 +305,14 @@ def render_friends_page() -> str:
         </section>
 
         <div class="friend-grid">
+          <a class="friend-card" href="https://wens-wu.github.io/index.html" target="_blank" rel="noreferrer">
+            <span class="friend-mark" aria-hidden="true">W</span>
+            <span class="friend-body">
+              <span class="friend-name">Wens' Blog</span>
+              <span class="friend-note">我的另一个博客</span>
+            </span>
+            <span class="friend-arrow" aria-hidden="true">-&gt;</span>
+          </a>
           <a class="friend-card" href="https://r0otsu.github.io/" target="_blank" rel="noreferrer">
             <span class="friend-mark" aria-hidden="true">R</span>
             <span class="friend-body">
