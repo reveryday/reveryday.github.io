@@ -1,4 +1,7 @@
 dist/
+README.md
+AGENTS.md
+CLAUDE.md
 posts/Python数据结构.md
 posts/drafts/*
 !posts/drafts/.gitkeep

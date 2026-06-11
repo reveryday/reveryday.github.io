@@ -236,6 +236,10 @@ a:hover {
   min-width: 0;
 }
 
+.has-toc > .article-content {
+  width: 100%;
+}
+
 .article-toc {
   grid-column: 1;
   justify-self: end;
