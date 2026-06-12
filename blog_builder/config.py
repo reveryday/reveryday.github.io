@@ -161,7 +161,7 @@ FOOTER_SCRIPTS = """
       })();
     </script>
 """
-HOME_HEADING = "天道酬勤"
+HOME_HEADING = "做个有梦想有行动有毅力有棱角且成熟的人"
 NAV_LINKS = [
     ("首页", "index.html"),
     ("归档", "archive.html"),
