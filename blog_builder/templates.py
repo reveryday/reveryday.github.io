@@ -38,12 +38,12 @@ def _tag_slug(tag: str) -> str:
     return slug or "tag"
 
 
-def render_footer(prefix: str = "") -> str:
+def render_footer() -> str:
     year = datetime.now().year
     return f"""      <footer class="site-footer">
         <span>© {year} {escape(SITE_TITLE)}</span>
+        <span class="footer-wish">做个有梦想有行动有毅力有棱角且成熟的人</span>
         <nav class="footer-links" aria-label="页脚">
-          <a href="{prefix}feed.xml">RSS</a>
           <a href="#top">回到顶部 ↑</a>
         </nav>
       </footer>"""
@@ -109,11 +109,11 @@ def _tag_color_class(tag: str) -> str:
     return f"tag-color-{sum(ord(char) for char in tag) % 5}"
 
 
-def render_home_post_nav(posts: list[Post]) -> str:
+def render_home_post_nav(posts: list[Post], start: int = 1) -> str:
     links = "\n".join(
         f'            <a href="{post.url}"><span class="toc-number">{index}</span>'
         f"<span>{escape(post.title)}</span></a>"
-        for index, post in enumerate(posts, start=1)
+        for index, post in enumerate(posts, start=start)
     )
     return f"""      <aside class="article-toc home-post-nav" aria-label="文章导航">
         <p class="article-toc-title">文章</p>
@@ -123,7 +123,39 @@ def render_home_post_nav(posts: list[Post]) -> str:
       </aside>"""
 
 
-def render_home(posts: list[Post]) -> str:
+def _home_page_href(page: int) -> str:
+    return "index.html" if page <= 1 else f"page{page}.html"
+
+
+def render_home_pagination(page: int, total_pages: int) -> str:
+    if total_pages <= 1:
+        return ""
+
+    if page > 1:
+        prev_link = f'<a class="page-link page-prev" href="{_home_page_href(page - 1)}" rel="prev">&larr; 上一页</a>'
+    else:
+        prev_link = '<span class="page-link page-prev is-disabled" aria-disabled="true">&larr; 上一页</span>'
+
+    numbers = []
+    for number in range(1, total_pages + 1):
+        if number == page:
+            numbers.append(f'<span class="page-num is-current" aria-current="page">{number}</span>')
+        else:
+            numbers.append(f'<a class="page-num" href="{_home_page_href(number)}">{number}</a>')
+
+    if page < total_pages:
+        next_link = f'<a class="page-link page-next" href="{_home_page_href(page + 1)}" rel="next">下一页 &rarr;</a>'
+    else:
+        next_link = '<span class="page-link page-next is-disabled" aria-disabled="true">下一页 &rarr;</span>'
+
+    return f"""          <nav class="home-pagination" aria-label="分页">
+            {prev_link}
+            <span class="page-nums">{''.join(numbers)}</span>
+            {next_link}
+          </nav>"""
+
+
+def render_home(posts: list[Post], *, page: int = 1, total_pages: int = 1, start_index: int = 1) -> str:
     cards = []
     for post in posts:
         tags = "".join(
@@ -145,6 +177,8 @@ def render_home(posts: list[Post]) -> str:
         </article>"""
         )
 
+    feed_counter = f' style="counter-reset: post {start_index - 1}"' if start_index > 1 else ""
+
     content = f"""      <header class="site-header">
         <nav class="top-nav" aria-label="主导航">
           <a class="brand" href="index.html">{SITE_TITLE}</a>
@@ -155,17 +189,18 @@ def render_home(posts: list[Post]) -> str:
       </header>
 
       <div class="has-toc home-body">
-{render_home_post_nav(posts)}
+{render_home_post_nav(posts, start=start_index)}
         <div class="home-main">
           <p class="home-motto">{escape(HOME_HEADING)}</p>
 
-          <main class="post-feed">
+          <main class="post-feed"{feed_counter}>
 {chr(10).join(cards)}
           </main>
+{render_home_pagination(page, total_pages)}
         </div>
       </div>"""
 
-    return render_layout(SITE_TITLE, content, SITE_DESCRIPTION, page_url="")
+    return render_layout(SITE_TITLE, content, SITE_DESCRIPTION, page_url=_home_page_href(page))
 
 
 def render_archive(posts: list[Post]) -> str:
@@ -569,7 +604,7 @@ def render_post_page(post: Post) -> str:
           {post.body_html}
         </article>
       </main>
-{render_footer("../")}
+{render_footer()}
     </div>
     {FOOTER_SCRIPTS}
   </body>

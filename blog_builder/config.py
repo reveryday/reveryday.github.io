@@ -8,6 +8,8 @@ POSTS_DIR = ROOT / "posts"
 PAGES_DIR = ROOT / "pages"
 OUTPUT_DIR = ROOT / "dist"
 
+POSTS_PER_PAGE = 8
+
 SITE_TITLE = "Wens'Blog"
 SITE_DESCRIPTION = "Wens' personal blog about nuclear energy, machine learning, and technical notes."
 SITE_BASE_URL = "https://reveryday.github.io/"
@@ -161,7 +163,7 @@ FOOTER_SCRIPTS = """
       })();
     </script>
 """
-HOME_HEADING = "做个有梦想有行动有毅力有棱角且成熟的人"
+HOME_HEADING = "希望你天天开心"
 NAV_LINKS = [
     ("首页", "index.html"),
     ("归档", "archive.html"),

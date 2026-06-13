@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import shutil
+from math import ceil
 from pathlib import Path
 
-from .config import OUTPUT_DIR, ROOT
+from .config import OUTPUT_DIR, POSTS_PER_PAGE, ROOT
 from .content import load_posts
 from .templates import (
     render_archive,
@@ -73,6 +74,14 @@ def prune_stale_posts(posts_dir: Path, current_slugs: set[str]) -> None:
             remove_path(path)
 
 
+def prune_stale_home_pages(output_dir: Path, total_pages: int) -> None:
+    """Remove paginated home pages (page2.html, ...) left over from a larger post count."""
+    valid = {f"page{number}.html" for number in range(2, total_pages + 1)}
+    for path in output_dir.glob("page*.html"):
+        if path.name not in valid:
+            remove_path(path)
+
+
 def prune_stale_assets(source_dir: Path, target_dir: Path) -> None:
     if not target_dir.exists():
         return
@@ -104,7 +113,17 @@ def main() -> None:
     prune_stale_assets(ROOT / "assets", OUTPUT_DIR / "assets")
     copy_static_assets(ROOT / "assets", OUTPUT_DIR / "assets")
 
-    write_text(OUTPUT_DIR / "index.html", render_home(posts))
+    total_pages = max(1, ceil(len(posts) / POSTS_PER_PAGE))
+    prune_stale_home_pages(OUTPUT_DIR, total_pages)
+    for page in range(1, total_pages + 1):
+        start = (page - 1) * POSTS_PER_PAGE
+        page_posts = posts[start : start + POSTS_PER_PAGE]
+        page_html = render_home(
+            page_posts, page=page, total_pages=total_pages, start_index=start + 1
+        )
+        target = "index.html" if page == 1 else f"page{page}.html"
+        write_text(OUTPUT_DIR / target, page_html)
+
     write_text(OUTPUT_DIR / "archive.html", render_archive(posts))
     write_text(OUTPUT_DIR / "tags.html", render_tags(posts))
     write_text(OUTPUT_DIR / "search.html", render_search_page())

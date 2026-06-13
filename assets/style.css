@@ -361,6 +361,10 @@ a:hover {
   border-bottom: 1px solid var(--border);
 }
 
+.post-card:last-child {
+  border-bottom: 0;
+}
+
 .post-card::before {
   counter-increment: post;
   content: counter(post, decimal-leading-zero);
@@ -455,6 +459,59 @@ a.tag-chip:hover {
 
 .tag-chip.muted::before {
   content: "";
+}
+
+.home-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.home-pagination .page-link {
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+.home-pagination .page-link:hover {
+  color: var(--accent-hover);
+}
+
+.home-pagination .page-link.is-disabled {
+  color: var(--muted);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.home-pagination .page-nums {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.home-pagination .page-num {
+  min-width: 1.7rem;
+  padding: 0.12rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  text-align: center;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.home-pagination .page-num:hover {
+  color: var(--accent);
+}
+
+.home-pagination .page-num.is-current {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .meta {
