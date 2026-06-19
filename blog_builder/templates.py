@@ -85,7 +85,6 @@ def render_layout(title: str, content: str, description: str = "", *, page_url: 
   <body>
     <div class="page-shell" id="top">
 {content}
-{render_footer()}
     </div>
 {FOOTER_SCRIPTS}
   </body>
@@ -604,7 +603,6 @@ def render_post_page(post: Post) -> str:
           {post.body_html}
         </article>
       </main>
-{render_footer()}
     </div>
     {FOOTER_SCRIPTS}
   </body>
