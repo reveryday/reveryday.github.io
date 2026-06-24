@@ -17,19 +17,20 @@
   --card-shadow-rest: none;
   --card-shadow: none;
   --summary-text: #52525b;
-  --quote-text: #3f3f46;
+  --quote-text: #656d76;
+  --quote-border: #d0d7de;
   --chip-muted-bg: transparent;
   --cal-empty: #ededee;
   --chart-grid: #ededee;
   --chart-axis: #d4d4d8;
   --on-accent: #ffffff;
   --code-block-bg: #fafafa;
-  --sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          "Helvetica Neue", Arial, sans-serif;
-  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
           "Liberation Mono", monospace;
-  --code: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
-          "DejaVu Sans Mono", monospace;
+  --code: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
   --max-width: 720px;
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -180,8 +181,8 @@ a:hover {
 }
 
 .article-page h1 {
-  font-size: clamp(1.7rem, 2.8vw, 2.25rem);
-  line-height: 1.16;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.2;
 }
 
 .lede {
@@ -903,7 +904,7 @@ a.tag-chip:hover {
 
 .prose h4 {
   margin: 1.2rem 0 0.3rem;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
@@ -965,7 +966,7 @@ a.tag-chip:hover {
   max-width: 42rem;
   margin-left: 0;
   padding-left: 1.1rem;
-  border-left: 2px solid var(--border);
+  border-left: 0.25em solid var(--quote-border);
   color: var(--quote-text);
 }
 
@@ -1270,7 +1271,8 @@ mark {
   --card-shadow-rest: none;
   --card-shadow: none;
   --summary-text: #b2b2bb;
-  --quote-text: #c7c7cf;
+  --quote-text: #8b949e;
+  --quote-border: #30363d;
   --chip-muted-bg: transparent;
   --cal-empty: #2b2b31;
   --chart-grid: #2b2b31;
@@ -1299,7 +1301,8 @@ mark {
     --card-shadow-rest: none;
     --card-shadow: none;
     --summary-text: #b2b2bb;
-    --quote-text: #c7c7cf;
+    --quote-text: #8b949e;
+    --quote-border: #30363d;
     --chip-muted-bg: transparent;
     --cal-empty: #2b2b31;
     --chart-grid: #2b2b31;

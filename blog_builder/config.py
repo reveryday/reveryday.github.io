@@ -15,12 +15,6 @@ SITE_DESCRIPTION = "Wens' personal blog about nuclear energy, machine learning, 
 SITE_BASE_URL = "https://reveryday.github.io/"
 SITE_AUTHOR = "Wens"
 HEAD_EXTRAS = """
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
-    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
