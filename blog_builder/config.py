@@ -157,7 +157,7 @@ FOOTER_SCRIPTS = """
       })();
     </script>
 """
-HOME_HEADING = "希望你天天开心"
+HOME_HEADING = "希望无所谓能天天开心"
 NAV_LINKS = [
     ("首页", "index.html"),
     ("归档", "archive.html"),
