@@ -4,9 +4,9 @@
   --text: #18181b;
   --muted: #71717a;
   --border: #e4e4e7;
-  --accent: #6e56cf;
-  --accent-hover: #5b46b8;
-  --accent-soft: #f1eefc;
+  --accent: #1668b8;
+  --accent-hover: #10528f;
+  --accent-soft: #e8f0f9;
   --amber: #a16207;
   --amber-soft: #fafaf9;
   --surface-hover: #f4f4f5;
@@ -27,6 +27,8 @@
   --code-block-bg: #fafafa;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
           Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --serif: "Iowan Old Style", "Songti SC", STSong, "Noto Serif CJK SC",
+           Georgia, serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
           "Liberation Mono", monospace;
   --code: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
@@ -39,6 +41,19 @@
 
 * {
   box-sizing: border-box;
+}
+
+.icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.14em;
 }
 
 html {
@@ -113,6 +128,10 @@ a:hover {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  font-family: var(--serif);
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -120,13 +139,29 @@ a:hover {
   color: var(--text);
 }
 
-.brand::after {
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.08rem 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.1em;
+  line-height: 1.1;
+}
+
+.brand-mark span {
   color: var(--accent);
-  content: ".";
+  font-weight: 400;
 }
 
 .nav-links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1.15rem;
 }
@@ -142,12 +177,26 @@ a:hover {
 .nav-links a[aria-current="page"] {
   color: var(--accent);
   font-weight: 500;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 6px;
 }
 
 .nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-icon {
+  display: inline-grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  flex: none;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.nav-icon:hover {
   color: var(--accent);
 }
 
@@ -169,6 +218,7 @@ a:hover {
 .hero h1,
 .site-header h1,
 .article-page h1 {
+  font-family: var(--serif);
   margin: 0.3rem 0 0.7rem;
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   line-height: 1.12;
@@ -181,8 +231,14 @@ a:hover {
 }
 
 .article-page h1 {
+  font-family: var(--sans);
   font-size: clamp(1.5rem, 2.4vw, 2rem);
   line-height: 1.2;
+}
+
+.article-page.prose h2,
+.article-page.prose h3 {
+  font-family: var(--sans);
 }
 
 .lede {
@@ -463,17 +519,22 @@ a.tag-chip:hover {
 }
 
 .home-pagination {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
-  margin-top: 1.8rem;
-  font-family: var(--mono);
-  font-size: 0.82rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.84rem;
 }
 
 .home-pagination .page-link {
-  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: max-content;
+  color: var(--muted);
   text-decoration: none;
   white-space: nowrap;
   transition: color 160ms ease;
@@ -483,36 +544,18 @@ a.tag-chip:hover {
   color: var(--accent-hover);
 }
 
-.home-pagination .page-link.is-disabled {
-  color: var(--muted);
-  opacity: 0.45;
-  pointer-events: none;
+.home-pagination .page-prev {
+  justify-self: start;
 }
 
-.home-pagination .page-nums {
-  display: flex;
-  gap: 0.4rem;
+.home-pagination .page-next {
+  justify-self: end;
 }
 
-.home-pagination .page-num {
-  min-width: 1.7rem;
-  padding: 0.12rem 0.4rem;
-  border-radius: var(--radius-sm);
+.pagination-status {
   color: var(--muted);
-  text-align: center;
-  text-decoration: none;
+  font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
-  transition: color 160ms ease, background 160ms ease;
-}
-
-.home-pagination .page-num:hover {
-  color: var(--accent);
-}
-
-.home-pagination .page-num.is-current {
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-weight: 600;
 }
 
 .meta {
@@ -552,6 +595,30 @@ a.tag-chip:hover {
   scroll-margin-top: 5.5rem;
 }
 
+.archive-page {
+  display: grid;
+  gap: 2.25rem;
+}
+
+.archive-year {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.archive-year h2 {
+  position: sticky;
+  top: 5.5rem;
+  margin: -0.1rem 0 0;
+  color: color-mix(in srgb, var(--muted) 55%, transparent);
+  font-family: var(--serif);
+  font-size: 2.35rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
 .archive-list {
   list-style: none;
   padding: 0;
@@ -559,18 +626,18 @@ a.tag-chip:hover {
 }
 
 .archive-list li {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  padding: 0.55rem 0;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 0.62rem 0;
   border-top: 1px solid var(--border);
 }
 
-.archive-list li span {
+.archive-list li time {
   color: var(--muted);
-  min-width: 6.5rem;
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .archive-list a {
@@ -687,8 +754,9 @@ a.tag-chip:hover {
 }
 
 .friend-arrow {
+  display: inline-flex;
+  align-items: center;
   color: var(--muted);
-  font-size: 0.95rem;
 }
 
 .tracker-page {
@@ -873,33 +941,22 @@ a.tag-chip:hover {
 }
 
 .prose h2 {
-  position: relative;
-  margin: 2.1rem 0 0.6rem;
-  padding-left: 0.85rem;
+  margin: 2.4rem 0 0.7rem;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--border);
+  font-family: var(--serif);
   font-size: 1.45rem;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .prose h3 {
-  position: relative;
-  margin: 1.6rem 0 0.4rem;
-  padding-left: 0.75rem;
+  margin: 1.8rem 0 0.45rem;
+  padding: 0;
+  font-family: var(--serif);
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.015em;
-}
-
-.prose h2::before,
-.prose h3::before {
-  position: absolute;
-  top: 0.18em;
-  bottom: 0.16em;
-  left: 0;
-  width: 0.22rem;
-  border-radius: var(--radius-full);
-  background: var(--accent);
-  content: "";
 }
 
 .prose h4 {
@@ -993,6 +1050,14 @@ a.tag-chip:hover {
   margin-right: auto;
 }
 
+.article-content {
+  counter-reset: prose-figure prose-code;
+}
+
+.article-content .prose-figure {
+  counter-increment: prose-figure;
+}
+
 .prose-figure img,
 .prose p img {
   display: block;
@@ -1013,6 +1078,37 @@ a.tag-chip:hover {
   text-align: center;
 }
 
+.article-content .prose-figure figcaption::before {
+  content: "图 " counter(prose-figure, decimal-leading-zero) "　";
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+
+.prose-code {
+  max-width: 46rem;
+  margin: 0.95rem 0;
+}
+
+.article-content .prose-code {
+  counter-increment: prose-code;
+}
+
+.code-caption {
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.article-content .code-caption::before {
+  content: "代码 " counter(prose-code, decimal-leading-zero);
+}
+
+.article-content .code-caption:not(:empty)::before {
+  content: "代码 " counter(prose-code, decimal-leading-zero) "　";
+}
+
 .math-display {
   overflow-x: auto;
   overflow-y: hidden;
@@ -1031,6 +1127,10 @@ a.tag-chip:hover {
   border-radius: var(--radius-md);
   background: var(--code-block-bg);
   line-height: 1.45;
+}
+
+.prose .prose-code pre {
+  margin: 0;
 }
 
 .prose pre code {
@@ -1110,6 +1210,8 @@ code {
 
 /* Hover anchor links on headings. */
 .heading-anchor {
+  display: inline-flex;
+  align-items: center;
   margin-left: 0.4rem;
   color: var(--accent);
   font-weight: 400;
@@ -1163,6 +1265,9 @@ mark {
 }
 
 .footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   color: var(--muted);
   text-decoration: none;
 }
@@ -1205,11 +1310,20 @@ mark {
   }
 
   .nav-links {
-    gap: 0.35rem;
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 0.9rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-links a {
-    padding: 0.24rem 0.48rem;
+    flex: none;
+    padding: 0.2rem 0;
   }
 
   .post-card {
@@ -1220,8 +1334,14 @@ mark {
     top: 1.45rem;
   }
 
-  .archive-list li span {
-    min-width: auto;
+  .archive-year {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .archive-year h2 {
+    position: static;
+    font-size: 1.8rem;
   }
 
   .friend-card {
@@ -1258,9 +1378,9 @@ mark {
   --text: #e3e3e6;
   --muted: #9b9ba4;
   --border: #2f2f35;
-  --accent: #8b7bf5;
-  --accent-hover: #a89bf8;
-  --accent-soft: #272335;
+  --accent: #5aa9e6;
+  --accent-hover: #8cc6f0;
+  --accent-soft: #16232f;
   --amber: #d6a23a;
   --amber-soft: #232320;
   --surface-hover: #242428;
@@ -1277,7 +1397,7 @@ mark {
   --cal-empty: #2b2b31;
   --chart-grid: #2b2b31;
   --chart-axis: #45454d;
-  --on-accent: #1a1625;
+  --on-accent: #0d1b26;
   --code-block-bg: #1e1e21;
 }
 
@@ -1288,9 +1408,9 @@ mark {
     --text: #e3e3e6;
     --muted: #9b9ba4;
     --border: #2f2f35;
-    --accent: #8b7bf5;
-    --accent-hover: #a89bf8;
-    --accent-soft: #272335;
+    --accent: #5aa9e6;
+    --accent-hover: #8cc6f0;
+    --accent-soft: #16232f;
     --amber: #d6a23a;
     --amber-soft: #232320;
     --surface-hover: #242428;
@@ -1307,33 +1427,24 @@ mark {
     --cal-empty: #2b2b31;
     --chart-grid: #2b2b31;
     --chart-axis: #45454d;
-    --on-accent: #1a1625;
+    --on-accent: #0d1b26;
     --code-block-bg: #1e1e21;
   }
 }
 
 .theme-toggle {
-  position: fixed;
-  right: 1.1rem;
-  bottom: 1.1rem;
-  z-index: 50;
   display: grid;
-  width: 2.6rem;
-  height: 2.6rem;
   place-items: center;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  background: var(--card-bg);
-  color: var(--text);
-  font-size: 1.15rem;
   line-height: 1;
-  cursor: pointer;
-  box-shadow: var(--card-shadow-rest);
-  transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
+  transition: color 160ms ease;
+}
+
+.theme-toggle .icon {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 .theme-toggle:hover {
-  border-color: var(--accent);
   color: var(--accent);
 }
 

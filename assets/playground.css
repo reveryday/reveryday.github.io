@@ -87,6 +87,9 @@
 }
 
 .pg-run-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   padding: 0.45rem 1.2rem;
   border: 1px solid #c8c8c8;
   background: var(--accent);
@@ -150,7 +153,7 @@
 }
 
 .pg-output:empty::before {
-  content: "Output will appear here.";
+  content: "运行结果将在这里显示。";
   color: var(--muted);
   font-size: 0.85rem;
 }

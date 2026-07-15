@@ -11,7 +11,7 @@ OUTPUT_DIR = ROOT / "dist"
 POSTS_PER_PAGE = 8
 
 SITE_TITLE = "Wens'Blog"
-SITE_DESCRIPTION = "Wens' personal blog about nuclear energy, machine learning, and technical notes."
+SITE_DESCRIPTION = "Wens 的个人博客，记录核能、机器学习、编程与日常思考。"
 SITE_BASE_URL = "https://reveryday.github.io/"
 SITE_AUTHOR = "Wens"
 HEAD_EXTRAS = """
@@ -71,13 +71,14 @@ FOOTER_SCRIPTS = """
           if (t === "dark" || t === "light") return t;
           return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         }
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "theme-toggle";
+        var btn = document.querySelector(".theme-toggle");
+        if (!btn) return;
+        var sunIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2.5v2m0 15v2m9.5-9.5h-2m-15 0h-2m16.2-6.7-1.4 1.4M6.7 17.3l-1.4 1.4m13.4 0-1.4-1.4M6.7 6.7 5.3 5.3"/></svg>';
+        var moonIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"/></svg>';
         function sync() {
           var dark = effective() === "dark";
-          btn.textContent = dark ? "\\u2600" : "\\u263e";
-          btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+          btn.innerHTML = dark ? sunIcon : moonIcon;
+          btn.setAttribute("aria-label", dark ? "切换浅色模式" : "切换深色模式");
           btn.setAttribute("aria-pressed", String(dark));
         }
         sync();
@@ -94,7 +95,6 @@ FOOTER_SCRIPTS = """
           try { localStorage.setItem("theme", next); } catch (e) {}
           sync();
         });
-        document.body.appendChild(btn);
       })();
     </script>
     <script>
@@ -120,8 +120,8 @@ FOOTER_SCRIPTS = """
           var link = document.createElement("a");
           link.className = "heading-anchor";
           link.href = "#" + heads[k].id;
-          link.setAttribute("aria-label", "Link to this section");
-          link.textContent = "#";
+          link.setAttribute("aria-label", "链接到本节");
+          link.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m10.5 13.5 3-3"/><path d="M7.8 15.8 6.4 17.2a3.4 3.4 0 0 1-4.8-4.8L5 9a3.4 3.4 0 0 1 4.8 0"/><path d="m16.2 8.2 1.4-1.4a3.4 3.4 0 1 1 4.8 4.8L19 15a3.4 3.4 0 0 1-4.8 0"/></svg>';
           heads[k].appendChild(link);
         }
       })();
@@ -161,8 +161,6 @@ HOME_HEADING = "希望无所谓能天天开心"
 NAV_LINKS = [
     ("首页", "index.html"),
     ("归档", "archive.html"),
-    ("搜索", "search.html"),
-    ("标签", "tags.html"),
     ("收藏", "collection.html"),
     ("友链", "friends.html"),
 ]

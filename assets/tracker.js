@@ -37,13 +37,13 @@
     const completed = recorded.filter((entry) => entry.workHours >= target).length;
     const totalHours = entries.reduce((sum, entry) => sum + entry.workHours, 0);
 
-    if (targetEl) targetEl.textContent = `${formatHours(target)} h/day`;
+    if (targetEl) targetEl.textContent = `${formatHours(target)} 小时/天`;
     if (completionEl) {
       completionEl.textContent = recorded.length
         ? `${completed}/${recorded.length}`
         : "0/0";
     }
-    if (totalHoursEl) totalHoursEl.textContent = `${formatHours(totalHours)} h`;
+    if (totalHoursEl) totalHoursEl.textContent = `${formatHours(totalHours)} 小时`;
   }
 
   function renderCalendar() {
@@ -74,7 +74,7 @@
       cell.className = `calendar-day ${state}${outOfRange ? " muted" : ""}`;
       cell.title = entry
         ? `${key}: ${formatHours(entry.workHours)}h`
-        : `${key}: no record`;
+        : `${key}：无记录`;
       calendar.appendChild(cell);
     }
   }
@@ -109,7 +109,7 @@
 
     const points = aggregate(view);
     if (!points.length) {
-      chart.innerHTML = '<p class="meta">No work hour records yet.</p>';
+      chart.innerHTML = '<p class="meta">暂无工作时长记录。</p>';
       return;
     }
 
@@ -137,7 +137,7 @@
     const labelEvery = Math.max(1, Math.ceil(points.length / 6));
 
     chart.innerHTML = `
-      <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Work hours ${view} chart">
+      <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="工作时长图表">
         <line class="chart-grid" x1="${padLeft}" y1="${padTop}" x2="${width - padRight}" y2="${padTop}"></line>
         <line class="chart-grid" x1="${padLeft}" y1="${midline}" x2="${width - padRight}" y2="${midline}"></line>
         <line class="chart-axis" x1="${padLeft}" y1="${baseline}" x2="${width - padRight}" y2="${baseline}"></line>

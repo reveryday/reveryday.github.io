@@ -103,7 +103,8 @@
     const runBtn = document.getElementById("pg-run");
     if (runBtn) {
       runBtn.disabled = running;
-      runBtn.textContent = running ? "Running…" : "▶ Run";
+      const label = runBtn.querySelector("span");
+      if (label) label.textContent = running ? "运行中…" : "运行";
     }
     document.querySelectorAll(".pg-lang-btn").forEach(function (btn) {
       btn.disabled = running;
@@ -141,16 +142,16 @@
     out.innerHTML = "";
 
     const build = result.buildResult || {};
-    appendOutputBlock(out, "compile stdout", joinLines(build.stdout), "pg-stdout");
-    appendOutputBlock(out, "compile stderr", joinLines(build.stderr), "pg-stderr");
-    appendOutputBlock(out, "stdout", joinLines(result.stdout), "pg-stdout");
-    appendOutputBlock(out, "stderr", joinLines(result.stderr), "pg-stderr");
+    appendOutputBlock(out, "编译输出", joinLines(build.stdout), "pg-stdout");
+    appendOutputBlock(out, "编译错误", joinLines(build.stderr), "pg-stderr");
+    appendOutputBlock(out, "标准输出", joinLines(result.stdout), "pg-stdout");
+    appendOutputBlock(out, "错误输出", joinLines(result.stderr), "pg-stderr");
 
     const meta = document.createElement("div");
     meta.className = "pg-output-meta";
-    let line = "Exit code: " + (typeof result.code === "number" ? result.code : "?");
-    if (result.timedOut) line += " | Timed out";
-    if (result.didExecute === false) line += " | Did not execute";
+    let line = "退出码：" + (typeof result.code === "number" ? result.code : "?");
+    if (result.timedOut) line += " | 执行超时";
+    if (result.didExecute === false) line += " | 未执行";
     meta.textContent = line;
     out.appendChild(meta);
   }
@@ -159,7 +160,7 @@
     const out = document.getElementById("pg-output");
     if (!out) return;
     out.innerHTML = "";
-    appendOutputBlock(out, "error", message, "pg-stderr");
+    appendOutputBlock(out, "错误", message, "pg-stderr");
   }
 
   function runCode() {
@@ -196,7 +197,7 @@
           try {
             return JSON.parse(text);
           } catch (e) {
-            throw new Error("Invalid response: " + text);
+            throw new Error("响应格式无效：" + text);
           }
         });
       })

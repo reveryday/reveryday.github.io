@@ -22,6 +22,29 @@ from .markdown_renderer import markdown_to_html_with_toc
 from .models import Post, TocItem
 
 
+_ICONS = {
+    "arrow-up": '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>',
+    "arrow-left": '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>',
+    "arrow-right": '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>',
+    "external-link": '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5m0-5-8 8"/><path d="M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+    "moon": '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"/></svg>',
+    "play": '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5Z"/></svg>',
+    "search": '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4 4"/></svg>',
+}
+
+
+def _icon(name: str) -> str:
+    return _ICONS[name]
+
+
+def _brand(prefix: str = "") -> str:
+    return (
+        f'<a class="brand" href="{prefix}index.html">'
+        f'<span class="brand-name">{escape(SITE_TITLE)}</span>'
+        '<span class="brand-mark" aria-hidden="true">W<span>/</span></span></a>'
+    )
+
+
 def _absolute_url(path: str) -> str:
     base = SITE_BASE_URL if SITE_BASE_URL.endswith("/") else SITE_BASE_URL + "/"
     return base + quote(path, safe="/")
@@ -44,21 +67,32 @@ def render_footer() -> str:
         <span>© {year} {escape(SITE_TITLE)}</span>
         <span class="footer-wish">做个有梦想有行动有毅力有棱角且成熟的人</span>
         <nav class="footer-links" aria-label="页脚">
-          <a href="#top">回到顶部 ↑</a>
+          <a href="#top">回到顶部 {_icon("arrow-up")}</a>
         </nav>
       </footer>"""
 
 
-def render_nav(current_href: str) -> str:
+def _render_nav(current_href: str, prefix: str = "") -> str:
     links: list[str] = []
     for label, href in NAV_LINKS:
         current = ' aria-current="page"' if href == current_href else ""
-        links.append(f'            <a href="{href}"{current}>{label}</a>')
+        links.append(f'            <a href="{prefix}{href}"{current}>{label}</a>')
+    search_current = ' aria-current="page"' if current_href == "search.html" else ""
+    links.append(
+        f'            <a class="nav-icon" href="{prefix}search.html" aria-label="搜索" title="搜索"{search_current}>{_icon("search")}</a>'
+    )
+    links.append(
+        f'            <button class="theme-toggle nav-icon" type="button" aria-label="切换深色模式" title="切换显示模式">{_icon("moon")}</button>'
+    )
     return "\n".join(links)
 
 
+def render_nav(current_href: str) -> str:
+    return _render_nav(current_href)
+
+
 def render_post_nav() -> str:
-    return "\n".join(f'            <a href="../{href}">{label}</a>' for label, href in NAV_LINKS)
+    return _render_nav("", "../")
 
 
 def render_layout(title: str, content: str, description: str = "", *, page_url: str = "") -> str:
@@ -96,7 +130,7 @@ def render_page_header(current_href: str, heading: str = "") -> str:
     heading_html = f"\n        <h1>{heading}</h1>" if heading else ""
     return f"""      <header class="site-header compact">
         <nav class="top-nav" aria-label="主导航">
-          <a class="brand" href="index.html">{SITE_TITLE}</a>
+          {_brand()}
           <div class="nav-links">
 {render_nav(current_href)}
           </div>
@@ -131,25 +165,18 @@ def render_home_pagination(page: int, total_pages: int) -> str:
         return ""
 
     if page > 1:
-        prev_link = f'<a class="page-link page-prev" href="{_home_page_href(page - 1)}" rel="prev">&larr; 上一页</a>'
+        prev_link = f'<a class="page-link page-prev" href="{_home_page_href(page - 1)}" rel="prev">{_icon("arrow-left")} 较新文章</a>'
     else:
-        prev_link = '<span class="page-link page-prev is-disabled" aria-disabled="true">&larr; 上一页</span>'
-
-    numbers = []
-    for number in range(1, total_pages + 1):
-        if number == page:
-            numbers.append(f'<span class="page-num is-current" aria-current="page">{number}</span>')
-        else:
-            numbers.append(f'<a class="page-num" href="{_home_page_href(number)}">{number}</a>')
+        prev_link = '<span class="page-link page-prev is-empty" aria-hidden="true"></span>'
 
     if page < total_pages:
-        next_link = f'<a class="page-link page-next" href="{_home_page_href(page + 1)}" rel="next">下一页 &rarr;</a>'
+        next_link = f'<a class="page-link page-next" href="{_home_page_href(page + 1)}" rel="next">更早文章 {_icon("arrow-right")}</a>'
     else:
-        next_link = '<span class="page-link page-next is-disabled" aria-disabled="true">下一页 &rarr;</span>'
+        next_link = '<span class="page-link page-next is-empty" aria-hidden="true"></span>'
 
     return f"""          <nav class="home-pagination" aria-label="分页">
             {prev_link}
-            <span class="page-nums">{''.join(numbers)}</span>
+            <span class="pagination-status" aria-current="page">{page} / {total_pages}</span>
             {next_link}
           </nav>"""
 
@@ -180,7 +207,7 @@ def render_home(posts: list[Post], *, page: int = 1, total_pages: int = 1, start
 
     content = f"""      <header class="site-header">
         <nav class="top-nav" aria-label="主导航">
-          <a class="brand" href="index.html">{SITE_TITLE}</a>
+          {_brand()}
           <div class="nav-links">
 {render_nav("index.html")}
           </div>
@@ -203,16 +230,30 @@ def render_home(posts: list[Post], *, page: int = 1, total_pages: int = 1, start
 
 
 def render_archive(posts: list[Post]) -> str:
-    items = "\n".join(
-        f'          <li><span>{post.iso_date}</span> <a href="{post.url}">{escape(post.title)}</a></li>'
-        for post in posts
-    )
+    grouped: defaultdict[int, list[Post]] = defaultdict(list)
+    for post in posts:
+        grouped[post.date.year].append(post)
+
+    sections: list[str] = []
+    for year in sorted(grouped, reverse=True):
+        items = "\n".join(
+            f'              <li><time datetime="{post.iso_date}">{post.date.strftime("%m.%d")}</time>'
+            f'<a href="{post.url}">{escape(post.title)}</a></li>'
+            for post in grouped[year]
+        )
+        sections.append(
+            f"""        <section class="archive-year" aria-labelledby="archive-{year}">
+          <h2 id="archive-{year}">{year}</h2>
+          <ol class="archive-list">
+{items}
+          </ol>
+        </section>"""
+        )
+
     content = f"""{render_page_header("archive.html")}
 
-      <main class="content-page">
-        <ul class="archive-list">
-{items}
-        </ul>
+      <main class="content-page archive-page">
+{chr(10).join(sections)}
       </main>"""
     return render_layout(f"归档 | {SITE_TITLE}", content, page_url="archive.html")
 
@@ -264,7 +305,7 @@ def render_search_page() -> str:
 def render_playground_page() -> str:
     content = f"""      <header class="site-header compact">
         <nav class="top-nav" aria-label="主导航">
-          <a class="brand" href="index.html">{SITE_TITLE}</a>
+          {_brand()}
           <div class="nav-links">
 {render_nav("playground.html")}
           </div>
@@ -272,7 +313,7 @@ def render_playground_page() -> str:
       </header>
 
       <main class="content-page playground-page">
-        <div class="pg-lang-buttons" role="group" aria-label="Language">
+        <div class="pg-lang-buttons" role="group" aria-label="编程语言">
           <button type="button" class="pg-lang-btn" data-lang="python" aria-pressed="false">Python</button>
           <button type="button" class="pg-lang-btn" data-lang="cpp" aria-pressed="false">C++</button>
           <button type="button" class="pg-lang-btn" data-lang="fortran" aria-pressed="false">Fortran</button>
@@ -283,13 +324,13 @@ def render_playground_page() -> str:
         </div>
 
         <div class="pg-run-row">
-          <button type="button" id="pg-run" class="pg-run-btn">&#9654; Run</button>
+          <button type="button" id="pg-run" class="pg-run-btn">{_icon("play")}<span>运行</span></button>
           <span id="pg-compiler-info" class="pg-compiler-info"></span>
         </div>
 
         <div class="pg-output-header">
-          <span class="pg-section-label">Output</span>
-          <button type="button" id="pg-clear" class="pg-clear-btn">Clear</button>
+          <span class="pg-section-label">输出</span>
+          <button type="button" id="pg-clear" class="pg-clear-btn">清空</button>
         </div>
         <div id="pg-output" class="pg-output"></div>
       </main>
@@ -301,19 +342,19 @@ def render_playground_page() -> str:
       <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/clike/clike.min.js"></script>
       <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/fortran/fortran.min.js"></script>
       <script defer src="assets/playground.js"></script>"""
-    return render_layout(f"Playground | {SITE_TITLE}", content, page_url="playground.html")
+    return render_layout(f"代码演练场 | {SITE_TITLE}", content, page_url="playground.html")
 
 
 def render_faq_page() -> str:
-    content = f"""{render_page_header("faq.html", "FAQ")}
+    content = f"""{render_page_header("faq.html", "常见问题")}
 
       <main class="content-page prose">
-        <h2>What is this blog for?</h2>
-        <p>Long-form notes, technical essays, and project writeups.</p>
-        <h2>How is it deployed?</h2>
-        <p>As a static site on GitHub Pages through a GitHub Actions workflow.</p>
+        <h2>这个博客用来做什么？</h2>
+        <p>记录长篇笔记、技术文章和项目总结。</p>
+        <h2>博客如何部署？</h2>
+        <p>通过 GitHub Actions 构建，并作为静态站点部署到 GitHub Pages。</p>
       </main>"""
-    return render_layout(f"FAQ | {SITE_TITLE}", content, page_url="faq.html")
+    return render_layout(f"常见问题 | {SITE_TITLE}", content, page_url="faq.html")
 
 
 def render_collection_page() -> str:
@@ -345,7 +386,7 @@ def render_friends_page() -> str:
               <span class="friend-name">Wens' Blog</span>
               <span class="friend-note">我的另一个博客</span>
             </span>
-            <span class="friend-arrow" aria-hidden="true">-&gt;</span>
+            <span class="friend-arrow">{_icon("external-link")}</span>
           </a>
           <a class="friend-card" href="https://r0otsu.github.io/" target="_blank" rel="noreferrer">
             <span class="friend-mark" aria-hidden="true">R</span>
@@ -353,7 +394,7 @@ def render_friends_page() -> str:
               <span class="friend-name">r0otsu</span>
               <span class="friend-note">放一些无聊的东西.</span>
             </span>
-            <span class="friend-arrow" aria-hidden="true">-&gt;</span>
+            <span class="friend-arrow">{_icon("external-link")}</span>
           </a>
         </div>
       </main>"""
@@ -361,60 +402,60 @@ def render_friends_page() -> str:
 
 
 def render_tracker_page() -> str:
-    content = f"""{render_page_header("tracker.html", "Work Hours Tracker")}
+    content = f"""{render_page_header("tracker.html", "工作记录")}
 
       <main class="content-page tracker-page">
-        <section class="tracker-summary" aria-label="Tracker summary">
+        <section class="tracker-summary" aria-label="工作记录概览">
           <div>
-            <span class="tracker-label">Work target</span>
-            <strong id="work-target">-- h/day</strong>
+            <span class="tracker-label">每日目标</span>
+            <strong id="work-target">-- 小时/天</strong>
           </div>
           <div>
-            <span class="tracker-label">Completion</span>
+            <span class="tracker-label">完成情况</span>
             <strong id="work-completion">--</strong>
           </div>
           <div>
-            <span class="tracker-label">Total hours</span>
-            <strong id="total-hours">-- h</strong>
+            <span class="tracker-label">累计时长</span>
+            <strong id="total-hours">-- 小时</strong>
           </div>
         </section>
 
         <section class="tracker-section" aria-labelledby="work-calendar-title">
           <div class="tracker-section-header">
-            <h2 id="work-calendar-title">Work check-in</h2>
-            <p class="meta">Daily target completion over the latest year.</p>
+            <h2 id="work-calendar-title">工作打卡</h2>
+            <p class="meta">最近一年的每日目标完成情况。</p>
           </div>
-          <div class="calendar-wrap" aria-label="Work target calendar">
+          <div class="calendar-wrap" aria-label="工作目标日历">
             <div id="work-calendar" class="work-calendar"></div>
           </div>
-          <div class="calendar-legend" aria-label="Calendar legend">
-            <span>No record</span>
+          <div class="calendar-legend" aria-label="日历图例">
+            <span>无记录</span>
             <span class="calendar-swatch empty"></span>
             <span class="calendar-swatch partial"></span>
             <span class="calendar-swatch done"></span>
-            <span>Done</span>
+            <span>已完成</span>
           </div>
         </section>
 
         <section class="tracker-section" aria-labelledby="work-chart-title">
           <div class="tracker-section-header">
             <div>
-              <h2 id="work-chart-title">Work hours</h2>
-              <p class="meta">Switch between daily, weekly, and monthly views.</p>
+              <h2 id="work-chart-title">工作时长</h2>
+              <p class="meta">按日、周或月查看记录。</p>
             </div>
-            <div class="chart-tabs" role="group" aria-label="Work hours chart view">
-              <button type="button" data-view="day" aria-pressed="true">Day</button>
-              <button type="button" data-view="week" aria-pressed="false">Week</button>
-              <button type="button" data-view="month" aria-pressed="false">Month</button>
+            <div class="chart-tabs" role="group" aria-label="工作时长图表视图">
+              <button type="button" data-view="day" aria-pressed="true">日</button>
+              <button type="button" data-view="week" aria-pressed="false">周</button>
+              <button type="button" data-view="month" aria-pressed="false">月</button>
             </div>
           </div>
-          <div id="work-chart" class="study-chart" aria-label="Work hours line chart"></div>
+          <div id="work-chart" class="study-chart" aria-label="工作时长折线图"></div>
         </section>
       </main>
 
       <script src="assets/tracker-data.js"></script>
       <script src="assets/tracker.js"></script>"""
-    return render_layout(f"Work Hours Tracker | {SITE_TITLE}", content, page_url="tracker.html")
+    return render_layout(f"工作记录 | {SITE_TITLE}", content, page_url="tracker.html")
 
 
 def _search_text(body_html: str) -> str:
@@ -584,7 +625,7 @@ def render_post_page(post: Post) -> str:
     <div class="page-shell" id="top">
       <header class="site-header compact">
         <nav class="top-nav" aria-label="主导航">
-          <a class="brand" href="../index.html">{SITE_TITLE}</a>
+          {_brand("../")}
           <div class="nav-links">
 {render_post_nav()}
           </div>
