@@ -14,6 +14,10 @@ Windows自带的文件搜索往往很慢，可以使用[Anytxt](https://anytxt.n
 
 喜欢[扎克伯格在哈佛的演讲](https://www.douyin.com/user/self?from_tab_name=main&modal_id=7629744353535200558&showTab=favorite_collection)，说得还挺让人心情澎湃的x，Andrej Karpathy应该无人不知，可以看看其[个人博客](https://karpathy.github.io/)，认真看的话应该会受益很多，但我还没认真看。通过一个播客关注到了沉浸式翻译的开发者，他的[博客](https://www.owenyoung.com/)还挺有意思的，我觉得是一个有趣的灵魂。没事也可以看看[阮一峰的网络日志](https://www.ruanyifeng.com/blog/)，除此之外还有[白月黑羽](https://www.byhy.net/)，[Justin](https://justinyan.me/)，[翁荔](https://lilianweng.github.io/)，[学习让我快乐](https://blog.hidva.com/)，[喵神](https://onevcat.com/)等等。
 
+### Linux
+
+[what is ssh](https://www.cloudflare.com/learning/access-management/what-is-ssh/)，[SSH教程](https://wangdoc.com/ssh/)，[中科大-Linux-101](https://101.lug.ustc.edu.cn/)，[Linux-201](https://201.ustclug.org/).
+
 ### Machine learning
 
 如果需要学习**机器学习**，[李沐-动手学深度学习](https://courses.d2l.ai/zh-v2/)是我最推荐的入门教材，最好搭配其视频教程学习，其直接上手写代码的风格是我比较喜欢的，吴恩达的深度学习课程比较经典，如果像我一样不喜欢看英文视频，可以只看看其[课程笔记](http://www.ai-start.com/dl2017/)，但我个人不太适应其教学风格，总觉得更像在看一个科普视频。
