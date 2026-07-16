@@ -19,25 +19,9 @@ HEAD_EXTRAS = """
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
     />
-    <link
-      id="hljs-light"
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      id="hljs-dark"
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github-dark.min.css"
-      media="(prefers-color-scheme: dark)"
-    />
     <script>
       window.__setTheme = function (theme) {
         document.documentElement.setAttribute("data-theme", theme);
-        var l = document.getElementById("hljs-light");
-        var d = document.getElementById("hljs-dark");
-        if (l) l.media = theme === "dark" ? "not all" : "all";
-        if (d) d.media = theme === "dark" ? "all" : "not all";
       };
       try {
         var stored = localStorage.getItem("theme");

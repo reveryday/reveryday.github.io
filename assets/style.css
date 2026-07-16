@@ -11,7 +11,8 @@
   --amber-soft: #fafaf9;
   --surface-hover: #f4f4f5;
   --card-bg: #ffffff;
-  --code-inline-bg: #f4f4f5;
+  --code-inline-bg: #f3f4f5;
+  --code-inline-text: #912583;
   --header-bg: rgba(251, 251, 251, 0.78);
   --shadow: none;
   --card-shadow-rest: none;
@@ -24,15 +25,24 @@
   --chart-grid: #ededee;
   --chart-axis: #d4d4d8;
   --on-accent: #ffffff;
-  --code-block-bg: #fafafa;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
-          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --serif: "Iowan Old Style", "Songti SC", STSong, "Noto Serif CJK SC",
-           Georgia, serif;
-  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
-          "Liberation Mono", monospace;
-  --code: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
-          "Liberation Mono", monospace;
+  --code-block-bg: #f3f4f5;
+  --code-block-border: #ffffff;
+  --code-block-text: #080808;
+  --syntax-comment: #515151;
+  --syntax-error: #a12236;
+  --syntax-keyword: #6730c5;
+  --syntax-literal: #7f4707;
+  --syntax-string: #00622f;
+  --syntax-name: #005b82;
+  --syntax-attribute: #912583;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+          "Noto Sans", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei",
+          Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol", "Noto Color Emoji";
+  --serif: var(--sans);
+  --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+          "DejaVu Sans Mono", monospace;
+  --code: var(--mono);
   --max-width: 720px;
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -66,8 +76,8 @@ body {
   color: var(--text);
   background: var(--bg);
   font-family: var(--sans);
-  line-height: 1.62;
-  letter-spacing: -0.011em;
+  line-height: 1.65;
+  letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -1095,13 +1105,16 @@ a.tag-chip:hover {
 }
 
 .prose pre {
-  max-width: 46rem;
+  max-width: 42rem;
   overflow-x: auto;
-  padding: 0.55rem 0.85rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  margin: 1.5em 0;
+  padding: 1rem;
+  border: 1px solid var(--code-block-border);
+  border-radius: 0.25rem;
   background: var(--code-block-bg);
-  line-height: 1.45;
+  color: var(--code-block-text);
+  font-size: 0.875em;
+  line-height: 1.25;
 }
 
 .prose pre code {
@@ -1109,7 +1122,9 @@ a.tag-chip:hover {
   border: 0;
   border-radius: 0;
   background: transparent;
-  font-size: 0.875em;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .prose code {
@@ -1117,9 +1132,67 @@ a.tag-chip:hover {
 }
 
 .prose :not(pre) > code {
-  border-color: var(--border);
+  padding: 0.1rem 0.25rem;
+  border-color: var(--code-block-border);
+  border-radius: 0.25rem;
   background: var(--code-inline-bg);
-  color: var(--text);
+  color: var(--code-inline-text);
+  font-size: 0.875em;
+}
+
+/* highlight.js tokens mapped to the palette used by the reference PyData
+   Sphinx theme. The highlighter supplies markup only; this file owns colour. */
+.prose .hljs {
+  display: block;
+  overflow-x: visible;
+  background: transparent;
+  color: var(--code-block-text);
+}
+
+.prose .hljs-comment,
+.prose .hljs-quote {
+  color: var(--syntax-comment);
+}
+
+.prose .hljs-keyword,
+.prose .hljs-selector-tag,
+.prose .hljs-doctag {
+  color: var(--syntax-keyword);
+}
+
+.prose .hljs-string,
+.prose .hljs-regexp,
+.prose .hljs-template-tag,
+.prose .hljs-template-variable {
+  color: var(--syntax-string);
+}
+
+.prose .hljs-number,
+.prose .hljs-literal,
+.prose .hljs-type,
+.prose .hljs-built_in,
+.prose .hljs-symbol,
+.prose .hljs-bullet {
+  color: var(--syntax-literal);
+}
+
+.prose .hljs-title,
+.prose .hljs-section,
+.prose .hljs-selector-id,
+.prose .hljs-selector-class {
+  color: var(--syntax-name);
+}
+
+.prose .hljs-attr,
+.prose .hljs-attribute,
+.prose .hljs-variable,
+.prose .hljs-params {
+  color: var(--syntax-attribute);
+}
+
+.prose .hljs-meta,
+.prose .hljs-deletion {
+  color: var(--syntax-error);
 }
 
 .search-panel {
@@ -1357,6 +1430,7 @@ mark {
   --surface-hover: #242428;
   --card-bg: #232327;
   --code-inline-bg: #2b2b31;
+  --code-inline-text: #f3c7ee;
   --header-bg: rgba(26, 26, 29, 0.78);
   --shadow: none;
   --card-shadow-rest: none;
@@ -1369,7 +1443,16 @@ mark {
   --chart-grid: #2b2b31;
   --chart-axis: #45454d;
   --on-accent: #0d1b26;
-  --code-block-bg: #1e1e21;
+  --code-block-bg: #29313d;
+  --code-block-border: #14181e;
+  --code-block-text: #f8f8f2;
+  --syntax-comment: #ffd900;
+  --syntax-error: #ffa07a;
+  --syntax-keyword: #dcc6e0;
+  --syntax-literal: #ffd900;
+  --syntax-string: #abe338;
+  --syntax-name: #00e0e0;
+  --syntax-attribute: #ffd900;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1387,6 +1470,7 @@ mark {
     --surface-hover: #242428;
     --card-bg: #232327;
     --code-inline-bg: #2b2b31;
+    --code-inline-text: #f3c7ee;
     --header-bg: rgba(26, 26, 29, 0.78);
     --shadow: none;
     --card-shadow-rest: none;
@@ -1399,7 +1483,16 @@ mark {
     --chart-grid: #2b2b31;
     --chart-axis: #45454d;
     --on-accent: #0d1b26;
-    --code-block-bg: #1e1e21;
+    --code-block-bg: #29313d;
+    --code-block-border: #14181e;
+    --code-block-text: #f8f8f2;
+    --syntax-comment: #ffd900;
+    --syntax-error: #ffa07a;
+    --syntax-keyword: #dcc6e0;
+    --syntax-literal: #ffd900;
+    --syntax-string: #abe338;
+    --syntax-name: #00e0e0;
+    --syntax-attribute: #ffd900;
   }
 }
 
