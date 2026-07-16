@@ -44,16 +44,6 @@ def normalize_image_html(source: str, alt: str = "", style: str = "") -> str:
     )
 
 
-def render_code_block(code_lines: list[str], language: str = "") -> str:
-    code_html = escape("\n".join(code_lines))
-    safe_language = escape(language)
-    lang_class = f' class="language-{safe_language}"' if language else ""
-    return (
-        f'<figure class="prose-code"><figcaption class="code-caption">{safe_language}</figcaption>'
-        f'<pre><code{lang_class}>{code_html}</code></pre></figure>'
-    )
-
-
 def parse_image_attributes(raw: str) -> str:
     raw = raw.strip()
     if not raw:
@@ -256,7 +246,9 @@ def _markdown_to_html(markdown: str, heading_state: HeadingState | None = None) 
 
         if in_code_block:
             if stripped.startswith("```"):
-                blocks.append(render_code_block(code_lines, code_language))
+                code_html = escape("\n".join(code_lines))
+                lang_class = f' class="language-{escape(code_language)}"' if code_language else ""
+                blocks.append(f"<pre><code{lang_class}>{code_html}</code></pre>")
                 code_lines = []
                 code_language = ""
                 in_code_block = False
@@ -391,7 +383,9 @@ def _markdown_to_html(markdown: str, heading_state: HeadingState | None = None) 
     flush_paragraph()
     flush_list()
     if in_code_block:
-        blocks.append(render_code_block(code_lines, code_language))
+        code_html = escape("\n".join(code_lines))
+        lang_class = f' class="language-{escape(code_language)}"' if code_language else ""
+        blocks.append(f"<pre><code{lang_class}>{code_html}</code></pre>")
     if in_display_math:
         blocks.append('<div class="math-display">\\[' + escape("\n".join(math_lines).strip()) + "\\]</div>")
     return "\n          ".join(blocks)
