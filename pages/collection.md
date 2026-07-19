@@ -26,21 +26,21 @@ ML存在很多“有趣”的网站待发现，比如一个深度学习教材[Ne
 
 如果需要自己训练模型，可以先使用[超算互联网](https://www.scnet.cn/ui/mall/search/resource?resource1=COMMON_RESOURCE_TYPE-AI)中的免费资源，阿里官方云平台也有一些免费额度。
 
-有关**vibe coding**，可以看看[OpenAI AI 编程实战手册](https://openai.com/zh-Hans-CN/index/shipping-sora-for-android-with-codex/)，[Anthropic有关skills的讲解](https://www.youtube.com/watch?v=CEvIs9y1uog)，[Andrej Karpathy关于2025的LLM年度回顾](https://x.com/karpathy/status/2002118205729562949)等。
+有关vibe coding，可以看看[OpenAI AI 编程实战手册](https://openai.com/zh-Hans-CN/index/shipping-sora-for-android-with-codex/)，[Anthropic有关skills的讲解](https://www.youtube.com/watch?v=CEvIs9y1uog)，[Andrej Karpathy关于2025的LLM年度回顾](https://x.com/karpathy/status/2002118205729562949)等。
 
 如果想了解具身智能（现在我也还完全是门外汉），[Tnkr](https://tnkr.ai/overview)是一个开源的机器人社区。
 
 ### 文献调研
 
-如果需要阅读**文献**/刷文献/文献调研，[Papers.cool](https://papers.cool/)可以快速获取Arxiv中的文章具体做了一件什么事，适合刷文章。[玻尔](https://www.bohrium.com/)也是一个文献工具，我暂时也主要用来刷刷文献，[WisPaper](https://www.wispaper.ai/search/)是复旦大学开发的AI学术工具，但暂时于我而言没发挥很大的用处。
+如果需要阅读文献/刷文献/文献调研，[Papers.cool](https://papers.cool/)可以快速获取Arxiv中的文章具体做了一件什么事，适合刷文章。[玻尔](https://www.bohrium.com/)也是一个文献工具，我暂时也主要用来刷刷文献，[WisPaper](https://www.wispaper.ai/search/)是复旦大学开发的AI学术工具，但暂时于我而言没发挥很大的用处。
 
 ### Parallel programing
 
-如果你也需要学习**并行编程**、高性能计算，且也不喜欢从一些“枯燥”的理论开始，那么可以参考[MPI Tutorial](https://mpitutorial.com/tutorials/mpi-introduction/zh_cn/)，[SJTU HPC 入门指南](https://xflops.sjtu.edu.cn/hpc-start-guide/)，[清华-高性能计算导论实验文档](https://lab.cs.tsinghua.edu.cn/hpc/doc/cluster/)，[计算机教育中缺失的一课](https://missing-semester-cn.github.io/)。
+如果你也需要学习并行编程、高性能计算，且也不喜欢从一些“枯燥”的理论开始，那么可以参考[MPI Tutorial](https://mpitutorial.com/tutorials/mpi-introduction/zh_cn/)，[SJTU HPC 入门指南](https://xflops.sjtu.edu.cn/hpc-start-guide/)，[清华-高性能计算导论实验文档](https://lab.cs.tsinghua.edu.cn/hpc/doc/cluster/)，[计算机教育中缺失的一课](https://missing-semester-cn.github.io/)。
 
 ### Repo
 
-经常在各大平台看到Github某某仓库“又炸了”，但大多都在收藏夹里吃灰，添加star后再也没打开过，所以我认为有必要记录一些我认为真正有意义的**Repo**，[运行MacOS 系统](https://github.com/luchina-gabriel/OSX-PROXMOX)。
+经常在各大平台看到Github某某仓库“又炸了”，但大多都在收藏夹里吃灰，添加star后再也没打开过，所以我认为有必要记录一些真正有意义的Repo，[运行MacOS 系统](https://github.com/luchina-gabriel/OSX-PROXMOX)。
 
 ### 核
 

@@ -1041,6 +1041,12 @@ a.tag-chip:hover {
   margin: 0;
 }
 
+.prose p strong,
+.prose li strong,
+.prose blockquote strong {
+  color: var(--accent);
+}
+
 .prose a {
   color: var(--accent);
   text-decoration: underline;

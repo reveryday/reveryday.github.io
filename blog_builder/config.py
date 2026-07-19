@@ -140,6 +140,69 @@ FOOTER_SCRIPTS = """
         for (var t = 0; t < targets.length; t++) observer.observe(targets[t]);
       })();
     </script>
+    <script>
+      (function () {
+        // ==== 访客统计：数据仅写入你私有的 Google 表格，访客无法读取 ====
+        var ENDPOINT = "https://script.google.com/macros/s/AKfycbyZb_pslaiIvht5Suz9JxS5y0TQ8qkToroP3djfMuocuQxVge2sQD6kU6fMxgfASpng8Q/exec"; // ← 部署好 Google Apps Script 后，把网址粘到这里
+        if (!ENDPOINT) return;
+        try {
+          // 同一标签页、同一页面只记录一次，避免刷新刷屏
+          var key = "visit:" + location.pathname;
+          if (sessionStorage.getItem(key)) return;
+          sessionStorage.setItem(key, "1");
+        } catch (e) {}
+
+        function parseUA(ua) {
+          var os = "未知", browser = "未知";
+          var device = /Mobi|Android|iPhone|iPad|iPod/i.test(ua) ? "手机/平板" : "电脑";
+          if (/Windows NT/i.test(ua)) os = "Windows";
+          else if (/iPhone|iPad|iPod/i.test(ua)) os = "iOS";
+          else if (/Mac OS X/i.test(ua)) os = "macOS";
+          else if (/Android/i.test(ua)) os = "Android";
+          else if (/Linux/i.test(ua)) os = "Linux";
+          if (/Edg/i.test(ua)) browser = "Edge";
+          else if (/OPR|Opera/i.test(ua)) browser = "Opera";
+          else if (/Chrome/i.test(ua)) browser = "Chrome";
+          else if (/Firefox/i.test(ua)) browser = "Firefox";
+          else if (/Safari/i.test(ua)) browser = "Safari";
+          return { os: os, browser: browser, device: device };
+        }
+
+        function send(data) {
+          try {
+            var body = JSON.stringify(data);
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "text/plain;charset=UTF-8" }));
+            } else {
+              fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: body, keepalive: true });
+            }
+          } catch (e) {}
+        }
+
+        var ua = navigator.userAgent;
+        var info = parseUA(ua);
+        var payload = {
+          ua: ua, os: info.os, browser: info.browser, device: info.device,
+          page: location.pathname + location.search,
+          referrer: document.referrer || "直接访问",
+          screen: window.screen ? screen.width + "x" + screen.height : "",
+          language: navigator.language || ""
+        };
+
+        // 取访客 IP 属地（省/市）；即便失败也照常上报设备信息
+        fetch("https://ipwho.is/")
+          .then(function (r) { return r.json(); })
+          .then(function (g) {
+            payload.ip = g.ip || "";
+            payload.country = g.country || "";
+            payload.region = g.region || "";
+            payload.city = g.city || "";
+            payload.isp = (g.connection && g.connection.isp) || g.isp || "";
+          })
+          .catch(function () {})
+          .then(function () { send(payload); });
+      })();
+    </script>
 """
 HOME_HEADING = "希望无所谓能天天开心"
 NAV_LINKS = [
