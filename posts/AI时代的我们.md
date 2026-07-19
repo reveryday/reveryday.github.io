@@ -1,5 +1,5 @@
 ---
-title: 关于vibe coding
+title: AI时代的我们
 date: 2026-05-06 14:02:28
 tags:
 ---

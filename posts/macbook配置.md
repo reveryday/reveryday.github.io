@@ -8,6 +8,10 @@ tags:
 
 软件包管理器-brew（Homebrew），作用类似于 Linux 里的 `apt`、`yum`，或者 Windows 里的 `winget/choco`。它可以让你通过终端命令快速安装、更新、卸载各种开发工具和软件。
 
+- `brew install xxx` → 安装命令行软件；
+
+-  `brew install --cask xxx` → 安装桌面 App；
+
 如`brew install git`即可安装`git`，brew安装的位置在：
 
 ```shell
