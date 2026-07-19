@@ -4,7 +4,7 @@ date: 2026-07-19 12:37:13
 tags:
 ---
 
-一个纯本地的 Windows 桌面任务管理工具：
+一个纯本地的macOS桌面任务管理工具：
 
 - [下载](https://github.com/user-attachments/files/30163226/AuraTask-0.1.0-macOS-arm64.zip)
 
