@@ -141,13 +141,10 @@ FOOTER_SCRIPTS = """
       })();
     </script>
     <script>
-      (function () {
-        // ==== 百度统计：大陆访客也能记录，数据只在你的百度统计后台可见 ====
-        var BAIDU_ID = "1a157dd24de1c03ec6039519ea916bab";
-        if (!BAIDU_ID) return;
-        window._hmt = window._hmt || [];
+      var _hmt = _hmt || [];
+      (function() {
         var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?" + BAIDU_ID;
+        hm.src = "https://hm.baidu.com/hm.js?1a157dd24de1c03ec6039519ea916bab";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();
