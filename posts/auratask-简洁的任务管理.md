@@ -1,7 +1,7 @@
 ---
 title: AuraTask：简洁的桌面任务管理
 date: 2026-07-19 12:37:13
-tags:
+tags: My Apps
 ---
 
 一个纯本地的macOS桌面任务管理工具：
