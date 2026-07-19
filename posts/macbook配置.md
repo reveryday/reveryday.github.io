@@ -19,13 +19,9 @@ App
 
 环境配置：
 
-- 软件包管理器-brew（Homebrew）：类似于 Linux 里的 `apt`、`yum`，或者 Windows 里的 `winget/choco`。
+- brew（Homebrew）- 软件包管理器：类似于 Linux 里的 `apt`、`yum`，或者 Windows 里的 `winget/choco`。
 
-  - `brew install xxx` → 安装命令行软件；
-
-  - `brew install --cask xxx` → 安装桌面 App；
-
-- Multipass ：由 Canonical（Ubuntu 的开发公司）推出的轻量级虚拟机工具，可在电脑上快速创建、运行 Ubuntu Linux 虚拟机。
+- Multipass ：由 Canonical推出的轻量级虚拟机工具，可在电脑上快速创建、运行 Ubuntu Linux 虚拟机。
 
   ```
   Mac macOS
@@ -37,8 +33,6 @@ App
                ├── gcc
                ├── gfortran
                ├── Python
-               ├── OpenMC
-               └── 你的科研代码
   ```
 
   可把 Mac 当前用户的主目录（`~`）共享给 Multipass 里的 Ubuntu，并挂载到 Ubuntu 的 `/home/ubuntu/mac` 目录：
@@ -74,7 +68,7 @@ git config --global user.email "github账号邮箱"
 git config --list
 ```
 
-可在mac与Multipass Ubuntu下分别连接了不同的github账号：
+可在mac与Multipass Ubuntu下分别连接不同的Github账号：
 
 ```
 Mac
