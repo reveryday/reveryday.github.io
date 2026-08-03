@@ -1,5 +1,5 @@
 ---
-title: AuraTask：简洁的桌面任务管理
+title: AuraTask
 date: 2026-07-19 12:37:13
 tags: My Apps
 ---
