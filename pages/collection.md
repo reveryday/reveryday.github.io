@@ -38,6 +38,10 @@ ML存在很多“有趣”的网站待发现，比如一个深度学习教材[Ne
 
 如果你也需要学习并行编程、高性能计算，且也不喜欢从一些“枯燥”的理论开始，那么可以参考[MPI Tutorial](https://mpitutorial.com/tutorials/mpi-introduction/zh_cn/)，[SJTU HPC 入门指南](https://xflops.sjtu.edu.cn/hpc-start-guide/)，[清华-高性能计算导论实验文档](https://lab.cs.tsinghua.edu.cn/hpc/doc/cluster/)，[计算机教育中缺失的一课](https://missing-semester-cn.github.io/)。
 
+### Python
+
+[Python打包用户指南-cn](https://packaging.pythonlang.cn/en/latest/)
+
 ### Repo
 
 经常在各大平台看到Github某某仓库“又炸了”，但大多都在收藏夹里吃灰，添加star后再也没打开过，所以我认为有必要记录一些真正有意义的Repo，[运行MacOS 系统](https://github.com/luchina-gabriel/OSX-PROXMOX)。

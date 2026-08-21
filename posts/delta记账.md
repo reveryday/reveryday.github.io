@@ -12,10 +12,6 @@ Delta（$\Delta$）在物理里代表着变量，财富也是这样一步步积�
 
 ![image-20260719181053609](https://gitee.com/wenswuu/pictures/raw/master/image-20260719181053609.webp)
 
-![image-20260719181203616](https://gitee.com/wenswuu/pictures/raw/master/image-20260719181203616.webp)
-
-![image-20260719181138549](https://gitee.com/wenswuu/pictures/raw/master/image-20260719181138549.webp)
-
 ios端：
 
 <p class="photo-row">
