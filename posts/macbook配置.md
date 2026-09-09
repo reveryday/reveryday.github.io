@@ -6,16 +6,18 @@ tags:
 
 App
 
-- Typora - Markdown
+- Edge/Chrome
+- Typora（Markdown editor）
 - Piclist
 - [Foxit PDF Reader](https://www.foxitsoftware.cn/pdf-reader/)
 - LinearMouse
 - Koodo Reader
 - draw.io
-- xmind
+- XMind
 - AppCleaner
 - LocalSend
-- 坚果云
+- 坚果云/百度网盘/夸克
+- ChatGPT/Cluade/WorkBuddy
 
 环境配置：
 
