@@ -43,6 +43,12 @@ App
   multipass mount ~ linux:/home/ubuntu/mac
   ```
 
+- mpi：
+
+  ```shell
+  brew install open-mpi
+  ```
+
 ### Github配置
 
 1.登录Github - 登录身份。
