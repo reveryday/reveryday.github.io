@@ -38,11 +38,7 @@ Windows自带的文件搜索往往很慢，可以使用[Anytxt](https://anytxt.n
 
 #### Python
 
-[Python打包用户指南-cn](https://packaging.pythonlang.cn/en/latest/).
-
-#### Repo
-
-[运行MacOS 系统](https://github.com/luchina-gabriel/OSX-PROXMOX).
+[Python官网教程](https://docs.python.org/zh-cn/3.14/tutorial/index.html)，[Python 100 days](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-20/01.%E5%88%9D%E8%AF%86Python.md)，[Python打包用户指南-cn](https://packaging.pythonlang.cn/en/latest/).
 
 #### 核
 

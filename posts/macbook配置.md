@@ -16,6 +16,7 @@ App
 - XMind
 - AppCleaner
 - LocalSend
+- Notepad
 - 坚果云/百度网盘/夸克
 - ChatGPT/Cluade/WorkBuddy
 
