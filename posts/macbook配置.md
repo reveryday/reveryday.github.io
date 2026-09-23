@@ -1,5 +1,5 @@
 ---
-title: Macbook环境配置
+title: Mac环境配置
 date: 2026-07-16 14:10:51
 tags:
 ---
@@ -44,11 +44,24 @@ App
   multipass mount ~ linux:/home/ubuntu/mac
   ```
 
-- mpi：
+- MPI：
 
   ```shell
   brew install open-mpi
   ```
+
+- tree:
+
+  ```shell
+  brew install tree
+  ```
+
+- jupyter
+
+  ```shell
+  brew install jupyterlab
+  ```
+
 
 ### Github配置
 

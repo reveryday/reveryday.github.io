@@ -130,6 +130,66 @@ def render_heading(level: int, raw_text: str, state: HeadingState | None) -> str
     return f'<h{level} id="{escape(anchor, quote=True)}">{rendered}</h{level}>'
 
 
+def split_table_row(line: str) -> list[str]:
+    """Split a Markdown table row, ignoring escaped pipe characters."""
+    content = line.strip()
+    if content.startswith("|"):
+        content = content[1:]
+    if content.endswith("|") and not content.endswith("\\|"):
+        content = content[:-1]
+    cells: list[str] = []
+    current: list[str] = []
+    escaped = False
+    for char in content:
+        if char == "|" and not escaped:
+            cells.append("".join(current).strip())
+            current = []
+            continue
+        current.append(char)
+        escaped = char == "\\" and not escaped
+        if char != "\\":
+            escaped = False
+    cells.append("".join(current).strip())
+    return cells
+
+
+def table_alignment(cell: str) -> str:
+    cell = cell.strip()
+    if cell.startswith(":") and cell.endswith(":"):
+        return "center"
+    if cell.startswith(":"):
+        return "left"
+    if cell.endswith(":"):
+        return "right"
+    return ""
+
+
+def is_table_separator(line: str) -> bool:
+    cells = split_table_row(line)
+    return bool(cells) and all(re.fullmatch(r":?-{3,}:?", cell.replace(" ", "")) for cell in cells)
+
+
+def render_table(header_line: str, separator_line: str, body_lines: list[str]) -> str:
+    headers = split_table_row(header_line)
+    separators = split_table_row(separator_line)
+    alignments = [table_alignment(cell) for cell in separators]
+    while len(alignments) < len(headers):
+        alignments.append("")
+
+    def render_cell(tag: str, value: str, index: int) -> str:
+        alignment = alignments[index] if index < len(alignments) else ""
+        attr = f' style="text-align: {alignment};"' if alignment else ""
+        return f"<{tag}{attr}>{render_inline(value.replace(r'\|', '|'))}</{tag}>"
+
+    head = "".join(render_cell("th", value, index) for index, value in enumerate(headers))
+    rows = []
+    for line in body_lines:
+        cells = split_table_row(line)
+        cells += [""] * (len(headers) - len(cells))
+        rows.append("<tr>" + "".join(render_cell("td", value, index) for index, value in enumerate(cells[:len(headers)])) + "</tr>")
+    return '<div class="table-wrap"><table><thead><tr>' + head + "</tr></thead>" + ("<tbody>" + "".join(rows) + "</tbody>" if rows else "") + "</table></div>"
+
+
 def markdown_to_html_with_toc(markdown: str) -> tuple[str, list[TocItem]]:
     heading_state = HeadingState()
     return _markdown_to_html(markdown, heading_state), heading_state.items
@@ -283,6 +343,22 @@ def _markdown_to_html(markdown: str, heading_state: HeadingState | None = None) 
         if not stripped:
             flush_paragraph()
             i += 1
+            continue
+
+        if (
+            "|" in line
+            and i + 1 < len(lines)
+            and "|" in lines[i + 1]
+            and is_table_separator(lines[i + 1])
+        ):
+            flush_paragraph()
+            flush_list()
+            table_rows: list[str] = []
+            i += 2
+            while i < len(lines) and lines[i].strip() and "|" in lines[i]:
+                table_rows.append(lines[i])
+                i += 1
+            blocks.append(render_table(line, lines[i - len(table_rows) - 1], table_rows))
             continue
 
         if re.fullmatch(r"(?:-{3,}|\*{3,}|_{3,})", stripped):

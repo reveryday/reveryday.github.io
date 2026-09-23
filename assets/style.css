@@ -1007,9 +1007,47 @@ a.tag-chip:hover {
 .prose blockquote,
 .prose hr,
 .prose pre,
+.prose .table-wrap,
 .prose .math-display,
 .prose .prose-figure {
   margin: 0.95rem 0;
+}
+
+.prose .table-wrap {
+  overflow-x: auto;
+  margin: 1.15rem 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.prose table {
+  width: 100%;
+  min-width: 32rem;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.prose th,
+.prose td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  border-right: 0;
+}
+
+.prose th {
+  background: var(--surface-hover);
+  font-weight: 650;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 .prose hr {
