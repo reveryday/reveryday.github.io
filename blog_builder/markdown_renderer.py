@@ -37,7 +37,7 @@ def normalize_image_html(source: str, alt: str = "", style: str = "") -> str:
         ).strip()
 
     style_attr = f' style="{escape(normalized_style, quote=True)}"' if normalized_style else ""
-    caption = f"<figcaption>{escape(alt)}</figcaption>"
+    caption = f"<figcaption>{escape(alt)}</figcaption>" if alt.strip() else ""
     return (
         f'<figure class="prose-figure"><img src="{escape(source, quote=True)}" '
         f'alt="{escape(alt, quote=True)}" loading="lazy"{style_attr} />{caption}</figure>'
