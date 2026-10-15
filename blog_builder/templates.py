@@ -95,7 +95,7 @@ def render_post_nav() -> str:
     return _render_nav("", "../")
 
 
-def render_layout(title: str, content: str, description: str = "", *, page_url: str = "") -> str:
+def render_layout(title: str, content: str, description: str = "", *, page_url: str = "", page_head: str = "") -> str:
     meta_description = description or SITE_DESCRIPTION
     full_url = _absolute_url(page_url)
     return f"""<!DOCTYPE html>
@@ -114,6 +114,7 @@ def render_layout(title: str, content: str, description: str = "", *, page_url: 
     <meta name="twitter:card" content="summary" />
     <link rel="alternate" type="application/atom+xml" href="feed.xml" title="{escape(SITE_TITLE)} feed" />
     <link rel="stylesheet" href="assets/style.css" />
+{page_head}
 {HEAD_EXTRAS}
   </head>
   <body>
@@ -343,6 +344,22 @@ def render_playground_page() -> str:
       <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/fortran/fortran.min.js"></script>
       <script defer src="assets/playground.js"></script>"""
     return render_layout(f"代码演练场 | {SITE_TITLE}", content, page_url="playground.html")
+
+
+def render_codeimage_page() -> str:
+    content = f'''{render_page_header("codeimage.html")}
+      <div id="codeimage-root" class="codeimage-tool">
+        <p class="codeimage-loading" role="status">正在加载代码成像工具…</p>
+      </div>
+      <noscript><p>代码成像需要启用 JavaScript；代码和图片均在浏览器本地处理。</p></noscript>
+{render_footer()}
+      <script type="module" src="assets/codeimage/editor.js"></script>'''
+    return render_layout(
+        f"代码成像 | {SITE_TITLE}", content,
+        "把代码转换成与博客代码块一致的高清图片，支持实时预览、复制和 PNG 导出。代码仅在浏览器本地处理。",
+        page_url="codeimage.html",
+        page_head='<link rel="stylesheet" href="assets/codeimage/editor.css" />',
+    )
 
 
 def render_faq_page() -> str:
@@ -657,6 +674,7 @@ _STATIC_SITEMAP_PAGES = [
     ("tags.html", "monthly"),
     ("search.html", "monthly"),
     ("playground.html", "monthly"),
+    ("codeimage.html", "monthly"),
     ("tracker.html", "weekly"),
     ("faq.html", "yearly"),
     ("friends.html", "yearly"),

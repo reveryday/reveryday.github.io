@@ -9,6 +9,7 @@ from .content import load_posts
 from .templates import (
     render_archive,
     render_collection_page,
+    render_codeimage_page,
     render_faq_page,
     render_feed_atom,
     render_friends_page,
@@ -128,6 +129,7 @@ def main() -> None:
     write_text(OUTPUT_DIR / "tags.html", render_tags(posts))
     write_text(OUTPUT_DIR / "search.html", render_search_page())
     write_text(OUTPUT_DIR / "playground.html", render_playground_page())
+    write_text(OUTPUT_DIR / "codeimage.html", render_codeimage_page())
     write_text(OUTPUT_DIR / "tracker.html", render_tracker_page())
     write_text(OUTPUT_DIR / "faq.html", render_faq_page())
     write_text(OUTPUT_DIR / "friends.html", render_friends_page())

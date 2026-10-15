@@ -44,6 +44,12 @@ App
   multipass mount ~ linux:/home/ubuntu/mac
   ```
 
+- CMake,cmake-gui
+
+  ```shell
+  brew install --cask cmake-app
+  ```
+
 - MPI：
 
   ```shell

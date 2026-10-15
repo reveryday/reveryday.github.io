@@ -1,0 +1,85 @@
+.codeimage-tool {
+  --surface: var(--surface-hover);
+  --border-soft: var(--border);
+  --sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", sans-serif;
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+}
+.codeimage-tool .app-shell { width: 100%; min-height: 0; }
+.codeimage-tool .workspace { height: 730px; grid-template-columns: minmax(0, 35fr) minmax(0, 65fr); }
+.codeimage-tool .preview-heading { gap: 12px; }
+.codeimage-tool .preview-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.codeimage-tool .code-input,
+.codeimage-tool .code-input:focus,
+.codeimage-tool .editor-footer,
+.codeimage-tool .settings-panel,
+.codeimage-tool .language-select select {
+  background: var(--paper);
+  color: var(--text);
+}
+.codeimage-tool .range-control output { color: var(--text); }
+.codeimage-tool .blog-code-block { letter-spacing: normal; }
+.codeimage-tool .hljs { padding: 0; border: 0; border-radius: 0; font-size: inherit; line-height: inherit; background: transparent; }
+.codeimage-tool .code-line { white-space: pre-wrap; }
+.codeimage-tool button { letter-spacing: normal; }
+.codeimage-tool .copy-button { background: var(--paper); }
+.codeimage-tool .app-footer { margin-top: 8px; }
+.codeimage-loading { padding: 40px 0; color: var(--muted); }
+@media (max-width: 860px) {
+  .codeimage-tool .workspace { height: auto; grid-template-columns: 1fr; }
+  .codeimage-tool .app-shell { width: 100%; }
+}
+@media (max-width: 420px) {
+  .codeimage-tool .preview-actions .resolution-badge { display: none; }
+}
+
+/* Quiet surfaces and a shared baseline keep the tool close to the blog. */
+.codeimage-tool .workspace { gap: 28px; padding: 4px 0 20px; height: min(740px, calc(100vh - 180px)); min-height: 560px; }
+.codeimage-tool .editor-panel { border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+.codeimage-tool .panel-heading { min-height: 56px; flex-basis: 56px; padding: 0; }
+.codeimage-tool .panel-heading h2 { margin: 0; font-size: 13px; font-weight: 600; }
+.codeimage-tool .editor-heading { border: 0; }
+.codeimage-tool .editor-meta { gap: 8px; }
+.codeimage-tool .line-count { font-size: 10px; }
+.codeimage-tool .language-select select { font-size: 10px; background: transparent; border: 0; padding-left: 0; }
+.codeimage-tool .code-input { padding: 20px 18px; border-radius: 6px; background: var(--surface); font-size: 12px; line-height: 1.8; }
+.codeimage-tool .code-input:focus { background: var(--surface); box-shadow: inset 0 0 0 1px var(--border); }
+.codeimage-tool .editor-footer { padding: 10px 0 0; border: 0; background: transparent; color: var(--muted); font-size: 10px; }
+.codeimage-tool .copy-button, .codeimage-tool .export-button { height: 30px; padding: 0 12px; border-radius: 5px; font-size: 11px; font-weight: 500; box-shadow: none; }
+.codeimage-tool .copy-button { background: transparent; border-color: transparent; color: var(--muted); }
+.codeimage-tool .copy-button:hover { background: var(--surface); border-color: transparent; color: var(--text); transform: none; }
+.codeimage-tool .export-button:hover { transform: none; box-shadow: none; }
+.codeimage-tool .settings-panel { gap: 16px 20px; padding: 16px 0; border: 0; border-top: 1px solid var(--border); border-radius: 0; box-shadow: none; backdrop-filter: none; background: transparent; }
+.codeimage-tool .control-title, .codeimage-tool .range-control, .codeimage-tool .line-toggle { font-size: 11px; }
+.codeimage-tool .segmented button { font-size: 10px; }
+.codeimage-tool .width-control { flex: 1; grid-template-columns: auto minmax(48px, 1fr) 30px; }
+.codeimage-tool .range-control output { font-size: 10px; }
+.codeimage-tool .more-settings { width: 100%; color: var(--muted); font-size: 11px; }
+.codeimage-tool .more-settings summary { width: fit-content; cursor: pointer; user-select: none; }
+.codeimage-tool .more-settings summary:hover { color: var(--text); }
+.codeimage-tool .more-settings summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.codeimage-tool .advanced-settings { padding: 18px 0 2px; display: grid; gap: 20px; }
+.codeimage-tool .range-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
+.codeimage-tool .range-control { grid-template-columns: auto minmax(48px, 1fr) 30px; }
+.codeimage-tool .toggle-controls { margin: 0; gap: 24px; justify-content: flex-start; }
+.codeimage-tool .image-stage { margin-top: 0; border: 0; border-radius: 6px; overflow: hidden; min-height: 160px; }
+.codeimage-tool .image-stage.light { background: #f0f0ed; }
+.codeimage-tool .image-stage.dark { background: #202023; }
+.codeimage-tool .preview-scaled { position: relative; flex: 0 0 auto; }
+.codeimage-tool .preview-transform { position: absolute; top: 0; left: 0; transform-origin: top left; }
+.codeimage-tool .app-footer { height: auto; min-height: 32px; margin: 0; font-size: 10px; color: var(--muted); }
+.codeimage-tool .app-footer i { width: 4px; height: 4px; background: var(--muted); box-shadow: none; }
+@media (max-width: 860px) {
+  .codeimage-tool .workspace { height: auto; min-height: 0; gap: 24px; }
+  .codeimage-tool .editor-panel { height: 340px; }
+  .codeimage-tool .preview-column { height: 620px; }
+}
+@media (max-width: 600px) {
+  .codeimage-tool .settings-panel { gap: 14px 18px; }
+  .codeimage-tool .width-control { flex-basis: 100%; }
+  .codeimage-tool .range-controls { gap: 16px; }
+  .codeimage-tool .editor-panel { height: 300px; }
+  .codeimage-tool .preview-column { height: 660px; }
+  .codeimage-tool .app-footer { gap: 8px; }
+}

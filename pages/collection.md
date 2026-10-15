@@ -1,6 +1,7 @@
 本站工具：
 
 - [Playground - 在线运行 Python / C++ / Fortran](playground.html)
+- [代码成像 - 将代码转换为高清图片](codeimage.html)
 
 有很多我认为在大学前就应该且值得一看的东西，但限于我国高中教育对信息检索、筛选的忽略以及自身的局限，那时候没能接触到，但现在看到依然觉得受益匪浅，世界正因开源精神、知识共享而伟大，推荐[大学生的百科全书](https://ac-wiki.org/)，[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)。
 
